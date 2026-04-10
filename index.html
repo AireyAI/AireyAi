@@ -4,126 +4,300 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AireyAi — Business Brief</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ai-blue: #2563eb;
-      --ai-blue-light: #eff6ff;
-      --ai-dark: #0f172a;
-      --ai-muted: #64748b;
-      --ai-border: #e2e8f0;
-      --ai-bg: #f8fafc;
+      --mint:       #00e5a0;
+      --mint-dim:   rgba(0, 229, 160, 0.12);
+      --mint-glow:  rgba(0, 229, 160, 0.25);
+      --bg:         #070710;
+      --surface:    #0d0d1f;
+      --surface-2:  #13132a;
+      --border:     rgba(255,255,255,0.07);
+      --border-focus: rgba(0, 229, 160, 0.5);
+      --text:       #eeeef8;
+      --text-muted: #6b6b8a;
+      --text-sub:   #9898b8;
+      --danger:     #ff4d6d;
     }
-    * { box-sizing: border-box; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--ai-bg);
-      color: var(--ai-dark);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
+      overflow-x: hidden;
     }
-    .progress-track { height: 3px; background: var(--ai-border); border-radius: 99px; }
-    .progress-fill { height: 3px; background: var(--ai-blue); border-radius: 99px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+
+    /* ── Animated background orbs ─────────────────────────── */
+    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; }
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, #3d2fff 0%, transparent 70%);
+      top: -200px; left: -100px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #00e5a0 0%, transparent 70%);
+      bottom: -150px; right: -100px;
+      animation: drift2 22s ease-in-out infinite alternate;
+    }
+    .orb-3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+      top: 40%; left: 60%;
+      animation: drift3 15s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px,60px) scale(1.1); } }
+    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,-80px) scale(1.15); } }
+    @keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,50px) scale(0.9); } }
+
+    /* ── Nav ───────────────────────────────────────────────── */
+    nav {
+      position: relative; z-index: 10;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 60px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7,7,16,0.8);
+      backdrop-filter: blur(16px);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px; font-weight: 800;
+      letter-spacing: -0.03em; color: var(--text);
+    }
+    .logo span { color: var(--mint); }
+    .nav-badge {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+      border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px;
+    }
+
+    /* ── Main ──────────────────────────────────────────────── */
+    main {
+      position: relative; z-index: 1;
+      display: flex; align-items: flex-start; justify-content: center;
+      padding: 48px 16px 100px;
+    }
+
+    /* ── Card ──────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 32px 64px rgba(0,0,0,0.5);
+      max-width: 600px; width: 100%;
+      padding: 44px;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mint-glow), transparent);
+    }
+
+    /* ── Progress ──────────────────────────────────────────── */
+    .progress-header {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+    }
+    .progress-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .progress-pct {
+      font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--mint);
+    }
+    .progress-track {
+      height: 2px; background: var(--surface-2); border-radius: 99px;
+      margin-bottom: 40px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 2px; background: var(--mint); border-radius: 99px;
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 0 8px var(--mint-glow);
+    }
+
+    /* ── Typography ────────────────────────────────────────── */
+    .section-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--mint-dim); color: var(--mint);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 4px 12px;
+      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
+      margin-bottom: 14px;
+    }
+    .section-pill::before { content: '●'; font-size: 7px; }
+    .step-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
+      color: var(--text); margin-bottom: 8px;
+    }
+    .step-sub {
+      font-size: 14px; color: var(--text-sub); line-height: 1.6;
+      margin-bottom: 32px; font-weight: 300;
+    }
+
+    /* ── Labels & inputs ───────────────────────────────────── */
+    label {
+      display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--text-sub); margin-bottom: 7px; text-transform: uppercase;
+    }
+    .optional { font-weight: 400; color: var(--text-muted); font-size: 10px; margin-left: 4px; text-transform: none; letter-spacing: 0; }
+    .field {
+      width: 100%; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 14px; font-family: 'DM Sans', sans-serif;
+      color: var(--text); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; margin-bottom: 20px;
+    }
+    .field::placeholder { color: var(--text-muted); }
+    .field:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--mint-dim); }
+    textarea.field { min-height: 96px; resize: vertical; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 500px) {
+      .two-col { grid-template-columns: 1fr; }
+      .card { padding: 28px 20px; }
+      .step-title { font-size: 22px; }
+    }
+
+    /* ── Chips ─────────────────────────────────────────────── */
+    .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .chip {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border: 1.5px solid var(--ai-border); border-radius: 99px;
-      font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.15s;
-      background: #fff; color: var(--ai-dark); user-select: none;
+      padding: 7px 16px; background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 99px; font-size: 13px; font-weight: 400; color: var(--text-sub);
+      cursor: pointer; user-select: none; transition: all 0.15s;
     }
-    .chip:hover { border-color: var(--ai-blue); color: var(--ai-blue); }
-    .chip.selected { background: var(--ai-blue-light); border-color: var(--ai-blue); color: var(--ai-blue); }
-    .chip.selected::before { content: '✓ '; font-size: 11px; }
-    .field {
-      width: 100%; border: 1.5px solid var(--ai-border); border-radius: 10px;
-      padding: 11px 14px; font-size: 14px; background: #fff; outline: none;
-      transition: border-color 0.2s; color: var(--ai-dark);
+    .chip:hover { border-color: rgba(0,229,160,0.3); color: var(--text); }
+    .chip.selected {
+      background: var(--mint-dim); border-color: rgba(0,229,160,0.4); color: var(--mint);
+      box-shadow: 0 0 12px rgba(0,229,160,0.1);
     }
-    .field:focus { border-color: var(--ai-blue); }
-    textarea.field { min-height: 90px; resize: vertical; }
-    label { display: block; font-size: 13px; font-weight: 600; color: #334155; margin-bottom: 6px; }
-    .optional { font-weight: 400; color: var(--ai-muted); font-size: 12px; margin-left: 4px; }
+    .chip.selected::before { content: '✓'; font-size: 11px; font-weight: 700; }
+
+    /* ── Divider ───────────────────────────────────────────── */
+    .divider { height: 1px; background: var(--border); margin: 28px 0; }
+
+    /* ── Buttons ───────────────────────────────────────────── */
     .btn-primary {
-      background: var(--ai-blue); color: #fff; border: none; border-radius: 10px;
-      padding: 12px 28px; font-size: 14px; font-weight: 600; cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
+      background: var(--mint); color: #070710; border: none; border-radius: 10px;
+      padding: 13px 32px; font-size: 14px; font-weight: 600;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.01em;
+      transition: opacity 0.15s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(0,229,160,0.25);
     }
-    .btn-primary:hover { opacity: 0.92; }
+    .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 30px rgba(0,229,160,0.4); }
     .btn-primary:active { transform: scale(0.98); }
-    .btn-ghost { background: none; border: none; color: var(--ai-muted); font-size: 14px; cursor: pointer; padding: 0; }
-    .btn-ghost:hover { color: var(--ai-dark); }
-    .btn-outline {
-      background: #fff; border: 1.5px solid var(--ai-border); border-radius: 10px;
-      padding: 12px 28px; font-size: 14px; font-weight: 600; cursor: pointer;
-      color: var(--ai-dark); transition: border-color 0.15s;
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+    .btn-ghost {
+      background: none; border: none; color: var(--text-muted); font-size: 14px;
+      font-family: 'DM Sans', sans-serif; cursor: pointer; padding: 0; transition: color 0.15s;
     }
-    .btn-outline:hover { border-color: var(--ai-blue); color: var(--ai-blue); }
-    .section-pill {
-      display: inline-block; background: var(--ai-blue-light); color: var(--ai-blue);
-      font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 99px; margin-bottom: 10px;
+    .btn-ghost:hover { color: var(--text); }
+
+    .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+    .nav-row-right { display: flex; justify-content: flex-end; margin-top: 12px; }
+
+    /* ── Summary ───────────────────────────────────────────── */
+    .summary-wrap {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 4px 20px; margin-bottom: 28px;
     }
-    .card {
-      background: #fff; border-radius: 16px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
-      max-width: 580px; width: 100%; padding: 40px;
+    .summary-row {
+      display: flex; gap: 16px; padding: 12px 0;
+      border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5;
     }
-    .summary-row { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--ai-border); font-size: 14px; }
     .summary-row:last-child { border-bottom: none; }
-    .summary-label { font-weight: 600; color: #475569; min-width: 140px; flex-shrink: 0; }
-    .summary-value { color: var(--ai-dark); word-break: break-word; }
-    .step-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-    .step-sub { font-size: 14px; color: var(--ai-muted); margin-bottom: 28px; }
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } .card { padding: 24px; } }
+    .summary-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--text-muted);
+      min-width: 120px; flex-shrink: 0; padding-top: 1px;
+    }
+    .summary-value { color: var(--text); word-break: break-word; }
+
+    /* ── Thank you ─────────────────────────────────────────── */
+    .thankyou { text-align: center; padding: 32px 0 16px; }
+    .thankyou-icon {
+      width: 64px; height: 64px; background: var(--mint-dim);
+      border: 1px solid rgba(0,229,160,0.3); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      color: var(--mint); font-weight: 700; font-family: 'Syne', sans-serif; font-size: 24px;
+    }
+    .thankyou-title {
+      font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 12px;
+    }
+    .thankyou-sub {
+      font-size: 15px; color: var(--text-sub); line-height: 1.7;
+      font-weight: 300; max-width: 380px; margin: 0 auto;
+    }
+
+    /* ── Step transition ───────────────────────────────────── */
+    @keyframes stepIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    #step-container { animation: stepIn 0.3s ease; }
+
+    footer {
+      position: relative; z-index: 1; text-align: center; padding: 24px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    footer strong { color: var(--text-sub); }
   </style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav style="background:#fff;border-bottom:1px solid var(--ai-border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;">
-    <span style="font-size:17px;font-weight:700;color:var(--ai-dark);">Airey<span style="color:var(--ai-blue);">Ai</span></span>
-    <span style="font-size:13px;color:var(--ai-muted);">Business Brief</span>
+  <div class="orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <nav>
+    <div class="logo">Airey<span>Ai</span></div>
+    <span class="nav-badge">Business Brief</span>
   </nav>
 
-  <!-- Main -->
-  <main style="display:flex;align-items:flex-start;justify-content:center;padding:40px 16px 80px;">
+  <main>
     <div class="card">
-      <!-- Progress header -->
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-        <span id="step-label" style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ai-muted);">Step 1 of 4</span>
-        <span id="step-pct" style="font-size:12px;color:var(--ai-muted);">25%</span>
+      <div class="progress-header">
+        <span class="progress-label" id="step-label">Step 1 of 4</span>
+        <span class="progress-pct" id="step-pct">25%</span>
       </div>
-      <div class="progress-track" style="margin-bottom:32px;">
+      <div class="progress-track">
         <div class="progress-fill" id="progress-fill" style="width:25%;"></div>
       </div>
-
       <div id="step-container"></div>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer style="text-align:center;padding:24px;font-size:12px;color:var(--ai-muted);">
-    Powered by <strong style="color:var(--ai-dark);">AireyAi</strong>
-  </footer>
+  <footer>Powered by <strong>AireyAi</strong></footer>
 
   <script>
-    // ── State ──────────────────────────────────────────────────────────────
     const STORAGE_KEY = 'aireyai_brief_v1';
-    const STEP_KEY = STORAGE_KEY + '_step';
-    let currentStep = 0;
+    const STEP_KEY    = STORAGE_KEY + '_step';
+    let currentStep   = 0;
     const TOTAL_STEPS = 4;
 
     const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
 
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-    }
-
-    // ── Navigation ─────────────────────────────────────────────────────────
     function goToStep(n) {
       currentStep = n;
       localStorage.setItem(STEP_KEY, n);
       updateProgress();
-      renderStep(n);
+      const c = document.getElementById('step-container');
+      c.style.animation = 'none'; c.offsetHeight; c.style.animation = '';
+      steps[n](c);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -134,11 +308,26 @@
       document.getElementById('step-pct').textContent = pct + '%';
     }
 
-    // ── DOM helpers ────────────────────────────────────────────────────────
+    function makeLabel(text, optional, container) {
+      const lbl = document.createElement('label');
+      lbl.innerHTML = text + (optional ? '<span class="optional">(optional)</span>' : '');
+      container.appendChild(lbl);
+    }
+
+    function renderField(key, placeholder, container, multiline, optional) {
+      const input = document.createElement(multiline ? 'textarea' : 'input');
+      input.className = 'field';
+      input.placeholder = placeholder;
+      input.value = state[key] || '';
+      if (!multiline) input.type = 'text';
+      input.oninput = () => { state[key] = input.value; saveState(); };
+      container.appendChild(input);
+      return input;
+    }
+
     function renderChips(key, options, container) {
       const selected = state[key] || [];
-      const wrap = document.createElement('div');
-      wrap.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;';
+      const wrap = document.createElement('div'); wrap.className = 'chips-wrap';
       options.forEach(opt => {
         const chip = document.createElement('span');
         chip.className = 'chip' + (selected.includes(opt) ? ' selected' : '');
@@ -147,8 +336,7 @@
           const arr = state[key] || [];
           const idx = arr.indexOf(opt);
           if (idx === -1) arr.push(opt); else arr.splice(idx, 1);
-          state[key] = arr;
-          saveState();
+          state[key] = arr; saveState();
           chip.className = 'chip' + (arr.includes(opt) ? ' selected' : '');
         };
         wrap.appendChild(chip);
@@ -156,326 +344,151 @@
       container.appendChild(wrap);
     }
 
-    function renderField(key, placeholder, container, multiline, optional) {
-      const el = document.createElement(multiline ? 'textarea' : 'input');
-      el.className = 'field';
-      el.placeholder = placeholder;
-      el.value = state[key] || '';
-      if (!multiline) el.type = 'text';
-      el.style.marginBottom = '18px';
-      el.oninput = () => { state[key] = el.value; saveState(); };
-      container.appendChild(el);
-      return el;
-    }
-
-    function makeLabel(text, optional, container) {
-      const lbl = document.createElement('label');
-      lbl.innerHTML = text + (optional ? '<span class="optional">(optional)</span>' : '');
-      container.appendChild(lbl);
-    }
-
     function makeTwoCol(container) {
-      const row = document.createElement('div');
-      row.className = 'two-col';
-      container.appendChild(row);
-      return row;
+      const row = document.createElement('div'); row.className = 'two-col';
+      container.appendChild(row); return row;
     }
 
-    // ── Markdown generator ─────────────────────────────────────────────────
+    function flashError(btn, msg, original) {
+      btn.textContent = msg; btn.style.background = 'var(--danger)'; btn.style.boxShadow = 'none';
+      setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.boxShadow = ''; }, 2200);
+    }
+
     function generateMarkdown() {
       const s = state;
-      const slug = (s.businessName || 'business')
-        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-
+      const slug = (s.businessName||'business').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
       const lines = [
-        `# Business Brief — ${s.businessName || 'Unnamed Business'}`,
-        '',
+        `# Business Brief — ${s.businessName||'Unnamed Business'}`, '',
         '## About You',
-        `- **Name:** ${s.fullName || '—'}`,
-        `- **Phone:** ${s.phone || '—'}`,
-        `- **Email:** ${s.email || '—'}`,
-        '',
+        `- **Name:** ${s.fullName||'—'}`, `- **Phone:** ${s.phone||'—'}`, `- **Email:** ${s.email||'—'}`, '',
         '## Your Business',
-        `- **Business Name:** ${s.businessName || '—'}`,
-        `- **Industry:** ${s.industry || '—'}`,
-        `- **Address:** ${s.address || '—'}`,
-        `- **Website:** ${s.website || '—'}`,
-        '',
+        `- **Business Name:** ${s.businessName||'—'}`, `- **Industry:** ${s.industry||'—'}`,
+        `- **Address:** ${s.address||'—'}`, `- **Website:** ${s.website||'—'}`, '',
         '## Your Brand',
-        `- **Tagline:** ${s.tagline || '—'}`,
-        `- **Services / Products:** ${s.services || '—'}`,
-        `- **Brand Voice:** ${(s.brandVoice || []).join(', ') || '—'}`,
-        `- **Colour Palette:** ${(s.colourPalette || []).join(', ') || '—'}${s.customColours ? ' · ' + s.customColours : ''}`,
-        `- **Website Vibe:** ${(s.websiteVibe || []).join(', ') || '—'}`,
-        '',
+        `- **Tagline:** ${s.tagline||'—'}`, `- **Services / Products:** ${s.services||'—'}`,
+        `- **Brand Voice:** ${(s.brandVoice||[]).join(', ')||'—'}`,
+        `- **Colour Palette:** ${(s.colourPalette||[]).join(', ')||'—'}${s.customColours?' · '+s.customColours:''}`,
+        `- **Website Vibe:** ${(s.websiteVibe||[]).join(', ')||'—'}`, '',
         '## Your Customers',
-        `- **Target Customers:** ${(s.targetCustomers || []).join(', ') || '—'}`,
-        `- **What We Do:** ${s.whatWeDo || '—'}`,
-        `- **Social Media:** ${(s.socialMedia || []).join(', ') || '—'}`,
-        '',
-        '## Additional Notes',
-        s.notes || '—',
-        '',
-        '---',
-        '_Generated by AireyAi_',
+        `- **Target Customers:** ${(s.targetCustomers||[]).join(', ')||'—'}`,
+        `- **What We Do:** ${s.whatWeDo||'—'}`,
+        `- **Social Media:** ${(s.socialMedia||[]).join(', ')||'—'}`, '',
+        '## Additional Notes', s.notes||'—', '', '---', '_Generated by AireyAi_',
       ];
-
       return { md: lines.join('\n'), slug };
     }
 
-    // ── Thank you screen ───────────────────────────────────────────────────
     function showThankYou() {
-      // Hide progress bar
-      document.getElementById('progress-fill').parentElement.style.display = 'none';
-      document.getElementById('progress-fill').parentElement.previousElementSibling.style.display = 'none';
-
+      document.querySelector('.progress-header').style.display = 'none';
+      document.querySelector('.progress-track').style.display = 'none';
       const c = document.getElementById('step-container');
       c.innerHTML = '';
-
-      const wrap = document.createElement('div');
-      wrap.style.cssText = 'text-align:center;padding:24px 0;';
-
-      const icon = document.createElement('div');
-      icon.style.cssText = 'font-size:48px;margin-bottom:20px;';
-      icon.textContent = '✅';
-      wrap.appendChild(icon);
-
-      const title = document.createElement('div');
-      title.style.cssText = 'font-size:24px;font-weight:700;margin-bottom:10px;';
-      title.textContent = "You're all set!";
-      wrap.appendChild(title);
-
-      const sub = document.createElement('div');
-      sub.style.cssText = 'font-size:15px;color:var(--ai-muted);line-height:1.6;max-width:360px;margin:0 auto 32px;';
-      sub.textContent = "We've received your business brief. We'll be in touch soon.";
-      wrap.appendChild(sub);
-
-      // Clear localStorage on successful submit
-      localStorage.removeItem(STORAGE_KEY);
-      localStorage.removeItem(STEP_KEY);
-
+      const wrap = document.createElement('div'); wrap.className = 'thankyou';
+      const icon = document.createElement('div'); icon.className = 'thankyou-icon'; icon.textContent = '✓'; wrap.appendChild(icon);
+      const title = document.createElement('div'); title.className = 'thankyou-title'; title.textContent = "You're all set!"; wrap.appendChild(title);
+      const sub = document.createElement('div'); sub.className = 'thankyou-sub'; sub.textContent = "We've received your business brief. We'll review it and be in touch with you soon."; wrap.appendChild(sub);
+      localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY);
       c.appendChild(wrap);
     }
 
-    // ── Steps ──────────────────────────────────────────────────────────────
     const steps = [
 
-      // Step 1 — About You & Your Business
       function(c) {
-        const pill = document.createElement('span');
-        pill.className = 'section-pill';
-        pill.textContent = 'About You & Your Business';
-        c.appendChild(pill);
+        c.innerHTML = '';
+        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'About You & Your Business'; c.appendChild(pill);
+        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = "Let's start with the basics"; c.appendChild(title);
+        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'A few details about you and your business.'; c.appendChild(sub);
 
-        const title = document.createElement('div');
-        title.className = 'step-title';
-        title.textContent = "Let's start with the basics";
-        c.appendChild(title);
+        makeLabel('Full Name', false, c); renderField('fullName', 'Jane Smith', c);
 
-        const sub = document.createElement('div');
-        sub.className = 'step-sub';
-        sub.textContent = 'A few details about you and your business.';
-        c.appendChild(sub);
+        const cr = makeTwoCol(c);
+        const pw = document.createElement('div'); makeLabel('Phone Number', false, pw); renderField('phone', '+1 555 000 0000', pw); cr.appendChild(pw);
+        const ew = document.createElement('div'); makeLabel('Email Address', false, ew); renderField('email', 'hello@yourbiz.com', ew); cr.appendChild(ew);
 
-        makeLabel('Full Name', false, c);
-        renderField('fullName', 'Jane Smith', c);
+        makeLabel('Business Name', false, c); renderField('businessName', 'Your Business Name', c);
+        makeLabel('Industry / Type of Business', false, c); renderField('industry', 'e.g. Digital Marketing Agency', c);
+        makeLabel('Business Address', false, c); renderField('address', '123 Main St, City, Country', c);
+        makeLabel('Website', true, c); renderField('website', 'yoursite.com', c, false, true);
 
-        const contactRow = makeTwoCol(c);
-
-        const phoneWrap = document.createElement('div');
-        makeLabel('Phone Number', false, phoneWrap);
-        renderField('phone', '+1 555 000 0000', phoneWrap);
-        contactRow.appendChild(phoneWrap);
-
-        const emailWrap = document.createElement('div');
-        makeLabel('Email Address', false, emailWrap);
-        renderField('email', 'jane@example.com', emailWrap);
-        contactRow.appendChild(emailWrap);
-
-        makeLabel('Business Name', false, c);
-        renderField('businessName', 'Acme Co', c);
-
-        makeLabel('Industry / Type of Business', false, c);
-        renderField('industry', 'e.g. Mobile Car Detailing', c);
-
-        makeLabel('Business Address', false, c);
-        renderField('address', '123 Main St, City, Country', c);
-
-        makeLabel('Website', true, c);
-        renderField('website', 'yoursite.com', c, false, true);
-
-        const nav = document.createElement('div');
-        nav.style.cssText = 'display:flex;justify-content:flex-end;margin-top:8px;';
-        const next = document.createElement('button');
-        next.className = 'btn-primary';
-        next.textContent = 'Next →';
+        const nav = document.createElement('div'); nav.className = 'nav-row-right';
+        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
         next.onclick = () => {
-          const required = ['fullName','phone','email','businessName','industry','address'];
-          const missing = required.filter(k => !state[k] || !state[k].trim());
-          if (missing.length) {
-            next.textContent = 'Fill in required fields';
-            next.style.background = '#ef4444';
-            setTimeout(() => { next.textContent = 'Next →'; next.style.background = ''; }, 2000);
-            return;
-          }
+          const req = ['fullName','phone','email','businessName','industry','address'];
+          if (req.some(k => !state[k]||!state[k].trim())) { flashError(next,'Fill in required fields','Next →'); return; }
           goToStep(1);
         };
-        nav.appendChild(next);
-        c.appendChild(nav);
+        nav.appendChild(next); c.appendChild(nav);
       },
 
-      // Step 2 — Your Brand
       function(c) {
-        const pill = document.createElement('span');
-        pill.className = 'section-pill';
-        pill.textContent = 'Your Brand';
-        c.appendChild(pill);
+        c.innerHTML = '';
+        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Your Brand'; c.appendChild(pill);
+        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Tell us about your brand'; c.appendChild(title);
+        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'How your business looks, sounds, and feels.'; c.appendChild(sub);
 
-        const title = document.createElement('div');
-        title.className = 'step-title';
-        title.textContent = 'Tell us about your brand';
-        c.appendChild(title);
+        makeLabel('Tagline / Elevator Pitch', true, c); renderField('tagline', 'e.g. "Fast, friendly, reliable service"', c, false, true);
+        makeLabel('Services / Products Offered', false, c); renderField('services', 'List what you offer', c, true);
 
-        const sub = document.createElement('div');
-        sub.className = 'step-sub';
-        sub.textContent = 'How your business looks, sounds, and feels.';
-        c.appendChild(sub);
-
-        makeLabel('Tagline / Elevator Pitch', true, c);
-        renderField('tagline', 'e.g. "Fast, friendly, reliable service"', c, false, true);
-
-        makeLabel('Services / Products Offered', false, c);
-        renderField('services', 'List what you offer', c, true);
+        const div1 = document.createElement('div'); div1.className = 'divider'; c.appendChild(div1);
 
         makeLabel('Brand Voice', true, c);
         renderChips('brandVoice', ['Professional','Friendly','Luxury','Playful','Bold','Minimalist'], c);
-
         makeLabel('Colour Palette', true, c);
         renderChips('colourPalette', ['Black & Gold','Blues & Whites','Earthy Tones','Pastels','Bold & Bright','Dark & Moody'], c);
-
-        makeLabel('Custom Colours', true, c);
-        renderField('customColours', 'e.g. Navy blue and gold', c, false, true);
-
+        makeLabel('Custom Colours', true, c); renderField('customColours', 'e.g. Navy blue and gold', c, false, true);
         makeLabel('Website Vibe', true, c);
         renderChips('websiteVibe', ['Clean & Minimal','Bold & Colourful','Luxury/Premium','Fun & Playful','Corporate','Modern'], c);
 
-        const nav = document.createElement('div');
-        nav.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-top:8px;';
-
-        const back = document.createElement('button');
-        back.className = 'btn-ghost';
-        back.textContent = '← Back';
-        back.onclick = () => goToStep(0);
-
-        const next = document.createElement('button');
-        next.className = 'btn-primary';
-        next.textContent = 'Next →';
+        const nav = document.createElement('div'); nav.className = 'nav-row';
+        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(0);
+        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
         next.onclick = () => {
-          if (!state.services || !state.services.trim()) {
-            next.textContent = 'Add your services';
-            next.style.background = '#ef4444';
-            setTimeout(() => { next.textContent = 'Next →'; next.style.background = ''; }, 2000);
-            return;
-          }
+          if (!state.services||!state.services.trim()) { flashError(next,'Add your services','Next →'); return; }
           goToStep(2);
         };
-
-        nav.appendChild(back);
-        nav.appendChild(next);
-        c.appendChild(nav);
+        nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
       },
 
-      // Step 3 — Your Customers
       function(c) {
-        const pill = document.createElement('span');
-        pill.className = 'section-pill';
-        pill.textContent = 'Your Customers';
-        c.appendChild(pill);
-
-        const title = document.createElement('div');
-        title.className = 'step-title';
-        title.textContent = 'Who are your customers?';
-        c.appendChild(title);
-
-        const sub = document.createElement('div');
-        sub.className = 'step-sub';
-        sub.textContent = 'Help Claude understand who you serve.';
-        c.appendChild(sub);
+        c.innerHTML = '';
+        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Your Customers'; c.appendChild(pill);
+        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Who are your customers?'; c.appendChild(title);
+        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Help us understand who you serve.'; c.appendChild(sub);
 
         makeLabel('Target Customers', true, c);
         renderChips('targetCustomers', ['Individuals','Families','Small Businesses','Corporates','Young Adults','Other'], c);
-
-        makeLabel('What Does Your Business Do?', false, c);
-        renderField('whatWeDo', 'Describe your core offering in plain English', c, true);
-
+        makeLabel('What Does Your Business Do?', false, c); renderField('whatWeDo', 'Describe your core offering in plain English', c, true);
         makeLabel('Social Media Presence', true, c);
         renderChips('socialMedia', ['Instagram','Facebook','TikTok','LinkedIn','Twitter/X','WhatsApp'], c);
 
-        const nav = document.createElement('div');
-        nav.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-top:8px;';
-
-        const back = document.createElement('button');
-        back.className = 'btn-ghost';
-        back.textContent = '← Back';
-        back.onclick = () => goToStep(1);
-
-        const next = document.createElement('button');
-        next.className = 'btn-primary';
-        next.textContent = 'Next →';
+        const nav = document.createElement('div'); nav.className = 'nav-row';
+        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(1);
+        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
         next.onclick = () => {
-          if (!state.whatWeDo || !state.whatWeDo.trim()) {
-            next.textContent = 'Describe what you do';
-            next.style.background = '#ef4444';
-            setTimeout(() => { next.textContent = 'Next →'; next.style.background = ''; }, 2000);
-            return;
-          }
+          if (!state.whatWeDo||!state.whatWeDo.trim()) { flashError(next,'Describe what you do','Next →'); return; }
           goToStep(3);
         };
-
-        nav.appendChild(back);
-        nav.appendChild(next);
-        c.appendChild(nav);
+        nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
       },
 
-      // Step 4 — Done
       function(c) {
-        const pill = document.createElement('span');
-        pill.className = 'section-pill';
-        pill.textContent = 'Almost Done';
-        c.appendChild(pill);
-
-        const title = document.createElement('div');
-        title.className = 'step-title';
-        title.textContent = 'Looking good!';
-        c.appendChild(title);
-
-        const sub = document.createElement('div');
-        sub.className = 'step-sub';
-        sub.textContent = 'Anything else Claude should know? Then download your brief.';
-        c.appendChild(sub);
+        c.innerHTML = '';
+        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Almost Done'; c.appendChild(pill);
+        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Looking good!'; c.appendChild(title);
+        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Anything else we should know? Then hit submit.'; c.appendChild(sub);
 
         makeLabel('Anything else?', true, c);
         renderField('notes', 'Awards, story, key info, special requests…', c, true, true);
 
-        // Summary
-        const summaryTitle = document.createElement('div');
-        summaryTitle.style.cssText = 'font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ai-muted);margin:24px 0 12px;';
-        summaryTitle.textContent = 'Your Summary';
-        c.appendChild(summaryTitle);
+        const stitle = document.createElement('div');
+        stitle.style.cssText = 'font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin:24px 0 12px;';
+        stitle.textContent = 'Your Summary'; c.appendChild(stitle);
 
-        const summaryWrap = document.createElement('div');
-        summaryWrap.style.cssText = 'background:var(--ai-bg);border-radius:10px;padding:4px 16px;margin-bottom:28px;';
-
+        const sw = document.createElement('div'); sw.className = 'summary-wrap';
         const rows = [
-          ['Name', state.fullName],
-          ['Phone', state.phone],
-          ['Email', state.email],
-          ['Business', state.businessName],
-          ['Industry', state.industry],
-          ['Address', state.address],
-          ['Website', state.website],
-          ['Tagline', state.tagline],
-          ['Services', state.services],
+          ['Name', state.fullName], ['Phone', state.phone], ['Email', state.email],
+          ['Business', state.businessName], ['Industry', state.industry], ['Address', state.address],
+          ['Website', state.website], ['Tagline', state.tagline], ['Services', state.services],
           ['Brand Voice', (state.brandVoice||[]).join(', ')],
           ['Colours', [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' · ')],
           ['Vibe', (state.websiteVibe||[]).join(', ')],
@@ -483,96 +496,52 @@
           ['What We Do', state.whatWeDo],
           ['Social', (state.socialMedia||[]).join(', ')],
         ];
-
         rows.forEach(([label, value]) => {
           if (!value) return;
-          const row = document.createElement('div');
-          row.className = 'summary-row';
+          const row = document.createElement('div'); row.className = 'summary-row';
           row.innerHTML = `<span class="summary-label">${label}</span><span class="summary-value">${value}</span>`;
-          summaryWrap.appendChild(row);
+          sw.appendChild(row);
         });
-        c.appendChild(summaryWrap);
+        c.appendChild(sw);
 
-        // Submit button
-        const actions = document.createElement('div');
-        actions.style.cssText = 'display:flex;gap:12px;flex-wrap:wrap;';
-
-        const submitBtn = document.createElement('button');
-        submitBtn.className = 'btn-primary';
-        submitBtn.textContent = 'Submit →';
+        const actions = document.createElement('div'); actions.style.cssText = 'display:flex;gap:12px;flex-wrap:wrap;';
+        const submitBtn = document.createElement('button'); submitBtn.className = 'btn-primary'; submitBtn.textContent = 'Submit →';
         submitBtn.onclick = async () => {
-          submitBtn.textContent = 'Sending…';
-          submitBtn.disabled = true;
-
+          submitBtn.textContent = 'Sending…'; submitBtn.disabled = true;
           const { md } = generateMarkdown();
-
           try {
             const res = await fetch('https://formspree.io/f/xdaprbbw', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
               body: JSON.stringify({
-                _subject: `New Business Brief — ${state.businessName || 'Unknown'}`,
-                name: state.fullName || '—',
-                email: state.email || '—',
-                phone: state.phone || '—',
-                business: state.businessName || '—',
-                brief: md,
+                _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
+                name: state.fullName||'—', email: state.email||'—',
+                phone: state.phone||'—', business: state.businessName||'—', brief: md,
               }),
             });
-
-            if (res.ok) {
-              showThankYou();
-            } else {
-              submitBtn.textContent = 'Something went wrong — try again';
-              submitBtn.disabled = false;
-            }
-          } catch {
-            submitBtn.textContent = 'Something went wrong — try again';
-            submitBtn.disabled = false;
-          }
+            if (res.ok) { showThankYou(); }
+            else { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
+          } catch { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
         };
+        actions.appendChild(submitBtn); c.appendChild(actions);
 
-        actions.appendChild(submitBtn);
-        c.appendChild(actions);
-
-        // Back
-        const bottomNav = document.createElement('div');
-        bottomNav.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-top:24px;';
-
-        const back = document.createElement('button');
-        back.className = 'btn-ghost';
-        back.textContent = '← Back';
-        back.onclick = () => goToStep(2);
-
-        const resetBtn = document.createElement('button');
-        resetBtn.style.cssText = 'font-size:12px;color:#ef4444;background:none;border:none;cursor:pointer;padding:0;';
-        resetBtn.textContent = 'Start over';
-        resetBtn.onclick = () => {
+        const nav = document.createElement('div'); nav.className = 'nav-row'; nav.style.marginTop = '24px';
+        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(2);
+        const reset = document.createElement('button');
+        reset.style.cssText = 'font-size:12px;color:var(--danger);background:none;border:none;cursor:pointer;padding:0;font-family:DM Sans,sans-serif;';
+        reset.textContent = 'Start over';
+        reset.onclick = () => {
           if (!confirm('Clear all answers and start over?')) return;
-          localStorage.removeItem(STORAGE_KEY);
-          localStorage.removeItem(STEP_KEY);
-          Object.keys(state).forEach(k => delete state[k]);
-          goToStep(0);
+          localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY);
+          Object.keys(state).forEach(k => delete state[k]); goToStep(0);
         };
-
-        bottomNav.appendChild(back);
-        bottomNav.appendChild(resetBtn);
-        c.appendChild(bottomNav);
+        nav.appendChild(back); nav.appendChild(reset); c.appendChild(nav);
       },
 
     ];
 
-    // ── Step renderer ──────────────────────────────────────────────────────
-    function renderStep(n) {
-      const c = document.getElementById('step-container');
-      c.innerHTML = '';
-      steps[n](c);
-    }
-
-    // ── Boot — restore saved progress ──────────────────────────────────────
-    const savedStep = parseInt(localStorage.getItem(STEP_KEY) || '0', 10);
-    goToStep(isNaN(savedStep) ? 0 : Math.min(savedStep, TOTAL_STEPS - 1));
-
+    const saved = parseInt(localStorage.getItem(STEP_KEY)||'0', 10);
+    goToStep(isNaN(saved) ? 0 : Math.min(saved, TOTAL_STEPS - 1));
   </script>
 </body>
 </html>
