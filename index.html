@@ -524,12 +524,6 @@
     pointer-events: none;
     transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
   }
-  #splash.hide {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  #splash.gone { display: none; }
-
   .splash-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -576,8 +570,6 @@
     to { width: 100%; }
   }
 
-  /* Prevent scroll during splash */
-  body.splash-active { overflow: hidden; }
 
   /* ── Animations ── */
   .fade-up {
@@ -817,12 +809,14 @@
 
 <script>
   // Splash screen
-  document.body.classList.add('splash-active');
+  document.body.style.overflow = 'hidden';
   const splash = document.getElementById('splash');
   setTimeout(() => {
-    splash.classList.add('hide');
-    document.body.classList.remove('splash-active');
-    setTimeout(() => splash.classList.add('gone'), 850);
+    splash.style.transition = 'opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1)';
+    splash.style.opacity = '0';
+    splash.style.transform = 'scale(1.04)';
+    document.body.style.overflow = '';
+    setTimeout(() => { splash.style.display = 'none'; }, 900);
   }, 2400);
 
   // Sticky nav on scroll
