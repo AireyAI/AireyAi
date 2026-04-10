@@ -1,767 +1,757 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AireyAi — Business Brief</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --mint:       #00e5a0;
-      --mint-dim:   rgba(0, 229, 160, 0.12);
-      --mint-glow:  rgba(0, 229, 160, 0.25);
-      --bg:         #070710;
-      --surface:    #0d0d1f;
-      --surface-2:  #13132a;
-      --border:     rgba(255,255,255,0.07);
-      --border-focus: rgba(0, 229, 160, 0.5);
-      --text:       #eeeef8;
-      --text-muted: #6b6b8a;
-      --text-sub:   #9898b8;
-      --danger:     #ff4d6d;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AireyAi — AI-Powered Websites for Growing Businesses</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #00e5a0;
+    --mint-dim: rgba(0, 229, 160, 0.10);
+    --mint-glow: rgba(0, 229, 160, 0.22);
+    --bg: #070710;
+    --surface: #0d0d1f;
+    --surface-2: #13132a;
+    --border: rgba(255,255,255,0.07);
+    --text: #eeeef8;
+    --text-muted: #6b6b8a;
+    --text-sub: #9898b8;
+  }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-    /* ── Animated background orbs ─────────────────────────── */
-    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; }
-    .orb-1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, #3d2fff 0%, transparent 70%);
-      top: -200px; left: -100px;
-      animation: drift1 18s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, #00e5a0 0%, transparent 70%);
-      bottom: -150px; right: -100px;
-      animation: drift2 22s ease-in-out infinite alternate;
-    }
-    .orb-3 {
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
-      top: 40%; left: 60%;
-      animation: drift3 15s ease-in-out infinite alternate;
-    }
-    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px,60px) scale(1.1); } }
-    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,-80px) scale(1.15); } }
-    @keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,50px) scale(0.9); } }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
 
-    /* ── Nav ───────────────────────────────────────────────── */
-    nav {
-      position: relative; z-index: 10;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px; height: 60px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(7,7,16,0.8);
-      backdrop-filter: blur(16px);
-    }
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 26px; font-weight: 800;
-      letter-spacing: -0.03em; color: var(--text);
-    }
-    .logo span { color: var(--mint); }
-    .nav-badge {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted);
-      border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px;
-    }
+  h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
 
-    /* ── Main ──────────────────────────────────────────────── */
-    main {
-      position: relative; z-index: 1;
-      display: flex; align-items: flex-start; justify-content: center;
-      padding: 48px 16px 100px;
-    }
+  /* ── Animated background ── */
+  .bg-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.35;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  .orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,229,160,0.4), transparent 70%); top: -200px; left: -200px; animation-duration: 22s; }
+  .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(80,60,255,0.35), transparent 70%); bottom: -100px; right: -100px; animation-duration: 18s; animation-delay: -6s; }
+  .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,229,160,0.2), transparent 70%); top: 40%; left: 60%; animation-duration: 26s; animation-delay: -12s; }
 
-    /* ── Card ──────────────────────────────────────────────── */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 32px 64px rgba(0,0,0,0.5);
-      max-width: 600px; width: 100%;
-      padding: 44px;
-      position: relative; overflow: hidden;
-    }
-    .card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--mint-glow), transparent);
-    }
+  @keyframes drift {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(60px, 40px) scale(1.08); }
+  }
 
-    /* ── Progress ──────────────────────────────────────────── */
-    .progress-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
-    }
-    .progress-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted);
-    }
-    .progress-pct {
-      font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--mint);
-    }
-    .progress-track {
-      height: 2px; background: var(--surface-2); border-radius: 99px;
-      margin-bottom: 40px; overflow: hidden;
-    }
-    .progress-fill {
-      height: 2px; background: var(--mint); border-radius: 99px;
-      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 0 8px var(--mint-glow);
-    }
+  /* ── Noise texture overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.45;
+  }
 
-    /* ── Typography ────────────────────────────────────────── */
-    .section-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--mint-dim); color: var(--mint);
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 4px 12px;
-      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
-      margin-bottom: 14px;
-    }
-    .section-pill::before { content: '●'; font-size: 7px; }
-    .step-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
-      color: var(--text); margin-bottom: 8px;
-    }
-    .step-sub {
-      font-size: 14px; color: var(--text-sub); line-height: 1.6;
-      margin-bottom: 32px; font-weight: 300;
-    }
+  /* ── Layout ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
-    /* ── Labels & inputs ───────────────────────────────────── */
-    label {
-      display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
-      color: var(--text-sub); margin-bottom: 7px; text-transform: uppercase;
-    }
-    .optional { font-weight: 400; color: var(--text-muted); font-size: 10px; margin-left: 4px; text-transform: none; letter-spacing: 0; }
-    .field {
-      width: 100%; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 16px;
-      font-size: 14px; font-family: 'DM Sans', sans-serif;
-      color: var(--text); outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s; margin-bottom: 20px;
-    }
-    .field::placeholder { color: var(--text-muted); }
-    .field:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--mint-dim); }
-    textarea.field { min-height: 96px; resize: vertical; }
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 0;
+    transition: background 0.3s, border-bottom 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(7,7,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--mint); }
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    background: var(--mint);
+    color: #070710;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+  }
+  .nav-cta:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 28px var(--mint-glow);
+  }
+  .nav-cta:active { transform: scale(0.97); }
 
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 500px) {
-      .two-col { grid-template-columns: 1fr; }
-      .card { padding: 28px 20px; }
-      .step-title { font-size: 22px; }
-    }
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 100px;
+  }
+  .hero-inner { max-width: 800px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: var(--mint-dim);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--mint);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--mint);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+  }
+  .hero h1 .accent { color: var(--mint); }
+  .hero p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-sub);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: var(--mint);
+    color: #070710;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+    pointer-events: none;
+  }
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 40px rgba(0,229,160,0.35);
+  }
+  .btn-primary:active { transform: scale(0.97); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 28px;
+    color: var(--text-sub);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-radius: 100px;
+    transition: color 0.18s;
+  }
+  .btn-ghost:hover { color: var(--text); }
+  .btn-ghost svg { transition: transform 0.18s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
 
-    /* ── Chips ─────────────────────────────────────────────── */
-    .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 16px; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; font-size: 13px; font-weight: 400; color: var(--text-sub);
-      cursor: pointer; user-select: none; transition: all 0.15s;
-    }
-    .chip:hover { border-color: rgba(0,229,160,0.3); color: var(--text); }
-    .chip.selected {
-      background: var(--mint-dim); border-color: rgba(0,229,160,0.4); color: var(--mint);
-      box-shadow: 0 0 12px rgba(0,229,160,0.1);
-    }
-    .chip.selected::before { content: '✓'; font-size: 11px; font-weight: 700; }
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--text-muted));
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
 
-    /* ── Divider ───────────────────────────────────────────── */
-    .divider { height: 1px; background: var(--border); margin: 28px 0; }
+  /* ── Sections ── */
+  section { position: relative; z-index: 2; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mint);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .section-sub {
+    color: var(--text-sub);
+    font-size: 1.05rem;
+    max-width: 480px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
 
-    /* ── Buttons ───────────────────────────────────────────── */
-    .btn-primary {
-      background: var(--mint); color: #070710; border: none; border-radius: 10px;
-      padding: 13px 32px; font-size: 14px; font-weight: 600;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.01em;
-      transition: opacity 0.15s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 0 20px rgba(0,229,160,0.25);
-    }
-    .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 30px rgba(0,229,160,0.4); }
-    .btn-primary:active { transform: scale(0.98); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
-    .btn-ghost {
-      background: none; border: none; color: var(--text-muted); font-size: 14px;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; padding: 0; transition: color 0.15s;
-    }
-    .btn-ghost:hover { color: var(--text); }
+  /* ── How it works ── */
+  .how-section { padding: 120px 0; }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 80px;
+  }
+  .steps-list { display: flex; flex-direction: column; }
+  .step-item {
+    display: flex;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    margin-top: 2px;
+  }
+  .step-item:hover .step-num {
+    background: var(--mint-dim);
+    border-color: rgba(0,229,160,0.3);
+    color: var(--mint);
+  }
+  .step-content h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+    font-weight: 300;
+  }
 
-    .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
-    .nav-row-right { display: flex; justify-content: flex-end; margin-top: 12px; }
+  /* Visual mockup panel */
+  .how-visual {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .how-visual::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,229,160,0.12), transparent 70%);
+    pointer-events: none;
+  }
+  .mock-bar {
+    height: 6px;
+    background: var(--surface-2);
+    border-radius: 100px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .mock-bar .progress {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    background: var(--mint);
+    border-radius: 100px;
+    width: 75%;
+  }
+  .mock-field {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    font-size: 0.82rem;
+    color: var(--text-sub);
+  }
+  .mock-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .mock-chip {
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-sub);
+  }
+  .mock-chip.on {
+    background: var(--mint-dim);
+    border-color: rgba(0,229,160,0.35);
+    color: var(--mint);
+  }
+  .mock-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--mint);
+    color: #070710;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    margin-top: 8px;
+  }
+  .mock-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+  }
 
-    /* ── Summary ───────────────────────────────────────────── */
-    .summary-wrap {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 4px 20px; margin-bottom: 28px;
-    }
-    .summary-row {
-      display: flex; gap: 16px; padding: 12px 0;
-      border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5;
-    }
-    .summary-row:last-child { border-bottom: none; }
-    .summary-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--text-muted);
-      min-width: 120px; flex-shrink: 0; padding-top: 1px;
-    }
-    .summary-value { color: var(--text); word-break: break-word; }
+  /* ── Cards ── */
+  .get-section { padding: 120px 0; }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 64px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), border-color 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,229,160,0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,229,160,0.08);
+  }
+  .card-icon {
+    width: 48px; height: 48px;
+    background: var(--mint-dim);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--mint);
+  }
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .card p {
+    font-size: 0.875rem;
+    color: var(--text-sub);
+    line-height: 1.65;
+    font-weight: 300;
+  }
 
-    /* ── Thank you ─────────────────────────────────────────── */
-    .thankyou { text-align: center; padding: 32px 0 16px; }
-    .thankyou-icon {
-      width: 64px; height: 64px; background: var(--mint-dim);
-      border: 1px solid rgba(0,229,160,0.3); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 24px;
-      color: var(--mint); font-weight: 700; font-family: 'Syne', sans-serif; font-size: 24px;
-    }
-    .thankyou-title {
-      font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
-      letter-spacing: -0.03em; margin-bottom: 12px;
-    }
-    .thankyou-sub {
-      font-size: 15px; color: var(--text-sub); line-height: 1.7;
-      font-weight: 300; max-width: 380px; margin: 0 auto;
-    }
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
 
-    /* ── Step transition ───────────────────────────────────── */
-    @keyframes stepIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    #step-container { animation: stepIn 0.3s ease; }
+  /* ── CTA ── */
+  .cta-section { padding: 140px 0; text-align: center; }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta-inner h2 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+  }
+  .cta-inner h2 .accent { color: var(--mint); }
+  .cta-inner p {
+    color: var(--text-sub);
+    font-size: 1.05rem;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .cta-glow {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 400px;
+    background: radial-gradient(ellipse, rgba(0,229,160,0.08), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
 
-    footer {
-      position: relative; z-index: 1; text-align: center; padding: 24px;
-      font-size: 12px; color: var(--text-muted);
-    }
-    footer strong { color: var(--text-sub); }
+  /* ── Footer ── */
+  footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .footer-logo span { color: var(--mint); }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
 
-    /* ── Intro screen ──────────────────────────────────────── */
-    .intro {
-      text-align: center; padding: 16px 0 8px;
-    }
-    .intro-eyebrow {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--mint-dim); color: var(--mint);
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 4px 14px;
-      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
-      margin-bottom: 24px;
-    }
-    .intro-eyebrow::before { content: '●'; font-size: 7px; }
-    .intro-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 32px; font-weight: 800; letter-spacing: -0.04em;
-      line-height: 1.1; margin-bottom: 16px; color: var(--text);
-    }
-    .intro-title span { color: var(--mint); }
-    .intro-sub {
-      font-size: 15px; color: var(--text-sub); line-height: 1.7;
-      font-weight: 300; max-width: 420px; margin: 0 auto 32px;
-    }
-    .intro-pills {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      justify-content: center; margin-bottom: 36px;
-    }
-    .intro-pill {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; padding: 5px 14px;
-      font-size: 12px; color: var(--text-muted);
-    }
-    .intro-pill span { color: var(--mint); margin-right: 4px; }
+  /* ── Animations ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(.16,1,.3,1), transform 0.7s cubic-bezier(.16,1,.3,1);
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.d1 { transition-delay: 0.1s; }
+  .fade-up.d2 { transition-delay: 0.2s; }
+  .fade-up.d3 { transition-delay: 0.3s; }
+  .fade-up.d4 { transition-delay: 0.4s; }
 
-    /* ── Saved indicator ───────────────────────────────────── */
-    .saved-indicator {
-      position: fixed; bottom: 24px; right: 24px; z-index: 100;
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; padding: 6px 14px;
-      font-size: 11px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 6px;
-      opacity: 0; transition: opacity 0.3s;
-      pointer-events: none;
-    }
-    .saved-indicator.show { opacity: 1; }
-    .saved-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
-
-    /* ── Field error state ─────────────────────────────────── */
-    .field.error { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(255,77,109,0.1); }
-  </style>
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .how-grid { grid-template-columns: 1fr; gap: 48px; }
+    .how-visual { display: none; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+<!-- Animated background -->
+<div class="bg-canvas">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">Airey<span>Ai</span></a>
+    <a href="brief.html" class="nav-cta">
+      Get Started
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
   </div>
+</nav>
 
-  <nav>
-    <div class="logo">Airey<span>Ai</span></div>
-    <span class="nav-badge">Business Brief</span>
-  </nav>
-
-  <main>
-    <div class="card">
-      <div class="progress-header" id="progress-header" style="display:none;">
-        <span class="progress-label" id="step-label">Step 1 of 4</span>
-        <span class="progress-pct" id="step-pct">25%</span>
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge fade-up">
+        <div class="dot"></div>
+        AI-Powered Websites
       </div>
-      <div class="progress-track" id="progress-track" style="display:none;">
-        <div class="progress-fill" id="progress-fill" style="width:25%;"></div>
+      <h1 class="fade-up d1">
+        Tell us about<br>
+        your business.<br>
+        <span class="accent">We'll build</span><br>
+        <span class="accent">something great.</span>
+      </h1>
+      <p class="fade-up d2">
+        Answer a few quick questions about your business and brand. We'll use your answers to build a website that actually looks like you.
+      </p>
+      <div class="hero-actions fade-up d3">
+        <a href="brief.html" class="btn-primary">
+          Start your brief
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#how" class="btn-ghost">
+          See how it works
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
-      <div id="step-container"></div>
     </div>
-  </main>
-
-  <div class="saved-indicator" id="saved-indicator">
-    <div class="saved-dot"></div> Progress saved
   </div>
-
-  <footer>Powered by <strong>AireyAi</strong></footer>
-
-  <script>
-    const STORAGE_KEY = 'aireyai_brief_v1';
-    const STEP_KEY    = STORAGE_KEY + '_step';
-    let currentStep   = 0;
-    const TOTAL_STEPS = 4;
-
-    const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-
-    let savedTimer;
-    function saveState() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      const ind = document.getElementById('saved-indicator');
-      ind.classList.add('show');
-      clearTimeout(savedTimer);
-      savedTimer = setTimeout(() => ind.classList.remove('show'), 2000);
-    }
-
-    function goToStep(n) {
-      currentStep = n;
-      localStorage.setItem(STEP_KEY, n);
-      // Show progress bar once past intro
-      document.getElementById('progress-header').style.display = '';
-      document.getElementById('progress-track').style.display = '';
-      updateProgress();
-      const c = document.getElementById('step-container');
-      c.style.animation = 'none'; c.offsetHeight; c.style.animation = '';
-      steps[n](c);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function updateProgress() {
-      const pct = Math.round(((currentStep + 1) / TOTAL_STEPS) * 100);
-      document.getElementById('progress-fill').style.width = pct + '%';
-      document.getElementById('step-label').textContent = `Step ${currentStep + 1} of ${TOTAL_STEPS}`;
-      document.getElementById('step-pct').textContent = pct + '%';
-    }
-
-    function showIntro() {
-      document.getElementById('progress-header').style.display = 'none';
-      document.getElementById('progress-track').style.display = 'none';
-      const c = document.getElementById('step-container');
-      c.innerHTML = '';
-      const wrap = document.createElement('div'); wrap.className = 'intro';
-
-      const eyebrow = document.createElement('div'); eyebrow.className = 'intro-eyebrow'; eyebrow.textContent = 'Business Brief'; wrap.appendChild(eyebrow);
-
-      const title = document.createElement('div'); title.className = 'intro-title';
-      title.innerHTML = 'Tell us about your<br><span>business</span>'; wrap.appendChild(title);
-
-      const sub = document.createElement('div'); sub.className = 'intro-sub';
-      sub.textContent = "Answer a few quick questions and we'll have everything we need to build you something great. Takes about 2 minutes."; wrap.appendChild(sub);
-
-      const pills = document.createElement('div'); pills.className = 'intro-pills';
-      [['⚡','2 minutes'], ['💾','Auto-saved'], ['🔒','Private & secure']].forEach(([icon, text]) => {
-        const p = document.createElement('div'); p.className = 'intro-pill';
-        p.innerHTML = `<span>${icon}</span>${text}`; pills.appendChild(p);
-      });
-      wrap.appendChild(pills);
-
-      const btn = document.createElement('button'); btn.className = 'btn-primary';
-      btn.style.cssText = 'padding:14px 40px;font-size:15px;';
-      btn.textContent = "Let's go →";
-      btn.onclick = () => goToStep(0);
-      wrap.appendChild(btn);
-
-      c.appendChild(wrap);
-    }
-
-    function makeLabel(text, optional, container) {
-      const lbl = document.createElement('label');
-      lbl.innerHTML = text + (optional ? '<span class="optional">(optional)</span>' : '');
-      container.appendChild(lbl);
-    }
-
-    function renderField(key, placeholder, container, multiline, optional) {
-      const input = document.createElement(multiline ? 'textarea' : 'input');
-      input.className = 'field';
-      input.placeholder = placeholder;
-      input.value = state[key] || '';
-      if (!multiline) input.type = 'text';
-      input.oninput = () => { state[key] = input.value; saveState(); };
-      container.appendChild(input);
-      return input;
-    }
-
-    function renderChips(key, options, container) {
-      const selected = state[key] || [];
-      const wrap = document.createElement('div'); wrap.className = 'chips-wrap';
-      options.forEach(opt => {
-        const chip = document.createElement('span');
-        chip.className = 'chip' + (selected.includes(opt) ? ' selected' : '');
-        chip.textContent = opt;
-        chip.onclick = () => {
-          const arr = state[key] || [];
-          const idx = arr.indexOf(opt);
-          if (idx === -1) arr.push(opt); else arr.splice(idx, 1);
-          state[key] = arr; saveState();
-          chip.className = 'chip' + (arr.includes(opt) ? ' selected' : '');
-        };
-        wrap.appendChild(chip);
-      });
-      container.appendChild(wrap);
-    }
-
-    function makeTwoCol(container) {
-      const row = document.createElement('div'); row.className = 'two-col';
-      container.appendChild(row); return row;
-    }
-
-    function flashError(btn, msg, original) {
-      btn.textContent = msg; btn.style.background = 'var(--danger)'; btn.style.boxShadow = 'none';
-      setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.boxShadow = ''; }, 2200);
-    }
-
-    function highlightEmpty(keys) {
-      // Remove previous errors
-      document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error'));
-      // Highlight empty required fields
-      keys.forEach(key => {
-        const val = state[key];
-        const isEmpty = !val || (typeof val === 'string' && !val.trim()) || (Array.isArray(val) && !val.length);
-        if (isEmpty) {
-          // Find the field after its label — match by checking sibling inputs/textareas
-          const fields = document.querySelectorAll('.field');
-          fields.forEach(f => {
-            const prev = f.previousElementSibling;
-            if (prev && prev.tagName === 'LABEL' && f.oninput) {
-              // Check if this field maps to the key by checking current value
-              if (f.value === (state[key] || '')) f.classList.add('error');
-            }
-          });
-        }
-      });
-      setTimeout(() => document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error')), 3000);
-    }
-
-    function generateMarkdown() {
-      const s = state;
-      const slug = (s.businessName||'business').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-      const lines = [
-        `# Business Brief — ${s.businessName||'Unnamed Business'}`, '',
-        '## About You',
-        `- **Name:** ${s.fullName||'—'}`, `- **Phone:** ${s.phone||'—'}`, `- **Email:** ${s.email||'—'}`, '',
-        '## Your Business',
-        `- **Business Name:** ${s.businessName||'—'}`,
-        `- **Industry:** ${(s.industry||[]).join(', ')||'—'}`,
-        `- **Location:** ${[s.city, s.country].filter(Boolean).join(', ')||'—'}`,
-        `- **Website:** ${s.website||'—'}`, '',
-        '## Your Brand',
-        `- **Tagline:** ${s.tagline||'—'}`, `- **Services / Products:** ${s.services||'—'}`,
-        `- **Brand Voice:** ${(s.brandVoice||[]).join(', ')||'—'}`,
-        `- **Colour Palette:** ${(s.colourPalette||[]).join(', ')||'—'}${s.customColours?' · '+s.customColours:''}`,
-        `- **Website Vibe:** ${(s.websiteVibe||[]).join(', ')||'—'}`, '',
-        '## Your Customers',
-        `- **Target Customers:** ${(s.targetCustomers||[]).join(', ')||'—'}`,
-        `- **Visitor Goal:** ${(s.visitorGoal||[]).join(', ')||'—'}`,
-        `- **Social Media:** ${(s.socialMedia||[]).join(', ')||'—'}`, '',
-        '## Website Project',
-        `- **Features Needed:** ${(s.features||[]).join(', ')||'—'}`,
-        `- **Pages Needed:** ${(s.pages||[]).join(', ')||'—'}`,
-        `- **Has Logo:** ${(s.hasLogo||[]).join(', ')||'—'}`,
-        `- **Has Photos:** ${(s.hasPhotos||[]).join(', ')||'—'}`,
-        `- **Timeline:** ${(s.timeline||[]).join(', ')||'—'}`,
-        `- **Inspiration Sites:** ${s.inspiration||'—'}`,
-        `- **Website Goals:** ${(s.goals||[]).join(', ')||'—'}`,
-        `- **Additional Notes:** ${s.notes||'—'}`,
-        '', '---', '_Generated by AireyAi_',
-      ];
-      return { md: lines.join('\n'), slug };
-    }
-
-    function showThankYou() {
-      document.querySelector('.progress-header').style.display = 'none';
-      document.querySelector('.progress-track').style.display = 'none';
-      const c = document.getElementById('step-container');
-      c.innerHTML = '';
-      const wrap = document.createElement('div'); wrap.className = 'thankyou';
-      const icon = document.createElement('div'); icon.className = 'thankyou-icon'; icon.textContent = '✓'; wrap.appendChild(icon);
-      const title = document.createElement('div'); title.className = 'thankyou-title'; title.textContent = "You're all set!"; wrap.appendChild(title);
-      const sub = document.createElement('div'); sub.className = 'thankyou-sub'; sub.textContent = "We've received your business brief. We'll review it and be in touch with you soon."; wrap.appendChild(sub);
-      localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY);
-      c.appendChild(wrap);
-    }
-
-    const steps = [
-
-      function(c) {
-        c.innerHTML = '';
-        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'About You & Your Business'; c.appendChild(pill);
-        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = "Let's start with the basics"; c.appendChild(title);
-        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'A few details about you and your business.'; c.appendChild(sub);
-
-        makeLabel('Full Name', false, c); renderField('fullName', 'Jane Smith', c);
-
-        const cr = makeTwoCol(c);
-        const pw = document.createElement('div'); makeLabel('Phone Number', false, pw); renderField('phone', '+1 555 000 0000', pw); cr.appendChild(pw);
-        const ew = document.createElement('div'); makeLabel('Email Address', false, ew); renderField('email', 'hello@yourbiz.com', ew); cr.appendChild(ew);
-
-        makeLabel('Business Name', false, c); renderField('businessName', 'Your Business Name', c);
-
-        makeLabel('Industry', false, c);
-        renderChips('industry', ['Retail','Hospitality','Health & Beauty','Trades','Professional Services','Technology','Food & Drink','Education','Creative','Other'], c);
-
-        const locRow = makeTwoCol(c);
-        const cityW = document.createElement('div'); makeLabel('City', false, cityW); renderField('city', 'e.g. London', cityW); locRow.appendChild(cityW);
-        const countryW = document.createElement('div'); makeLabel('Country', false, countryW); renderField('country', 'e.g. United Kingdom', countryW); locRow.appendChild(countryW);
-
-        makeLabel('Website', true, c); renderField('website', 'yoursite.com', c, false, true);
-
-        const nav = document.createElement('div'); nav.className = 'nav-row-right';
-        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          const req = ['fullName','phone','email','businessName','city','country'];
-          if (req.some(k => !state[k]||!state[k].trim())) { flashError(next,'Fill in required fields','Next →'); return; }
-          if (!state.industry||!state.industry.length) { flashError(next,'Pick an industry','Next →'); return; }
-          goToStep(1);
-        };
-        nav.appendChild(next); c.appendChild(nav);
-      },
-
-      function(c) {
-        c.innerHTML = '';
-        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Your Brand'; c.appendChild(pill);
-        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Tell us about your brand'; c.appendChild(title);
-        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'How your business looks, sounds, and feels.'; c.appendChild(sub);
-
-        makeLabel('Describe your business in one sentence', true, c); renderField('tagline', 'e.g. "We help small businesses get found online"', c, false, true);
-        makeLabel('Services / Products Offered', false, c); renderField('services', 'List what you offer', c, true);
-
-        const div1 = document.createElement('div'); div1.className = 'divider'; c.appendChild(div1);
-
-        makeLabel('Brand Voice', true, c);
-        renderChips('brandVoice', ['Professional','Friendly','Luxury','Playful','Bold','Minimalist'], c);
-        makeLabel('Colour Palette', true, c);
-        renderChips('colourPalette', ['Black & Gold','Blues & Whites','Earthy Tones','Pastels','Bold & Bright','Dark & Moody'], c);
-        makeLabel('Custom Colours', true, c); renderField('customColours', 'e.g. Navy blue and gold', c, false, true);
-        makeLabel('Website Vibe', true, c);
-        renderChips('websiteVibe', ['Clean & Minimal','Bold & Colourful','Luxury/Premium','Fun & Playful','Corporate','Modern'], c);
-
-        const nav = document.createElement('div'); nav.className = 'nav-row';
-        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(0);
-        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          if (!state.services||!state.services.trim()) { flashError(next,'Add your services','Next →'); return; }
-          goToStep(2);
-        };
-        nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
-      },
-
-      function(c) {
-        c.innerHTML = '';
-        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Your Customers'; c.appendChild(pill);
-        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Who are your customers?'; c.appendChild(title);
-        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Help us understand who you serve.'; c.appendChild(sub);
-
-        makeLabel('Target Customers', true, c);
-        renderChips('targetCustomers', ['Individuals','Families','Small Businesses','Corporates','Young Adults','Other'], c);
-
-        makeLabel('What do you want visitors to do?', false, c);
-        renderChips('visitorGoal', ['Book a Call','Make an Enquiry','Buy a Product','Visit In Person','Get a Quote','Follow on Social'], c);
-
-        makeLabel('Social Media Presence', true, c);
-        renderChips('socialMedia', ['Instagram','Facebook','TikTok','LinkedIn','Twitter/X','WhatsApp'], c);
-
-        const nav = document.createElement('div'); nav.className = 'nav-row';
-        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(1);
-        const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          if (!state.visitorGoal||!state.visitorGoal.length) { flashError(next,'Pick at least one goal','Next →'); return; }
-          goToStep(3);
-        };
-        nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
-      },
-
-      function(c) {
-        c.innerHTML = '';
-        const pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Almost Done'; c.appendChild(pill);
-        const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Looking good!'; c.appendChild(title);
-        const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Anything else we should know? Then hit submit.'; c.appendChild(sub);
-
-        makeLabel('What features do you need?', false, c);
-        renderChips('features', ['Contact Form','Online Booking','Online Shop','Photo Gallery','Blog','Testimonials','Pricing Page','FAQ','Map'], c);
-
-        makeLabel('How many pages do you need?', false, c);
-        renderChips('pages', ['Just a landing page','Home + a few pages','Full multi-page site','Not sure'], c);
-
-        makeLabel('Do you have a logo?', false, c);
-        renderChips('hasLogo', ['Yes','Not yet'], c);
-
-        makeLabel('Do you have photos or images?', false, c);
-        renderChips('hasPhotos', ['Yes, professional photos','Yes, phone photos','No, use stock images'], c);
-
-        makeLabel('What\'s your timeline?', false, c);
-        renderChips('timeline', ['ASAP','Within a month','No rush'], c);
-
-        const div2 = document.createElement('div'); div2.className = 'divider'; c.appendChild(div2);
-
-        makeLabel('Any websites you love the look of?', true, c);
-        renderField('inspiration', 'Paste URLs here — e.g. apple.com, notion.so', c, true, true);
-
-        makeLabel('What do you want your website to achieve?', true, c);
-        renderChips('goals', ['Generate Leads','Increase Bookings','Sell Products Online','Build Brand Awareness','Showcase Portfolio','Provide Information','Get More Calls','Grow Social Following'], c);
-
-        makeLabel('Anything else we should know?', true, c);
-        renderField('notes', 'Awards, backstory, special requests…', c, true, true);
-
-        const stitle = document.createElement('div');
-        stitle.style.cssText = 'font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin:24px 0 12px;';
-        stitle.textContent = 'Your Summary'; c.appendChild(stitle);
-
-        const sw = document.createElement('div'); sw.className = 'summary-wrap';
-        const rows = [
-          ['Name', state.fullName], ['Phone', state.phone], ['Email', state.email],
-          ['Business', state.businessName], ['Industry', (state.industry||[]).join(', ')],
-          ['Location', [state.city, state.country].filter(Boolean).join(', ')],
-          ['Website', state.website], ['One-liner', state.tagline], ['Services', state.services],
-          ['Brand Voice', (state.brandVoice||[]).join(', ')],
-          ['Colours', [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' · ')],
-          ['Vibe', (state.websiteVibe||[]).join(', ')],
-          ['Customers', (state.targetCustomers||[]).join(', ')],
-          ['Visitor Goal', (state.visitorGoal||[]).join(', ')],
-          ['Social', (state.socialMedia||[]).join(', ')],
-          ['Features', (state.features||[]).join(', ')],
-          ['Pages', (state.pages||[]).join(', ')],
-          ['Logo', (state.hasLogo||[]).join(', ')],
-          ['Photos', (state.hasPhotos||[]).join(', ')],
-          ['Timeline', (state.timeline||[]).join(', ')],
-          ['Inspiration', state.inspiration],
-          ['Goals', (state.goals||[]).join(', ')],
-        ];
-        rows.forEach(([label, value]) => {
-          if (!value) return;
-          const row = document.createElement('div'); row.className = 'summary-row';
-          row.innerHTML = `<span class="summary-label">${label}</span><span class="summary-value">${value}</span>`;
-          sw.appendChild(row);
-        });
-        c.appendChild(sw);
-
-        const actions = document.createElement('div'); actions.style.cssText = 'display:flex;gap:12px;flex-wrap:wrap;';
-        const submitBtn = document.createElement('button'); submitBtn.className = 'btn-primary'; submitBtn.textContent = 'Submit →';
-        submitBtn.onclick = async () => {
-          submitBtn.textContent = 'Sending…'; submitBtn.disabled = true;
-          const { md } = generateMarkdown();
-          try {
-            const res = await fetch('https://formspree.io/f/xdaprbbw', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify({
-                _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
-                _replyto: state.email||'',
-                _autoresponse: `Hi ${state.fullName ? state.fullName.split(' ')[0] : 'there'},
-
-Thank you for submitting your business brief — we've received everything we need to get started.
-
-Here's what happens next:
-• We'll review your brief and start working on your website
-• We'll be in touch within 1–2 business days to go over the details
-• If you have any questions in the meantime, just reply to this email
-
-We're looking forward to building something great for ${state.businessName||'your business'}.
-
-Best,
-The AireyAi Team`,
-
-                // ── Contact
-                'Full Name':      state.fullName||'—',
-                'Email':          state.email||'—',
-                'Phone':          state.phone||'—',
-
-                // ── Business
-                'Business Name':  state.businessName||'—',
-                'Industry':       (state.industry||[]).join(', ')||'—',
-                'Location':       [state.city, state.country].filter(Boolean).join(', ')||'—',
-                'Website':        state.website||'—',
-
-                // ── Brand
-                'One-liner':      state.tagline||'—',
-                'Services':       state.services||'—',
-                'Brand Voice':    (state.brandVoice||[]).join(', ')||'—',
-                'Colour Palette': [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' + ')||'—',
-                'Website Vibe':   (state.websiteVibe||[]).join(', ')||'—',
-
-                // ── Customers
-                'Target Customers': (state.targetCustomers||[]).join(', ')||'—',
-                'Visitor Goal':     (state.visitorGoal||[]).join(', ')||'—',
-                'Social Media':     (state.socialMedia||[]).join(', ')||'—',
-
-                // ── Project
-                'Features Needed':  (state.features||[]).join(', ')||'—',
-                'Pages Needed':     (state.pages||[]).join(', ')||'—',
-                'Has Logo':         (state.hasLogo||[]).join(', ')||'—',
-                'Has Photos':       (state.hasPhotos||[]).join(', ')||'—',
-                'Timeline':         (state.timeline||[]).join(', ')||'—',
-                'Inspiration Sites':(state.inspiration||'—'),
-                'Website Goals':    (state.goals||[]).join(', ')||'—',
-                'Additional Notes': state.notes||'—',
-              }),
-            });
-            if (res.ok) { showThankYou(); }
-          else { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
-          } catch { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
-        };
-        actions.appendChild(submitBtn); c.appendChild(actions);
-
-        const nav = document.createElement('div'); nav.className = 'nav-row'; nav.style.marginTop = '24px';
-        const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(2);
-        const reset = document.createElement('button');
-        reset.style.cssText = 'font-size:12px;color:var(--danger);background:none;border:none;cursor:pointer;padding:0;font-family:DM Sans,sans-serif;';
-        reset.textContent = 'Start over';
-        reset.onclick = () => {
-          if (!confirm('Clear all answers and start over?')) return;
-          localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY);
-          Object.keys(state).forEach(k => delete state[k]); goToStep(0);
-        };
-        nav.appendChild(back); nav.appendChild(reset); c.appendChild(nav);
-      },
-
-    ];
-
-    const saved = parseInt(localStorage.getItem(STEP_KEY)||'0', 10);
-    const hasSaved = !isNaN(saved) && saved > 0 && Object.keys(state).length > 0;
-    if (hasSaved) {
-      goToStep(Math.min(saved, TOTAL_STEPS - 1));
-    } else {
-      showIntro();
-    }
-  </script>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- How it works -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-label fade-up">How it works</div>
+    <h2 class="section-title fade-up d1">Three steps to your<br>new website</h2>
+    <p class="section-sub fade-up d2">No back-and-forth. No lengthy calls. Just honest answers about your business and we'll take it from there.</p>
+
+    <div class="how-grid">
+      <div class="steps-list fade-up d1">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Fill in your brief</h3>
+            <p>Answer quick questions about your business, brand style, and target customers. Takes about 5 minutes.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>We review and design</h3>
+            <p>Your brief goes straight to our team. We use AI to craft a website that matches your brand and goals.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Your website goes live</h3>
+            <p>We handle hosting, SEO basics, and mobile design. You get a site that works hard for your business.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual mockup of brief -->
+      <div class="how-visual fade-up d2">
+        <div class="mock-label">Your Brief — Step 3 of 4</div>
+        <div class="mock-bar">
+          <div class="progress"></div>
+        </div>
+        <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:18px; text-align:right;">75% complete</div>
+
+        <div class="mock-field">Acme Plumbing Co.</div>
+        <div class="mock-field" style="color:var(--text-muted);">Plumbing &amp; Heating · Birmingham</div>
+
+        <div style="margin:16px 0 8px; font-size:0.75rem; color:var(--text-sub);">Brand voice</div>
+        <div class="mock-chips">
+          <div class="mock-chip on">Professional</div>
+          <div class="mock-chip on">Friendly</div>
+          <div class="mock-chip">Luxury</div>
+          <div class="mock-chip">Bold</div>
+        </div>
+
+        <div style="margin:4px 0 8px; font-size:0.75rem; color:var(--text-sub);">Colour palette</div>
+        <div class="mock-chips">
+          <div class="mock-chip on">Blues &amp; Whites</div>
+          <div class="mock-chip">Dark &amp; Moody</div>
+          <div class="mock-chip">Earthy Tones</div>
+        </div>
+
+        <div class="mock-btn">Submit brief →</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- What you get -->
+<section class="get-section">
+  <div class="container">
+    <div class="section-label fade-up">What's included</div>
+    <h2 class="section-title fade-up d1">Everything your<br>business needs online</h2>
+
+    <div class="cards-grid">
+      <div class="card fade-up d1">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="3" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M7 19h8M11 17v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Custom Website Design</h3>
+        <p>Designed specifically around your brand, not a generic template. Every page built to convert visitors into customers.</p>
+      </div>
+      <div class="card fade-up d2">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M11 7v4l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fast Turnaround</h3>
+        <p>No weeks of waiting. Once your brief is submitted, we move quickly. Most sites are ready within days, not months.</p>
+      </div>
+      <div class="card fade-up d3">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M5 11h12M5 7h12M5 15h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>SEO Foundations</h3>
+        <p>Built with search in mind from day one. Page titles, meta descriptions, and structured content to help people find you.</p>
+      </div>
+      <div class="card fade-up d1">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="6" y="2" width="10" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="11" cy="17" r="1" fill="currentColor"/></svg>
+        </div>
+        <h3>Mobile-First</h3>
+        <p>Over half your visitors are on a phone. Every site we build looks and works perfectly on any screen size.</p>
+      </div>
+      <div class="card fade-up d2">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 12l4 4 10-10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Hosting Included</h3>
+        <p>We take care of where your site lives. Fast, reliable, and secure hosting so you never have to think about it.</p>
+      </div>
+      <div class="card fade-up d3">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M11 2v2M11 18v2M2 11h2M18 11h2M4.93 4.93l1.41 1.41M15.66 15.66l1.41 1.41M4.93 17.07l1.41-1.41M15.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>AI-Powered Build</h3>
+        <p>Your brief feeds directly into our AI workflow. No detail gets missed — we use everything you tell us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container" style="position:relative; z-index:3;">
+    <div class="cta-inner">
+      <h2 class="fade-up">
+        Ready to get<br>
+        <span class="accent">your website?</span>
+      </h2>
+      <p class="fade-up d1">It starts with a brief. Five minutes of your time is all we need to get going.</p>
+      <a href="brief.html" class="btn-primary fade-up d2" style="font-size:1.05rem; padding:18px 40px;">
+        Start your brief — it's free
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Airey<span>Ai</span></a>
+    <span class="footer-copy">Powered by AireyAi</span>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // Scroll-driven entrance animations
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    }),
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
