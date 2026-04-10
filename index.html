@@ -583,14 +583,155 @@
   .fade-up.d3 { transition-delay: 0.3s; }
   .fade-up.d4 { transition-delay: 0.4s; }
 
+  /* ── Hero two-column ── */
+  .hero .container { width: 100%; max-width: 1100px; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 8px 0;
+  }
+  .hv-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), border-color 0.3s;
+    animation: floatCard 6s ease-in-out infinite;
+  }
+  .hv-card:nth-child(2) { animation-delay: -2s; margin-left: 24px; }
+  .hv-card:nth-child(3) { animation-delay: -4s; margin-left: 8px; }
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  .hv-icon {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: var(--mint-dim);
+    border: 1px solid rgba(0,229,160,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mint);
+    flex-shrink: 0;
+  }
+  .hv-card-text { flex: 1; }
+  .hv-card-text strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+  .hv-card-text span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+  .hv-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    background: rgba(0,229,160,0.12);
+    border: 1px solid rgba(0,229,160,0.25);
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--mint);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+  .hv-badge .dot-sm {
+    width: 5px; height: 5px;
+    background: var(--mint);
+    border-radius: 50%;
+  }
+  .hv-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(ellipse at center, rgba(0,229,160,0.06), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* ── FAQ ── */
+  .faq-section { padding: 120px 0; }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    margin-top: 64px;
+    align-items: start;
+  }
+  .faq-list { display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    padding: 22px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    letter-spacing: -0.01em;
+    transition: color 0.18s;
+  }
+  .faq-q:hover { color: var(--mint); }
+  .faq-q.open { color: var(--mint); }
+  .faq-chevron {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), color 0.18s;
+  }
+  .faq-q.open .faq-chevron { transform: rotate(180deg); color: var(--mint); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(.16,1,.3,1), padding 0.3s;
+  }
+  .faq-a.open { max-height: 200px; }
+  .faq-a p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    line-height: 1.7;
+    padding-bottom: 20px;
+    font-weight: 300;
+  }
+
   /* ── Responsive ── */
   @media (max-width: 768px) {
     .how-grid { grid-template-columns: 1fr; gap: 48px; }
     .how-visual { display: none; }
     .cards-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
     .hero h1 { font-size: 2.8rem; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+    .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 </style>
 </head>
@@ -626,29 +767,73 @@
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-badge fade-up">
-        <div class="dot"></div>
-        AI-Powered Websites
+    <div class="hero-grid">
+      <!-- Left: text -->
+      <div class="hero-inner">
+        <div class="hero-badge fade-up">
+          <div class="dot"></div>
+          AI-Powered Websites
+        </div>
+        <h1 class="fade-up d1">
+          Tell us about<br>
+          your business.<br>
+          <span class="accent">We'll build</span><br>
+          <span class="accent">something great.</span>
+        </h1>
+        <p class="fade-up d2">
+          Answer a few quick questions about your business and brand. We'll use your answers to build a website that actually looks like you.
+        </p>
+        <div class="hero-actions fade-up d3">
+          <a href="brief.html" class="btn-primary">
+            Start your brief
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how" class="btn-ghost">
+            See how it works
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
       </div>
-      <h1 class="fade-up d1">
-        Tell us about<br>
-        your business.<br>
-        <span class="accent">We'll build</span><br>
-        <span class="accent">something great.</span>
-      </h1>
-      <p class="fade-up d2">
-        Answer a few quick questions about your business and brand. We'll use your answers to build a website that actually looks like you.
-      </p>
-      <div class="hero-actions fade-up d3">
-        <a href="brief.html" class="btn-primary">
-          Start your brief
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="#how" class="btn-ghost">
-          See how it works
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+
+      <!-- Right: floating UI cards -->
+      <div class="hero-visual fade-up d2">
+        <div class="hv-glow"></div>
+
+        <div class="hv-card">
+          <div class="hv-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="12" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 17h8M10 15v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hv-card-text">
+            <strong>Custom Design</strong>
+            <span>Built around your brand</span>
+          </div>
+          <div class="hv-badge"><div class="dot-sm"></div>Live</div>
+        </div>
+
+        <div class="hv-card">
+          <div class="hv-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="hv-card-text">
+            <strong>5-Day Delivery</strong>
+            <span>From brief to live site</span>
+          </div>
+          <div class="hv-badge" style="background:rgba(80,60,255,0.12); border-color:rgba(80,60,255,0.3); color:#a78bfa;"><div class="dot-sm" style="background:#a78bfa;"></div>Fast</div>
+        </div>
+
+        <div class="hv-card">
+          <div class="hv-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="hv-card-text">
+            <strong>Brief submitted</strong>
+            <span>We're on it — watch your inbox</span>
+          </div>
+          <div class="hv-badge" style="background:rgba(0,229,160,0.08); border-color:rgba(0,229,160,0.2); color:var(--mint);">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5 3.5-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Done
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -781,6 +966,68 @@
 
 <div class="divider"></div>
 
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="section-label fade-up">FAQ</div>
+        <h2 class="section-title fade-up d1">Questions<br>answered</h2>
+        <p class="section-sub fade-up d2">Anything else on your mind? <a href="brief.html" style="color:var(--mint); text-decoration:none;">Drop us a message →</a></p>
+      </div>
+      <div class="faq-list fade-up d1">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How long does it take to build my website?
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Most websites are ready within 5 business days of receiving your completed brief. More complex sites may take a little longer — we'll always give you a clear timeline upfront.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do I need to provide images or copy?
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Not at all. If you have photos or text you'd like to use, great — send them over. If not, we'll source suitable images and write copy based on your brief. Everything you need is covered.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if I'm not happy with the design?
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>We include a round of revisions as standard. If something isn't right, tell us and we'll fix it. Our goal is a site you're genuinely proud of — we don't consider it done until you do.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is my website mobile-friendly?
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Yes, always. Every site we build is designed mobile-first and tested across devices. Over half of web traffic comes from phones — we make sure your site works perfectly on all of them.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I update my site myself after it's live?
+            <svg class="faq-chevron" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="faq-a">
+            <p>Yes. We hand over the full files and can set you up with a simple editor if you'd prefer to make text and image updates yourself. Or just message us — small updates are quick for us to handle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="cta-glow"></div>
@@ -818,6 +1065,23 @@
     document.body.style.overflow = '';
     setTimeout(() => { splash.style.display = 'none'; }, 900);
   }, 2400);
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-a');
+    const isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-q.open').forEach(q => {
+      q.classList.remove('open');
+      q.closest('.faq-item').querySelector('.faq-a').classList.remove('open');
+    });
+    // Open this one if it was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
 
   // Sticky nav on scroll
   const nav = document.getElementById('nav');
