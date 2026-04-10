@@ -686,6 +686,19 @@
               body: JSON.stringify({
                 _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
                 _replyto: state.email||'',
+                _autoresponse: `Hi ${state.fullName ? state.fullName.split(' ')[0] : 'there'},
+
+Thank you for submitting your business brief — we've received everything we need to get started.
+
+Here's what happens next:
+• We'll review your brief and start working on your website
+• We'll be in touch within 1–2 business days to go over the details
+• If you have any questions in the meantime, just reply to this email
+
+We're looking forward to building something great for ${state.businessName||'your business'}.
+
+Best,
+The AireyAi Team`,
 
                 // ── Contact
                 'Full Name':      state.fullName||'—',
