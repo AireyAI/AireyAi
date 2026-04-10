@@ -686,8 +686,39 @@
               body: JSON.stringify({
                 _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
                 _replyto: state.email||'',
-                name: state.fullName||'—', email: state.email||'—',
-                phone: state.phone||'—', business: state.businessName||'—', brief: md,
+
+                // ── Contact
+                'Full Name':      state.fullName||'—',
+                'Email':          state.email||'—',
+                'Phone':          state.phone||'—',
+
+                // ── Business
+                'Business Name':  state.businessName||'—',
+                'Industry':       (state.industry||[]).join(', ')||'—',
+                'Location':       [state.city, state.country].filter(Boolean).join(', ')||'—',
+                'Website':        state.website||'—',
+
+                // ── Brand
+                'One-liner':      state.tagline||'—',
+                'Services':       state.services||'—',
+                'Brand Voice':    (state.brandVoice||[]).join(', ')||'—',
+                'Colour Palette': [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' + ')||'—',
+                'Website Vibe':   (state.websiteVibe||[]).join(', ')||'—',
+
+                // ── Customers
+                'Target Customers': (state.targetCustomers||[]).join(', ')||'—',
+                'Visitor Goal':     (state.visitorGoal||[]).join(', ')||'—',
+                'Social Media':     (state.socialMedia||[]).join(', ')||'—',
+
+                // ── Project
+                'Features Needed':  (state.features||[]).join(', ')||'—',
+                'Pages Needed':     (state.pages||[]).join(', ')||'—',
+                'Has Logo':         (state.hasLogo||[]).join(', ')||'—',
+                'Has Photos':       (state.hasPhotos||[]).join(', ')||'—',
+                'Timeline':         (state.timeline||[]).join(', ')||'—',
+                'Inspiration Sites':(state.inspiration||'—'),
+                'Website Goals':    (state.goals||[]).join(', ')||'—',
+                'Additional Notes': state.notes||'—',
               }),
             });
             if (res.ok) { showThankYou(); }
