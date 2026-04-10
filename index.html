@@ -252,6 +252,56 @@
       font-size: 12px; color: var(--text-muted);
     }
     footer strong { color: var(--text-sub); }
+
+    /* ── Intro screen ──────────────────────────────────────── */
+    .intro {
+      text-align: center; padding: 16px 0 8px;
+    }
+    .intro-eyebrow {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--mint-dim); color: var(--mint);
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 4px 14px;
+      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
+      margin-bottom: 24px;
+    }
+    .intro-eyebrow::before { content: '●'; font-size: 7px; }
+    .intro-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px; font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1.1; margin-bottom: 16px; color: var(--text);
+    }
+    .intro-title span { color: var(--mint); }
+    .intro-sub {
+      font-size: 15px; color: var(--text-sub); line-height: 1.7;
+      font-weight: 300; max-width: 420px; margin: 0 auto 32px;
+    }
+    .intro-pills {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin-bottom: 36px;
+    }
+    .intro-pill {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 99px; padding: 5px 14px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .intro-pill span { color: var(--mint); margin-right: 4px; }
+
+    /* ── Saved indicator ───────────────────────────────────── */
+    .saved-indicator {
+      position: fixed; bottom: 24px; right: 24px; z-index: 100;
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-radius: 99px; padding: 6px 14px;
+      font-size: 11px; color: var(--text-muted);
+      display: flex; align-items: center; gap: 6px;
+      opacity: 0; transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .saved-indicator.show { opacity: 1; }
+    .saved-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+
+    /* ── Field error state ─────────────────────────────────── */
+    .field.error { border-color: var(--danger); box-shadow: 0 0 0 3px rgba(255,77,109,0.1); }
   </style>
 </head>
 <body>
@@ -269,16 +319,20 @@
 
   <main>
     <div class="card">
-      <div class="progress-header">
+      <div class="progress-header" id="progress-header" style="display:none;">
         <span class="progress-label" id="step-label">Step 1 of 4</span>
         <span class="progress-pct" id="step-pct">25%</span>
       </div>
-      <div class="progress-track">
+      <div class="progress-track" id="progress-track" style="display:none;">
         <div class="progress-fill" id="progress-fill" style="width:25%;"></div>
       </div>
       <div id="step-container"></div>
     </div>
   </main>
+
+  <div class="saved-indicator" id="saved-indicator">
+    <div class="saved-dot"></div> Progress saved
+  </div>
 
   <footer>Powered by <strong>AireyAi</strong></footer>
 
@@ -289,11 +343,22 @@
     const TOTAL_STEPS = 4;
 
     const state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
+
+    let savedTimer;
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      const ind = document.getElementById('saved-indicator');
+      ind.classList.add('show');
+      clearTimeout(savedTimer);
+      savedTimer = setTimeout(() => ind.classList.remove('show'), 2000);
+    }
 
     function goToStep(n) {
       currentStep = n;
       localStorage.setItem(STEP_KEY, n);
+      // Show progress bar once past intro
+      document.getElementById('progress-header').style.display = '';
+      document.getElementById('progress-track').style.display = '';
       updateProgress();
       const c = document.getElementById('step-container');
       c.style.animation = 'none'; c.offsetHeight; c.style.animation = '';
@@ -306,6 +371,37 @@
       document.getElementById('progress-fill').style.width = pct + '%';
       document.getElementById('step-label').textContent = `Step ${currentStep + 1} of ${TOTAL_STEPS}`;
       document.getElementById('step-pct').textContent = pct + '%';
+    }
+
+    function showIntro() {
+      document.getElementById('progress-header').style.display = 'none';
+      document.getElementById('progress-track').style.display = 'none';
+      const c = document.getElementById('step-container');
+      c.innerHTML = '';
+      const wrap = document.createElement('div'); wrap.className = 'intro';
+
+      const eyebrow = document.createElement('div'); eyebrow.className = 'intro-eyebrow'; eyebrow.textContent = 'Business Brief'; wrap.appendChild(eyebrow);
+
+      const title = document.createElement('div'); title.className = 'intro-title';
+      title.innerHTML = 'Tell us about your<br><span>business</span>'; wrap.appendChild(title);
+
+      const sub = document.createElement('div'); sub.className = 'intro-sub';
+      sub.textContent = "Answer a few quick questions and we'll have everything we need to build you something great. Takes about 2 minutes."; wrap.appendChild(sub);
+
+      const pills = document.createElement('div'); pills.className = 'intro-pills';
+      [['⚡','2 minutes'], ['💾','Auto-saved'], ['🔒','Private & secure']].forEach(([icon, text]) => {
+        const p = document.createElement('div'); p.className = 'intro-pill';
+        p.innerHTML = `<span>${icon}</span>${text}`; pills.appendChild(p);
+      });
+      wrap.appendChild(pills);
+
+      const btn = document.createElement('button'); btn.className = 'btn-primary';
+      btn.style.cssText = 'padding:14px 40px;font-size:15px;';
+      btn.textContent = "Let's go →";
+      btn.onclick = () => goToStep(0);
+      wrap.appendChild(btn);
+
+      c.appendChild(wrap);
     }
 
     function makeLabel(text, optional, container) {
@@ -352,6 +448,28 @@
     function flashError(btn, msg, original) {
       btn.textContent = msg; btn.style.background = 'var(--danger)'; btn.style.boxShadow = 'none';
       setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.boxShadow = ''; }, 2200);
+    }
+
+    function highlightEmpty(keys) {
+      // Remove previous errors
+      document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error'));
+      // Highlight empty required fields
+      keys.forEach(key => {
+        const val = state[key];
+        const isEmpty = !val || (typeof val === 'string' && !val.trim()) || (Array.isArray(val) && !val.length);
+        if (isEmpty) {
+          // Find the field after its label — match by checking sibling inputs/textareas
+          const fields = document.querySelectorAll('.field');
+          fields.forEach(f => {
+            const prev = f.previousElementSibling;
+            if (prev && prev.tagName === 'LABEL' && f.oninput) {
+              // Check if this field maps to the key by checking current value
+              if (f.value === (state[key] || '')) f.classList.add('error');
+            }
+          });
+        }
+      });
+      setTimeout(() => document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error')), 3000);
     }
 
     function generateMarkdown() {
@@ -567,6 +685,7 @@
               headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
               body: JSON.stringify({
                 _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
+                _replyto: state.email||'',
                 name: state.fullName||'—', email: state.email||'—',
                 phone: state.phone||'—', business: state.businessName||'—', brief: md,
               }),
@@ -593,7 +712,12 @@
     ];
 
     const saved = parseInt(localStorage.getItem(STEP_KEY)||'0', 10);
-    goToStep(isNaN(saved) ? 0 : Math.min(saved, TOTAL_STEPS - 1));
+    const hasSaved = !isNaN(saved) && saved > 0 && Object.keys(state).length > 0;
+    if (hasSaved) {
+      goToStep(Math.min(saved, TOTAL_STEPS - 1));
+    } else {
+      showIntro();
+    }
   </script>
 </body>
 </html>
