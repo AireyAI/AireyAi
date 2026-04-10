@@ -376,6 +376,7 @@
         `- **Visitor Goal:** ${(s.visitorGoal||[]).join(', ')||'—'}`,
         `- **Social Media:** ${(s.socialMedia||[]).join(', ')||'—'}`, '',
         '## Website Project',
+        `- **Features Needed:** ${(s.features||[]).join(', ')||'—'}`,
         `- **Pages Needed:** ${(s.pages||[]).join(', ')||'—'}`,
         `- **Has Logo:** ${(s.hasLogo||[]).join(', ')||'—'}`,
         `- **Has Photos:** ${(s.hasPhotos||[]).join(', ')||'—'}`,
@@ -497,6 +498,9 @@
         const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Looking good!'; c.appendChild(title);
         const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Anything else we should know? Then hit submit.'; c.appendChild(sub);
 
+        makeLabel('What features do you need?', false, c);
+        renderChips('features', ['Contact Form','Online Booking','Online Shop','Photo Gallery','Blog','Testimonials','Pricing Page','FAQ','Map'], c);
+
         makeLabel('How many pages do you need?', false, c);
         renderChips('pages', ['Just a landing page','Home + a few pages','Full multi-page site','Not sure'], c);
 
@@ -536,6 +540,7 @@
           ['Customers', (state.targetCustomers||[]).join(', ')],
           ['Visitor Goal', (state.visitorGoal||[]).join(', ')],
           ['Social', (state.socialMedia||[]).join(', ')],
+          ['Features', (state.features||[]).join(', ')],
           ['Pages', (state.pages||[]).join(', ')],
           ['Logo', (state.hasLogo||[]).join(', ')],
           ['Photos', (state.hasPhotos||[]).join(', ')],
