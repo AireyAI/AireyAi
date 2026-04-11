@@ -1,3 +1,4 @@
 temporary screenshots/
 .DS_Store
 *.code-workspace
+.superpowers/
