@@ -452,8 +452,6 @@
       return input;
     }
 
-    const MAX_PHOTOS = 15;
-
     function renderPhotoUpload(container) {
       if (!state.jobPhotos) state.jobPhotos = [];
 
@@ -471,13 +469,12 @@
       input.multiple = true;
       const icon = document.createElement('div'); icon.className = 'photo-upload-icon'; icon.textContent = '📸';
       const lbl = document.createElement('div'); lbl.className = 'photo-upload-label'; lbl.textContent = 'Upload photos';
-      const sub = document.createElement('div'); sub.className = 'photo-upload-sub'; sub.textContent = 'Finished work, logos, team photos — up to 15 images';
+      const sub = document.createElement('div'); sub.className = 'photo-upload-sub'; sub.textContent = 'Finished work, logos, team photos — no limit';
       zone.appendChild(icon); zone.appendChild(lbl); zone.appendChild(sub); zone.appendChild(input);
 
       function rebuildGrid() {
         grid.innerHTML = '';
-        const remaining = MAX_PHOTOS - state.jobPhotos.length;
-        countEl.textContent = state.jobPhotos.length ? `${state.jobPhotos.length} of ${MAX_PHOTOS} photos added` : '';
+        countEl.textContent = state.jobPhotos.length ? `${state.jobPhotos.length} photo${state.jobPhotos.length !== 1 ? 's' : ''} added` : '';
         state.jobPhotos.forEach((src, i) => {
           const thumb = document.createElement('div');
           thumb.className = 'photo-thumb';
@@ -491,30 +488,18 @@
           thumb.appendChild(rm);
           grid.appendChild(thumb);
         });
-        // Hide upload zone when limit reached
-        if (state.jobPhotos.length >= MAX_PHOTOS) {
-          zone.style.display = 'none';
-        } else {
-          zone.style.display = '';
-          sub.textContent = remaining === MAX_PHOTOS
-            ? 'Finished work, logos, team photos — up to 15 images'
-            : `${remaining} more photo${remaining === 1 ? '' : 's'} can be added`;
-        }
       }
       rebuildGrid();
 
       input.onchange = () => {
         const files = Array.from(input.files);
-        const slots = MAX_PHOTOS - state.jobPhotos.length;
-        const toLoad = files.slice(0, slots);
-        if (!toLoad.length) { input.value = ''; return; }
         let loaded = 0;
-        toLoad.forEach(file => {
+        files.forEach(file => {
           const reader = new FileReader();
           reader.onload = e => {
             state.jobPhotos.push(e.target.result);
             loaded++;
-            if (loaded === toLoad.length) { saveState(); rebuildGrid(); }
+            if (loaded === files.length) { saveState(); rebuildGrid(); }
           };
           reader.readAsDataURL(file);
         });
