@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AireyAi — Business Brief</title>
+  <title>AireyAi — Business Brief v2</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
@@ -287,6 +288,36 @@
     }
     .intro-pill span { color: var(--mint); margin-right: 4px; }
 
+    /* ── Photo upload ─────────────────────────────────────── */
+    .photo-upload-zone {
+      border: 1.5px dashed rgba(0,229,160,0.3); border-radius: 12px;
+      padding: 24px 16px; text-align: center; cursor: pointer;
+      background: var(--surface); transition: border-color 0.2s, background 0.2s;
+      margin-bottom: 16px; position: relative;
+    }
+    .photo-upload-zone:hover { border-color: var(--mint); background: var(--mint-dim); }
+    .photo-upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+    .photo-upload-icon { font-size: 28px; margin-bottom: 8px; }
+    .photo-upload-label { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .photo-upload-sub { font-size: 12px; color: var(--text-muted); }
+    .photo-limit { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+    .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
+    @media (max-width: 480px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+    .photo-thumb {
+      position: relative; border-radius: 8px; overflow: hidden;
+      aspect-ratio: 1; background: var(--surface-2);
+      border: 1px solid var(--border);
+    }
+    .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-thumb-remove {
+      position: absolute; top: 4px; right: 4px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(0,0,0,0.7); border: none; color: #fff;
+      font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      line-height: 1;
+    }
+    .photo-count { font-size: 12px; color: var(--mint); margin-bottom: 12px; }
+
     /* ── Saved indicator ───────────────────────────────────── */
     .saved-indicator {
       position: fixed; bottom: 24px; right: 24px; z-index: 100;
@@ -421,6 +452,80 @@
       return input;
     }
 
+    const MAX_PHOTOS = 15;
+
+    function renderPhotoUpload(container) {
+      if (!state.jobPhotos) state.jobPhotos = [];
+
+      const countEl = document.createElement('div');
+      countEl.className = 'photo-count';
+
+      const grid = document.createElement('div');
+      grid.className = 'photo-grid';
+
+      const zone = document.createElement('div');
+      zone.className = 'photo-upload-zone';
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.multiple = true;
+      const icon = document.createElement('div'); icon.className = 'photo-upload-icon'; icon.textContent = '📸';
+      const lbl = document.createElement('div'); lbl.className = 'photo-upload-label'; lbl.textContent = 'Upload photos';
+      const sub = document.createElement('div'); sub.className = 'photo-upload-sub'; sub.textContent = 'Finished work, logos, team photos — up to 15 images';
+      zone.appendChild(icon); zone.appendChild(lbl); zone.appendChild(sub); zone.appendChild(input);
+
+      function rebuildGrid() {
+        grid.innerHTML = '';
+        const remaining = MAX_PHOTOS - state.jobPhotos.length;
+        countEl.textContent = state.jobPhotos.length ? `${state.jobPhotos.length} of ${MAX_PHOTOS} photos added` : '';
+        state.jobPhotos.forEach((src, i) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'photo-thumb';
+          const img = document.createElement('img');
+          img.src = src;
+          const rm = document.createElement('button');
+          rm.className = 'photo-thumb-remove';
+          rm.textContent = '✕';
+          rm.onclick = (e) => { e.stopPropagation(); state.jobPhotos.splice(i, 1); saveState(); rebuildGrid(); };
+          thumb.appendChild(img);
+          thumb.appendChild(rm);
+          grid.appendChild(thumb);
+        });
+        // Hide upload zone when limit reached
+        if (state.jobPhotos.length >= MAX_PHOTOS) {
+          zone.style.display = 'none';
+        } else {
+          zone.style.display = '';
+          sub.textContent = remaining === MAX_PHOTOS
+            ? 'Finished work, logos, team photos — up to 15 images'
+            : `${remaining} more photo${remaining === 1 ? '' : 's'} can be added`;
+        }
+      }
+      rebuildGrid();
+
+      input.onchange = () => {
+        const files = Array.from(input.files);
+        const slots = MAX_PHOTOS - state.jobPhotos.length;
+        const toLoad = files.slice(0, slots);
+        if (!toLoad.length) { input.value = ''; return; }
+        let loaded = 0;
+        toLoad.forEach(file => {
+          const reader = new FileReader();
+          reader.onload = e => {
+            state.jobPhotos.push(e.target.result);
+            loaded++;
+            if (loaded === toLoad.length) { saveState(); rebuildGrid(); }
+          };
+          reader.readAsDataURL(file);
+        });
+        input.value = '';
+      };
+
+      container.appendChild(grid);
+      container.appendChild(countEl);
+      container.appendChild(zone);
+    }
+
     function renderChips(key, options, container) {
       const selected = state[key] || [];
       const wrap = document.createElement('div'); wrap.className = 'chips-wrap';
@@ -445,32 +550,7 @@
       container.appendChild(row); return row;
     }
 
-    function flashError(btn, msg, original) {
-      btn.textContent = msg; btn.style.background = 'var(--danger)'; btn.style.boxShadow = 'none';
-      setTimeout(() => { btn.textContent = original; btn.style.background = ''; btn.style.boxShadow = ''; }, 2200);
-    }
-
-    function highlightEmpty(keys) {
-      // Remove previous errors
-      document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error'));
-      // Highlight empty required fields
-      keys.forEach(key => {
-        const val = state[key];
-        const isEmpty = !val || (typeof val === 'string' && !val.trim()) || (Array.isArray(val) && !val.length);
-        if (isEmpty) {
-          // Find the field after its label — match by checking sibling inputs/textareas
-          const fields = document.querySelectorAll('.field');
-          fields.forEach(f => {
-            const prev = f.previousElementSibling;
-            if (prev && prev.tagName === 'LABEL' && f.oninput) {
-              // Check if this field maps to the key by checking current value
-              if (f.value === (state[key] || '')) f.classList.add('error');
-            }
-          });
-        }
-      });
-      setTimeout(() => document.querySelectorAll('.field.error').forEach(el => el.classList.remove('error')), 3000);
-    }
+    /* No required-field validation — all fields are optional and skippable */
 
     function generateMarkdown() {
       const s = state;
@@ -537,7 +617,7 @@
         makeLabel('Business Name', false, c); renderField('businessName', 'Your Business Name', c);
 
         makeLabel('Industry', false, c);
-        renderChips('industry', ['Retail','Hospitality','Health & Beauty','Trades','Professional Services','Technology','Food & Drink','Education','Creative','Other'], c);
+        renderChips('industry', ['Retail','Hospitality','Health & Beauty','Trades & Construction','Professional Services','Technology','Food & Drink','Education','Creative & Media','Fitness & Wellness','Automotive','Property','Other'], c);
 
         const locRow = makeTwoCol(c);
         const cityW = document.createElement('div'); makeLabel('City', false, cityW); renderField('city', 'e.g. London', cityW); locRow.appendChild(cityW);
@@ -547,12 +627,7 @@
 
         const nav = document.createElement('div'); nav.className = 'nav-row-right';
         const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          const req = ['fullName','phone','email','businessName','city','country'];
-          if (req.some(k => !state[k]||!state[k].trim())) { flashError(next,'Fill in required fields','Next →'); return; }
-          if (!state.industry||!state.industry.length) { flashError(next,'Pick an industry','Next →'); return; }
-          goToStep(1);
-        };
+        next.onclick = () => goToStep(1);
         nav.appendChild(next); c.appendChild(nav);
       },
 
@@ -562,8 +637,8 @@
         const title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Tell us about your brand'; c.appendChild(title);
         const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'How your business looks, sounds, and feels.'; c.appendChild(sub);
 
-        makeLabel('Describe your business in one sentence', true, c); renderField('tagline', 'e.g. "We help small businesses get found online"', c, false, true);
-        makeLabel('Services / Products Offered', false, c); renderField('services', 'List what you offer', c, true);
+        makeLabel('Describe your business in one sentence', true, c); renderField('tagline', 'e.g. "We make homes look brand new" or "Premium lashes in South London"', c, false, true);
+        makeLabel('What do you offer?', true, c); renderField('services', 'List your main services or products', c, true);
 
         const div1 = document.createElement('div'); div1.className = 'divider'; c.appendChild(div1);
 
@@ -578,10 +653,7 @@
         const nav = document.createElement('div'); nav.className = 'nav-row';
         const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(0);
         const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          if (!state.services||!state.services.trim()) { flashError(next,'Add your services','Next →'); return; }
-          goToStep(2);
-        };
+        next.onclick = () => goToStep(2);
         nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
       },
 
@@ -592,21 +664,18 @@
         const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Help us understand who you serve.'; c.appendChild(sub);
 
         makeLabel('Target Customers', true, c);
-        renderChips('targetCustomers', ['Individuals','Families','Small Businesses','Corporates','Young Adults','Other'], c);
+        renderChips('targetCustomers', ['Individuals','Families','Small Businesses','Corporates','Young Adults','Local Community','Homeowners','Other'], c);
 
         makeLabel('What do you want visitors to do?', false, c);
-        renderChips('visitorGoal', ['Book a Call','Make an Enquiry','Buy a Product','Visit In Person','Get a Quote','Follow on Social'], c);
+        renderChips('visitorGoal', ['Book a Call','Make an Enquiry','Buy a Product','Visit In Person','Get a Quote','Follow on Social','Book Online','Request a Callback'], c);
 
         makeLabel('Social Media Presence', true, c);
-        renderChips('socialMedia', ['Instagram','Facebook','TikTok','LinkedIn','Twitter/X','WhatsApp'], c);
+        renderChips('socialMedia', ['Instagram','Facebook','TikTok','LinkedIn','Twitter/X','WhatsApp','YouTube','Google Business'], c);
 
         const nav = document.createElement('div'); nav.className = 'nav-row';
         const back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = () => goToStep(1);
         const next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
-        next.onclick = () => {
-          if (!state.visitorGoal||!state.visitorGoal.length) { flashError(next,'Pick at least one goal','Next →'); return; }
-          goToStep(3);
-        };
+        next.onclick = () => goToStep(3);
         nav.appendChild(back); nav.appendChild(next); c.appendChild(nav);
       },
 
@@ -617,7 +686,7 @@
         const sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Anything else we should know? Then hit submit.'; c.appendChild(sub);
 
         makeLabel('What features do you need?', false, c);
-        renderChips('features', ['Contact Form','Online Booking','Online Shop','Photo Gallery','Blog','Testimonials','Pricing Page','FAQ','Map'], c);
+        renderChips('features', ['Contact Form','Online Booking','Online Shop','Photo Gallery','Blog','Testimonials','Pricing Page','FAQ','Map','Before & After','Reviews','WhatsApp Button','Menu / Price List'], c);
 
         makeLabel('How many pages do you need?', false, c);
         renderChips('pages', ['Just a landing page','Home + a few pages','Full multi-page site','Not sure'], c);
@@ -628,6 +697,9 @@
         makeLabel('Do you have photos or images?', false, c);
         renderChips('hasPhotos', ['Yes, professional photos','Yes, phone photos','No, use stock images'], c);
 
+        makeLabel('Upload photos — finished work, logos, team members', true, c);
+        renderPhotoUpload(c);
+
         makeLabel('What\'s your timeline?', false, c);
         renderChips('timeline', ['ASAP','Within a month','No rush'], c);
 
@@ -637,7 +709,7 @@
         renderField('inspiration', 'Paste URLs here — e.g. apple.com, notion.so', c, true, true);
 
         makeLabel('What do you want your website to achieve?', true, c);
-        renderChips('goals', ['Generate Leads','Increase Bookings','Sell Products Online','Build Brand Awareness','Showcase Portfolio','Provide Information','Get More Calls','Grow Social Following'], c);
+        renderChips('goals', ['Generate Leads','Increase Bookings','Sell Products Online','Build Brand Awareness','Showcase Portfolio','Provide Information','Get More Calls','Grow Social Following','Build Trust','Rank on Google'], c);
 
         makeLabel('Anything else we should know?', true, c);
         renderField('notes', 'Awards, backstory, special requests…', c, true, true);
@@ -680,10 +752,18 @@
           submitBtn.textContent = 'Sending…'; submitBtn.disabled = true;
           const { md } = generateMarkdown();
           try {
-            const res = await fetch('https://formspree.io/f/xdaprbbw', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              body: JSON.stringify({
+            // Build FormData so photos can be attached as files
+            const formData = new FormData();
+
+            // Attach job photos
+            if (state.jobPhotos && state.jobPhotos.length) {
+              for (let i = 0; i < state.jobPhotos.length; i++) {
+                const blob = await (await fetch(state.jobPhotos[i])).blob();
+                formData.append(`job_photo_${i + 1}`, blob, `job-photo-${i + 1}.jpg`);
+              }
+            }
+
+            const payload = {
                 _subject: `New Business Brief — ${state.businessName||'Unknown'}`,
                 _replyto: state.email||'',
                 _autoresponse: `Hi ${state.fullName ? state.fullName.split(' ')[0] : 'there'},
@@ -728,11 +808,20 @@ The AireyAi Team`,
                 'Pages Needed':     (state.pages||[]).join(', ')||'—',
                 'Has Logo':         (state.hasLogo||[]).join(', ')||'—',
                 'Has Photos':       (state.hasPhotos||[]).join(', ')||'—',
+                'Photos Uploaded':  state.jobPhotos && state.jobPhotos.length ? `${state.jobPhotos.length} photo(s) attached` : 'None',
                 'Timeline':         (state.timeline||[]).join(', ')||'—',
                 'Inspiration Sites':(state.inspiration||'—'),
                 'Website Goals':    (state.goals||[]).join(', ')||'—',
                 'Additional Notes': state.notes||'—',
-              }),
+            };
+
+            // Append all text fields to FormData
+            Object.entries(payload).forEach(([k, v]) => formData.append(k, v));
+
+            const res = await fetch('https://formspree.io/f/xdaprbbw', {
+              method: 'POST',
+              headers: { 'Accept': 'application/json' },
+              body: formData,
             });
             if (res.ok) { showThankYou(); }
           else { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
