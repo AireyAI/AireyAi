@@ -134,6 +134,19 @@
     display: flex;
     align-items: center;
     padding: 140px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.22;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
   }
   .hero-inner { max-width: 800px; }
   .hero-badge {
@@ -162,12 +175,13 @@
     50% { opacity: 0.5; transform: scale(0.7); }
   }
   .hero h1 {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
     margin-bottom: 28px;
   }
+  .hero h1 .word { white-space: nowrap; display: inline-block; }
   .hero h1 .accent { color: var(--mint); }
   .hero p {
     font-size: clamp(1rem, 2vw, 1.2rem);
@@ -932,12 +946,12 @@
     .cards-grid { grid-template-columns: 1fr; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-visual { display: none; }
-    .hero h1 { font-size: 2.8rem; }
+    .hero h1 { font-size: 1.8rem; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
     .faq-grid { grid-template-columns: 1fr; gap: 40px; }
     .nav-links { display: none; }
-    .hero-bg-img { display: none; }
+    .hero-video { display: none; }
     .cta-bg-img { display: none; }
     .whatsapp-btn { bottom: 20px; right: 20px; }
     .scroll-top { bottom: 88px; right: 20px; }
@@ -983,7 +997,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <img src="generated-images/hero-bg.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;pointer-events:none;z-index:0;mix-blend-mode:screen;" class="hero-bg-img">
+  <video src="hero-video.mp4" autoplay muted loop playsinline class="hero-video" aria-hidden="true"></video>
   <div class="container">
     <div class="hero-grid">
       <!-- Left: text -->
@@ -992,7 +1006,7 @@
           <div class="dot"></div>
           AI-Powered Websites
         </div>
-        <h1 data-split="chars">
+        <h1 data-reveal="fade-up">
           Tell us about<br>
           your business.<br>
           <span class="accent">We'll build</span><br>
