@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Projects — AireyAi</title>
+<meta name="description" content="Case studies and portfolio of websites built by AireyAi for real businesses.">
+<meta property="og:title" content="Our Projects — AireyAi">
+<meta property="og:description" content="Case studies of bespoke websites built for real businesses.">
+<meta property="og:image" content="https://aireyai.github.io/AireyAi/og-image.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #00e5a0;
+    --mint-dim: rgba(0, 229, 160, 0.10);
+    --mint-glow: rgba(0, 229, 160, 0.22);
+    --bg: #070710;
+    --surface: #0d0d1f;
+    --surface-2: #13132a;
+    --border: rgba(255,255,255,0.07);
+    --text: #eeeef8;
+    --text-muted: #6b6b8a;
+    --text-sub: #9898b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
+
+  /* ── Noise texture ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    opacity: 0.45;
+  }
+
+  /* ── Animated bg ── */
+  .bg-canvas { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.25; animation: drift 18s ease-in-out infinite alternate; }
+  .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,229,160,0.3), transparent 70%); top: -200px; left: -200px; animation-duration: 22s; }
+  .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(80,60,255,0.25), transparent 70%); bottom: -100px; right: -100px; animation-duration: 18s; animation-delay: -6s; }
+  @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(60px,40px) scale(1.08); } }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0;
+    background: rgba(7,7,16,0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  }
+  .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; color: var(--text); text-decoration: none; }
+  .logo span { color: var(--mint); }
+  .nav-cta {
+    display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px;
+    background: var(--mint); color: #070710; font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em;
+    border-radius: 100px; text-decoration: none;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+  }
+  .nav-cta:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px var(--mint-glow); }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--text-sub); text-decoration: none; font-size: 0.85rem; font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--mint); }
+
+  /* ── Hero ── */
+  .page-hero {
+    padding: 160px 0 80px; text-align: center;
+  }
+  .page-hero .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; background: var(--mint-dim); border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px; font-size: 0.78rem; font-weight: 500; color: var(--mint);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .page-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 800;
+    letter-spacing: -0.03em; line-height: 1.12; margin-bottom: 20px;
+  }
+  .page-hero h1 .accent { color: var(--mint); }
+  .page-hero p {
+    color: var(--text-sub); font-size: 1.05rem; max-width: 560px;
+    margin: 0 auto; line-height: 1.7; font-weight: 300;
+  }
+
+  /* ── Case study cards ── */
+  .case {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+  .case:first-of-type { border-top: none; }
+
+  .case-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 40px; flex-wrap: wrap;
+  }
+  .case-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+  .case-tag {
+    padding: 4px 14px; background: var(--mint-dim); border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px; font-size: 0.72rem; font-weight: 600; color: var(--mint);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .case-desc {
+    color: var(--text-sub); font-size: 1rem; max-width: 640px;
+    line-height: 1.7; font-weight: 300; margin-bottom: 32px;
+  }
+
+  .case-features {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px;
+  }
+  .case-feature {
+    padding: 6px 14px; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 0.78rem; color: var(--text-sub); font-weight: 400;
+  }
+
+  .case-screens {
+    display: grid; grid-template-columns: 1fr 240px; gap: 24px; align-items: start;
+  }
+  .case-desktop {
+    width: 100%; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .case-desktop img { width: 100%; display: block; }
+
+  .case-mobile {
+    width: 240px; border-radius: 24px; overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .case-mobile img { width: 100%; display: block; }
+
+  /* ── CTA ── */
+  .page-cta {
+    padding: 100px 0; text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .page-cta h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 800;
+    letter-spacing: -0.03em; margin-bottom: 16px;
+  }
+  .page-cta h2 .accent { color: var(--mint); }
+  .page-cta p {
+    color: var(--text-sub); font-size: 1rem; margin-bottom: 40px;
+    font-weight: 300; max-width: 480px; margin-left: auto; margin-right: auto;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 36px; background: var(--mint); color: #070710;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    border-radius: 100px; text-decoration: none;
+    transition: transform 0.18s cubic-bezier(.34,1.56,.64,1), box-shadow 0.18s;
+  }
+  .btn-primary:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 28px var(--mint-glow); }
+
+  /* ── Footer ── */
+  footer {
+    padding: 40px 0; border-top: 1px solid var(--border);
+    position: relative; z-index: 2;
+  }
+  .footer-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  }
+  .footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+  .footer-logo span { color: var(--mint); }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .case-screens { grid-template-columns: 1fr; }
+    .case-mobile { width: 180px; margin: 0 auto; }
+    .page-hero { padding: 130px 0 60px; }
+    .case { padding: 60px 0; }
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+    .nav-back span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo">Airey<span>Ai</span></a>
+    <div style="display:flex;align-items:center;gap:24px;">
+      <a href="index.html" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M11 7H3M7 3L3 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Back to home</span>
+      </a>
+      <a href="brief.html" class="nav-cta" data-magnetic>
+        Get Started
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="page-hero">
+  <div class="container">
+    <div class="section-label" data-appear>Our Work</div>
+    <h1 data-reveal="fade-up">Websites we've built for<br><span class="accent">real businesses.</span></h1>
+    <p data-reveal="fade-up" data-reveal-delay="0.1">Every project is designed from scratch around the client's brand. No templates, no shortcuts. Here's what we've shipped.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- Wheelie Clean -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>Wheelie Clean</h2>
+      <span class="case-tag">Bin Cleaning</span>
+    </div>
+    <p class="case-desc">Cumbria's #1 bin cleaning service needed a bold, high-converting site that matched their energetic brand. Built with online booking, pricing tables, WhatsApp integration, and a cookie banner — all mobile-first.</p>
+    <div class="case-features">
+      <span class="case-feature">Online Booking</span>
+      <span class="case-feature">WhatsApp Integration</span>
+      <span class="case-feature">Pricing Tables</span>
+      <span class="case-feature">Mobile-First</span>
+      <span class="case-feature">SEO Optimised</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/wheelie-clean-desktop.png" alt="Wheelie Clean desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/wheelie-clean-mobile.png" alt="Wheelie Clean mobile view"></div>
+    </div>
+  </div>
+
+  <!-- Dolled by Louise -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>Dolled by Louise</h2>
+      <span class="case-tag">Beauty</span>
+    </div>
+    <p class="case-desc">A luxury lash and beauty studio in Longtown, Cumbria. The site features a cinematic welcome screen, quick-setup booking flow, AI-powered chatbot, and a dark, elegant aesthetic that reflects the premium service.</p>
+    <div class="case-features">
+      <span class="case-feature">AI Chatbot</span>
+      <span class="case-feature">Booking Flow</span>
+      <span class="case-feature">Welcome Screen</span>
+      <span class="case-feature">Dark Luxury Theme</span>
+      <span class="case-feature">WhatsApp Button</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/dolled-desktop.png" alt="Dolled by Louise desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/dolled-mobile.png" alt="Dolled by Louise mobile view"></div>
+    </div>
+  </div>
+
+  <!-- Charm -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>Charm</h2>
+      <span class="case-tag">Marketplace</span>
+    </div>
+    <p class="case-desc">A global creative space marketplace connecting studios, venues, and professionals. Features category browsing, search, host onboarding, listings, analytics dashboard, and a full e-commerce checkout flow.</p>
+    <div class="case-features">
+      <span class="case-feature">Marketplace</span>
+      <span class="case-feature">Search & Filters</span>
+      <span class="case-feature">Host Dashboard</span>
+      <span class="case-feature">Checkout Flow</span>
+      <span class="case-feature">Analytics</span>
+      <span class="case-feature">20+ Pages</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/charm-desktop.png" alt="Charm desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/charm-mobile.png" alt="Charm mobile view"></div>
+    </div>
+  </div>
+
+  <!-- Carlisle Gold Trading -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>Carlisle Gold Trading</h2>
+      <span class="case-tag">Trading</span>
+    </div>
+    <p class="case-desc">A premium gold trading signals community site for XAU/USD traders in Cumbria. Dark, luxurious gold-themed design with live results showcase, community features, educational content, and a cinematic intro sequence.</p>
+    <div class="case-features">
+      <span class="case-feature">Cinematic Intro</span>
+      <span class="case-feature">Live Results</span>
+      <span class="case-feature">Community</span>
+      <span class="case-feature">Gold Theme</span>
+      <span class="case-feature">Education Section</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/carlisle-desktop.png" alt="Carlisle Gold Trading desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/carlisle-mobile.png" alt="Carlisle Gold Trading mobile view"></div>
+    </div>
+  </div>
+
+  <!-- EJ Roofing -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>E J Roofing</h2>
+      <span class="case-tag">Roofing</span>
+    </div>
+    <p class="case-desc">A professional roofing services site with a full-screen video hero, before & after gallery, service breakdowns, and a trust-building design that converts visitors into quote requests.</p>
+    <div class="case-features">
+      <span class="case-feature">Video Hero</span>
+      <span class="case-feature">Before & After</span>
+      <span class="case-feature">Service Pages</span>
+      <span class="case-feature">Quote Request</span>
+      <span class="case-feature">Trust Signals</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/ej-roofing-desktop.png" alt="E J Roofing desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/ej-roofing-mobile.png" alt="E J Roofing mobile view"></div>
+    </div>
+  </div>
+
+  <!-- Felltrax Cycles -->
+  <div class="case" data-reveal="fade-up">
+    <div class="case-header">
+      <h2>Felltrax Cycles</h2>
+      <span class="case-tag">Cycling</span>
+    </div>
+    <p class="case-desc">Carlisle's mountain bike specialists. An outdoor adventure-themed site with bike catalogue, local trail guides, gallery, contact form, and a bold neon-green brand identity built for the fells.</p>
+    <div class="case-features">
+      <span class="case-feature">Bike Catalogue</span>
+      <span class="case-feature">Trail Guides</span>
+      <span class="case-feature">Photo Gallery</span>
+      <span class="case-feature">Contact Form</span>
+      <span class="case-feature">Newsletter</span>
+      <span class="case-feature">Splash Screen</span>
+    </div>
+    <div class="case-screens">
+      <div class="case-desktop"><img src="portfolio/cases/felltrax-desktop.png" alt="Felltrax Cycles desktop view"></div>
+      <div class="case-mobile"><img src="portfolio/cases/felltrax-mobile.png" alt="Felltrax Cycles mobile view"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<section class="page-cta">
+  <div class="container">
+    <h2 data-reveal="fade-up">Want something like this<br><span class="accent">for your business?</span></h2>
+    <p data-reveal="fade-up" data-reveal-delay="0.1">It starts with a brief. Five minutes of your time is all we need to get going.</p>
+    <a href="brief.html" class="btn-primary" data-reveal="fade-up" data-reveal-delay="0.2" data-magnetic>
+      Start your brief
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">Airey<span>Ai</span></a>
+    <span class="footer-copy">Powered by AireyAi</span>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<!-- AireyAI Animation Toolkit -->
+<script src="animations.js"></script>
+
+</body>
+</html>
