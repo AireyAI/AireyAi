@@ -84,11 +84,12 @@
     document.querySelectorAll('[data-split]').forEach(el => {
       const mode = el.dataset.split || 'chars';
       const text = el.textContent;
-      el.style.overflow = 'hidden';
+      el.style.overflow = 'clip';
+      el.style.paddingBottom = '0.15em';
 
       if (mode === 'chars') {
         el.innerHTML = text.split('').map(c =>
-          c === ' ' ? ' ' : `<span style="display:inline-block">${c}</span>`
+          c === ' ' ? ' ' : `<span style="display:inline-block; padding-bottom:0.1em">${c}</span>`
         ).join('');
         gsap.from(el.querySelectorAll('span'), {
           y: '110%',
@@ -100,7 +101,7 @@
         });
       } else if (mode === 'words') {
         el.innerHTML = text.split(' ').map(w =>
-          `<span style="display:inline-block; margin-right:0.25em">${w}</span>`
+          `<span style="display:inline-block; margin-right:0.25em; padding-bottom:0.1em">${w}</span>`
         ).join('');
         gsap.from(el.querySelectorAll('span'), {
           y: '100%',
