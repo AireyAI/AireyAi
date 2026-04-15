@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aria AI — Your AI Receptionist That Never Sleeps</title>
+<meta name="description" content="Aria is an AI-powered chatbot and email assistant for small businesses. It handles live chat, replies to emails, books appointments, and captures leads — 24/7.">
+<meta property="og:title" content="Aria AI — Your AI Receptionist That Never Sleeps">
+<meta property="og:description" content="AI chatbot + email auto-reply + calendar bookings. Built for small businesses.">
+<meta property="og:url" content="https://aireyai.co.uk/aria">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://aireyai.co.uk/aria.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --mint: #00e5a0;
+    --mint-dim: rgba(0, 229, 160, 0.10);
+    --mint-glow: rgba(0, 229, 160, 0.22);
+    --bg: #070710;
+    --surface: #0d0d1f;
+    --surface-2: #13132a;
+    --border: rgba(255,255,255,0.07);
+    --text: #eeeef8;
+    --text-muted: #6b6b8a;
+    --text-sub: #9898b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
+
+  .bg-canvas {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,229,160,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99,102,241,0.05) 0%, transparent 60%),
+      var(--bg);
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,7,16,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner { max-width: 1100px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  nav .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.03em; }
+  nav .logo em { font-style: normal; color: var(--mint); }
+  nav a.nav-link { color: var(--text-sub); font-size: 0.9rem; text-decoration: none; margin-left: 28px; transition: color 0.2s; }
+  nav a.nav-link:hover, nav a.nav-link:focus-visible { color: var(--mint); }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; border: none;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn:active { transform: translateY(0); }
+  .cta-btn:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+  .cta-primary { background: var(--mint); color: #070710; box-shadow: 0 4px 24px rgba(0,229,160,0.25); }
+  .cta-primary:hover { box-shadow: 0 6px 32px rgba(0,229,160,0.35); }
+  .cta-ghost { background: transparent; color: var(--mint); border: 1px solid rgba(0,229,160,0.3); }
+  .cta-ghost:hover { background: rgba(0,229,160,0.06); }
+
+  /* Hero */
+  .hero { padding: 160px 0 100px; text-align: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--mint-dim); border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px; padding: 6px 18px 6px 12px; font-size: 0.82rem; color: var(--mint);
+    margin-bottom: 28px; font-weight: 500;
+  }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.1; margin-bottom: 20px; }
+  .hero h1 .mint { color: var(--mint); }
+  .hero p { font-size: 1.15rem; color: var(--text-sub); max-width: 600px; margin: 0 auto 36px; }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* Feature Grid */
+  .features { padding: 80px 0; }
+  .features h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .features .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 56px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .feature-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 32px 28px; transition: transform 0.3s, border-color 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); border-color: rgba(0,229,160,0.2); }
+  .feature-card .icon { font-size: 32px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .feature-card p { font-size: 0.9rem; color: var(--text-sub); line-height: 1.6; }
+
+  /* How It Works */
+  .how { padding: 80px 0; }
+  .how h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 56px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+  .step {
+    text-align: center; padding: 32px 24px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 50%; background: var(--mint-dim);
+    color: var(--mint); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem;
+    margin-bottom: 16px;
+  }
+  .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; }
+
+  /* Stats */
+  .stats { padding: 60px 0; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; color: var(--mint); }
+  .stat-label { font-size: 0.9rem; color: var(--text-sub); margin-top: 4px; }
+
+  /* Pricing */
+  .pricing { padding: 80px 0; }
+  .pricing h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .pricing .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 48px; }
+  .pricing-card {
+    max-width: 480px; margin: 0 auto;
+    background: var(--surface); border: 1px solid rgba(0,229,160,0.15); border-radius: 20px;
+    padding: 40px 36px; text-align: center;
+    box-shadow: 0 8px 40px rgba(0,229,160,0.06);
+  }
+  .pricing-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+  .pricing-card .price { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800; color: var(--mint); margin: 16px 0 8px; }
+  .pricing-card .price span { font-size: 1rem; color: var(--text-sub); font-weight: 400; }
+  .pricing-card ul { list-style: none; padding: 0; margin: 24px 0; text-align: left; }
+  .pricing-card li { padding: 8px 0; font-size: 0.92rem; color: var(--text-sub); display: flex; align-items: center; gap: 10px; }
+  .pricing-card li::before { content: ''; display: inline-block; width: 20px; height: 20px; background: var(--mint-dim); border-radius: 50%; flex-shrink: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300e5a0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
+
+  /* FAQ */
+  .faq { padding: 80px 0; }
+  .faq h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 48px; }
+  .faq-list { max-width: 680px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; background: none; border: none; color: var(--text); font-size: 1rem; font-weight: 600;
+    padding: 20px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Syne', sans-serif;
+  }
+  .faq-q:hover { color: var(--mint); }
+  .faq-q:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; border-radius: 4px; }
+  .faq-q .arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--mint); }
+  .faq-item.open .arrow { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-a p { padding: 0 0 20px; font-size: 0.9rem; color: var(--text-sub); line-height: 1.7; }
+
+  /* CTA Section */
+  .final-cta { padding: 100px 0; text-align: center; }
+  .final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 16px; }
+  .final-cta p { color: var(--text-sub); font-size: 1.05rem; max-width: 500px; margin: 0 auto 32px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+  footer p { font-size: 0.85rem; color: var(--text-muted); }
+  footer a { color: var(--mint); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 130px 0 60px; }
+    .hero-ctas { flex-direction: column; align-items: center; }
+    nav .nav-link { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-canvas"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="inner">
+    <div class="logo">Aria<em>Ai</em></div>
+    <div>
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#how" class="nav-link">How It Works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="https://aireyai.co.uk" class="nav-link">AireyAi</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero container">
+  <div class="hero-badge" data-appear>
+    <span style="font-size:14px;">🤖</span> AI-Powered Business Assistant
+  </div>
+  <h1 data-split="words">Your AI Receptionist That <span class="mint">Never Sleeps</span></h1>
+  <p data-appear data-appear-delay="0.3">Aria handles your live chat, replies to your emails, books appointments into your calendar, and captures every lead — automatically, 24/7.</p>
+  <div class="hero-ctas" data-appear data-appear-delay="0.5">
+    <a href="https://aireyai.co.uk/#contact" class="cta-btn cta-primary" data-magnetic>Get Aria for Your Business</a>
+    <a href="#features" class="cta-btn cta-ghost" data-magnetic>See What It Does</a>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features container" id="features">
+  <h2 data-reveal="fade-up">Everything Your Business Needs</h2>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">One AI assistant that replaces a receptionist, email responder, and booking system.</p>
+  <div class="feature-grid" data-stagger-parent>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">💬</div>
+      <h3>Live Chat Widget</h3>
+      <p>A branded chatbot on your website that answers questions, captures leads, and books appointments — trained on your business info.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">📧</div>
+      <h3>Email Auto-Reply</h3>
+      <p>Connects to your Gmail and replies to incoming emails professionally within minutes. Branded templates with your logo and colours.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">📅</div>
+      <h3>Calendar Bookings</h3>
+      <p>Detects appointment requests in emails and chat, then creates events directly in your Google Calendar. No double-bookings.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">🚨</div>
+      <h3>Urgent Alerts</h3>
+      <p>Flags complaints, emergencies, and time-sensitive emails — alerts you immediately so nothing critical gets missed.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">📬</div>
+      <h3>Smart Follow-Ups</h3>
+      <p>If a lead doesn't reply, Aria sends a friendly follow-up at 24 and 48 hours. Persistent without being pushy.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">📊</div>
+      <h3>Client Dashboard</h3>
+      <p>A password-protected dashboard where you manage settings, view stats, add FAQs, and review every reply Aria sends.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">🛡️</div>
+      <h3>Spam Filter</h3>
+      <p>Automatically skips marketing emails, cold outreach, and newsletters. Only real customer emails get replies.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">✏️</div>
+      <h3>Approval Mode</h3>
+      <p>Want to review before sending? Aria emails you each draft with approve or reject buttons. Full control when you need it.</p>
+    </div>
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon">📚</div>
+      <h3>Knowledge Base</h3>
+      <p>Add FAQs to your dashboard and Aria uses them to give accurate, consistent answers to common questions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how container" id="how">
+  <h2 data-reveal="fade-up">Up and Running in 5 Minutes</h2>
+  <div class="steps" data-stagger-parent>
+    <div class="step" data-stagger-child>
+      <div class="step-num">1</div>
+      <h3>We Build Your Site</h3>
+      <p>Aria comes included with every AireyAi website. We embed the chat widget and configure it for your business.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">2</div>
+      <h3>Connect Your Gmail</h3>
+      <p>One click to connect your Google account. Aria gets permission to read, reply, and manage your calendar.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">3</div>
+      <h3>Describe Your Business</h3>
+      <p>Tell Aria about your services, hours, and common questions. The more detail, the better the replies.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">4</div>
+      <h3>Aria Takes Over</h3>
+      <p>Emails get replied to, bookings get added, leads get captured. You focus on the work — Aria handles the rest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats container">
+  <div class="stats-grid" data-stagger-parent>
+    <div data-stagger-child>
+      <div class="stat-num"><span data-counter="3" data-counter-suffix=" min">0</span></div>
+      <div class="stat-label">Average reply time</div>
+    </div>
+    <div data-stagger-child>
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Always available</div>
+    </div>
+    <div data-stagger-child>
+      <div class="stat-num"><span data-counter="100" data-counter-suffix="%" data-counter-decimals="0">0</span></div>
+      <div class="stat-label">Emails answered</div>
+    </div>
+    <div data-stagger-child>
+      <div class="stat-num"><span data-counter="0" data-counter-suffix=" missed">0</span></div>
+      <div class="stat-label">Leads lost</div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing container" id="pricing">
+  <h2 data-reveal="fade-up">Simple Pricing</h2>
+  <p class="sub" data-reveal="fade-up">Aria is included with every AireyAi website package.</p>
+  <div class="pricing-card" data-reveal="zoom">
+    <h3>Included with Your Website</h3>
+    <div class="price">Free <span>with any AireyAi site</span></div>
+    <ul>
+      <li>Live chat widget on your site</li>
+      <li>Gmail auto-reply with branded templates</li>
+      <li>Google Calendar booking sync</li>
+      <li>Spam filtering and urgent alerts</li>
+      <li>Smart follow-ups at 24h and 48h</li>
+      <li>Client dashboard with stats</li>
+      <li>Knowledge base for FAQs</li>
+      <li>Reply approval mode</li>
+      <li>Weekly performance reports</li>
+      <li>WhatsApp lead handoff</li>
+    </ul>
+    <a href="https://aireyai.co.uk/#contact" class="cta-btn cta-primary" data-magnetic style="width:100%;justify-content:center;margin-top:8px;">Get Started</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq container" id="faq">
+  <h2 data-reveal="fade-up">Frequently Asked Questions</h2>
+  <div class="faq-list" data-reveal="fade-up" data-reveal-delay="0.1">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does Aria actually send emails from my address? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Yes. Aria connects to your Gmail via Google's official API and sends replies from your actual email address. Recipients see your name and email — not a third-party address.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I review replies before they're sent? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Absolutely. Turn on Approval Mode in your dashboard and Aria will email you each draft with approve and reject buttons. Nothing goes out without your say-so.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What happens with spam and marketing emails? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Aria has a built-in spam filter that detects cold outreach, newsletters, and marketing emails. These are automatically skipped — only real customer enquiries get a reply.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is my data safe? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Email content is read, processed, and discarded in real time — we don't store your emails. OAuth tokens are encrypted and you can revoke access anytime from your Google account. See our <a href="/privacy.html" style="color:var(--mint);">privacy policy</a> for full details.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How does the chatbot know about my business? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>You provide a business description in your dashboard — services, hours, location, common questions. You can also add FAQs to the knowledge base. Aria uses all of this to give accurate, on-brand answers.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I use Aria without an AireyAi website? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Aria is currently available exclusively as part of an AireyAi website package. If you'd like Aria for an existing site, get in touch and we'll work something out.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta container">
+  <h2 data-reveal="fade-up">Stop Missing Leads.<br><span style="color:var(--mint);">Let Aria Handle It.</span></h2>
+  <p data-reveal="fade-up" data-reveal-delay="0.1">Every missed email is a missed customer. Aria makes sure that never happens.</p>
+  <div data-reveal="fade-up" data-reveal-delay="0.2">
+    <a href="https://aireyai.co.uk/#contact" class="cta-btn cta-primary" data-magnetic>Get Aria for Your Business</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px;">&copy; 2026 AireyAi. Built in Carlisle, Cumbria.</p>
+    <p><a href="https://aireyai.co.uk">Home</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="mailto:kyle.airey@hotmail.com">Contact</a></p>
+  </div>
+</footer>
+
+<script src="animations.js"></script>
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      const a = item.querySelector('.faq-a');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  }
+</script>
+</body>
+</html>
