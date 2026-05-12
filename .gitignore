@@ -2,3 +2,6 @@ temporary screenshots/
 .DS_Store
 *.code-workspace
 .superpowers/
+node_modules/
+package-lock.json
+package.json
