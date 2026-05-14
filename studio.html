@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — AI Video Ads, Imagery, UGC for DTC Brands · AireyAi</title>
+<meta name="description" content="AireyAi Studio produces AI video ads, product imagery, UGC, and brand campaigns for DTC brands. Brief on Monday, delivered Friday. From £400. No retainer.">
+<meta property="og:title" content="AireyAi Studio — AI Content for DTC Brands">
+<meta property="og:description" content="Video ads, product imagery, UGC, brand campaigns. Brief Monday, deliver Friday. From £400, no retainer.">
+<meta property="og:url" content="https://aireyai.co.uk/studio.html">
+<meta property="og:image" content="https://aireyai.co.uk/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AireyAi Studio — AI content for DTC brands">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AireyAi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
+<link rel="canonical" href="https://aireyai.co.uk/studio.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --mint: #00e5a0;
+    --mint-dim: rgba(0, 229, 160, 0.10);
+    --mint-glow: rgba(0, 229, 160, 0.22);
+    --bg: #070710;
+    --surface: #0d0d1f;
+    --surface-2: #13132a;
+    --border: rgba(255,255,255,0.07);
+    --text: #eeeef8;
+    --text-muted: #6b6b8a;
+    --text-sub: #9898b8;
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 20px;
+    --shadow-glow: 0 8px 40px rgba(0,229,160,0.10), 0 1px 0 rgba(255,255,255,0.04) inset;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, .syne { font-family: 'Syne', sans-serif; }
+
+  .bg-canvas {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0,229,160,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(99,102,241,0.05) 0%, transparent 60%),
+      var(--bg);
+  }
+  .bg-canvas::after {
+    content: ''; position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay; opacity: 0.7;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(7,7,16,0.85); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner { max-width: 1100px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+  nav .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.03em; }
+  nav .logo em { font-style: normal; color: var(--mint); }
+  nav a.nav-link { color: var(--text-sub); font-size: 0.9rem; text-decoration: none; margin-left: 28px; transition: color 0.2s; }
+  nav a.nav-link:hover, nav a.nav-link:focus-visible { color: var(--mint); }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 12px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(.2,.8,.2,1), box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer; border: none;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+  .cta-btn:active { transform: translateY(0); }
+  .cta-btn:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+  .cta-primary { background: var(--mint); color: #070710; box-shadow: 0 4px 24px rgba(0,229,160,0.25); }
+  .cta-primary:hover { box-shadow: 0 6px 32px rgba(0,229,160,0.40); }
+  .cta-ghost { background: transparent; color: var(--mint); border: 1px solid rgba(0,229,160,0.3); }
+  .cta-ghost:hover { background: rgba(0,229,160,0.06); border-color: rgba(0,229,160,0.5); }
+
+  /* Hero */
+  .hero { padding: 160px 0 80px; text-align: center; position: relative; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--mint-dim); border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 100px; padding: 6px 18px 6px 12px; font-size: 0.82rem; color: var(--mint);
+    margin-bottom: 28px; font-weight: 500;
+  }
+  .hero-badge .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 0 rgba(0,229,160,0.6); animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(0,229,160,0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(0,229,160,0); }
+    100% { box-shadow: 0 0 0 0 rgba(0,229,160,0); }
+  }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 22px; overflow: clip; padding-bottom: 0.15em; }
+  .hero h1 .mint { color: var(--mint); }
+  .hero p.lead { font-size: 1.15rem; color: var(--text-sub); max-width: 640px; margin: 0 auto 28px; }
+  .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px; }
+  .hero-microcopy { font-size: 0.82rem; color: var(--text-muted); }
+  .hero-microcopy strong { color: var(--text-sub); font-weight: 500; }
+
+  /* Proof section (mirrors Aria's .live) */
+  .proof { padding: 70px 0 30px; }
+  .proof h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .proof .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 48px; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+
+  /* TODO placeholder banner — visible while content is pending */
+  .todo-block {
+    border: 1px dashed rgba(255, 200, 0, 0.45);
+    background: rgba(255, 200, 0, 0.05);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    text-align: center;
+    grid-column: 1 / -1;
+  }
+  .todo-block .todo-label {
+    display: inline-block; font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.15em; color: rgba(255, 200, 0, 0.85);
+    background: rgba(255, 200, 0, 0.1); padding: 4px 12px; border-radius: 6px;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .todo-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+  .todo-block p { font-size: 0.92rem; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+
+  /* Trust strip */
+  .trust { padding: 50px 0 20px; }
+  .trust .row { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 14px 28px; }
+  .trust .label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.15em; }
+  .trust .name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--text-sub); letter-spacing: -0.01em; }
+  .trust .dot { width: 4px; height: 4px; background: var(--text-muted); border-radius: 50%; opacity: 0.5; }
+
+  /* How / Features / Services */
+  .features, .how, .services { padding: 80px 0; }
+  .features h2, .how h2, .services h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .features .sub, .how .sub, .services .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 56px; max-width: 580px; margin-left: auto; margin-right: auto; }
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .feature-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 30px 26px; transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); border-color: rgba(0,229,160,0.2); }
+  .feature-card .icon { font-size: 30px; margin-bottom: 14px; line-height: 1; }
+  .feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.02em; }
+  .feature-card p { font-size: 0.9rem; color: var(--text-sub); line-height: 1.6; }
+  .feature-card .price-from { display: inline-block; font-size: 0.78rem; color: var(--mint); background: var(--mint-dim); padding: 3px 10px; border-radius: 6px; margin-top: 12px; font-weight: 600; }
+
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; }
+  .step {
+    text-align: center; padding: 32px 24px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; border-radius: 50%; background: var(--mint-dim);
+    color: var(--mint); font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem;
+    margin-bottom: 18px;
+  }
+  .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .step p { font-size: 0.88rem; color: var(--text-sub); line-height: 1.6; }
+
+  /* ROI strip */
+  .roi { padding: 50px 0; }
+  .roi-card {
+    background: linear-gradient(135deg, rgba(0,229,160,0.06), rgba(99,102,241,0.04));
+    border: 1px solid rgba(0,229,160,0.18); border-radius: var(--radius-lg);
+    padding: 36px 32px; text-align: center; max-width: 780px; margin: 0 auto;
+    box-shadow: var(--shadow-glow);
+  }
+  .roi-card .eyebrow { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 12px; }
+  .roi-card h3 { font-size: clamp(1.4rem, 2.5vw, 1.9rem); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 12px; }
+  .roi-card p { color: var(--text-sub); font-size: 0.95rem; max-width: 520px; margin: 0 auto; }
+  .roi-card strong { color: var(--mint); font-weight: 600; }
+
+  /* Pricing */
+  .pricing { padding: 80px 0; }
+  .pricing h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .pricing .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 56px; max-width: 540px; margin-left: auto; margin-right: auto; }
+
+  .bundle-note {
+    margin-top: 32px; text-align: center; font-size: 0.88rem; color: var(--text-sub);
+    padding: 16px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .bundle-note a { color: var(--mint); text-decoration: none; }
+  .bundle-note a:hover { text-decoration: underline; }
+
+  /* FAQ */
+  .faq { padding: 80px 0; }
+  .faq h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 48px; }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; background: none; border: none; color: var(--text); font-size: 1rem; font-weight: 600;
+    padding: 22px 0; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Syne', sans-serif; gap: 16px;
+    transition: color 0.2s;
+  }
+  .faq-q:hover { color: var(--mint); }
+  .faq-q:focus-visible { outline: 2px solid var(--mint); outline-offset: 2px; border-radius: 4px; }
+  .faq-q .arrow { font-size: 1.4rem; transition: transform 0.3s; color: var(--mint); flex-shrink: 0; }
+  .faq-item.open .arrow { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .faq-a p { padding: 0 0 22px; font-size: 0.93rem; color: var(--text-sub); line-height: 1.7; }
+
+  /* CTA Section */
+  .final-cta { padding: 100px 0 90px; text-align: center; }
+  .final-cta h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.035em; margin-bottom: 16px; line-height: 1.1; }
+  .final-cta p { color: var(--text-sub); font-size: 1.05rem; max-width: 540px; margin: 0 auto 32px; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+  footer p { font-size: 0.85rem; color: var(--text-muted); }
+  footer a { color: var(--mint); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 130px 0 60px; }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .hero-ctas .cta-btn { width: 100%; justify-content: center; }
+    nav .nav-link { display: none; }
+    nav .cta-btn { padding: 10px 18px; font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+<div class="bg-canvas"></div>
+
+<!-- Nav -->
+<nav>
+  <div class="inner">
+    <div class="logo">Studio<em>Ai</em></div>
+    <div style="display:flex;align-items:center;">
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic style="margin-left:24px;">Brief us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero container">
+  <div class="hero-badge" data-appear>
+    <span class="pulse"></span> Brief Monday, delivered Friday
+  </div>
+  <h1 data-split="words">AI Content for <span class="mint">DTC Brands</span></h1>
+  <p class="lead" data-appear data-appear-delay="0.3">Video ads, product imagery, UGC, and brand campaigns — produced with AI, finished by humans. From £400, no retainer, no agency overhead.</p>
+  <div class="hero-ctas" data-appear data-appear-delay="0.5">
+    <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
+    <a href="#services" class="cta-btn cta-ghost" data-magnetic>See what we make →</a>
+  </div>
+  <div class="hero-microcopy" data-appear data-appear-delay="0.7">
+    <strong>Brief Mon · Deliver Fri.</strong> No retainer. Pay per project.
+  </div>
+</section>
+
+<!-- Proof / Recent Work — TODO: needs real client work or honest "in beta" framing -->
+<section class="proof container" id="work">
+  <h2 data-reveal="fade-up">Recent work</h2>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">Each piece below is real output from the Studio pipeline — shipped to a real brand, ready for paid social.</p>
+  <div class="proof-grid">
+
+    <!-- TODO #1: real proof. Replace this whole .todo-block with 3-6 .live-card units (mirror aria.html lines 372-411) once Kyle picks the proof brands. Suggested options: (a) Lora Vale generated content as the demo brand, (b) Northwave fixture brand from the ad pipeline, (c) hold for first real client. -->
+    <div class="todo-block">
+      <span class="todo-label">TODO · Proof</span>
+      <h3>3–6 client proof tiles need to drop in here</h3>
+      <p>Pick the demo brand: Lora Vale (already shot), the Northwave fixture brand from the ad pipeline, or hold for first real client. Each tile = 1080×1920 thumbnail + 1-line outcome. Aria's <code>.live-card</code> pattern handles the layout — port it once the assets are ready.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how container" id="how">
+  <h2 data-reveal="fade-up">Brief Monday. Delivered Friday.</h2>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">A productized 5-day cycle. No agency back-and-forth. No retainer.</p>
+  <div class="steps" data-stagger-parent>
+    <div class="step" data-stagger-child>
+      <div class="step-num">1</div>
+      <h3>Brief us by Monday</h3>
+      <p>Tell us your brand, your offer, your audience, and what you want made — video ad, product still, UGC reel, full campaign. One email is enough.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">2</div>
+      <h3>Concept by Tuesday</h3>
+      <p>You get 2–3 directions back — hook, visual, treatment. Pick one or steer it. Twenty-minute decision, not a month-long pitch.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">3</div>
+      <h3>Production Wed–Thu</h3>
+      <p>The Studio pipeline runs: AI generation, editing, motion, color, sound. Human-finished. You see one preview before cut.</p>
+    </div>
+    <div class="step" data-stagger-child>
+      <div class="step-num">4</div>
+      <h3>Delivered Friday</h3>
+      <p>Final files in your inbox: 9:16, 1:1, 16:9 cuts ready for Meta, TikTok, YouTube. Rights cleared for paid social.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services container" id="services">
+  <h2 data-reveal="fade-up">What the Studio makes</h2>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">Four productized lanes. Mix and match per brief.</p>
+  <div class="feature-grid" data-stagger-parent>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🎬</div>
+      <h3>Video Ads</h3>
+      <p>Hook-led short-form ads for Meta, TikTok, YouTube Shorts. AI-generated footage, scripted hooks, motion-edited, captions burned in. Three aspect ratios per concept.</p>
+      <span class="price-from">From £400 / concept</span>
+    </div>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">📸</div>
+      <h3>Product Imagery</h3>
+      <p>Photoreal product stills against branded scenes — lifestyle, studio, in-context. Replaces a photoshoot for new SKUs, refreshes, and seasonal drops.</p>
+      <span class="price-from">From £150 / set</span>
+    </div>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🎤</div>
+      <h3>UGC-Style Reels</h3>
+      <p>AI creator content that reads as authentic UGC — unboxing, review, get-ready-with-me. Face-locked AI personas mean a consistent "creator" across every video.</p>
+      <span class="price-from">From £250 / reel</span>
+    </div>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🎯</div>
+      <h3>Brand Campaigns</h3>
+      <p>Multi-asset campaigns built around one creative direction — hero film, social cuts, product stills, paid variants. For launches, seasonal drops, or repositioning.</p>
+      <span class="price-from">From £1,500 / campaign</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ROI strip -->
+<section class="roi container">
+  <div class="roi-card" data-reveal="fade-up">
+    <div class="eyebrow">The Maths</div>
+    <h3>One <strong>winning ad</strong> can carry a brand for a quarter. Studio gets you to that winner without a retainer.</h3>
+    <p>A typical agency video ad is £2,500–£8,000 and takes 4–6 weeks. Studio ships you 3 ad concepts in 5 days for £400 each — so you can A/B test 3 directions for the price of one agency revision round.</p>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing container" id="pricing">
+  <h2 data-reveal="fade-up">Pricing</h2>
+  <p class="sub" data-reveal="fade-up">Productized rates. No retainer. No surprise fees.</p>
+
+  <!-- TODO #2: pricing tier ladder. Right now each service shows a "From £X" in the card above. If you want a tier ladder (Starter / Growth / Brand) like Aria has — 3 columns with feature checklists — replace this todo-block with the .pricing-grid pattern from aria.html lines 523-575. If flat per-service is fine, delete this block entirely and the per-service "From £X" badges in the Services section above are the canonical pricing. -->
+  <div style="max-width: 720px; margin: 0 auto;">
+    <div class="todo-block">
+      <span class="todo-label">TODO · Pricing model</span>
+      <h3>Decide: flat per-service vs tier ladder</h3>
+      <p><strong>Option A · Flat per-service</strong> (current default): each service in the Services grid shows "From £X". Buyer picks what they need, briefs it, pays per project. Cleanest for low-ticket entry.<br><br><strong>Option B · Tier ladder</strong> (Aria pattern): Starter / Growth / Brand bundles with monthly retainer pricing. Better LTV but adds friction. <br><br>If A: delete this block. If B: I drop in the 3-column .pricing-grid scaffold and you fill the bundle contents.</p>
+    </div>
+  </div>
+
+  <div class="bundle-note" data-reveal="fade-up">
+    Need a website too? Studio comes <strong style="color:var(--mint);">£100/mo off</strong> with every <a href="https://aireyai.co.uk/#contact">AireyAi website build</a>.
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq container" id="faq">
+  <h2 data-reveal="fade-up">Frequently Asked Questions</h2>
+  <div class="faq-list" data-reveal="fade-up" data-reveal-delay="0.1">
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Is this AI or real footage? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>AI-generated, human-finished. The footage, voiceover, and stills are produced by AI models we've trained for brand-grade output. Editing, motion, color, and sound are human-tuned. Result: looks shot, costs a fraction.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Can I see more samples? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>The Recent Work section above shows our current portfolio. Studio is in early access — if you want to see the pipeline produce something for your specific category before committing, brief us and we'll send a single 9:16 sample within 48 hours.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What if I hate it? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>You see one preview before final cut. If the direction isn't landing, we re-cut once — included. If after the re-cut you still don't want it, you don't pay. We'd rather lose the project than ship something you can't run.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Can you rush a brief? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Standard cycle is brief Mon → deliver Fri. Rush turnaround (48h) is +50%, subject to capacity. Email kyle.airey@hotmail.com with the deadline and we'll confirm same-day.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Who writes the copy? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>We do — included. You give us your brand voice, offer, and audience in the brief; we write hooks, captions, and on-screen copy. If you have a copywriter you trust, send us the script and we produce against it. Either way works.</p></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What rights do I get on the final files? <span class="arrow">+</span></button>
+      <div class="faq-a"><p>Full commercial rights for paid social, organic social, your website, and email. Files are yours forever. We don't watermark, don't gate-keep, don't charge a usage license. The one thing we ask: let us mention the brand as a Studio client (you can opt out).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta container">
+  <h2 data-reveal="fade-up">Brief us by Monday.<br><span style="color:var(--mint);">Live ads by Friday.</span></h2>
+  <p data-reveal="fade-up" data-reveal-delay="0.1">From £400. No retainer. No agency overhead. One email starts it.</p>
+  <div data-reveal="fade-up" data-reveal-delay="0.2">
+    <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p style="margin-bottom:8px;">&copy; 2026 AireyAi. Built in Carlisle, Cumbria.</p>
+    <p><a href="https://aireyai.co.uk">Home</a> &nbsp;·&nbsp; <a href="/aria.html">Aria</a> &nbsp;·&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="mailto:kyle.airey@hotmail.com">Contact</a></p>
+  </div>
+</footer>
+
+<script src="animations.js"></script>
+<script>
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = '0';
+      i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      const a = item.querySelector('.faq-a');
+      a.style.maxHeight = a.scrollHeight + 'px';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>
+</body>
+</html>
