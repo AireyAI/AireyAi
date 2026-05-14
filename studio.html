@@ -122,23 +122,43 @@
   .proof .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 48px; max-width: 580px; margin-left: auto; margin-right: auto; }
   .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
 
-  /* TODO placeholder banner — visible while content is pending */
-  .todo-block {
-    border: 1px dashed rgba(255, 200, 0, 0.45);
-    background: rgba(255, 200, 0, 0.05);
-    border-radius: var(--radius-md);
-    padding: 28px 24px;
-    text-align: center;
-    grid-column: 1 / -1;
+  .proof-card {
+    position: relative;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s, box-shadow 0.3s;
   }
-  .todo-block .todo-label {
-    display: inline-block; font-size: 0.72rem; text-transform: uppercase;
-    letter-spacing: 0.15em; color: rgba(255, 200, 0, 0.85);
-    background: rgba(255, 200, 0, 0.1); padding: 4px 12px; border-radius: 6px;
-    margin-bottom: 12px; font-weight: 600;
+  .proof-card:hover { transform: translateY(-6px); border-color: rgba(0,229,160,0.35); box-shadow: 0 16px 60px rgba(0,229,160,0.12); }
+  .proof-card .shot {
+    aspect-ratio: 9 / 16; position: relative;
+    border-bottom: 1px solid var(--border); overflow: hidden;
+    background: #08090f;
   }
-  .todo-block h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--text); }
-  .todo-block p { font-size: 0.92rem; color: var(--text-sub); max-width: 560px; margin: 0 auto; }
+  .proof-card .shot video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .proof-card .shot::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to top, rgba(7,7,16,0.65) 0%, transparent 35%);
+  }
+  .proof-card .bubble {
+    position: absolute; bottom: 14px; left: 14px; right: 14px;
+    background: rgba(13,13,31,0.88); backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,229,160,0.25); border-radius: 12px;
+    padding: 10px 14px; font-size: 0.78rem; color: var(--text);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .proof-card .bubble .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); flex-shrink: 0; box-shadow: 0 0 0 0 rgba(0,229,160,0.6); animation: pulse 2.4s infinite; }
+  .proof-card .meta { padding: 18px 20px 20px; }
+  .proof-card .tag {
+    display: inline-block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--mint); background: var(--mint-dim); padding: 3px 10px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .proof-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.02em; }
+  .proof-card p { font-size: 0.86rem; color: var(--text-sub); margin-bottom: 14px; line-height: 1.6; }
+  .proof-card .brief-link { color: var(--mint); font-size: 0.86rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .proof-card .brief-link svg { transition: transform 0.25s; }
+  .proof-card .brief-link:hover svg { transform: translateX(4px); }
 
   /* Trust strip */
   .trust { padding: 50px 0 20px; }
@@ -273,17 +293,49 @@
   </div>
 </section>
 
-<!-- Proof / Recent Work — TODO: needs real client work or honest "in beta" framing -->
+<!-- Proof / Recent Work -->
 <section class="proof container" id="work">
   <h2 data-reveal="fade-up">Recent work</h2>
-  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">Each piece below is real output from the Studio pipeline — shipped to a real brand, ready for paid social.</p>
-  <div class="proof-grid">
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">Real output from the Studio pipeline. Each tile auto-plays — no demo sandbox, just the finished asset.</p>
+  <div class="proof-grid" data-stagger-parent>
 
-    <!-- TODO #1: real proof. Replace this whole .todo-block with 3-6 .live-card units (mirror aria.html lines 372-411) once Kyle picks the proof brands. Suggested options: (a) Lora Vale generated content as the demo brand, (b) Northwave fixture brand from the ad pipeline, (c) hold for first real client. -->
-    <div class="todo-block">
-      <span class="todo-label">TODO · Proof</span>
-      <h3>3–6 client proof tiles need to drop in here</h3>
-      <p>Pick the demo brand: Lora Vale (already shot), the Northwave fixture brand from the ad pipeline, or hold for first real client. Each tile = 1080×1920 thumbnail + 1-line outcome. Aria's <code>.live-card</code> pattern handles the layout — port it once the assets are ready.</p>
+    <div class="proof-card" data-stagger-child>
+      <div class="shot">
+        <video src="portfolio/studio/lora-mug-voiceover.mp4" poster="portfolio/studio/lora-mug-voiceover.jpg" autoplay muted loop playsinline preload="metadata" aria-label="UGC review of a sage-green ceramic mug, AI-generated creator with voiceover"></video>
+        <div class="bubble"><span class="dot"></span><span>Etsy ceramics · UGC review · 9:16 · 10s</span></div>
+      </div>
+      <div class="meta">
+        <span class="tag">UGC · Ceramics</span>
+        <h3>Sage Green Mug — Voiceover Review</h3>
+        <p>AI creator does a tone-matched honest review of an Etsy ceramic mug. Full voiceover, captions burned in, paced for the early-morning aesthetic feed.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20UGC%20review%20like%20the%20Sage%20Mug&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20Sage%20Green%20Mug%20voiceover%20review%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+      </div>
+    </div>
+
+    <div class="proof-card" data-stagger-child>
+      <div class="shot">
+        <video src="portfolio/studio/lora-crewneck.mp4" poster="portfolio/studio/lora-crewneck.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Embroidered crewneck apparel showcase, AI creator wearing the garment"></video>
+        <div class="bubble"><span class="dot"></span><span>Apparel · Showcase · 9:16 · 8s</span></div>
+      </div>
+      <div class="meta">
+        <span class="tag">Apparel · Embroidered</span>
+        <h3>Auntie Est 2026 Crewneck</h3>
+        <p>Pregnancy-announcement crewneck shown on a face-locked AI creator in soft natural light. 9:16 cut for Reels and TikTok, ready to drop into a paid creative test.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Apparel%20showcase%20like%20the%20Crewneck&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20Auntie%20Est%20Crewneck%20showcase%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+      </div>
+    </div>
+
+    <div class="proof-card" data-stagger-child>
+      <div class="shot">
+        <video src="portfolio/studio/lora-mug-cottagecore.mp4" poster="portfolio/studio/lora-mug-cottagecore.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Same sage-green mug shot in a cottagecore aesthetic on a marble cafe counter"></video>
+        <div class="bubble"><span class="dot"></span><span>Same SKU · A/B angle · 9:16 · 10s</span></div>
+      </div>
+      <div class="meta">
+        <span class="tag">A/B Angle · Cottagecore</span>
+        <h3>Same Mug, Different Mood</h3>
+        <p>Same product, cottagecore aesthetic, marble cafe counter. Three concepts on one SKU for the price of one agency revision round — the Studio's whole point.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%203%20creative%20angles%20on%20one%20product&body=Hi%20Kyle%2C%0A%0AI%20want%20to%20A%2FB%20test%203%20creative%20directions%20on%20one%20product%20like%20the%20Mug%20examples.%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+      </div>
     </div>
 
   </div>
