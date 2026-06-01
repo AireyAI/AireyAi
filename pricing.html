@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — AireyAi | Websites, Meta Ads, AI Receptionist & Lead Gen</title>
+<meta name="description" content="Transparent, fixed-price productised services for UK small businesses. Websites from £497, Meta Ads from £99/mo, Aria AI receptionist from £97/mo, lead gen from £997/mo. All prices +VAT.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="AireyAi Pricing — Everything we do, every price">
+<meta property="og:description" content="Websites, Meta Ads, the Aria AI receptionist, and lead generation — fixed-price, productised, no hidden quotes. Bundle for up to 25% off.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aireyai.co.uk/pricing.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mint: #00e5a0;
+    --mint-dim: rgba(0, 229, 160, 0.10);
+    --bg: #070710;
+    --surface: #0d0d1f;
+    --surface-2: #13132a;
+    --border: rgba(255,255,255,0.07);
+    --text: #eeeef8;
+    --text-muted: #6b6b8a;
+    --text-sub: #9898b8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: 'DM Sans', sans-serif; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(900px circle at 20% -10%, rgba(0,229,160,0.06), transparent 50%), radial-gradient(700px circle at 90% 0%, rgba(91,79,232,0.06), transparent 45%);
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--mint); text-decoration: none; }
+
+  nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); background: rgba(7,7,16,0.7); border-bottom: 1px solid var(--border); }
+  nav .inner { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; padding: 16px 24px; }
+  nav .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--text); letter-spacing: -0.03em; }
+  nav .logo em { font-style: normal; color: var(--mint); }
+  nav .links a { color: var(--text-sub); font-size: 0.9rem; margin-left: 24px; transition: color 0.2s; }
+  nav .links a:hover { color: var(--mint); }
+  @media (max-width: 720px) { nav .links a { display: none; } nav .links a.home { display: inline; } }
+
+  .hero { text-align: center; padding: 72px 0 36px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; }
+  .hero h1 .mint { color: var(--mint); }
+  .hero p { color: var(--text-sub); font-size: 1.08rem; max-width: 620px; margin: 18px auto 0; }
+  .vat-note { display: inline-block; margin-top: 18px; font-size: 0.82rem; color: var(--text-muted); border: 1px solid var(--border); border-radius: 999px; padding: 6px 16px; }
+
+  section.svc { padding: 44px 0 8px; }
+  .svc h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.03em; }
+  .svc .lead { color: var(--text-sub); margin: 6px 0 26px; max-width: 680px; }
+  .eyebrow { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mint); margin-bottom: 10px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px 22px; display: flex; flex-direction: column; transition: transform .2s, border-color .2s; }
+  .card:hover { transform: translateY(-4px); border-color: rgba(0,229,160,0.28); }
+  .card.featured { border-color: var(--mint); box-shadow: 0 0 0 1px var(--mint), 0 18px 50px var(--mint-dim); }
+  .card .badge { align-self: flex-start; background: var(--mint); color: #04140d; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 11px; border-radius: 999px; margin-bottom: 12px; }
+  .card .name { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; }
+  .card .price { font-family: 'Syne', sans-serif; font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; margin-top: 8px; line-height: 1; }
+  .card .price .unit { font-family: 'DM Sans'; font-size: 0.85rem; font-weight: 500; color: var(--text-sub); }
+  .card .sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; min-height: 18px; }
+  .card .desc { font-size: 0.86rem; color: var(--text-sub); margin-top: 14px; line-height: 1.55; }
+
+  .rangenote { font-size: 0.82rem; color: var(--text-muted); margin-top: 14px; }
+
+  .bundle-band { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border: 1px solid var(--border); border-radius: 20px; padding: 34px 28px; margin-top: 16px; }
+  .bundle-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-top: 18px; }
+  .bundle-grid .b { background: var(--bg); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .bundle-grid .b .big { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; color: var(--mint); }
+  .bundle-grid .b .lbl { font-size: 0.85rem; color: var(--text-sub); margin-top: 4px; }
+
+  .terms { font-size: 0.86rem; color: var(--text-sub); }
+  .terms li { margin: 8px 0 8px 20px; }
+
+  .cta-band { text-align: center; padding: 56px 0 24px; }
+  .cta-band h2 { font-family: 'Syne', sans-serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.03em; }
+  .btn { display: inline-block; margin-top: 20px; background: var(--mint); color: #04140d; font-weight: 700; padding: 14px 28px; border-radius: 999px; }
+  .btn:hover { background: #00c98c; }
+
+  footer { border-top: 1px solid var(--border); margin-top: 48px; padding: 28px 0; text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+  footer a { color: var(--text-sub); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="index.html" class="logo">Airey<em>Ai</em></a>
+    <div class="links">
+      <a href="#websites">Websites</a>
+      <a href="#ads">Meta Ads</a>
+      <a href="#aria">Aria</a>
+      <a href="#leadgen">Lead Gen</a>
+      <a href="#ppl">Pay-Per-Lead</a>
+      <a href="#bundles">Bundles</a>
+      <a href="index.html" class="home">← Home</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero container">
+  <div class="eyebrow">Transparent pricing</div>
+  <h1>Everything we do,<br><span class="mint">every price.</span></h1>
+  <p>No "contact for a quote." Fixed-price, productised services for UK small businesses — websites, Meta ads, an AI receptionist, and lead generation. Pick what you need; bundle to save up to 25%.</p>
+  <div class="vat-note">All prices exclude VAT · sole trader, VAT added on registration</div>
+</header>
+
+<!-- WEBSITES -->
+<section class="svc container" id="websites">
+  <h2>Websites</h2>
+  <p class="lead">Fixed-price, bespoke design — no templates, no scope creep. Delivered in 7–14 days. First 6 months hosting included, then £47/mo. One-off project fee.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="name">Landing</div>
+      <div class="price">£497</div>
+      <div class="sub">one-off</div>
+      <div class="desc">One-page site, mobile-first, contact form, OG image, Cloudflare deploy. 1 revision round.</div>
+    </div>
+    <div class="card">
+      <div class="name">Starter</div>
+      <div class="price">£997</div>
+      <div class="sub">one-off · 3–5 pages</div>
+      <div class="desc">Brand-tinted design system, animation toolkit, SEO baseline, Cloudflare + domain deploy. 1 revision round.</div>
+    </div>
+    <div class="card featured">
+      <span class="badge">Most chosen</span>
+      <div class="name">Pro</div>
+      <div class="price">£1,697</div>
+      <div class="sub">one-off · 5–8 pages</div>
+      <div class="desc">Full discovery, blog setup, advanced animations, conversion copywriting, 3 revision rounds.</div>
+    </div>
+    <div class="card">
+      <div class="name">Premium</div>
+      <div class="price">£2,997</div>
+      <div class="sub">one-off · 10–15 pages</div>
+      <div class="desc">Custom scroll interactions, content workshop, multi-language ready, 5 revision rounds.</div>
+    </div>
+    <div class="card">
+      <div class="name">E-commerce</div>
+      <div class="price">£2,497</div>
+      <div class="sub">one-off · Shopify</div>
+      <div class="desc">Custom theme, up to 50 products, payment + shipping, abandoned-cart flow. Excludes Shopify subscription.</div>
+    </div>
+  </div>
+  <p class="rangenote">Rebuilding an existing site? −£300 off any tier. Hosting + maintenance £47/mo, or £97/mo care plan (hosting + monthly edits + priority support). 50% deposit on signing, balance on launch; projects over £2,000 can split the balance over 3 months (+10%).</p>
+</section>
+
+<!-- META ADS -->
+<section class="svc container" id="ads">
+  <h2>Meta Ads Management</h2>
+  <p class="lead">We manage the ads <em>and</em> produce the creative — most agencies charge extra for creative. Flat retainer, never a cut of your spend, so our scaling advice stays honest. You keep ownership of your ad account; we take scoped partner access. 3-month minimum, then rolling.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="name">Lite</div>
+      <div class="price">£99<span class="unit">/mo</span></div>
+      <div class="sub">£147 setup · spend £200–800</div>
+      <div class="desc">Streamlined local lead campaign, Pixel/CAPI, monthly performance review. The entry product.</div>
+    </div>
+    <div class="card">
+      <div class="name">Spark</div>
+      <div class="price">£397<span class="unit">/mo</span></div>
+      <div class="sub">£297 setup · spend £800–1,300</div>
+      <div class="desc">+ 2 AI creatives/mo, monthly automated review.</div>
+    </div>
+    <div class="card featured">
+      <span class="badge">Best value</span>
+      <div class="name">Pro</div>
+      <div class="price">£650<span class="unit">/mo</span></div>
+      <div class="sub">£297 setup · spend £1,300–2,400</div>
+      <div class="desc">+ 3 creatives/mo, A/B testing, one 20-min call/mo.</div>
+    </div>
+    <div class="card">
+      <div class="name">Growth</div>
+      <div class="price">£1,197<span class="unit">/mo</span></div>
+      <div class="sub">£297 setup · spend £2,400–5,000</div>
+      <div class="desc">5 creatives/mo, weekly human optimisation, monthly strategy call.</div>
+    </div>
+    <div class="card">
+      <div class="name">Scale</div>
+      <div class="price">£2,497<span class="unit">/mo</span></div>
+      <div class="sub">£497 setup · spend £5,000+</div>
+      <div class="desc">Unlimited creatives, daily optimisation, advanced attribution. +10% on spend over £10k (disclosed up front).</div>
+    </div>
+  </div>
+  <p class="rangenote">We pick your tier by ad spend so the fee never exceeds ~50% of spend. Some trades need a minimum spend to work — we'll tell you honestly before you commit, never sell you ads that can't perform.</p>
+</section>
+
+<!-- ARIA -->
+<section class="svc container" id="aria">
+  <h2>Aria — AI Receptionist</h2>
+  <p class="lead">A missed call is a missed job. Aria answers chat and calls 24/7, qualifies the lead, and books it into your calendar. 14-day free trial. 3-month minimum, then cancel anytime. <a href="aria.html">Full Aria details →</a></p>
+  <div class="grid">
+    <div class="card">
+      <div class="name">Chat Lite</div>
+      <div class="price">£49<span class="unit">/mo</span></div>
+      <div class="sub">bundle add-on only</div>
+      <div class="desc">Website chat widget, lead capture, FAQ, booking. Up to 200 conversations/mo. Available with a website or other service.</div>
+    </div>
+    <div class="card">
+      <div class="name">Aria Chat</div>
+      <div class="price">£97<span class="unit">/mo</span></div>
+      <div class="sub">£147 setup · text</div>
+      <div class="desc">Chat + calendar booking, custom FAQ, monthly retrain, lead reports. Up to 500 conversations/mo.</div>
+    </div>
+    <div class="card featured">
+      <span class="badge">Most popular</span>
+      <div class="name">Aria Voice</div>
+      <div class="price">£249<span class="unit">/mo</span></div>
+      <div class="sub">£497 setup · answers your phone</div>
+      <div class="desc">24/7 AI phone receptionist — qualifies callers, books jobs, captures the lead you'd otherwise miss. Up to 500 call-minutes/mo.</div>
+    </div>
+    <div class="card">
+      <div class="name">Aria Voice Pro</div>
+      <div class="price">£449<span class="unit">/mo</span></div>
+      <div class="sub">£497 setup · + CRM</div>
+      <div class="desc">All of Voice + CRM sync (HubSpot/Pipedrive), multi-line, custom call flows. Up to 1,500 call-minutes/mo.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD GEN -->
+<section class="svc container" id="leadgen">
+  <h2>Lead Generation</h2>
+  <p class="lead">Fully-managed cold email — personalised outreach, deliverability infrastructure, reply handling. The only fully-managed UK lead-gen under £1,000/mo. 6-month minimum (deliverability builds over months 3–4), then rolling.</p>
+  <div class="grid">
+    <div class="card featured">
+      <span class="badge">Available now</span>
+      <div class="name">Starter</div>
+      <div class="price">£997<span class="unit">/mo</span></div>
+      <div class="sub">£497 setup</div>
+      <div class="desc">10–15 personalised emails/day, custom audit on every prospect, full deliverability infra (SPF/DKIM/DMARC), weekly reporting.</div>
+    </div>
+    <div class="card">
+      <div class="name">Scale</div>
+      <div class="price">£1,997<span class="unit">/mo</span></div>
+      <div class="sub">£997 setup · waitlist</div>
+      <div class="desc">25–40 emails/day, A/B subject lines, full reply triage, monthly strategy. Opening once our pipeline is validated on the first Starter clients.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PAY PER LEAD -->
+<section class="svc container" id="ppl">
+  <h2>Pay-Per-Lead</h2>
+  <p class="lead">Don't want a retainer? Buy leads instead — exclusive, verified, local enquiries delivered straight to your phone. You only pay for leads you receive, and price scales with the job: a quick enquiry costs less than a ready-to-book customer. No monthly fee, no contract.</p>
+  <div class="grid">
+    <div class="card"><div class="name">Cleaning</div><div class="price">£15<span class="unit">/lead</span></div><div class="sub">up to £80 (ready-to-book)</div></div>
+    <div class="card"><div class="name">Garden &amp; Landscaping</div><div class="price">£25<span class="unit">/lead</span></div><div class="sub">up to £110</div></div>
+    <div class="card"><div class="name">Drains &amp; Plumbing</div><div class="price">£20<span class="unit">/lead</span></div><div class="sub">up to £100</div></div>
+    <div class="card"><div class="name">Driveways</div><div class="price">£25<span class="unit">/lead</span></div><div class="sub">up to £130</div></div>
+    <div class="card"><div class="name">Solar</div><div class="price">£50<span class="unit">/lead</span></div><div class="sub">up to £180</div></div>
+    <div class="card"><div class="name">Scaffolding</div><div class="price">£35<span class="unit">/lead</span></div><div class="sub">up to £150</div></div>
+    <div class="card featured"><span class="badge">Highest value</span><div class="name">Heat Pumps</div><div class="price">£60<span class="unit">/lead</span></div><div class="sub">up to £250 (ready-to-book)</div></div>
+    <div class="card"><div class="name">Loft Conversions</div><div class="price">£60<span class="unit">/lead</span></div><div class="sub">up to £250</div></div>
+  </div>
+  <p class="rangenote">Leads are priced by niche and by quality tier (T1 early enquiry → T4 ready-to-buy) — higher tiers cost more because they convert more. Exclusive leads (sold once, to you), not shared. Your niche not listed? Ask and we'll add it.</p>
+</section>
+
+<!-- STUDIO -->
+<section class="svc container" id="studio">
+  <h2>Anvil Studio — Content</h2>
+  <p class="lead">AI-produced video ads, product imagery, and UGC reels for DTC brands — brief Monday, delivered Friday. Monthly content plans from £400/mo, or a one-off to try us. <a href="studio.html">See the Studio →</a></p>
+</section>
+
+<!-- BUNDLES -->
+<section class="svc container" id="bundles">
+  <h2>Bundle &amp; save</h2>
+  <p class="lead">Single-service competitors can match one price. Nobody else profitably delivers a 4-service bundle — one team, one invoice, one accountable result.</p>
+  <div class="bundle-band">
+    <div class="bundle-grid">
+      <div class="b"><div class="big">10%</div><div class="lbl">off recurring — 2 services</div></div>
+      <div class="b"><div class="big">15%</div><div class="lbl">off recurring — 3 services (recurring setups waived)</div></div>
+      <div class="b"><div class="big">25%</div><div class="lbl">off recurring — 4 services (all setups waived)</div></div>
+      <div class="b"><div class="big">2 mo</div><div class="lbl">free with annual prepay (+ 50% off any remaining setup)</div></div>
+    </div>
+    <p class="rangenote">Discount holds for the first 12 months. The website build fee is never waived (only recurring-service setups are). Bundle minimums follow each service's own term.</p>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="svc container" id="terms">
+  <h2>The fine print, plainly</h2>
+  <ul class="terms">
+    <li><strong>VAT:</strong> all prices exclude VAT. As a sole trader under the threshold we don't add it yet; we'll re-quote net+VAT on registration.</li>
+    <li><strong>Minimum terms:</strong> websites are one-off; ads &amp; chatbot 3-month minimum; lead gen 6-month (it needs time to work). Then rolling monthly, 30-day notice.</li>
+    <li><strong>Setup fees</strong> are non-refundable once work begins. Out-of-scope work £125/hr (£175/hr strategy), always quoted in writing first.</li>
+    <li><strong>Why we publish prices:</strong> most agencies hide them. Transparency is the point — productised, fixed, no London markup.</li>
+  </ul>
+</section>
+
+<section class="cta-band container">
+  <h2>Tell us what you need.</h2>
+  <p style="color:var(--text-sub);max-width:520px;margin:12px auto 0;">One email, a fixed quote back — and a bundle price if you want more than one service.</p>
+  <a class="btn" href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20-%20pricing%20enquiry&body=Hi%20Kyle%2C%0A%0AI%27m%20interested%20in%3A%20(websites%20%2F%20Meta%20ads%20%2F%20Aria%20%2F%20lead%20gen%20%2F%20content)%0A%0ABusiness%3A%20%0AWebsite%3A%20%0ABest%20number%3A%20">Get a fixed quote</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 AireyAi. Built in Carlisle, Cumbria. · <a href="index.html">Home</a> · <a href="aria.html">Aria</a> · <a href="studio.html">Studio</a> · <a href="privacy.html">Privacy</a></p>
+</footer>
+
+</body>
+</html>

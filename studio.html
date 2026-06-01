@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio — AI Video Ads, Imagery, UGC for DTC Brands · AireyAi</title>
-<meta name="description" content="AireyAi Studio produces AI video ads, product imagery, UGC, and brand campaigns for DTC brands. Brief on Monday, delivered Friday. From £400. No retainer.">
-<meta property="og:title" content="AireyAi Studio — AI Content for DTC Brands">
-<meta property="og:description" content="Video ads, product imagery, UGC, brand campaigns. Brief Monday, deliver Friday. From £400, no retainer.">
+<title>Anvil Studio — AI Video Ads, Imagery, UGC for DTC Brands</title>
+<meta name="description" content="Anvil Studio produces AI video ads, product imagery, UGC, and brand campaigns for DTC brands. Brief Monday, delivered Friday. Done-for-you content plans from £400/mo, cancel anytime.">
+<meta property="og:title" content="Anvil Studio — AI Content for DTC Brands">
+<meta property="og:description" content="Video ads, product imagery, UGC, brand campaigns. Brief Monday, deliver Friday. Content plans from £400/mo, cancel anytime.">
 <meta property="og:url" content="https://aireyai.co.uk/studio.html">
 <meta property="og:image" content="https://aireyai.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AireyAi Studio — AI content for DTC brands">
+<meta property="og:image:alt" content="Anvil Studio — AI content for DTC brands">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AireyAi">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
 <link rel="canonical" href="https://aireyai.co.uk/studio.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='20' fill='%2300e5a0'>A</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -214,13 +214,27 @@
   .pricing h2 { text-align: center; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
   .pricing .sub { text-align: center; color: var(--text-sub); font-size: 1.05rem; margin-bottom: 56px; max-width: 540px; margin-left: auto; margin-right: auto; }
 
-  .bundle-note {
-    margin-top: 32px; text-align: center; font-size: 0.88rem; color: var(--text-sub);
-    padding: 16px 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
-    max-width: 640px; margin-left: auto; margin-right: auto;
+  .pack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; align-items: stretch; }
+  .pack-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    padding: 30px 26px; display: flex; flex-direction: column; position: relative; transition: transform 0.2s, border-color 0.2s;
   }
-  .bundle-note a { color: var(--mint); text-decoration: none; }
-  .bundle-note a:hover { text-decoration: underline; }
+  .pack-card:hover { transform: translateY(-4px); border-color: rgba(0,229,160,0.25); }
+  .pack-card.featured { border-color: var(--mint); box-shadow: 0 0 0 1px var(--mint), 0 20px 60px var(--mint-dim); }
+  .pack-card .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--mint); color: #04140d; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; }
+  .pack-card .pack-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .pack-card .pack-price { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--text); margin-bottom: 2px; }
+  .pack-card .pack-save { font-size: 0.8rem; color: var(--mint); font-weight: 600; margin-bottom: 18px; }
+  .pack-card ul { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-direction: column; gap: 9px; }
+  .pack-card li { font-size: 0.9rem; color: var(--text-sub); line-height: 1.4; padding-left: 22px; position: relative; }
+  .pack-card li::before { content: "✓"; position: absolute; left: 0; color: var(--mint); font-weight: 700; }
+  .pack-card .pack-who { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px; }
+  .pack-card .pack-cta { margin-top: auto; display: block; text-align: center; padding: 12px 18px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: background 0.2s, color 0.2s; }
+  .pack-card .pack-cta.ghost { border: 1px solid var(--border); color: var(--text); }
+  .pack-card .pack-cta.ghost:hover { border-color: var(--mint); color: var(--mint); }
+  .pack-card .pack-cta.solid { background: var(--mint); color: #04140d; }
+  .pack-card .pack-cta.solid:hover { background: #00c98c; }
+  .pricing .pricing-foot { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin: 30px auto 0; max-width: 620px; line-height: 1.6; }
 
   /* FAQ */
   .faq { padding: 80px 0; }
@@ -270,9 +284,10 @@
     <div style="display:flex;align-items:center;">
       <a href="#services" class="nav-link">Services</a>
       <a href="#how" class="nav-link">How it works</a>
+      <a href="#guarantee" class="nav-link">Guarantee</a>
       <a href="#pricing" class="nav-link">Pricing</a>
       <a href="#faq" class="nav-link">FAQ</a>
-      <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic style="margin-left:24px;">Brief us</a>
+      <a href="mailto:kyle.airey@hotmail.com?subject=Anvil%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic style="margin-left:24px;">Brief us</a>
     </div>
   </div>
 </nav>
@@ -285,13 +300,13 @@
     <span class="pulse"></span> Brief Monday, delivered Friday
   </div>
   <h1 data-split="words">AI Content for <span class="mint">DTC Brands</span></h1>
-  <p class="lead" data-appear data-appear-delay="0.3">Video ads, product imagery, UGC, and brand campaigns — produced with AI, finished by humans. From £400, no retainer, no agency overhead.</p>
+  <p class="lead" data-appear data-appear-delay="0.3">Video ads, product imagery, UGC, and brand campaigns — produced with AI, finished by humans. Done-for-you content plans from £400/mo, cancel anytime, no agency overhead.</p>
   <div class="hero-ctas" data-appear data-appear-delay="0.5">
-    <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
+    <a href="mailto:kyle.airey@hotmail.com?subject=Anvil%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
     <a href="#services" class="cta-btn cta-ghost" data-magnetic>See what we make →</a>
   </div>
   <div class="hero-microcopy" data-appear data-appear-delay="0.7">
-    <strong>Brief Mon · Deliver Fri.</strong> No retainer. Pay per project.
+    <strong>Brief Mon · Deliver Fri.</strong> Month-to-month. Cancel anytime.
   </div>
 </section>
 
@@ -303,40 +318,40 @@
 
     <div class="proof-card" data-stagger-child>
       <div class="shot">
-        <video src="portfolio/studio/lora-mug-voiceover.mp4" poster="portfolio/studio/lora-mug-voiceover.jpg" autoplay muted loop playsinline preload="metadata" aria-label="UGC review of a sage-green ceramic mug, AI-generated creator with voiceover"></video>
-        <div class="bubble"><span class="dot"></span><span>Etsy ceramics · UGC review · 9:16 · 10s</span></div>
+        <video src="portfolio/studio/activewear-goldenhour.mp4" poster="portfolio/studio/activewear-goldenhour.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Activewear ad — model in an amber shell jacket and teal shorts at golden hour against a stone backdrop"></video>
+        <div class="bubble"><span class="dot"></span><span>Activewear · Hero ad · 9:16 · 4s</span></div>
       </div>
       <div class="meta">
-        <span class="tag">UGC · Ceramics</span>
-        <h3>Sage Green Mug — Voiceover Review</h3>
-        <p>AI creator does a tone-matched honest review of an Etsy ceramic mug. Full voiceover, captions burned in, paced for the early-morning aesthetic feed.</p>
-        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20UGC%20review%20like%20the%20Sage%20Mug&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20Sage%20Green%20Mug%20voiceover%20review%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+        <span class="tag">Activewear · Hero</span>
+        <h3>Golden-Hour Activewear Ad</h3>
+        <p>Editorial activewear hero — full-body model, amber shell and teal short, golden hour against raw stone. Image-to-video pipeline: lock the still, animate a slow camera push. 9:16 for Reels and TikTok.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Activewear%20hero%20ad&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20golden-hour%20activewear%20ad%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
       </div>
     </div>
 
     <div class="proof-card" data-stagger-child>
       <div class="shot">
-        <video src="portfolio/studio/lora-crewneck.mp4" poster="portfolio/studio/lora-crewneck.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Embroidered crewneck apparel showcase, AI creator wearing the garment"></video>
-        <div class="bubble"><span class="dot"></span><span>Apparel · Showcase · 9:16 · 8s</span></div>
+        <video src="portfolio/studio/activewear-urban.mp4" poster="portfolio/studio/activewear-urban.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Performance activewear ad — model in a grey training set on an urban street, slow camera push-in"></video>
+        <div class="bubble"><span class="dot"></span><span>Performance apparel · Showcase · 9:16 · 4s</span></div>
       </div>
       <div class="meta">
-        <span class="tag">Apparel · Embroidered</span>
-        <h3>Auntie Est 2026 Crewneck</h3>
-        <p>Pregnancy-announcement crewneck shown on a face-locked AI creator in soft natural light. 9:16 cut for Reels and TikTok, ready to drop into a paid creative test.</p>
-        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Apparel%20showcase%20like%20the%20Crewneck&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20Auntie%20Est%20Crewneck%20showcase%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+        <span class="tag">Activewear · Performance</span>
+        <h3>Urban Performance Showcase</h3>
+        <p>Grey training set on a clean urban street, slow push-in holding on fit and fabric. The kind of paid-social creative a performance-apparel brand drops straight into a test — no shoot, no studio day.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Performance%20apparel%20showcase&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20urban%20performance%20showcase%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
       </div>
     </div>
 
     <div class="proof-card" data-stagger-child>
       <div class="shot">
-        <video src="portfolio/studio/lora-mug-cottagecore.mp4" poster="portfolio/studio/lora-mug-cottagecore.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Same sage-green mug shot in a cottagecore aesthetic on a marble cafe counter"></video>
-        <div class="bubble"><span class="dot"></span><span>Same SKU · A/B angle · 9:16 · 10s</span></div>
+        <video src="portfolio/studio/activewear-urban-drone.mp4" poster="portfolio/studio/activewear-urban-drone.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Same grey activewear set on the same street, shot with an aerial drone-style camera move for an A/B test"></video>
+        <div class="bubble"><span class="dot"></span><span>Same kit · A/B camera · 9:16 · 4s</span></div>
       </div>
       <div class="meta">
-        <span class="tag">A/B Angle · Cottagecore</span>
-        <h3>Same Mug, Different Mood</h3>
-        <p>Same product, cottagecore aesthetic, marble cafe counter. Three concepts on one SKU for the price of one agency revision round — the Studio's whole point.</p>
-        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%203%20creative%20angles%20on%20one%20product&body=Hi%20Kyle%2C%0A%0AI%20want%20to%20A%2FB%20test%203%20creative%20directions%20on%20one%20product%20like%20the%20Mug%20examples.%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
+        <span class="tag">A/B Angle · Same Kit</span>
+        <h3>Same Kit, Different Camera</h3>
+        <p>Same outfit, same street — an aerial drone-style move instead of the push-in. Two distinct creatives off one locked still, so you A/B the camera language for the price of one agency revision round.</p>
+        <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20A%2FB%20camera%20angles%20on%20one%20product&body=Hi%20Kyle%2C%0A%0AI%20want%20to%20A%2FB%20test%20multiple%20camera%20treatments%20on%20one%20product%20like%20the%20activewear%20examples.%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar →</a>
       </div>
     </div>
 
@@ -346,7 +361,7 @@
 <!-- How It Works -->
 <section class="how container" id="how">
   <h2 data-reveal="fade-up">Brief Monday. Delivered Friday.</h2>
-  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">A productized 5-day cycle. No agency back-and-forth. No retainer.</p>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">A productized weekly cycle. No agency back-and-forth. No lock-in.</p>
   <div class="steps" data-stagger-parent>
     <div class="step" data-stagger-child>
       <div class="step-num">1</div>
@@ -381,28 +396,24 @@
       <div class="icon" aria-hidden="true">🎬</div>
       <h3>Video Ads</h3>
       <p>Hook-led short-form ads for Meta, TikTok, YouTube Shorts. AI-generated footage, scripted hooks, motion-edited, captions burned in. Three aspect ratios per concept.</p>
-      <span class="price-from">From £400 / concept</span>
     </div>
 
     <div class="feature-card" data-stagger-child data-tilt>
       <div class="icon" aria-hidden="true">📸</div>
       <h3>Product Imagery</h3>
-      <p>Photoreal product stills against branded scenes — lifestyle, studio, in-context. Replaces a photoshoot for new SKUs, refreshes, and seasonal drops.</p>
-      <span class="price-from">From £150 / set</span>
+      <p>Photoreal product stills against branded scenes — lifestyle, studio, in-context. Replaces a photoshoot for new SKUs, refreshes, and seasonal drops. A set is 8 images: 5 hero + 3 lifestyle.</p>
     </div>
 
     <div class="feature-card" data-stagger-child data-tilt>
       <div class="icon" aria-hidden="true">🎤</div>
       <h3>UGC-Style Reels</h3>
       <p>AI creator content that reads as authentic UGC — unboxing, review, get-ready-with-me. Face-locked AI personas mean a consistent "creator" across every video.</p>
-      <span class="price-from">From £250 / reel</span>
     </div>
 
     <div class="feature-card" data-stagger-child data-tilt>
       <div class="icon" aria-hidden="true">🎯</div>
       <h3>Brand Campaigns</h3>
-      <p>Multi-asset campaigns built around one creative direction — hero film, social cuts, product stills, paid variants. For launches, seasonal drops, or repositioning.</p>
-      <span class="price-from">From £1,500 / campaign</span>
+      <p>Multi-asset campaigns built around one creative direction: hero film, social cuts, product stills, paid variants, creative-direction deck. For launches, seasonal drops, or repositioning.</p>
     </div>
 
   </div>
@@ -412,23 +423,106 @@
 <section class="roi container">
   <div class="roi-card" data-reveal="fade-up">
     <div class="eyebrow">The Maths</div>
-    <h3>One <strong>winning ad</strong> can carry a brand for a quarter. Studio gets you to that winner without a retainer.</h3>
-    <p>A typical agency video ad is £2,500–£8,000 and takes 4–6 weeks. Studio ships you 3 ad concepts in 5 days for £400 each — so you can A/B test 3 directions for the price of one agency revision round.</p>
+    <h3>One <strong>handled month</strong> costs less than a single agency video — and you get a whole feed, not one asset.</h3>
+    <p>A typical agency video ad is £2,500–£8,000 and takes 4–6 weeks. A Growth plan is £850/mo for 8 videos plus imagery — months of paid-social and organic creative for less than one agency concept, cancel any month.</p>
   </div>
+</section>
+
+<!-- Guarantee / risk-reversal (stands in for social proof until real client results exist) -->
+<section class="services container" id="guarantee">
+  <h2 data-reveal="fade-up">See the work before you pay a penny</h2>
+  <p class="sub" data-reveal="fade-up" data-reveal-delay="0.1">A new studio with a serious guarantee. The risk is ours, not yours.</p>
+  <div class="feature-grid" data-stagger-parent>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🎁</div>
+      <h3>First piece free</h3>
+      <p>Send three product photos and we'll make one real piece for your brand — before you commit anything. No card, no follow-up if it's not for you.</p>
+    </div>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🔁</div>
+      <h3>One re-cut, then it's on us</h3>
+      <p>You see a preview before final cut. If the direction isn't landing, we re-cut once — included. Still not right? You don't pay. We'd rather lose the project than ship something you can't run.</p>
+    </div>
+
+    <div class="feature-card" data-stagger-child data-tilt>
+      <div class="icon" aria-hidden="true">🔓</div>
+      <h3>Cancel anytime</h3>
+      <p>Plans are month-to-month — no contracts, no lock-in. Pause or stop whenever. Every file is yours forever, full commercial rights, no usage license.</p>
+    </div>
+
+  </div>
+  <p class="pricing-foot"><strong style="color:var(--text);">Founding cohort now open.</strong> The first brands lock their plan rate for 12 months while we build out case studies — early proof, founder pricing.</p>
+
+  <!--
+  TESTIMONIALS — un-comment and fill once real Studio content clients exist.
+  Do NOT ship fabricated quotes/metrics (brand-trust + honesty risk).
+  Replace [BRACKETS] with real, permissioned quotes + names + outcomes.
+
+  <div class="feature-grid" data-stagger-parent style="margin-top:28px;">
+    <div class="feature-card" data-stagger-child>
+      <p style="font-size:1rem;line-height:1.6;">“[Real client quote — what changed, ideally with a number e.g. ROAS / CTR / time saved].”</p>
+      <div style="margin-top:14px;color:var(--text-sub);font-size:0.85rem;"><strong style="color:var(--text);">[Name]</strong> · [Role], [Brand]</div>
+    </div>
+    ... repeat per testimonial ...
+  </div>
+  -->
 </section>
 
 <!-- Pricing -->
 <section class="pricing container" id="pricing">
   <h2 data-reveal="fade-up">Pricing</h2>
-  <p class="sub" data-reveal="fade-up">Productized rates. No retainer. No surprise fees.</p>
+  <p class="sub" data-reveal="fade-up">Month-to-month plans. Cancel anytime. No surprise fees.</p>
 
-  <div style="max-width: 720px; margin: 0 auto 32px; text-align: center;">
-    <p style="color: var(--text-sub); font-size: 1rem; line-height: 1.7;">Per-project, no retainer. Each service in the grid above shows its <strong style="color:var(--text);">from-rate</strong> — pick what you need, brief it, pay on delivery. Multi-asset briefs and recurring buyers get priority queue and rate breaks; ask for a bundle quote.</p>
+  <div class="pack-grid" data-stagger-parent>
+
+    <div class="pack-card" data-stagger-child>
+      <div class="pack-name">Starter</div>
+      <div class="pack-price">£400<span style="font-size:1rem;font-weight:600;color:var(--text-sub);">/mo</span></div>
+      <div class="pack-save">Cancel anytime</div>
+      <ul>
+        <li>4 short-form videos / month</li>
+        <li>6 product images / month</li>
+        <li>Captions + scheduling done for you</li>
+        <li>One brand, all platforms</li>
+      </ul>
+      <p class="pack-who">For brands that want consistent content without learning the tools or hiring in.</p>
+      <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20-%20Starter%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Starter%20plan%20(%C2%A3400%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="pack-cta ghost" data-magnetic>Start the Starter plan</a>
+    </div>
+
+    <div class="pack-card featured" data-stagger-child>
+      <span class="badge">Most popular</span>
+      <div class="pack-name">Growth</div>
+      <div class="pack-price">£850<span style="font-size:1rem;font-weight:600;color:var(--text-sub);">/mo</span></div>
+      <div class="pack-save">Cancel anytime · less than one agency video</div>
+      <ul>
+        <li>8 short-form videos / month</li>
+        <li>12 product images / month</li>
+        <li>1 UGC-style reel / month</li>
+        <li>Light strategy + monthly review</li>
+      </ul>
+      <p class="pack-who">For active DTC brands running paid social and organic who need a steady creative feed.</p>
+      <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20-%20Growth%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Growth%20plan%20(%C2%A3850%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="pack-cta solid" data-magnetic>Start the Growth plan</a>
+    </div>
+
+    <div class="pack-card" data-stagger-child>
+      <div class="pack-name">Scale</div>
+      <div class="pack-price">£1,500<span style="font-size:1rem;font-weight:600;color:var(--text-sub);">/mo</span></div>
+      <div class="pack-save">Cancel anytime</div>
+      <ul>
+        <li>12+ videos / month (weekly rotation)</li>
+        <li>20 product images / month</li>
+        <li>3 UGC-style reels / month</li>
+        <li>Full feed + performance reporting</li>
+      </ul>
+      <p class="pack-who">For brands with active Meta/TikTok spend rotating creative every week.</p>
+      <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20-%20Scale%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Scale%20plan%20(%C2%A31%2C500%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="pack-cta ghost" data-magnetic>Start the Scale plan</a>
+    </div>
+
   </div>
 
-  <div class="bundle-note" data-reveal="fade-up">
-    Need a website too? Studio comes <strong style="color:var(--mint);">£100/mo off</strong> with every <a href="https://aireyai.co.uk/#contact">AireyAi website build</a>.
-  </div>
+  <p class="pricing-foot">Not ready for a monthly plan? <strong style="color:var(--text);">Start with one.</strong> One-off pieces — single video <strong style="color:var(--text);">£450</strong> · 8-image set <strong style="color:var(--text);">£299</strong> · UGC reel <strong style="color:var(--text);">£399</strong> — and we credit it toward your first month if you roll into a plan. <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20-%20one-off%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20one-off%20piece%20to%20try%20the%20Studio.%0A%0AProduct%3A%20%0AWhat%20I%20need%3A%20%0ATimeline%3A%20" style="color:var(--mint);text-decoration:none;font-weight:600;">Brief a one-off →</a></p>
 </section>
 
 <!-- FAQ -->
@@ -465,9 +559,9 @@
 <!-- Final CTA -->
 <section class="final-cta container">
   <h2 data-reveal="fade-up">Brief us by Monday.<br><span style="color:var(--mint);">Live ads by Friday.</span></h2>
-  <p data-reveal="fade-up" data-reveal-delay="0.1">From £400. No retainer. No agency overhead. One email starts it.</p>
+  <p data-reveal="fade-up" data-reveal-delay="0.1">Content plans from £400/mo. Cancel anytime. No agency overhead. One email starts it.</p>
   <div data-reveal="fade-up" data-reveal-delay="0.2">
-    <a href="mailto:kyle.airey@hotmail.com?subject=AireyAi%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
+    <a href="mailto:kyle.airey@hotmail.com?subject=Anvil%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="cta-btn cta-primary" data-magnetic>Brief us</a>
   </div>
 </section>
 
