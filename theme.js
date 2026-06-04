@@ -1,11 +1,12 @@
-/* AireyAi shared dark-mode — early init (no flash) + toggle button injection.
+/* AireyAi shared dark-mode — defaults to LIGHT for everyone; only goes dark if
+   the visitor explicitly toggles it. Injects an always-visible nav toggle.
    Linked in <head> on every page. */
 (function () {
-  // 1) Apply saved or system theme immediately (runs in <head> before body paints).
+  // 1) Apply theme immediately (runs in <head> before body paints). Always light
+  //    unless the user previously chose dark — system preference is ignored.
   try {
     var saved = localStorage.getItem('theme');
-    var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
   } catch (e) {}
 
   function setTheme(t) {
@@ -13,10 +14,11 @@
     try { localStorage.setItem('theme', t); } catch (e) {}
   }
 
-  // 2) Inject the toggle button into the nav once the DOM is ready.
+  // 2) Inject the toggle into the top bar (.nav-inner) so it's ALWAYS visible —
+  //    desktop and mobile — not hidden inside the collapsible menu.
   function injectToggle() {
-    var nav = document.querySelector('.nav-links');
-    if (!nav || document.querySelector('.theme-toggle')) return;
+    var inner = document.querySelector('.nav-inner');
+    if (!inner || document.querySelector('.theme-toggle')) return;
     var btn = document.createElement('button');
     btn.className = 'theme-toggle';
     btn.type = 'button';
@@ -28,8 +30,9 @@
       var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       setTheme(cur === 'dark' ? 'light' : 'dark');
     });
-    var cta = nav.querySelector('.btn-primary');
-    if (cta) nav.insertBefore(btn, cta); else nav.appendChild(btn);
+    // place just before the mobile hamburger so it sits at the right edge on every screen
+    var hamburger = inner.querySelector('.nav-toggle');
+    if (hamburger) inner.insertBefore(btn, hamburger); else inner.appendChild(btn);
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectToggle);
