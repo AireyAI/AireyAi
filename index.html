@@ -45,7 +45,7 @@
   .hero-trust .avatars span { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; background: var(--brand-soft); display: grid; place-items: center; font-size: 0.7rem; font-weight: 700; color: var(--brand-strong); }
   .hero-visual { position: relative; }
   .hero-visual a.shot-link { display: block; }
-  .hero-shot { width: 100%; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--sh-3); display: block; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+  .hero-shot { width: 100%; height: auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--sh-3); display: block; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
   .hero-visual a.shot-link:hover .hero-shot { transform: translateY(-4px); }
   .hero-float {
     position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
@@ -173,7 +173,10 @@
     </div>
     <div class="hero-visual reveal">
       <a class="shot-link" href="https://aporiginals.com/" target="_blank" rel="noopener" aria-label="Visit AP Clothing — the live online store we built">
-        <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" width="1280" height="800">
+        <picture>
+          <source media="(max-width: 600px)" srcset="portfolio/ap-clothing-mens-mobile.jpg" width="430" height="764">
+          <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" width="1280" height="800">
+        </picture>
       </a>
       <div class="hero-float a">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 5h14a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 17 15.8H8l-4 3.6V6.4A1.4 1.4 0 0 1 5.4 5z" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="11" cy="10" r="1" fill="currentColor"/><circle cx="14" cy="10" r="1" fill="currentColor"/></svg></div>
