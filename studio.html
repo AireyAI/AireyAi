@@ -52,7 +52,7 @@
     transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
   }
   .reel-card:hover { transform: translateY(-4px); box-shadow: var(--sh-3); border-color: var(--border-strong); }
-  .reel-card .shot { aspect-ratio: 9 / 16; position: relative; border-bottom: 1px solid var(--border); overflow: hidden; background: #eef3f8; }
+  .reel-card .shot { aspect-ratio: 16 / 9; position: relative; border-bottom: 1px solid var(--border); overflow: hidden; background: #eef3f8; }
   .reel-card .shot video { width: 100%; height: 100%; object-fit: cover; display: block; }
   .reel-card .shot::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to top, rgba(6,27,49,0.35) 0%, transparent 38%); }
   .reel-card .bubble {
@@ -188,53 +188,181 @@
   <div class="container">
     <div class="section-head center reveal">
       <span class="eyebrow">Recent work</span>
-      <h2>Real output from the Studio pipeline.</h2>
-      <p>Each tile auto-plays — no demo sandbox, just the finished asset.</p>
+      <h2>Built the site. Made the film, too.</h2>
+      <p>Every loop below is a hero video we produced in-house for a client website we designed and built — trades to fashion, Carlisle to Nairobi. Scroll or hover to play.</p>
     </div>
     <div class="reel-grid">
 
       <div class="reel-card reveal">
         <div class="shot">
-          <video src="portfolio/studio/activewear-goldenhour.mp4" poster="portfolio/studio/activewear-goldenhour.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Activewear ad — model in an amber shell jacket and teal shorts at golden hour against a stone backdrop"></video>
-          <div class="bubble"><span class="dot"></span><span>Activewear · Hero ad · 9:16 · 4s</span></div>
+          <video src="portfolio/media/jtr-electrical.mp4" poster="portfolio/media/jtr-electrical.jpg" muted loop playsinline preload="none" aria-label="JTR Electrical Services website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>JTR Electrical · website hero</span></div>
         </div>
         <div class="meta">
-          <span class="tag">Activewear · Hero</span>
-          <h3>Golden-Hour Activewear Ad</h3>
-          <p>Editorial activewear hero — full-body model, amber shell and teal short, golden hour against raw stone. Image-to-video pipeline: lock the still, animate a slow camera push. 9:16 for Reels and TikTok.</p>
-          <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Activewear%20hero%20ad&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20golden-hour%20activewear%20ad%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <span class="tag">Electrician · Carlisle</span>
+          <h3>JTR Electrical Services</h3>
+          <p>Live wiring under dramatic blue light — the hero loop on their 24/7 electrician site.</p>
         </div>
       </div>
 
       <div class="reel-card reveal">
         <div class="shot">
-          <video src="portfolio/studio/activewear-urban.mp4" poster="portfolio/studio/activewear-urban.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Performance activewear ad — model in a grey training set on an urban street, slow camera push-in"></video>
-          <div class="bubble"><span class="dot"></span><span>Performance apparel · Showcase · 9:16 · 4s</span></div>
+          <video src="portfolio/media/ej-roofing.mp4" poster="portfolio/media/ej-roofing.jpg" muted loop playsinline preload="none" aria-label="E J Roofing website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>EJ Roofing · website hero</span></div>
         </div>
         <div class="meta">
-          <span class="tag">Activewear · Performance</span>
-          <h3>Urban Performance Showcase</h3>
-          <p>Grey training set on a clean urban street, slow push-in holding on fit and fabric. The kind of paid-social creative a performance-apparel brand drops straight into a test — no shoot, no studio day.</p>
-          <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20Performance%20apparel%20showcase&body=Hi%20Kyle%2C%0A%0AI%20like%20the%20urban%20performance%20showcase%20on%20the%20Studio%20page.%20I%27d%20want%20something%20similar%20for%3A%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <span class="tag">Roofing · Cumbria</span>
+          <h3>E J Roofing &amp; Construction</h3>
+          <p>A Cumbrian stone home at dusk — the calm, premium opener for their roofing site.</p>
         </div>
       </div>
 
       <div class="reel-card reveal">
         <div class="shot">
-          <video src="portfolio/studio/activewear-urban-drone.mp4" poster="portfolio/studio/activewear-urban-drone.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Same grey activewear set on the same street, shot with an aerial drone-style camera move for an A/B test"></video>
-          <div class="bubble"><span class="dot"></span><span>Same kit · A/B camera · 9:16 · 4s</span></div>
+          <video src="portfolio/media/mjc-plastering.mp4" poster="portfolio/media/mjc-plastering.jpg" muted loop playsinline preload="none" aria-label="MJC Plastering website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>MJC Plastering · website hero</span></div>
         </div>
         <div class="meta">
-          <span class="tag">A/B Angle · Same Kit</span>
-          <h3>Same Kit, Different Camera</h3>
-          <p>Same outfit, same street — an aerial drone-style move instead of the push-in. Two distinct creatives off one locked still, so you A/B the camera language for the price of one agency revision round.</p>
-          <a href="mailto:kyle.airey@hotmail.com?subject=Studio%20brief%20-%20A%2FB%20camera%20angles%20on%20one%20product&body=Hi%20Kyle%2C%0A%0AI%20want%20to%20A%2FB%20test%20multiple%20camera%20treatments%20on%20one%20product%20like%20the%20activewear%20examples.%0A%0AProduct%3A%20%0AAudience%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="brief-link">Brief similar <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <span class="tag">Plastering · Carlisle</span>
+          <h3>MJC Plastering</h3>
+          <p>A trowel laying glass-smooth plaster in close-up — craft front and centre.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/border-groundwork.mp4" poster="portfolio/media/border-groundwork.jpg" muted loop playsinline preload="none" aria-label="Border Groundwork website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>Border Groundwork · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Groundworks · Carlisle</span>
+          <h3>Border Groundwork &amp; Construction</h3>
+          <p>Golden-hour excavator work — heavy plant in motion for the groundworks brand.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/how-high.mp4" poster="portfolio/media/how-high.jpg" muted loop playsinline preload="none" aria-label="How High Scaffolding website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>How High · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Scaffolding · Cumbria</span>
+          <h3>How High Scaffolding</h3>
+          <p>Scaffold towers silhouetted against a Cumbrian sunset — bold and tall.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/jord-robson.mp4" poster="portfolio/media/jord-robson.jpg" muted loop playsinline preload="none" aria-label="REP with Robson website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>REP with Robson · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Sports massage · Carlisle</span>
+          <h3>REP with Robson</h3>
+          <p>Warm gym interior with the brand lockup — energy for a coaching &amp; sports-massage brand.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/skin-den.mp4" poster="portfolio/media/skin-den.jpg" muted loop playsinline preload="none" aria-label="The Skin Den website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>The Skin Den · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Skincare studio · Carlisle</span>
+          <h3>The Skin Den</h3>
+          <p>Soft, editorial brand motion for Rachel’s advanced skincare studio.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/felltrax.mp4" poster="portfolio/media/felltrax.jpg" muted loop playsinline preload="none" aria-label="Felltrax Cycles website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>Felltrax Cycles · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Cycling · Lake District</span>
+          <h3>Felltrax Cycles</h3>
+          <p>A rider threading a sunlit forest trail — Lake District mountain-bike energy.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/abdii-curtains.mp4" poster="portfolio/media/abdii-curtains.jpg" muted loop playsinline preload="none" aria-label="Abdii Finest Curtains website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>Abdii Curtains · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Interiors · Nairobi</span>
+          <h3>Abdii Finest Curtains</h3>
+          <p>Sunlight through made-to-measure linen — quiet luxury for an interiors brand.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/casetale.mp4" poster="portfolio/media/casetale.jpg" muted loop playsinline preload="none" aria-label="CaseTale website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>CaseTale · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">E-commerce · Kenya</span>
+          <h3>CaseTale</h3>
+          <p>Premium phone-case brand motion — product-led and social-ready.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/tradesly.mp4" poster="portfolio/media/tradesly.jpg" muted loop playsinline preload="none" aria-label="Tradesly website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>Tradesly · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Platform · UK</span>
+          <h3>Tradesly</h3>
+          <p>A tradesperson heading out on the job — the human face of a quotes platform.</p>
+        </div>
+      </div>
+
+      <div class="reel-card reveal">
+        <div class="shot">
+          <video src="portfolio/media/novheur.mp4" poster="portfolio/media/novheur.jpg" muted loop playsinline preload="none" aria-label="Novheur website hero video"></video>
+          <div class="bubble"><span class="dot"></span><span>Novheur · website hero</span></div>
+        </div>
+        <div class="meta">
+          <span class="tag">Fashion · Worldwide</span>
+          <h3>Novheur</h3>
+          <p>A hand grazing satin — luxury-dress brand mood in a few seconds.</p>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+<script>
+/* Studio reel: lazy play. preload=none keeps bytes off the wire until a tile is
+   on screen; IntersectionObserver plays only what's visible; hover plays on desktop.
+   Respects prefers-reduced-motion (posters stay still, hover still works). */
+(function () {
+  var cards = document.querySelectorAll('#work .reel-card');
+  if (!cards.length) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(v) { if (v && v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+  function pause(v) { if (v && !v.paused) v.pause(); }
+  cards.forEach(function (card) {
+    var v = card.querySelector('video');
+    card.addEventListener('mouseenter', function () { play(v); });
+    card.addEventListener('mouseleave', function () { if (reduce) pause(v); });
+  });
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.isIntersecting ? play(e.target) : pause(e.target); });
+    }, { threshold: 0.45 });
+    cards.forEach(function (card) { var v = card.querySelector('video'); if (v) io.observe(v); });
+  }
+})();
+</script>
 
 <!-- ===== How it works ===== -->
 <section id="how">
