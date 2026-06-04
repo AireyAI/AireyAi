@@ -53,6 +53,8 @@
   }
   .hero-float.a { bottom: -18px; left: -22px; }
   .hero-float.b { top: -16px; right: -14px; }
+  a.hero-float { text-decoration: none; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
+  a.hero-float:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
   .hero-float .ic { width: 30px; height: 30px; border-radius: 8px; background: var(--brand-soft); color: var(--brand-strong); display: grid; place-items: center; }
   .hero-float b { color: var(--heading); display: block; line-height: 1.2; }
   .hero-float small { color: var(--muted); }
@@ -182,10 +184,10 @@
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 5h14a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 17 15.8H8l-4 3.6V6.4A1.4 1.4 0 0 1 5.4 5z" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="11" cy="10" r="1" fill="currentColor"/><circle cx="14" cy="10" r="1" fill="currentColor"/></svg></div>
         <div><b>Aria answered a call</b><small>booked a job · 21:46</small></div>
       </div>
-      <div class="hero-float b">
+      <a class="hero-float b" href="https://aporiginals.com/" target="_blank" rel="noopener" aria-label="Visit AP Clothing — the live online store">
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
         <div><b>AP Clothing — live store</b><small>200+ products · selling now</small></div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
