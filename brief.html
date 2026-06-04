@@ -3,357 +3,300 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AireyAi — Business Brief</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070710'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='%2300e5a0'>Ai</text></svg>">
+  <title>AireyAi — Website Brief</title>
+  <meta name="description" content="Tell us about your business and we'll have everything we need to build your new website. A few quick questions, auto-saved as you go.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23061b31'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='18' fill='%230b8a5b'>Ai</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
   <style>
-    :root {
-      --mint:       #00e5a0;
-      --mint-dim:   rgba(0, 229, 160, 0.12);
-      --mint-glow:  rgba(0, 229, 160, 0.25);
-      --bg:         #070710;
-      --surface:    #0d0d1f;
-      --surface-2:  #13132a;
-      --border:     rgba(255,255,255,0.07);
-      --border-focus: rgba(0, 229, 160, 0.5);
-      --text:       #eeeef8;
-      --text-muted: #6b6b8a;
-      --text-sub:   #9898b8;
-      --danger:     #ff4d6d;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── Animated background orbs ─────────────────────────── */
-    .orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .orb { position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.15; }
-    .orb-1 {
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, #3d2fff 0%, transparent 70%);
-      top: -200px; left: -100px;
-      animation: drift1 18s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, #00e5a0 0%, transparent 70%);
-      bottom: -150px; right: -100px;
-      animation: drift2 22s ease-in-out infinite alternate;
-    }
-    .orb-3 {
-      width: 350px; height: 350px;
-      background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
-      top: 40%; left: 60%;
-      animation: drift3 15s ease-in-out infinite alternate;
-    }
-    @keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(80px,60px) scale(1.1); } }
-    @keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-60px,-80px) scale(1.15); } }
-    @keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(-40px,50px) scale(0.9); } }
-
-    /* ── Nav ───────────────────────────────────────────────── */
-    nav {
-      position: relative; z-index: 10;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px; height: 60px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(7,7,16,0.8);
-      backdrop-filter: blur(16px);
-    }
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 26px; font-weight: 800;
-      letter-spacing: -0.03em; color: var(--text);
-    }
-    .logo span { color: var(--mint); }
-    .nav-badge {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted);
-      border: 1px solid var(--border); border-radius: 99px; padding: 4px 12px;
-    }
-
-    /* ── Main ──────────────────────────────────────────────── */
+    /* ---- page-specific (Stripe-premium-light, maps the form's JS-built class names) ---- */
     main {
-      position: relative; z-index: 1;
       display: flex; align-items: flex-start; justify-content: center;
-      padding: 48px 16px 100px;
+      padding: 56px 16px 96px;
+      background:
+        radial-gradient(60% 45% at 85% 0%, rgba(11,138,91,0.05), transparent 70%),
+        linear-gradient(180deg, #fbfdfe 0%, #ffffff 55%);
     }
 
-    /* ── Card ──────────────────────────────────────────────── */
-    .card {
+    /* ── Form panel (the JS builds <div class="card"> as the form container) ── */
+    .brief-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.03), 0 32px 64px rgba(0,0,0,0.5);
-      max-width: 600px; width: 100%;
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh-3);
+      max-width: 620px; width: 100%;
       padding: 44px;
       position: relative; overflow: hidden;
     }
-    .card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--mint-glow), transparent);
+    .brief-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-bright));
     }
+    /* the JS appends .card-* nodes inside .brief-card, but never .card on the panel */
 
-    /* ── Progress ──────────────────────────────────────────── */
-    .progress-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+    /* ── Service banner ── */
+    .service-note {
+      max-width: 620px; width: 100%; margin: 0 auto 20px;
+      display: flex; align-items: center; gap: 12px;
+      background: var(--brand-soft); border: 1px solid rgba(11,138,91,0.18);
+      border-radius: var(--r-md); padding: 12px 16px;
+      font-size: var(--fs-sm); color: var(--label); line-height: 1.5;
     }
+    .service-note svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--brand-strong); }
+    .service-note a { color: var(--brand-strong); font-weight: 600; white-space: nowrap; }
+    .service-note a:hover { text-decoration: underline; }
+    @media (max-width: 520px) { .service-note { flex-direction: column; align-items: flex-start; gap: 6px; } }
+
+    /* ── Progress ── */
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
     .progress-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-muted);
+      font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
     }
-    .progress-pct {
-      font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--mint);
-    }
+    .progress-pct { font-size: 13px; font-weight: 700; color: var(--brand-strong); }
     .progress-track {
-      height: 2px; background: var(--surface-2); border-radius: 99px;
-      margin-bottom: 40px; overflow: hidden;
+      height: 4px; background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: var(--r-pill); margin-bottom: 38px; overflow: hidden;
     }
     .progress-fill {
-      height: 2px; background: var(--mint); border-radius: 99px;
-      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
-      box-shadow: 0 0 8px var(--mint-glow);
+      height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-bright)); border-radius: var(--r-pill);
+      transition: width 0.5s var(--ease);
     }
 
-    /* ── Typography ────────────────────────────────────────── */
+    /* ── Section heading inside steps ── */
     .section-pill {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--mint-dim); color: var(--mint);
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 4px 12px;
-      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
-      margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--brand-soft); color: var(--brand-strong);
+      font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 6px 13px;
+      border-radius: var(--r-pill); border: 1px solid rgba(11,138,91,0.18);
+      margin-bottom: 16px;
     }
-    .section-pill::before { content: '●'; font-size: 7px; }
+    .section-pill::before { content: '●'; font-size: 7px; color: var(--brand-bright); }
     .step-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
-      color: var(--text); margin-bottom: 8px;
+      font-size: 1.9rem; font-weight: 350; letter-spacing: -0.02em; line-height: 1.15;
+      color: var(--heading); margin-bottom: 10px;
     }
     .step-sub {
-      font-size: 14px; color: var(--text-sub); line-height: 1.6;
-      margin-bottom: 32px; font-weight: 300;
+      font-size: var(--fs-body); color: var(--body); line-height: 1.6;
+      margin-bottom: 32px;
     }
 
-    /* ── Labels & inputs ───────────────────────────────────── */
+    /* ── Labels & inputs ── */
     label {
-      display: block; font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
-      color: var(--text-sub); margin-bottom: 7px; text-transform: uppercase;
+      display: block; font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.02em;
+      color: var(--label); margin-bottom: 7px;
     }
-    .optional { font-weight: 400; color: var(--text-muted); font-size: 10px; margin-left: 4px; text-transform: none; letter-spacing: 0; }
+    .optional { font-weight: 400; color: var(--muted); font-size: var(--fs-xs); margin-left: 5px; }
     .field {
-      width: 100%; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 12px 16px;
-      font-size: 14px; font-family: 'DM Sans', sans-serif;
-      color: var(--text); outline: none;
+      width: 100%; background: #fff; border: 1px solid var(--border-strong);
+      border-radius: var(--r-md); padding: 12px 14px;
+      font-size: var(--fs-body); font-family: inherit;
+      color: var(--heading); outline: none;
       transition: border-color 0.2s, box-shadow 0.2s; margin-bottom: 20px;
     }
-    .field::placeholder { color: var(--text-muted); }
-    .field:focus { border-color: var(--border-focus); box-shadow: 0 0 0 3px var(--mint-dim); }
+    .field::placeholder { color: var(--muted); }
+    .field:focus { border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
     textarea.field { min-height: 96px; resize: vertical; }
 
     .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 500px) {
+    @media (max-width: 540px) {
       .two-col { grid-template-columns: 1fr; }
-      .card { padding: 28px 20px; }
-      .step-title { font-size: 22px; }
+      .brief-card { padding: 28px 20px; }
+      .step-title { font-size: 1.55rem; }
     }
 
-    /* ── Chips ─────────────────────────────────────────────── */
+    /* ── Chips ── */
     .chips-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
     .chip {
       display: inline-flex; align-items: center; gap: 6px;
-      padding: 7px 16px; background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; font-size: 13px; font-weight: 400; color: var(--text-sub);
-      cursor: pointer; user-select: none; transition: border-color 0.2s, color 0.2s, background 0.2s, box-shadow 0.2s;
+      padding: 8px 15px; background: #fff; border: 1px solid var(--border-strong);
+      border-radius: var(--r-pill); font-size: var(--fs-sm); font-weight: 500; color: var(--label);
+      cursor: pointer; user-select: none; transition: border-color 0.2s, color 0.2s, background 0.2s;
     }
-    .chip:hover { border-color: rgba(0,229,160,0.3); color: var(--text); }
+    .chip:hover { border-color: var(--brand); color: var(--brand-strong); }
     .chip.selected {
-      background: var(--mint-dim); border-color: rgba(0,229,160,0.4); color: var(--mint);
-      box-shadow: 0 0 12px rgba(0,229,160,0.1);
+      background: var(--brand-soft); border-color: var(--brand); color: var(--brand-strong);
     }
     .chip.selected::before { content: '\2713'; font-size: 11px; font-weight: 700; }
 
-    /* ── Divider ───────────────────────────────────────────── */
+    /* ── Divider ── */
     .divider { height: 1px; background: var(--border); margin: 28px 0; }
 
-    /* ── Buttons ───────────────────────────────────────────── */
+    /* ── Buttons (the JS builds .btn-primary / .btn-ghost; align to shared system) ── */
     .btn-primary {
-      background: var(--mint); color: #070710; border: none; border-radius: 10px;
-      padding: 13px 32px; font-size: 14px; font-weight: 600;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; letter-spacing: 0.01em;
-      transition: opacity 0.15s, transform 0.1s, box-shadow 0.2s;
-      box-shadow: 0 0 20px rgba(0,229,160,0.25);
+      background: var(--brand); color: #fff; border: 1px solid transparent; border-radius: var(--r-pill);
+      padding: 13px 28px; font-size: var(--fs-body); font-weight: 500;
+      font-family: inherit; cursor: pointer; line-height: 1;
+      box-shadow: var(--sh-brand);
+      transition: transform 0.18s var(--ease), background 0.18s, box-shadow 0.18s;
     }
-    .btn-primary:hover { opacity: 0.9; box-shadow: 0 0 30px rgba(0,229,160,0.4); }
-    .btn-primary:active { transform: scale(0.98); }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+    .btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; box-shadow: none; transform: none; }
     .btn-ghost {
-      background: none; border: none; color: var(--text-muted); font-size: 14px;
-      font-family: 'DM Sans', sans-serif; cursor: pointer; padding: 0; transition: color 0.15s;
+      background: none; border: none; color: var(--muted); font-size: var(--fs-body);
+      font-family: inherit; cursor: pointer; padding: 0; transition: color 0.15s;
     }
-    .btn-ghost:hover { color: var(--text); }
+    .btn-ghost:hover { color: var(--heading); }
 
     .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
     .nav-row-right { display: flex; justify-content: flex-end; margin-top: 12px; }
 
-    /* ── Summary ───────────────────────────────────────────── */
+    /* ── Summary ── */
     .summary-wrap {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 12px; padding: 4px 20px; margin-bottom: 28px;
+      background: var(--bg-soft); border: 1px solid var(--border);
+      border-radius: var(--r-md); padding: 4px 20px; margin-bottom: 28px;
     }
     .summary-row {
       display: flex; gap: 16px; padding: 12px 0;
-      border-bottom: 1px solid var(--border); font-size: 13px; line-height: 1.5;
+      border-bottom: 1px solid var(--border); font-size: var(--fs-sm); line-height: 1.5;
     }
     .summary-row:last-child { border-bottom: none; }
     .summary-label {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
-      text-transform: uppercase; color: var(--text-muted);
+      font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--muted);
       min-width: 120px; flex-shrink: 0; padding-top: 1px;
     }
-    .summary-value { color: var(--text); word-break: break-word; }
+    .summary-value { color: var(--heading); word-break: break-word; }
 
-    /* ── Thank you ─────────────────────────────────────────── */
+    /* ── Thank you ── */
     .thankyou { text-align: center; padding: 32px 0 16px; }
     .thankyou-icon {
-      width: 64px; height: 64px; background: var(--mint-dim);
-      border: 1px solid rgba(0,229,160,0.3); border-radius: 50%;
+      width: 64px; height: 64px; background: var(--brand-soft);
+      border: 1px solid rgba(11,138,91,0.25); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 24px;
-      color: var(--mint); font-weight: 700; font-family: 'Syne', sans-serif; font-size: 24px;
+      color: var(--brand-strong); font-weight: 700; font-size: 26px;
     }
     .thankyou-title {
-      font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800;
-      letter-spacing: -0.03em; margin-bottom: 12px;
+      font-size: 1.9rem; font-weight: 350; letter-spacing: -0.02em; color: var(--heading);
+      margin-bottom: 12px;
     }
     .thankyou-sub {
-      font-size: 15px; color: var(--text-sub); line-height: 1.7;
-      font-weight: 300; max-width: 380px; margin: 0 auto;
+      font-size: var(--fs-lead); color: var(--body); line-height: 1.7;
+      max-width: 380px; margin: 0 auto;
     }
 
-    /* ── Step transition ───────────────────────────────────── */
+    /* ── Step transition ── */
     @keyframes stepIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     #step-container { animation: stepIn 0.3s ease; }
 
-    footer {
-      position: relative; z-index: 1; text-align: center; padding: 24px;
-      font-size: 12px; color: var(--text-muted);
-    }
-    footer strong { color: var(--text-sub); }
-
-    /* ── Intro screen ──────────────────────────────────────── */
-    .intro {
-      text-align: center; padding: 16px 0 8px;
-    }
+    /* ── Intro screen ── */
+    .intro { text-align: center; padding: 16px 0 8px; }
     .intro-eyebrow {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: var(--mint-dim); color: var(--mint);
-      font-size: 10px; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 4px 14px;
-      border-radius: 99px; border: 1px solid rgba(0,229,160,0.2);
-      margin-bottom: 24px;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--brand-soft); color: var(--brand-strong);
+      font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 6px 14px;
+      border-radius: var(--r-pill); border: 1px solid rgba(11,138,91,0.18);
+      margin-bottom: 22px;
     }
-    .intro-eyebrow::before { content: '\25CF'; font-size: 7px; }
+    .intro-eyebrow::before { content: '\25CF'; font-size: 7px; color: var(--brand-bright); }
     .intro-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 32px; font-weight: 800; letter-spacing: -0.04em;
-      line-height: 1.1; margin-bottom: 16px; color: var(--text);
+      font-size: clamp(2rem, 4.5vw, 2.7rem); font-weight: 300; letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 16px; color: var(--heading);
     }
-    .intro-title span { color: var(--mint); }
+    .intro-title span { color: var(--brand-strong); }
     .intro-sub {
-      font-size: 15px; color: var(--text-sub); line-height: 1.7;
-      font-weight: 300; max-width: 420px; margin: 0 auto 32px;
+      font-size: var(--fs-lead); color: var(--body); line-height: 1.7;
+      max-width: 420px; margin: 0 auto 32px;
     }
     .intro-pills {
       display: flex; flex-wrap: wrap; gap: 8px;
       justify-content: center; margin-bottom: 36px;
     }
     .intro-pill {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; padding: 5px 14px;
-      font-size: 12px; color: var(--text-muted);
+      background: #fff; border: 1px solid var(--border-strong);
+      border-radius: var(--r-pill); padding: 6px 14px;
+      font-size: var(--fs-sm); color: var(--label);
     }
-    .intro-pill span { color: var(--mint); margin-right: 4px; }
+    .intro-pill span { color: var(--brand-strong); margin-right: 4px; }
 
-    /* ── Photo upload ─────────────────────────────────────── */
+    /* ── Photo upload ── */
     .photo-upload-zone {
-      border: 1.5px dashed rgba(0,229,160,0.3); border-radius: 12px;
+      border: 1.5px dashed var(--border-strong); border-radius: var(--r-md);
       padding: 24px 16px; text-align: center; cursor: pointer;
-      background: var(--surface); transition: border-color 0.2s, background 0.2s;
+      background: var(--bg-soft); transition: border-color 0.2s, background 0.2s;
       margin-bottom: 16px; position: relative;
     }
-    .photo-upload-zone:hover { border-color: var(--mint); background: var(--mint-dim); }
+    .photo-upload-zone:hover { border-color: var(--brand); background: var(--brand-tint); }
     .photo-upload-zone input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
     .photo-upload-icon { font-size: 28px; margin-bottom: 8px; }
-    .photo-upload-label { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-    .photo-upload-sub { font-size: 12px; color: var(--text-muted); }
+    .photo-upload-label { font-size: var(--fs-body); font-weight: 600; color: var(--heading); margin-bottom: 4px; }
+    .photo-upload-sub { font-size: var(--fs-sm); color: var(--muted); }
     .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
     @media (max-width: 480px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
     .photo-thumb {
-      position: relative; border-radius: 8px; overflow: hidden;
-      aspect-ratio: 1; background: var(--surface-2);
+      position: relative; border-radius: var(--r-sm); overflow: hidden;
+      aspect-ratio: 1; background: var(--bg-soft);
       border: 1px solid var(--border);
     }
     .photo-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-thumb-remove {
       position: absolute; top: 4px; right: 4px;
       width: 20px; height: 20px; border-radius: 50%;
-      background: rgba(0,0,0,0.7); border: none; color: #fff;
+      background: rgba(6,27,49,0.8); border: none; color: #fff;
       font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center;
       line-height: 1;
     }
-    .photo-count { font-size: 12px; color: var(--mint); margin-bottom: 12px; }
+    .photo-count { font-size: var(--fs-sm); color: var(--brand-strong); margin-bottom: 12px; }
 
-    /* ── Saved indicator ───────────────────────────────────── */
+    /* ── Saved indicator ── */
     .saved-indicator {
       position: fixed; bottom: 24px; right: 24px; z-index: 100;
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-radius: 99px; padding: 6px 14px;
-      font-size: 11px; color: var(--text-muted);
-      display: flex; align-items: center; gap: 6px;
+      background: #fff; border: 1px solid var(--border-strong);
+      border-radius: var(--r-pill); padding: 7px 15px;
+      font-size: var(--fs-xs); color: var(--label); box-shadow: var(--sh-2);
+      display: flex; align-items: center; gap: 7px;
       opacity: 0; transition: opacity 0.3s;
       pointer-events: none;
     }
     .saved-indicator.show { opacity: 1; }
-    .saved-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+    .saved-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); }
   </style>
 </head>
 <body>
 
-  <div class="orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
-  <nav>
-    <div class="logo">Airey<span>Ai</span></div>
-    <span class="nav-badge">Business Brief</span>
-  </nav>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="brand">Airey<em>Ai</em></a>
+      <nav class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/projects.html">Work</a>
+        <a href="/aria.html">Aria</a>
+        <a href="/studio.html">Studio</a>
+        <a href="/pricing.html" class="btn btn-primary">Get a quote</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span style="font-size:1.4rem;color:var(--heading);">&#9776;</span></button>
+    </div>
+  </header>
 
   <main>
-    <div class="card">
-      <div class="progress-header" id="progress-header" style="display:none;">
-        <span class="progress-label" id="step-label">Step 1 of 5</span>
-        <span class="progress-pct" id="step-pct">20%</span>
+    <div style="max-width:620px;width:100%;">
+      <div class="service-note">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v.01M11 12h1v4h1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>This brief is for <strong>website builds</strong>. Looking for Meta ads, an AI receptionist, leads or content? <a href="/pricing.html">See all services &amp; pricing &rarr;</a></span>
       </div>
-      <div class="progress-track" id="progress-track" style="display:none;">
-        <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
+
+      <div class="brief-card">
+        <div class="progress-header" id="progress-header" style="display:none;">
+          <span class="progress-label" id="step-label">Step 1 of 5</span>
+          <span class="progress-pct" id="step-pct">20%</span>
+        </div>
+        <div class="progress-track" id="progress-track" style="display:none;">
+          <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
+        </div>
+        <div id="step-container"></div>
       </div>
-      <div id="step-container"></div>
     </div>
   </main>
 
@@ -361,7 +304,38 @@
     <div class="saved-dot"></div> Progress saved
   </div>
 
-  <footer>Powered by <strong>AireyAi</strong></footer>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="/" class="brand" style="color:#fff;">Airey<em style="color:var(--brand-bright);">Ai</em></a>
+          <p style="margin-top:14px;max-width:30ch;font-size:var(--fs-sm);">The AI growth agency for UK small businesses. Websites, ads, an AI receptionist, leads and content — one team, fixed prices.</p>
+        </div>
+        <div><h4>Services</h4><ul>
+          <li><a href="/pricing.html#websites">Websites</a></li>
+          <li><a href="/pricing.html#ads">Meta Ads</a></li>
+          <li><a href="/aria.html">AI Receptionist</a></li>
+          <li><a href="/pricing.html#leadgen">Lead Generation</a></li>
+          <li><a href="/pricing.html#ppl">Pay-Per-Lead</a></li>
+          <li><a href="/studio.html">Content Studio</a></li>
+        </ul></div>
+        <div><h4>Company</h4><ul>
+          <li><a href="/pricing.html">Pricing</a></li>
+          <li><a href="/projects.html">Our work</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul></div>
+        <div><h4>Get in touch</h4><ul>
+          <li><a href="mailto:kyle.airey@hotmail.com">Email us</a></li>
+          <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
+          <li>Carlisle, Cumbria, UK</li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 AireyAi. Built in Carlisle, Cumbria.</span>
+        <span>Fixed prices &middot; no lock-in &middot; +VAT</span>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const STORAGE_KEY = 'aireyai_brief_v2';
@@ -406,7 +380,7 @@
       c.innerHTML = '';
       const wrap = document.createElement('div'); wrap.className = 'intro';
 
-      const eyebrow = document.createElement('div'); eyebrow.className = 'intro-eyebrow'; eyebrow.textContent = 'Business Brief'; wrap.appendChild(eyebrow);
+      const eyebrow = document.createElement('div'); eyebrow.className = 'intro-eyebrow'; eyebrow.textContent = 'Website Brief'; wrap.appendChild(eyebrow);
 
       const title = document.createElement('div'); title.className = 'intro-title';
       title.innerHTML = 'Tell us about your<br><span>business</span>'; wrap.appendChild(title);
@@ -415,7 +389,7 @@
       sub.textContent = "Answer a few quick questions and we'll have everything we need to build you something great. Takes about 3 minutes."; wrap.appendChild(sub);
 
       const pills = document.createElement('div'); pills.className = 'intro-pills';
-      [['\u26A1','3 minutes'], ['\uD83D\uDCBE','Auto-saved'], ['\uD83D\uDD12','Private & secure'], ['\u2728','Skip any question']].forEach(function(item) {
+      [['⚡','3 minutes'], ['💾','Auto-saved'], ['🔒','Private & secure'], ['✨','Skip any question']].forEach(function(item) {
         var icon = item[0], text = item[1];
         var p = document.createElement('div'); p.className = 'intro-pill';
         p.innerHTML = '<span>' + icon + '</span>' + text; pills.appendChild(p);
@@ -424,7 +398,7 @@
 
       const btn = document.createElement('button'); btn.className = 'btn-primary';
       btn.style.cssText = 'padding:14px 40px;font-size:15px;';
-      btn.textContent = "Let's go \u2192";
+      btn.textContent = "Let's go →";
       btn.onclick = function() { goToStep(0); };
       wrap.appendChild(btn);
 
@@ -463,9 +437,9 @@
       input.type = 'file';
       input.accept = 'image/*';
       input.multiple = true;
-      const icon = document.createElement('div'); icon.className = 'photo-upload-icon'; icon.textContent = '\uD83D\uDCF8';
+      const icon = document.createElement('div'); icon.className = 'photo-upload-icon'; icon.textContent = '📸';
       const lbl = document.createElement('div'); lbl.className = 'photo-upload-label'; lbl.textContent = 'Upload photos';
-      const sub = document.createElement('div'); sub.className = 'photo-upload-sub'; sub.textContent = 'Finished work, logos, team photos \u2014 no limit';
+      const sub = document.createElement('div'); sub.className = 'photo-upload-sub'; sub.textContent = 'Finished work, logos, team photos — no limit';
       zone.appendChild(icon); zone.appendChild(lbl); zone.appendChild(sub); zone.appendChild(input);
 
       function rebuildGrid() {
@@ -478,7 +452,7 @@
           img.src = src;
           var rm = document.createElement('button');
           rm.className = 'photo-thumb-remove';
-          rm.textContent = '\u2715';
+          rm.textContent = '✕';
           rm.onclick = function(e) { e.stopPropagation(); state.jobPhotos.splice(i, 1); saveState(); rebuildGrid(); };
           thumb.appendChild(img);
           thumb.appendChild(rm);
@@ -542,12 +516,12 @@
         nav.className = 'nav-row-right';
       } else {
         nav.className = 'nav-row';
-        var back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '\u2190 Back';
+        var back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back';
         back.onclick = function() { goToStep(backStep); };
         nav.appendChild(back);
       }
       if (nextStep !== null) {
-        var next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next \u2192';
+        var next = document.createElement('button'); next.className = 'btn-primary'; next.textContent = 'Next →';
         next.onclick = function() { goToStep(nextStep); };
         nav.appendChild(next);
       }
@@ -561,7 +535,7 @@
       c.innerHTML = '';
       var pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'You & Your Business'; c.appendChild(pill);
       var title = document.createElement('div'); title.className = 'step-title'; title.textContent = "Let's start with the basics"; c.appendChild(title);
-      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'A few details about you and your business so we know who we\u2019re working with.'; c.appendChild(sub);
+      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'A few details about you and your business so we know who we’re working with.'; c.appendChild(sub);
 
       makeLabel('Full Name', true, c); renderField('fullName', 'Jane Smith', c);
 
@@ -582,13 +556,13 @@
       var cityW = document.createElement('div'); makeLabel('City / Town', true, cityW); renderField('city', 'e.g. Manchester', cityW); locRow.appendChild(cityW);
       var countryW = document.createElement('div'); makeLabel('Country', true, countryW); renderField('country', 'e.g. United Kingdom', countryW); locRow.appendChild(countryW);
 
-      makeLabel('Opening Hours', true, c); renderField('openingHours', 'e.g. Mon\u2013Fri 9am\u20135pm, Sat 10am\u20132pm', c);
+      makeLabel('Opening Hours', true, c); renderField('openingHours', 'e.g. Mon–Fri 9am–5pm, Sat 10am–2pm', c);
 
       makeDivider(c);
 
       makeLabel('Do you have a website already?', true, c); renderField('website', 'yoursite.com', c);
       makeLabel('Do you have a domain name?', true, c);
-      renderChips('hasDomain', ['Yes','No \u2014 I need one','Not sure'], c);
+      renderChips('hasDomain', ['Yes','No — I need one','Not sure'], c);
 
       makeLabel('Phone number to display on website', true, c); renderField('displayPhone', 'Can be same or different from your contact number', c);
       makeLabel('WhatsApp number for website button', true, c); renderField('whatsappNumber', '+44 7700 000000', c);
@@ -603,7 +577,7 @@
       c.innerHTML = '';
       var pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Your Brand & Story'; c.appendChild(pill);
       var title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Tell us about your brand'; c.appendChild(title);
-      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'How your business looks, sounds, and feels \u2014 and what makes you different.'; c.appendChild(sub);
+      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'How your business looks, sounds, and feels — and what makes you different.'; c.appendChild(sub);
 
       makeLabel('Describe your business in one sentence', true, c);
       renderField('tagline', 'e.g. "We make homes look brand new" or "Premium lashes in South London"', c);
@@ -616,7 +590,7 @@
 
       makeDivider(c);
 
-      makeLabel('Brand Voice \u2014 how should the site feel?', true, c);
+      makeLabel('Brand Voice — how should the site feel?', true, c);
       renderChips('brandVoice', ['Professional','Friendly','Luxury','Playful','Bold','Minimalist','Warm','Edgy'], c);
 
       makeLabel('3 words that describe how customers should feel', true, c);
@@ -679,21 +653,21 @@
       renderChips('features', ['Contact Form','Online Booking','Online Shop','Photo Gallery','Blog','Testimonials','Pricing Page','FAQ','Map','Before & After','Reviews','WhatsApp Button','Menu / Price List','Team Section','Video Section'], c);
 
       makeLabel('Do you have a logo?', true, c);
-      renderChips('hasLogo', ['Yes','Not yet \u2014 I need one','Working on it'], c);
+      renderChips('hasLogo', ['Yes','Not yet — I need one','Working on it'], c);
 
       makeLabel('Do you have photos or images?', true, c);
-      renderChips('hasPhotos', ['Yes, professional photos','Yes, phone photos','No \u2014 use stock images','A mix'], c);
+      renderChips('hasPhotos', ['Yes, professional photos','Yes, phone photos','No — use stock images','A mix'], c);
 
       makeLabel('Do you have existing reviews or testimonials?', true, c);
       renderChips('hasReviews', ['Yes, on Google','Yes, on Facebook','Yes, screenshots / text','Not yet'], c);
 
       makeDivider(c);
 
-      makeLabel('What\u2019s your timeline?', true, c);
+      makeLabel('What’s your timeline?', true, c);
       renderChips('timeline', ['ASAP','Within 2 weeks','Within a month','No rush'], c);
 
       makeLabel('Any websites you love the look of?', true, c);
-      renderField('inspiration', 'Paste URLs here \u2014 e.g. apple.com, notion.so', c, true);
+      renderField('inspiration', 'Paste URLs here — e.g. apple.com, notion.so', c, true);
 
       makeLabel('Competitor websites', true, c);
       renderField('competitors', 'Who are your local competitors? Paste their websites if you have them', c, true);
@@ -702,7 +676,7 @@
       renderChips('goals', ['Generate Leads','Increase Bookings','Sell Products Online','Build Brand Awareness','Showcase Portfolio','Provide Information','Get More Calls','Grow Social Following','Build Trust','Rank on Google'], c);
 
       makeLabel('Anything else we should know?', true, c);
-      renderField('notes', 'Awards, special requests, backstory, anything at all\u2026', c, true);
+      renderField('notes', 'Awards, special requests, backstory, anything at all…', c, true);
 
       makeNav(c, 2, 4);
     }
@@ -714,7 +688,7 @@
       c.innerHTML = '';
       var pill = document.createElement('span'); pill.className = 'section-pill'; pill.textContent = 'Photos & Submit'; c.appendChild(pill);
       var title = document.createElement('div'); title.className = 'step-title'; title.textContent = 'Nearly there!'; c.appendChild(title);
-      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Upload any photos you have \u2014 finished work, logos, team shots, anything that helps us understand your business.'; c.appendChild(sub);
+      var sub = document.createElement('div'); sub.className = 'step-sub'; sub.textContent = 'Upload any photos you have — finished work, logos, team shots, anything that helps us understand your business.'; c.appendChild(sub);
 
       renderPhotoUpload(c);
 
@@ -722,7 +696,7 @@
 
       /* ── Summary ──────────────────────────────────────────── */
       var stitle = document.createElement('div');
-      stitle.style.cssText = 'font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin:0 0 12px;';
+      stitle.style.cssText = 'font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin:0 0 12px;';
       stitle.textContent = 'Your Summary'; c.appendChild(stitle);
 
       var sw = document.createElement('div'); sw.className = 'summary-wrap';
@@ -738,7 +712,7 @@
         ['Story', state.businessStory],
         ['Brand Voice', (state.brandVoice||[]).join(', ')],
         ['Brand Feel', state.brandFeel],
-        ['Colours', [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' \u00B7 ')],
+        ['Colours', [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' · ')],
         ['Vibe', (state.websiteVibe||[]).join(', ')],
         ['Customers', (state.targetCustomers||[]).join(', ')],
         ['Visitor Goal', (state.visitorGoal||[]).join(', ')],
@@ -768,9 +742,9 @@
 
       /* ── Submit ───────────────────────────────────────────── */
       var actions = document.createElement('div'); actions.style.cssText = 'display:flex;gap:12px;flex-wrap:wrap;';
-      var submitBtn = document.createElement('button'); submitBtn.className = 'btn-primary'; submitBtn.textContent = 'Submit \u2192';
+      var submitBtn = document.createElement('button'); submitBtn.className = 'btn-primary'; submitBtn.textContent = 'Submit →';
       submitBtn.onclick = async function() {
-        submitBtn.textContent = 'Sending\u2026'; submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…'; submitBtn.disabled = true;
         try {
           var formData = new FormData();
 
@@ -782,51 +756,51 @@
           }
 
           var payload = {
-            _subject: 'New Business Brief \u2014 ' + (state.businessName||'Unknown'),
+            _subject: 'New Business Brief — ' + (state.businessName||'Unknown'),
             _replyto: state.email||'',
-            _autoresponse: 'Hi ' + (state.fullName ? state.fullName.split(' ')[0] : 'there') + ',\n\nThank you for submitting your business brief \u2014 we\u2019ve received everything we need to get started.\n\nHere\u2019s what happens next:\n\u2022 We\u2019ll review your brief and start working on your website\n\u2022 We\u2019ll be in touch within 1\u20132 business days to go over the details\n\u2022 If you have any questions in the meantime, just reply to this email\n\nWe\u2019re looking forward to building something great for ' + (state.businessName||'your business') + '.\n\nBest,\nThe AireyAi Team',
+            _autoresponse: 'Hi ' + (state.fullName ? state.fullName.split(' ')[0] : 'there') + ',\n\nThank you for submitting your business brief — we’ve received everything we need to get started.\n\nHere’s what happens next:\n• We’ll review your brief and start working on your website\n• We’ll be in touch within 1–2 business days to go over the details\n• If you have any questions in the meantime, just reply to this email\n\nWe’re looking forward to building something great for ' + (state.businessName||'your business') + '.\n\nBest,\nThe AireyAi Team',
 
-            'Full Name':        state.fullName||'\u2014',
-            'Email':            state.email||'\u2014',
-            'Phone':            state.phone||'\u2014',
-            'Business Name':    state.businessName||'\u2014',
-            'Industry':         (state.industry||[]).join(', ')||'\u2014',
-            'Address':          state.address||'\u2014',
-            'Location':         [state.city, state.country].filter(Boolean).join(', ')||'\u2014',
-            'Opening Hours':    state.openingHours||'\u2014',
-            'Website':          state.website||'\u2014',
-            'Has Domain':       (state.hasDomain||[]).join(', ')||'\u2014',
-            'Display Phone':    state.displayPhone||'\u2014',
-            'WhatsApp Number':  state.whatsappNumber||'\u2014',
+            'Full Name':        state.fullName||'—',
+            'Email':            state.email||'—',
+            'Phone':            state.phone||'—',
+            'Business Name':    state.businessName||'—',
+            'Industry':         (state.industry||[]).join(', ')||'—',
+            'Address':          state.address||'—',
+            'Location':         [state.city, state.country].filter(Boolean).join(', ')||'—',
+            'Opening Hours':    state.openingHours||'—',
+            'Website':          state.website||'—',
+            'Has Domain':       (state.hasDomain||[]).join(', ')||'—',
+            'Display Phone':    state.displayPhone||'—',
+            'WhatsApp Number':  state.whatsappNumber||'—',
 
-            'One-liner':        state.tagline||'\u2014',
-            'Services':         state.services||'\u2014',
-            'Business Story':   state.businessStory||'\u2014',
-            'Brand Voice':      (state.brandVoice||[]).join(', ')||'\u2014',
-            'Brand Feel':       state.brandFeel||'\u2014',
-            'Colour Palette':   [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' + ')||'\u2014',
-            'Website Vibe':     (state.websiteVibe||[]).join(', ')||'\u2014',
+            'One-liner':        state.tagline||'—',
+            'Services':         state.services||'—',
+            'Business Story':   state.businessStory||'—',
+            'Brand Voice':      (state.brandVoice||[]).join(', ')||'—',
+            'Brand Feel':       state.brandFeel||'—',
+            'Colour Palette':   [(state.colourPalette||[]).join(', '), state.customColours].filter(Boolean).join(' + ')||'—',
+            'Website Vibe':     (state.websiteVibe||[]).join(', ')||'—',
 
-            'Target Customers': (state.targetCustomers||[]).join(', ')||'\u2014',
-            'Visitor Goal':     (state.visitorGoal||[]).join(', ')||'\u2014',
-            'Social Media':     (state.socialMedia||[]).join(', ')||'\u2014',
-            'Instagram Link':   state.socialInstagram||'\u2014',
-            'Facebook Link':    state.socialFacebook||'\u2014',
-            'TikTok Link':      state.socialTiktok||'\u2014',
-            'LinkedIn Link':    state.socialLinkedin||'\u2014',
-            'Twitter/X Link':   state.socialTwitter||'\u2014',
-            'YouTube Link':     state.socialYoutube||'\u2014',
-            'Other Link':       state.socialOther||'\u2014',
+            'Target Customers': (state.targetCustomers||[]).join(', ')||'—',
+            'Visitor Goal':     (state.visitorGoal||[]).join(', ')||'—',
+            'Social Media':     (state.socialMedia||[]).join(', ')||'—',
+            'Instagram Link':   state.socialInstagram||'—',
+            'Facebook Link':    state.socialFacebook||'—',
+            'TikTok Link':      state.socialTiktok||'—',
+            'LinkedIn Link':    state.socialLinkedin||'—',
+            'Twitter/X Link':   state.socialTwitter||'—',
+            'YouTube Link':     state.socialYoutube||'—',
+            'Other Link':       state.socialOther||'—',
 
-            'Features Needed':  (state.features||[]).join(', ')||'\u2014',
-            'Has Logo':         (state.hasLogo||[]).join(', ')||'\u2014',
-            'Has Photos':       (state.hasPhotos||[]).join(', ')||'\u2014',
-            'Has Reviews':      (state.hasReviews||[]).join(', ')||'\u2014',
-            'Timeline':         (state.timeline||[]).join(', ')||'\u2014',
-            'Inspiration Sites': state.inspiration||'\u2014',
-            'Competitors':      state.competitors||'\u2014',
-            'Website Goals':    (state.goals||[]).join(', ')||'\u2014',
-            'Additional Notes': state.notes||'\u2014',
+            'Features Needed':  (state.features||[]).join(', ')||'—',
+            'Has Logo':         (state.hasLogo||[]).join(', ')||'—',
+            'Has Photos':       (state.hasPhotos||[]).join(', ')||'—',
+            'Has Reviews':      (state.hasReviews||[]).join(', ')||'—',
+            'Timeline':         (state.timeline||[]).join(', ')||'—',
+            'Inspiration Sites': state.inspiration||'—',
+            'Competitors':      state.competitors||'—',
+            'Website Goals':    (state.goals||[]).join(', ')||'—',
+            'Additional Notes': state.notes||'—',
             'Photos Uploaded':  state.jobPhotos && state.jobPhotos.length ? state.jobPhotos.length + ' photo(s) attached' : 'None',
           };
 
@@ -838,15 +812,15 @@
             body: formData,
           });
           if (res.ok) { showThankYou(); }
-          else { submitBtn.textContent = 'Something went wrong \u2014 try again'; submitBtn.disabled = false; }
-        } catch(e) { submitBtn.textContent = 'Something went wrong \u2014 try again'; submitBtn.disabled = false; }
+          else { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
+        } catch(e) { submitBtn.textContent = 'Something went wrong — try again'; submitBtn.disabled = false; }
       };
       actions.appendChild(submitBtn); c.appendChild(actions);
 
       var nav = document.createElement('div'); nav.className = 'nav-row'; nav.style.marginTop = '24px';
-      var back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '\u2190 Back'; back.onclick = function() { goToStep(3); };
+      var back = document.createElement('button'); back.className = 'btn-ghost'; back.textContent = '← Back'; back.onclick = function() { goToStep(3); };
       var reset = document.createElement('button');
-      reset.style.cssText = 'font-size:12px;color:var(--danger);background:none;border:none;cursor:pointer;padding:0;font-family:DM Sans,sans-serif;';
+      reset.style.cssText = 'font-size:0.9rem;color:#d14343;background:none;border:none;cursor:pointer;padding:0;font-family:inherit;';
       reset.textContent = 'Start over';
       reset.onclick = function() {
         if (!confirm('Clear all answers and start over?')) return;
@@ -862,7 +836,7 @@
       var c = document.getElementById('step-container');
       c.innerHTML = '';
       var wrap = document.createElement('div'); wrap.className = 'thankyou';
-      var icon = document.createElement('div'); icon.className = 'thankyou-icon'; icon.textContent = '\u2713'; wrap.appendChild(icon);
+      var icon = document.createElement('div'); icon.className = 'thankyou-icon'; icon.textContent = '✓'; wrap.appendChild(icon);
       var title = document.createElement('div'); title.className = 'thankyou-title'; title.textContent = "You're all set!"; wrap.appendChild(title);
       var sub = document.createElement('div'); sub.className = 'thankyou-sub'; sub.textContent = "We've received your business brief. We'll review it and be in touch with you soon."; wrap.appendChild(sub);
       localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(STEP_KEY);

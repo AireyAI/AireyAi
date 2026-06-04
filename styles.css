@@ -1,0 +1,180 @@
+/* ============================================================
+   AireyAi — shared design system (Stripe-premium-light + AireyAi green)
+   Linked by every page. Change here, changes everywhere.
+   ============================================================ */
+
+:root {
+  /* Surfaces */
+  --bg:            #ffffff;
+  --bg-soft:       #f6f9fc;   /* alternating section tint */
+  --bg-dark:       #0b1f33;   /* dark brand sections (navy, not black) */
+  --surface:       #ffffff;
+
+  /* Text — Stripe navy, not black */
+  --heading:       #061b31;
+  --label:         #273951;
+  --body:          #4a5b73;
+  --muted:         #8090a6;
+  --on-dark:       #ffffff;
+  --on-dark-soft:  rgba(255,255,255,0.72);
+
+  /* AireyAi green, refined for a light canvas (premium emerald, not neon) */
+  --brand:         #0b8a5b;
+  --brand-strong:  #097049;
+  --brand-soft:    #e6f5ee;
+  --brand-tint:    #f1faf5;
+  --brand-bright:  #12b886;   /* highlight only, sparing */
+
+  /* Borders */
+  --border:        #e5edf5;
+  --border-strong: #d4dded;
+
+  /* Blue-tinted Stripe shadows — elevation that feels designed */
+  --sh-1: rgba(23,23,23,0.06) 0px 3px 8px;
+  --sh-2: rgba(23,23,23,0.08) 0px 12px 30px;
+  --sh-3: rgba(50,50,93,0.16) 0px 28px 45px -28px, rgba(0,0,0,0.08) 0px 16px 32px -18px;
+  --sh-brand: rgba(11,138,91,0.20) 0px 18px 40px -18px;
+
+  /* Radius — conservative, never pills on cards */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-pill: 999px;
+
+  /* Type scale */
+  --fs-hero:  clamp(2.6rem, 6vw, 4.1rem);
+  --fs-h2:    clamp(1.9rem, 3.6vw, 2.7rem);
+  --fs-h3:    1.35rem;
+  --fs-lead:  clamp(1.05rem, 1.6vw, 1.25rem);
+  --fs-body:  1rem;
+  --fs-sm:    0.9rem;
+  --fs-xs:    0.8rem;
+
+  --maxw: 1120px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--body);
+  font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  color: var(--heading);
+  font-weight: 400;          /* Stripe move: light-weight display = luxury */
+  letter-spacing: -0.022em;
+  line-height: 1.08;
+}
+h1 { font-size: var(--fs-hero); font-weight: 300; letter-spacing: -0.032em; }
+h2 { font-size: var(--fs-h2);  font-weight: 350; }
+h3 { font-size: var(--fs-h3);  font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; }
+
+a { color: var(--brand-strong); text-decoration: none; }
+strong { color: var(--heading); font-weight: 600; }
+
+.container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+section { padding: 96px 0; }
+.section-soft { background: var(--bg-soft); }
+.eyebrow {
+  display: inline-block; font-size: var(--fs-xs); font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-strong);
+  margin-bottom: 16px;
+}
+.section-head { max-width: 640px; margin-bottom: 48px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head p { font-size: var(--fs-lead); color: var(--body); margin-top: 14px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: var(--fs-body); font-weight: 500; line-height: 1;
+  padding: 13px 22px; border-radius: var(--r-pill); border: 1px solid transparent;
+  cursor: pointer; transition: transform .18s var(--ease), background .18s, box-shadow .18s, border-color .18s;
+  white-space: nowrap;
+}
+.btn svg { width: 16px; height: 16px; }
+.btn-primary { background: var(--brand); color: #fff; box-shadow: var(--sh-brand); }
+.btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); }
+.btn-ghost { background: #fff; color: var(--heading); border-color: var(--border-strong); }
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand-strong); }
+.btn-on-dark { background: #fff; color: var(--heading); }
+.btn-on-dark:hover { background: var(--brand); color: #fff; transform: translateY(-1px); }
+.btn-lg { padding: 16px 28px; font-size: 1.05rem; }
+
+/* ---------- Nav (shared) ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(255,255,255,0.82); backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 66px; }
+.brand { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.03em; color: var(--heading); }
+.brand em { font-style: normal; color: var(--brand); }
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a:not(.btn) { color: var(--label); font-size: var(--fs-sm); font-weight: 500; transition: color .15s; }
+.nav-links a:not(.btn):hover { color: var(--brand-strong); }
+.nav-toggle { display: none; background: none; border: 0; cursor: pointer; }
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 28px; transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--sh-3); border-color: var(--border-strong); }
+.card-icon {
+  width: 44px; height: 44px; border-radius: var(--r-md); display: grid; place-items: center;
+  background: var(--brand-soft); color: var(--brand-strong); margin-bottom: 18px;
+}
+.card-icon svg { width: 22px; height: 22px; }
+.card h3 { margin-bottom: 8px; }
+.card p { font-size: var(--fs-sm); color: var(--body); }
+
+/* ---------- Badges ---------- */
+.badge {
+  display: inline-flex; align-items: center; gap: 7px; font-size: var(--fs-xs); font-weight: 600;
+  padding: 6px 13px; border-radius: var(--r-pill); background: var(--brand-soft); color: var(--brand-strong);
+  border: 1px solid rgba(11,138,91,0.18);
+}
+.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); }
+.price-from { color: var(--brand-strong); font-weight: 600; }
+
+/* ---------- Dark brand section ---------- */
+.section-dark { background: var(--bg-dark); color: var(--on-dark); }
+.section-dark h1, .section-dark h2, .section-dark h3 { color: #fff; }
+.section-dark p { color: var(--on-dark-soft); }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--bg-dark); color: var(--on-dark-soft); padding: 64px 0 36px; }
+.footer a { color: var(--on-dark-soft); transition: color .15s; }
+.footer a:hover { color: #fff; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; margin-bottom: 44px; }
+.footer h4 { color: #fff; font-size: var(--fs-sm); font-weight: 600; margin-bottom: 16px; letter-spacing: 0; }
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: var(--fs-sm); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: var(--fs-xs); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+
+/* ---------- Reveal animation (CSS-only, no GSAP) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Gated on html.js so the page is fully visible without JS (graceful degradation) */
+  html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  html.js .reveal.in { opacity: 1; transform: none; }
+}
+
+/* ---------- Utility grids ---------- */
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }

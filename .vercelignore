@@ -1,0 +1,12 @@
+node_modules
+.git
+temporary screenshots
+.superpowers
+.DS_Store
+*.code-workspace
+package.json
+package-lock.json
+serve.mjs
+screenshot.mjs
+screenshot-portfolio.mjs
+docs
