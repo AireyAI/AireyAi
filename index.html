@@ -25,7 +25,24 @@
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js');</script>
 <script src="theme.js"></script>
+<!-- Privacy-first analytics (no cookies, no GDPR consent banner needed).
+     ACTIVATE: free signup at goatcounter.com (~60s) -> set YOURCODE -> uncomment:
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
 <style>
+/* Free-mockup capture form (Final CTA, dark section) */
+.mockup-form{max-width:560px;margin:26px auto 8px;text-align:left;}
+.mockup-form .mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.mockup-form input{width:100%;padding:13px 15px;border-radius:var(--r-md,10px);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:1rem;}
+.mockup-form input::placeholder{color:rgba(255,255,255,.6);}
+.mockup-form input:focus{outline:none;border-color:var(--brand-bright,#22c98a);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(34,201,138,.18);}
+.mockup-form input[name="_honey"]{display:none;}
+.mockup-form .mf-submit{width:100%;margin-top:14px;justify-content:center;}
+.mockup-form .mf-note{margin:12px 0 0;font-size:var(--fs-sm,.9rem);color:rgba(255,255,255,.65);text-align:center;}
+.mockup-thanks{max-width:560px;margin:26px auto;padding:18px 20px;border-radius:12px;background:rgba(34,201,138,.14);border:1px solid rgba(34,201,138,.4);color:#fff;font-size:1.05rem;text-align:center;}
+.mf-alt{margin-top:18px;color:rgba(255,255,255,.7);}
+.mf-alt a{color:#fff;}
+@media(max-width:560px){.mockup-form .mf-grid{grid-template-columns:1fr;}}
   /* ---- page-specific ---- */
   .hero { padding: 72px 0 84px; position: relative; overflow: clip; }
   .hero::before {
@@ -368,12 +385,32 @@
   <div class="container">
     <h2 class="reveal">See your site reimagined, for free.</h2>
     <p class="reveal">Send me your business and I'll build you a free homepage mockup, no obligation, no pressure. Prefer to talk first? Tell me what you're trying to grow and you'll get a fixed quote straight back.</p>
-    <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-      <a href="mailto:kyle@aireyai.co.uk?subject=Free%20website%20mockup&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20free%20mockup.%0A%0ABusiness%3A%20%0ACurrent%20website%20(if%20any)%3A%20%0ABest%20number%3A%20" class="btn btn-on-dark btn-lg">Get my free mockup</a>
-      <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business" class="btn btn-ghost btn-lg" style="background:transparent;color:#fff;border-color:rgba(255,255,255,0.3);">WhatsApp me</a>
-    </div>
+    <form id="mockup-form" class="mockup-form reveal" action="https://formsubmit.co/kyle@aireyai.co.uk" method="POST">
+      <input type="hidden" name="_subject" value="New free-mockup request — aireyai.co.uk">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://aireyai.co.uk/?sent=1#get-mockup">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="mf-grid">
+        <input name="name" placeholder="Your name" required autocomplete="name">
+        <input name="business" placeholder="Business name" required autocomplete="organization">
+        <input name="website" placeholder="Current website (if any)" inputmode="url" autocomplete="url">
+        <input name="phone" placeholder="Best number" inputmode="tel" autocomplete="tel">
+      </div>
+      <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <button type="submit" class="btn btn-on-dark btn-lg mf-submit">Send me my free mockup</button>
+      <p class="mf-note">No obligation. I'll reply with your mockup, usually same day.</p>
+    </form>
+    <p id="mockup-thanks" class="mockup-thanks" hidden>Thanks, your request is in. I'll be in touch shortly with your free mockup.</p>
+    <p class="mf-alt reveal">Prefer to chat? <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp me</a></p>
   </div>
 </section>
+<script>
+  if (new URLSearchParams(location.search).has('sent')) {
+    var f = document.getElementById('mockup-form'), t = document.getElementById('mockup-thanks');
+    if (f && t) { f.style.display = 'none'; t.hidden = false; }
+  }
+</script>
 
 <!-- ===== Footer ===== -->
 <footer class="footer">
