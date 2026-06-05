@@ -21,8 +21,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
 <script>document.documentElement.classList.add('js');</script>
 <script src="theme.js"></script>
 <!-- Privacy-first analytics (no cookies, no GDPR consent banner needed).
@@ -80,6 +83,33 @@
     .hero-visual { max-width: 520px; }
     .hero-float.a { left: 0; } .hero-float.b { right: 0; }
   }
+
+  /* ===== AAA hero motion layer (aurora + glass + word reveal) ===== */
+  .hero { isolation: isolate; }
+  .hero-aurora {
+    position: absolute; inset: -12% -6% -6% -6%; z-index: 0; width: 112%; height: 118%;
+    filter: blur(72px) saturate(122%); opacity: 0.9; pointer-events: none;
+    transform: translateZ(0); will-change: transform;
+  }
+  .hero-grain {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.5; mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  }
+  .hero::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 90px; z-index: 1;
+    background: linear-gradient(to bottom, #ffffff, transparent); pointer-events: none;
+  }
+  .hero > .container { position: relative; z-index: 2; }
+  .hero h1 .word { display: inline-block; will-change: transform, filter, opacity; }
+  .hero-float {
+    background: rgba(255,255,255,0.62);
+    backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
+    border-color: rgba(255,255,255,0.85);
+    box-shadow: var(--sh-3), inset 0 1px 0 rgba(255,255,255,0.9);
+    z-index: 3;
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-aurora { filter: blur(72px) saturate(118%); } }
 
   /* services / growth stack */
   .svc-card { display: flex; flex-direction: column; }
@@ -176,26 +206,28 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero">
+  <canvas class="hero-aurora" aria-hidden="true"></canvas>
+  <div class="hero-grain" aria-hidden="true"></div>
   <div class="container hero-grid">
     <div class="hero-text">
-      <span class="badge reveal"><span class="dot"></span> AI Growth Agency · Carlisle, Cumbria</span>
-      <h1 class="reveal">Your website, ads, phone &amp; leads — <span class="accent">handled by one team.</span></h1>
-      <p class="lead reveal">We build your website, run your Meta ads, answer your phone with an AI receptionist, and bring you leads. The full growth stack for small businesses — fixed prices, published up front, no agency jargon.</p>
-      <div class="hero-cta reveal">
-        <a href="#get-mockup" class="btn btn-primary btn-lg">Get a free website mockup <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <span class="badge"><span class="dot"></span> AI Growth Agency · Carlisle, Cumbria</span>
+      <h1>Your website, ads, phone &amp; leads — <span class="accent">handled by one team.</span></h1>
+      <p class="lead">We build your website, run your Meta ads, answer your phone with an AI receptionist, and bring you leads. The full growth stack for small businesses — fixed prices, published up front, no agency jargon.</p>
+      <div class="hero-cta">
+        <a href="#get-mockup" class="btn btn-primary btn-lg" data-magnetic>Get a free website mockup <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <a href="/pricing.html" class="btn btn-ghost btn-lg">See pricing &amp; services</a>
         <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
       </div>
-      <div class="hero-trust reveal">
+      <div class="hero-trust">
         <div class="avatars"><span>EJ</span><span>HH</span><span>WC</span><span>DL</span></div>
         <span>Trusted by <strong>UK trades &amp; small businesses</strong> — live sites you can visit below.</span>
       </div>
     </div>
-    <div class="hero-visual reveal">
+    <div class="hero-visual">
       <a class="shot-link" href="https://aporiginals.com/" target="_blank" rel="noopener" aria-label="Visit AP Clothing — the live online store we built">
         <picture>
           <source media="(max-width: 600px)" srcset="portfolio/ap-clothing-mens-mobile.jpg" width="430" height="764">
-          <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" width="1280" height="800">
+          <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" fetchpriority="high" width="1280" height="800">
         </picture>
       </a>
       <div class="hero-float a">
@@ -467,6 +499,130 @@
   data-business="AireyAi"
   data-accent="#0b8a5b"
   data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. AireyAi offers SEVEN services, all with FIXED, PUBLISHED prices (never 'priced individually'): 1) Websites, one-off from £497 (Landing) to £2,997 (Premium); 2) Meta Ads management from £99/mo (ads + creative bundled); 3) Aria — the AI receptionist — text from £97/mo, AI phone receptionist (Voice) from £249/mo; 4) Lead Generation (managed cold email) from £997/mo; 5) Pay-Per-Lead — exclusive local leads from £15/lead; 6) Content Studio — AI video ads, UGC and imagery from £400/mo; 7) Review Engine — automated 5-star Google review generation by SMS, from £79/mo. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have a one-off setup fee. Point people to the pricing page (/pricing.html) for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never say projects are priced individually — prices are fixed and on the website.">
+</script>
+
+<!-- AAA hero motion: GSAP + ScrollTrigger + Lenis (Context7-verified) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+<script>
+(function () {
+  try {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hero = document.querySelector('.hero');
+    if (!hero || typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* 1. Living aurora — brand-only hues, low alpha, slow drift, CSS-blurred */
+    const canvas = hero.querySelector('.hero-aurora');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let W, H, dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const blobs = [
+        { c: [11,138,91],   a: 0.20, r: 0.55, x: 0.20, y: 0.30, sx: 0.6, sy: 0.5, p: 0 },
+        { c: [18,184,134],  a: 0.16, r: 0.46, x: 0.78, y: 0.22, sx: 0.5, sy: 0.7, p: 1.7 },
+        { c: [13,160,160],  a: 0.14, r: 0.50, x: 0.62, y: 0.72, sx: 0.7, sy: 0.45, p: 3.1 },
+        { c: [245,238,210], a: 0.22, r: 0.42, x: 0.30, y: 0.78, sx: 0.45, sy: 0.6, p: 4.4 },
+        { c: [11,31,51],    a: 0.05, r: 0.40, x: 0.88, y: 0.85, sx: 0.4, sy: 0.5, p: 5.2 },
+      ];
+      let mx = 0.5, my = 0.5, tmx = 0.5, tmy = 0.5;
+      function size() { const r = canvas.getBoundingClientRect(); W = canvas.width = Math.max(1, Math.round(r.width * dpr)); H = canvas.height = Math.max(1, Math.round(r.height * dpr)); }
+      function draw(t) {
+        ctx.clearRect(0, 0, W, H);
+        mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
+        const px = (mx - 0.5), py = (my - 0.5);
+        for (const b of blobs) {
+          const cx = (b.x + Math.sin(t * 0.00007 * b.sx + b.p) * 0.08 + px * 0.05) * W;
+          const cy = (b.y + Math.cos(t * 0.00006 * b.sy + b.p) * 0.08 + py * 0.05) * H;
+          const rad = b.r * Math.max(W, H);
+          const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+          g.addColorStop(0, `rgba(${b.c[0]},${b.c[1]},${b.c[2]},${b.a})`);
+          g.addColorStop(1, `rgba(${b.c[0]},${b.c[1]},${b.c[2]},0)`);
+          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2); ctx.fill();
+        }
+      }
+      let raf;
+      function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+      size();
+      if (reduce) { draw(0); }
+      else {
+        draw(0); raf = requestAnimationFrame(loop);
+        window.addEventListener('mousemove', (e) => { tmx = e.clientX / innerWidth; tmy = e.clientY / innerHeight; });
+        document.addEventListener('visibilitychange', () => { if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(loop); });
+      }
+      let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { dpr = Math.min(window.devicePixelRatio || 1, 1.5); size(); if (reduce) draw(0); }, 160); });
+    }
+
+    /* 2. Lenis smooth-scroll, linked to GSAP's ticker (one clock, no desync) */
+    if (!reduce && window.Lenis) {
+      const lenis = new Lenis({ duration: 1.1, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+      lenis.scrollTo(0, { immediate: true });
+      window.__lenis = lenis;
+    }
+    window.scrollTo(0, 0);
+
+    /* 3. Headline word-split + orchestrated entrance */
+    const h1 = hero.querySelector('h1');
+    const words = [];
+    if (h1) {
+      Array.from(h1.childNodes).forEach((node) => {
+        if (node.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          node.textContent.split(/(\s+)/).forEach((tok) => {
+            if (tok.trim() === '') { frag.appendChild(document.createTextNode(tok)); return; }
+            const s = document.createElement('span'); s.className = 'word'; s.textContent = tok; words.push(s); frag.appendChild(s);
+          });
+          h1.replaceChild(frag, node);
+        } else if (node.classList && node.classList.contains('accent')) {
+          const text = node.textContent; node.textContent = '';
+          text.split(/(\s+)/).forEach((tok) => {
+            if (tok.trim() === '') { node.appendChild(document.createTextNode(tok)); return; }
+            const s = document.createElement('span'); s.className = 'word'; s.textContent = tok; words.push(s); node.appendChild(s);
+          });
+        }
+      });
+    }
+    if (reduce) {
+      gsap.set('.hero .badge, .hero h1 .word, .hero .lead, .hero-cta, .hero-trust, .hero-visual, .hero-float', { opacity: 1, clearProps: 'transform,filter' });
+    } else {
+      gsap.set('.hero-float', { opacity: 0, y: 14, scale: 0.96 });
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from('.hero .badge', { opacity: 0, y: 14, duration: 0.6 }, 0.1)
+        .from(words, { opacity: 0.1, yPercent: 60, filter: 'blur(8px)', duration: 0.8, stagger: 0.045 }, 0.2)
+        .from('.hero .lead', { opacity: 0, y: 16, duration: 0.7 }, 0.55)
+        .from('.hero-cta', { opacity: 0, y: 16, duration: 0.6 }, 0.7)
+        .from('.hero-trust', { opacity: 0, y: 12, duration: 0.6 }, 0.85)
+        .from('.hero-visual', { opacity: 0, y: 24, scale: 0.97, duration: 1.0 }, 0.5)
+        .to('.hero-float', { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.14 }, 1.0);
+    }
+
+    /* 4. Parallax depth on scroll (hero only — released after the first viewport) */
+    if (!reduce) {
+      const st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
+      gsap.to('.hero-visual', { yPercent: -8, ease: 'none', scrollTrigger: st });
+      gsap.to('.hero-float.a', { yPercent: 36, ease: 'none', scrollTrigger: st });
+      gsap.to('.hero-float.b', { yPercent: -28, ease: 'none', scrollTrigger: st });
+    }
+
+    /* 5. Magnetic CTA (desktop pointer only) */
+    if (!reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.querySelectorAll('[data-magnetic]').forEach((el) => {
+        const s = 0.32;
+        el.addEventListener('mousemove', (e) => { const r = el.getBoundingClientRect(); gsap.to(el, { x: (e.clientX - (r.left + r.width / 2)) * s, y: (e.clientY - (r.top + r.height / 2)) * s, duration: 0.4, ease: 'power3.out' }); });
+        el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' }));
+      });
+    }
+
+    if (window.ScrollTrigger) { window.addEventListener('load', () => ScrollTrigger.refresh()); setTimeout(() => ScrollTrigger.refresh(), 700); }
+  } catch (e) {
+    /* failsafe: motion JS must never leave the hero hidden */
+    document.querySelectorAll('.hero .badge, .hero h1, .hero h1 .word, .hero .lead, .hero-cta, .hero-trust, .hero-visual, .hero-float').forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; });
+    if (window.console && console.warn) console.warn('hero motion failsafe engaged:', e);
+  }
+})();
 </script>
 
 <!-- reveal on scroll -->
