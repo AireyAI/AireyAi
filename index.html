@@ -10,14 +10,17 @@
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aireyai.co.uk/">
-<meta property="og:title" content="AireyAi — Websites, Ads & AI for Small Business">
-<meta property="og:description" content="One team for your website, Meta ads, AI receptionist, leads and content. Fixed, published prices — no agency jargon.">
-<meta property="og:image" content="https://aireyai.co.uk/og-image.jpg">
+<meta property="og:title" content="The Small Business Starter Pack — AireyAi">
+<meta property="og:description" content="Live, found on Google, reviewed & answering leads — done for you in 14 days. Website, Google Business Profile, AI receptionist, reviews & launch content. £1,497 + £147/mo.">
+<meta property="og:image" content="https://aireyai.co.uk/og-image.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AireyAi Small Business Starter Pack — live, found on Google and getting leads in 14 days.">
 <meta property="og:site_name" content="AireyAi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AireyAi — Websites, Ads & AI for Small Business">
-<meta name="twitter:description" content="One team for your website, Meta ads, AI receptionist, leads and content. Fixed, published prices.">
-<meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
+<meta name="twitter:title" content="The Small Business Starter Pack — AireyAi">
+<meta name="twitter:description" content="Everything a small business needs to launch online — website, Google Business Profile, AI receptionist, Google reviews & launch content. Done for you in 14 days. £1,497 + £147/mo.">
+<meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg?v=2">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -110,6 +113,42 @@
     z-index: 3;
   }
   @media (prefers-reduced-motion: reduce) { .hero-aurora { filter: blur(72px) saturate(118%); } }
+
+  /* ===== Small Business Starter Pack — the hero offer ===== */
+  .pack { position: relative; overflow: clip; background: var(--bg-dark); color: #fff; }
+  .pack::before {
+    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(55% 60% at 12% -10%, rgba(18,184,134,0.22), transparent 60%),
+      radial-gradient(50% 60% at 92% 110%, rgba(11,138,91,0.20), transparent 60%);
+  }
+  .pack > .container { position: relative; z-index: 1; }
+  .pack-head { max-width: 760px; margin: 0 auto 40px; text-align: center; }
+  .pack-head .eyebrow { color: var(--brand-bright); }
+  .pack-head h2 { color: #fff; }
+  .pack-head .pitch { font-size: var(--fs-lead); color: var(--on-dark-soft); margin-top: 16px; line-height: 1.6; }
+  .pack-head .pitch strong { color: #fff; font-weight: 600; }
+  .pack-panel {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px 44px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--r-lg); padding: 34px 36px; max-width: 920px; margin: 0 auto;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .pack-col h3 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-bright); margin-bottom: 18px; font-weight: 600; }
+  .ticks { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+  .ticks li { position: relative; padding-left: 30px; font-size: var(--fs-sm); color: var(--on-dark-soft); line-height: 1.45; }
+  .ticks li::before {
+    content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px;
+    display: grid; place-items: center; border-radius: 50%; font-size: 0.7rem; font-weight: 700;
+    color: var(--brand-bright); background: rgba(18,184,134,0.16); border: 1px solid rgba(18,184,134,0.3);
+  }
+  .ticks li strong { color: #fff; font-weight: 600; }
+  .pack-cta { text-align: center; margin-top: 38px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .pack-price .big { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 300; letter-spacing: -0.03em; color: #fff; line-height: 1; }
+  .pack-price .big .unit { font-size: 1rem; font-weight: 500; color: var(--on-dark-soft); letter-spacing: 0; }
+  .pack-price .plus { color: var(--brand-bright); font-weight: 500; margin-top: 8px; font-size: var(--fs-body); }
+  .pack-note { font-size: var(--fs-xs); color: rgba(255,255,255,0.5); max-width: 520px; }
+  @media (max-width: 760px){ .pack-panel { grid-template-columns: 1fr; gap: 22px; padding: 28px 24px; } }
 
   /* services / growth stack */
   .svc-card { display: flex; flex-direction: column; }
@@ -238,6 +277,47 @@
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
         <div><b>AP Clothing — live store</b><small>200+ products · selling now</small></div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Small Business Starter Pack (the hero offer) ===== -->
+<section class="pack" id="starter-pack">
+  <div class="container">
+    <div class="pack-head reveal">
+      <span class="eyebrow">Start here · the easiest way to launch</span>
+      <h2>The Small Business Starter Pack</h2>
+      <p class="pitch">Most agencies build you a website and wish you luck. We get you <strong>live, found on Google, reviewed, and answering leads</strong> — the whole foundation, done for you, in about two weeks.</p>
+    </div>
+    <div class="pack-panel reveal">
+      <div class="pack-col">
+        <h3>We build &amp; launch you</h3>
+        <ul class="ticks">
+          <li>Professional 5-page website, fast &amp; bespoke</li>
+          <li>Logo &amp; branding essentials</li>
+          <li><strong>Google Business Profile</strong> — set up &amp; optimised for you</li>
+          <li><strong>AI launch content</strong> — a reel, photos &amp; social images</li>
+          <li>Social profiles, business email &amp; share previews</li>
+          <li>Domain, hosting, SSL, SEO baseline &amp; analytics</li>
+        </ul>
+      </div>
+      <div class="pack-col">
+        <h3>Then every month</h3>
+        <ul class="ticks">
+          <li><strong>Aria</strong> — AI receptionist capturing leads 24/7</li>
+          <li><strong>Review Engine</strong> — Google reviews on autopilot</li>
+          <li>Google Business Profile kept fresh</li>
+          <li>Hosting, security &amp; a monthly edit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pack-cta reveal">
+      <div class="pack-price">
+        <div class="big">£1,497 <span class="unit">one-off</span></div>
+        <div class="plus">+ £147/mo — everything above, kept running</div>
+      </div>
+      <a href="mailto:kyle@aireyai.co.uk?subject=Small%20Business%20Starter%20Pack&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Small%20Business%20Starter%20Pack.%0A%0ABusiness%3A%20%0AWhat%20I%20do%3A%20%0ABest%20number%3A%20" class="btn btn-on-dark btn-lg" data-magnetic>Start your launch →</a>
+      <div class="pack-note">Live in ~14 days · 3-month minimum on the monthly, then cancel anytime · all prices +VAT</div>
     </div>
   </div>
 </section>
@@ -493,12 +573,13 @@
 <a class="wa-float" href="https://wa.me/447497812186" aria-label="WhatsApp us"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2z"/></svg></a>
 
 <!-- ===== Aria chatbot (FIXED prompt: full catalogue + fixed pricing) ===== -->
-<script src="https://aria-chatbot-production-12d0.up.railway.app/chatbot.js"
+<script type="text/plain" data-paused="aria-off-2026-06-06 — re-enable (remove type+data-paused) when we land a client"
+  src="https://aria-chatbot-production-12d0.up.railway.app/chatbot.js"
   defer
   data-server="https://aria-chatbot-production-12d0.up.railway.app"
   data-business="AireyAi"
   data-accent="#0b8a5b"
-  data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. AireyAi offers SEVEN services, all with FIXED, PUBLISHED prices (never 'priced individually'): 1) Websites, one-off from £497 (Landing) to £2,997 (Premium); 2) Meta Ads management from £99/mo (ads + creative bundled); 3) Aria — the AI receptionist — text from £97/mo, AI phone receptionist (Voice) from £249/mo; 4) Lead Generation (managed cold email) from £997/mo; 5) Pay-Per-Lead — exclusive local leads from £15/lead; 6) Content Studio — AI video ads, UGC and imagery from £400/mo; 7) Review Engine — automated 5-star Google review generation by SMS, from £79/mo. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have a one-off setup fee. Point people to the pricing page (/pricing.html) for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never say projects are priced individually — prices are fixed and on the website.">
+  data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. The flagship offer — and the best place for most small businesses to start — is the Small Business Starter Pack: £1,497 one-off + £147/mo, everything to launch (a website, Google Business Profile set up for you, an AI receptionist, automated Google reviews, and launch content), live in about 14 days. Beyond the pack, AireyAi offers SEVEN services, all with FIXED, PUBLISHED prices (never 'priced individually'): 1) Websites, one-off from £497 (Landing) to £2,997 (Premium); 2) Meta Ads management from £99/mo (ads + creative bundled); 3) Aria — the AI receptionist — text from £97/mo, AI phone receptionist (Voice) from £249/mo; 4) Lead Generation (managed cold email) from £997/mo; 5) Pay-Per-Lead — exclusive local leads from £15/lead; 6) Content Studio — AI video ads, UGC and imagery from £400/mo; 7) Review Engine — automated 5-star Google review generation by SMS, from £79/mo. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have a one-off setup fee. Point people to the pricing page (/pricing.html) for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never say projects are priced individually — prices are fixed and on the website.">
 </script>
 
 <!-- AAA hero motion: GSAP + ScrollTrigger + Lenis (Context7-verified) -->
