@@ -26,12 +26,10 @@
 <meta name="twitter:description" content="Weekly Google Business Profile management, automated reviews, AI-search optimisation and a monthly report — £197 setup + £179/mo.">
 <meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');</script>
-<script src="theme.js"></script>
+<script>document.documentElement.classList.add('js');try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}</script>
+<script src="theme.js" defer></script>
 <style>
   /* ---- page-specific (uses shared variables from styles.css) ---- */
   .vis-hero { padding: 72px 0 64px; text-align: center; position: relative; overflow: clip; }
@@ -400,7 +398,7 @@
         <a href="/" class="brand" style="color:#fff;">Airey<em style="color:var(--brand-bright);">Ai</em></a>
         <p style="margin-top:14px;max-width:30ch;font-size:var(--fs-sm);">The AI growth agency for UK small businesses. Websites, ads, an AI receptionist, leads and content — one team, fixed prices.</p>
       </div>
-      <div><h4>Services</h4><ul>
+      <div><h3>Services</h3><ul>
         <li><a href="/pricing.html#websites">Websites</a></li>
         <li><a href="/ai-visibility.html">AI Visibility Plan</a></li>
         <li><a href="/pricing.html#ads">Meta Ads</a></li>
@@ -410,14 +408,14 @@
         <li><a href="/pricing.html#ppl">Pay-Per-Lead</a></li>
         <li><a href="/studio.html">Content Studio</a></li>
       </ul></div>
-      <div><h4>Company</h4><ul>
+      <div><h3>Company</h3><ul>
         <li><a href="/pricing.html">Pricing</a></li>
         <li><a href="/projects.html">Our work</a></li>
         <li><a href="/brief.html">Start a brief</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
         <li><a href="/terms.html">Terms</a></li>
       </ul></div>
-      <div><h4>Get in touch</h4><ul>
+      <div><h3>Get in touch</h3><ul>
         <li><a href="mailto:kyle@aireyai.co.uk">Email us</a></li>
         <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
         <li><a href="tel:+447497812186">07497 812186</a></li>

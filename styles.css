@@ -3,6 +3,25 @@
    Linked by every page. Change here, changes everywhere.
    ============================================================ */
 
+/* Hanken Grotesk — self-hosted variable font (was render-blocking Google Fonts CSS).
+   One file covers weights 300–700. Preloaded from each page <head>. */
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/hanken-grotesk-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/hanken-grotesk-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
   /* Surfaces */
   --bg:            #ffffff;
@@ -14,7 +33,7 @@
   --heading:       #061b31;
   --label:         #273951;
   --body:          #4a5b73;
-  --muted:         #8090a6;
+  --muted:         #62738a;   /* 4.6:1 on --bg-soft — WCAG AA for small text */
   --on-dark:       #ffffff;
   --on-dark-soft:  rgba(255,255,255,0.72);
 
@@ -168,7 +187,7 @@ section { padding: 96px 0; }
 .footer a { color: var(--on-dark-soft); transition: color .15s; }
 .footer a:hover { color: #fff; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; margin-bottom: 44px; }
-.footer h4 { color: #fff; font-size: var(--fs-sm); font-weight: 600; margin-bottom: 16px; letter-spacing: 0; }
+.footer h3 { color: #fff; font-size: var(--fs-sm); font-weight: 600; margin-bottom: 16px; letter-spacing: 0; line-height: 1.08; }
 .footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: var(--fs-sm); }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; font-size: var(--fs-xs); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }

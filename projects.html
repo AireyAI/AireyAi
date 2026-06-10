@@ -23,12 +23,10 @@
 <meta name="twitter:description" content="Case studies of bespoke websites built for real businesses.">
 <meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');</script>
-<script src="theme.js"></script>
+<script>document.documentElement.classList.add('js');try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}</script>
+<script src="theme.js" defer></script>
 <style>
   /* ---- page-specific ---- */
   .work-hero { padding: 84px 0 40px; position: relative; overflow: clip; }
@@ -130,8 +128,8 @@
         <span class="case-feature">Service Area Pages</span>
       </div>
       <div class="case-screens">
-        <div class="case-desktop"><img src="portfolio/cases/jtr-electrical-desktop.png" alt="JTR Electrical — emergency electrician in Carlisle, desktop view" loading="lazy"></div>
-        <div class="case-mobile"><img src="portfolio/cases/jtr-electrical-mobile.png" alt="JTR Electrical — emergency electrician in Carlisle, mobile view" loading="lazy"></div>
+        <div class="case-desktop"><img src="portfolio/cases/jtr-electrical-desktop.jpg" alt="JTR Electrical — emergency electrician in Carlisle, desktop view" loading="lazy"></div>
+        <div class="case-mobile"><img src="portfolio/cases/jtr-electrical-mobile.jpg" alt="JTR Electrical — emergency electrician in Carlisle, mobile view" loading="lazy"></div>
       </div>
     </div>
 
@@ -173,8 +171,8 @@
         <span class="case-feature">Education Section</span>
       </div>
       <div class="case-screens">
-        <div class="case-desktop"><img src="portfolio/cases/carlisle-desktop.png" alt="Carlisle Gold Trading desktop view" loading="lazy"></div>
-        <div class="case-mobile"><img src="portfolio/cases/carlisle-mobile.png" alt="Carlisle Gold Trading mobile view" loading="lazy"></div>
+        <div class="case-desktop"><img src="portfolio/cases/carlisle-desktop.jpg" alt="Carlisle Gold Trading desktop view" loading="lazy"></div>
+        <div class="case-mobile"><img src="portfolio/cases/carlisle-mobile.jpg" alt="Carlisle Gold Trading mobile view" loading="lazy"></div>
       </div>
     </div>
 
@@ -194,8 +192,8 @@
         <span class="case-feature">WhatsApp Button</span>
       </div>
       <div class="case-screens">
-        <div class="case-desktop"><img src="portfolio/cases/dolled-desktop.png" alt="Dolled by Louise desktop view" loading="lazy"></div>
-        <div class="case-mobile"><img src="portfolio/cases/dolled-mobile.png" alt="Dolled by Louise mobile view" loading="lazy"></div>
+        <div class="case-desktop"><img src="portfolio/cases/dolled-desktop.jpg" alt="Dolled by Louise desktop view" loading="lazy"></div>
+        <div class="case-mobile"><img src="portfolio/cases/dolled-mobile.jpg" alt="Dolled by Louise mobile view" loading="lazy"></div>
       </div>
     </div>
 
@@ -216,8 +214,8 @@
         <span class="case-feature">Splash Screen</span>
       </div>
       <div class="case-screens">
-        <div class="case-desktop"><img src="portfolio/cases/felltrax-desktop.png" alt="Felltrax Cycles desktop view" loading="lazy"></div>
-        <div class="case-mobile"><img src="portfolio/cases/felltrax-mobile.png" alt="Felltrax Cycles mobile view" loading="lazy"></div>
+        <div class="case-desktop"><img src="portfolio/cases/felltrax-desktop.jpg" alt="Felltrax Cycles desktop view" loading="lazy"></div>
+        <div class="case-mobile"><img src="portfolio/cases/felltrax-mobile.jpg" alt="Felltrax Cycles mobile view" loading="lazy"></div>
       </div>
     </div>
 
@@ -237,8 +235,8 @@
         <span class="case-feature">Trust Signals</span>
       </div>
       <div class="case-screens">
-        <div class="case-desktop"><img src="portfolio/cases/ej-roofing-desktop.png" alt="E J Roofing desktop view" loading="lazy"></div>
-        <div class="case-mobile"><img src="portfolio/cases/ej-roofing-mobile.png" alt="E J Roofing mobile view" loading="lazy"></div>
+        <div class="case-desktop"><img src="portfolio/cases/ej-roofing-desktop.jpg" alt="E J Roofing desktop view" loading="lazy"></div>
+        <div class="case-mobile"><img src="portfolio/cases/ej-roofing-mobile.jpg" alt="E J Roofing mobile view" loading="lazy"></div>
       </div>
     </div>
 
@@ -265,7 +263,7 @@
         <a href="/" class="brand" style="color:#fff;">Airey<em style="color:var(--brand-bright);">Ai</em></a>
         <p style="margin-top:14px;max-width:30ch;font-size:var(--fs-sm);">The AI growth agency for UK small businesses. Websites, ads, an AI receptionist, leads and content — one team, fixed prices.</p>
       </div>
-      <div><h4>Services</h4><ul>
+      <div><h3>Services</h3><ul>
         <li><a href="/pricing.html#websites">Websites</a></li>
         <li><a href="/pricing.html#ads">Meta Ads</a></li>
         <li><a href="/aria.html">AI Receptionist</a></li>
@@ -273,14 +271,14 @@
         <li><a href="/pricing.html#ppl">Pay-Per-Lead</a></li>
         <li><a href="/studio.html">Content Studio</a></li>
       </ul></div>
-      <div><h4>Company</h4><ul>
+      <div><h3>Company</h3><ul>
         <li><a href="/pricing.html">Pricing</a></li>
         <li><a href="/projects.html">Our work</a></li>
         <li><a href="/brief.html">Start a brief</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
         <li><a href="/terms.html">Terms</a></li>
       </ul></div>
-      <div><h4>Get in touch</h4><ul>
+      <div><h3>Get in touch</h3><ul>
         <li><a href="mailto:kyle@aireyai.co.uk">Email us</a></li>
         <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
         <li><a href="tel:+447497812186">07497 812186</a></li>
