@@ -1,0 +1,12 @@
+{
+  "name": "aireyai-site",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-cloudflare.mjs",
+    "deploy:cloudflare": "npm run build && wrangler pages deploy dist --project-name aireyai --branch main",
+    "deploy:cloudflare:preview": "npm run build && wrangler pages deploy dist --project-name aireyai --branch preview"
+  },
+  "dependencies": {
+    "puppeteer": "^24.43.1"
+  }
+}

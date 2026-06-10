@@ -3,5 +3,5 @@ temporary screenshots/
 *.code-workspace
 .superpowers/
 node_modules/
+dist/
 package-lock.json
-package.json

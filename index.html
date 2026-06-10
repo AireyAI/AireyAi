@@ -3,14 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AireyAi — Websites, Ads & AI for Small Business</title>
-<meta name="description" content="AireyAi is an AI growth agency for UK small businesses — websites, Meta ads, an AI receptionist that answers your phone, lead generation and content. Fixed prices, no jargon. Carlisle, Cumbria.">
+<title>AireyAi — Small Business Starter Pack, Websites, Ads & AI</title>
+<meta name="description" content="AireyAi helps UK small businesses launch, get found, answer leads and collect Google reviews. Websites, Meta ads, Aria AI receptionist and more — fixed prices.">
 <link rel="canonical" href="https://aireyai.co.uk/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0b8a5b">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aireyai.co.uk/">
@@ -39,13 +41,68 @@
      ACTIVATE: free signup at goatcounter.com (~60s) -> set YOURCODE -> uncomment:
 <script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "AireyAI",
+      "url": "https://aireyai.co.uk",
+      "email": "kyle@aireyai.co.uk",
+      "telephone": "+447497812186",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Carlisle",
+        "addressRegion": "Cumbria",
+        "addressCountry": "GB"
+      },
+      "areaServed": "Carlisle and Cumbria, UK",
+      "description": "We build your website, run your Meta ads, answer your phone with an AI receptionist, and bring you leads. The full growth stack for small businesses — fixed prices, published up front, no agency jargon."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I have to take everything?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Most clients start with one thing — usually a website or the AI receptionist — and add services later if they want. Each service stands on its own; bundling just saves you money." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many revisions do I get on a website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every website tier includes revision rounds — from 1 on the Landing package up to 5 on Premium — and your quote spells out exactly how many. We don't consider it done until you're genuinely proud of it." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the prices really fixed?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every price is published on our pricing page and that's what you pay — websites are a fixed one-off, monthly services are month-to-month after any minimum term. The only extras are clearly-quoted out-of-scope work you ask for. All prices are +VAT." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a contract or lock-in?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Websites are a one-off project. Monthly services have a short minimum so they have time to work (ads & Aria 3 months, lead gen 6) — after that it's month-to-month, cancel any time with one email." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are you based?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Carlisle, Cumbria. We work with businesses across the UK, but you'll always deal with one accountable person, not a call centre." }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
 /* Free-mockup capture form (Final CTA, dark section) */
 .mockup-form{max-width:560px;margin:26px auto 8px;text-align:left;}
 .mockup-form .mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-.mockup-form input{width:100%;padding:13px 15px;border-radius:var(--r-md,10px);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:1rem;}
+.mockup-form input,.mockup-form select{width:100%;padding:13px 15px;border-radius:var(--r-md,10px);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:1rem;}
 .mockup-form input::placeholder{color:rgba(255,255,255,.6);}
-.mockup-form input:focus{outline:none;border-color:var(--brand-bright,#22c98a);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(34,201,138,.18);}
+.mockup-form input:focus,.mockup-form select:focus{outline:none;border-color:var(--brand-bright,#22c98a);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(34,201,138,.18);}
+.mockup-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;cursor:pointer;}
+.mockup-form select option{color:#0b1f33;background:#fff;}
+.mockup-form .mf-label{display:block;margin:12px 0 6px;font-size:var(--fs-sm,.9rem);color:rgba(255,255,255,.75);}
 .mockup-form input[name="_honey"]{display:none;}
 .mockup-form .mf-submit{width:100%;margin-top:14px;justify-content:center;}
 .mockup-form .mf-note{margin:12px 0 0;font-size:var(--fs-sm,.9rem);color:rgba(255,255,255,.65);text-align:center;}
@@ -158,6 +215,15 @@
   .svc-card { display: flex; flex-direction: column; }
   .svc-card .price-from { margin-top: auto; padding-top: 16px; font-size: var(--fs-sm); }
   .svc-card .go { font-size: var(--fs-sm); font-weight: 600; color: var(--brand-strong); margin-top: 12px; }
+  .idea-strip { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+  .idea-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 24px; box-shadow: var(--sh-1); }
+  .idea-card .tag, .svc-card .tag { display:inline-flex; align-items:center; margin-bottom: 14px; padding: 5px 10px; border-radius: 999px; background: rgba(18,184,134,0.10); color: var(--brand-strong); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .svc-card .tag { align-self: flex-start; }
+  .idea-card h3 { margin-bottom: 8px; }
+  .idea-card p { font-size: var(--fs-sm); }
+  .idea-card .fit { margin-top: 16px; color: var(--muted); font-size: var(--fs-xs); }
+  @media (max-width: 900px){ .idea-strip { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px){ .idea-strip { grid-template-columns: 1fr; } }
 
   /* steps */
   .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; counter-reset: s; }
@@ -235,8 +301,10 @@
     <a href="/" class="brand">Airey<em>Ai</em></a>
     <nav class="nav-links">
       <a href="#services">Services</a>
+      <a href="#service-ideas">Add-ons</a>
       <a href="/pricing.html">Pricing</a>
       <a href="#work">Work</a>
+      <a href="/ai-visibility.html">AI Visibility</a>
       <a href="/aria.html">Aria</a>
       <a href="/studio.html">Studio</a>
       <a href="/pricing.html" class="btn btn-primary">Get a quote</a>
@@ -297,7 +365,7 @@
       <div class="pack-col">
         <h3>We build &amp; launch you</h3>
         <ul class="ticks">
-          <li>Professional 5-page website, fast &amp; bespoke</li>
+          <li>Professional website (up to 5 pages), fast &amp; bespoke</li>
           <li>Logo &amp; branding essentials</li>
           <li><strong>Google Business Profile</strong> — set up &amp; optimised for you</li>
           <li><strong>AI launch content</strong> — a reel, photos &amp; social images</li>
@@ -320,7 +388,7 @@
         <div class="big">£1,497 <span class="unit">one-off</span></div>
         <div class="plus">+ £147/mo — everything above, kept running</div>
       </div>
-      <a href="mailto:kyle@aireyai.co.uk?subject=Small%20Business%20Starter%20Pack&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Small%20Business%20Starter%20Pack.%0A%0ABusiness%3A%20%0AWhat%20I%20do%3A%20%0ABest%20number%3A%20" class="btn btn-on-dark btn-lg" data-magnetic>Start your launch →</a>
+      <a href="#get-mockup" class="btn btn-on-dark btn-lg" data-magnetic>Start your launch →</a>
       <div class="pack-note">Live in ~14 days · 3-month minimum on the monthly, then cancel anytime · all prices +VAT</div>
     </div>
   </div>
@@ -385,8 +453,66 @@
         <span class="price-from">From £79/mo</span>
         <span class="go">See Review Engine →</span>
       </a>
+      <a href="/ai-visibility.html" class="card svc-card reveal">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M14.8 14.8L20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18.5 3l.9 2.1L21.5 6l-2.1.9-.9 2.1-.9-2.1L15.5 6l2.1-.9z" fill="currentColor"/></svg></div>
+        <span class="tag">New</span>
+        <h3>Local AI Visibility Plan</h3>
+        <p>Get found on Google — and recommended by AI assistants. GBP, reviews and AI-search optimisation, managed monthly.</p>
+        <span class="price-from">From £179/mo</span>
+        <span class="go">See the Visibility Plan →</span>
+      </a>
     </div>
     <p style="text-align:center;margin-top:34px;font-size:var(--fs-sm);color:var(--muted);">Bundle two or more and save up to 25% · all prices +VAT · monthly services may carry a one-off setup fee, shown on each page.</p>
+  </div>
+</section>
+
+<!-- ===== Repeat & Reputation add-ons ===== -->
+<section id="service-ideas" class="section-soft">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Repeat &amp; Reputation</span>
+      <h2>The add-ons that stop good leads leaking away.</h2>
+      <p>Once your site is live and Aria is answering enquiries, the biggest wins come from reviews, quote follow-up, past customers and job photos. These bolt onto the same stack without adding another agency.</p>
+    </div>
+    <div class="idea-strip">
+      <div class="idea-card reveal">
+        <span class="tag">Live now</span>
+        <h3>Review Engine</h3>
+        <p>Automatic Google-review requests by SMS after finished jobs, with opt-outs, monitoring and reply drafts on Pro.</p>
+        <div class="fit">From £79/mo · best first add-on for every local business.</div>
+      </div>
+      <div class="idea-card reveal">
+        <span class="tag">By request</span>
+        <h3>Quote Chaser</h3>
+        <p>Four polite follow-ups after every quote: day 1, 3, 7 and 14, paused the moment a customer replies.</p>
+        <div class="fit">£247 setup + £97/mo · for trades where sent quotes go quiet.</div>
+      </div>
+      <div class="idea-card reveal">
+        <span class="tag">By request</span>
+        <h3>Win-Back Campaigns</h3>
+        <p>Seasonal email or SMS campaigns to past customers: gutter cleans, boiler services, skin top-ups, renewals and offers.</p>
+        <div class="fit">£297 one-off or £147/mo · easiest money when you already have customers.</div>
+      </div>
+      <div class="idea-card reveal">
+        <span class="tag">Local search</span>
+        <h3>GBP Management</h3>
+        <p>Weekly Google Business posts, Q&amp;A checks, quarterly audits and local visibility improvements.</p>
+        <div class="fit">£147/mo standalone · £47/mo bundled into larger plans.</div>
+      </div>
+      <div class="idea-card reveal">
+        <span class="tag">Content</span>
+        <h3>Job Photos → Social</h3>
+        <p>Send job photos, and we turn them into branded posts, short captions and monthly social updates.</p>
+        <div class="fit">£147/mo or £247/mo · turns real work into proof.</div>
+      </div>
+      <div class="idea-card reveal">
+        <span class="tag">Google demand</span>
+        <h3>Google LSA</h3>
+        <p>Local Services Ads setup and management for trades that want search-intent leads without a full Google Ads build.</p>
+        <div class="fit">£297 setup + £149/mo · launch LSA before broader Search Ads.</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:var(--fs-sm);color:var(--muted);">The practical path: Starter Pack → Review Engine → Quote Chaser or GBP → ads/lead-gen when the foundation is converting.</p>
   </div>
 </section>
 
@@ -464,7 +590,7 @@
     </div>
     <div class="why-grid">
       <div class="w reveal"><h3>Prices on the website</h3><p>Most agencies hide pricing behind "contact us". Ours is published, fixed, and the same for everyone — see every price before you talk to us.</p></div>
-      <div class="w reveal"><h3>AI-native, human-finished</h3><p>We use AI to do the heavy lifting cheaply, then a human makes it right. That's how a 5-page site is £1,697, not £4k.</p></div>
+      <div class="w reveal"><h3>AI-native, human-finished</h3><p>We use AI to do the heavy lifting cheaply, then a human makes it right. That's how a professional site is £997–£1,697, not £4k.</p></div>
       <div class="w reveal"><h3>Local &amp; accountable</h3><p>Carlisle-based, no London markup, no offshore team. One person owns your result and answers the phone.</p></div>
     </div>
     <div style="margin-top:40px;" class="reveal"><a href="/pricing.html" class="btn btn-on-dark btn-lg">See the full price list →</a></div>
@@ -486,6 +612,7 @@
       <a href="/pricing.html#ppl" class="reveal"><div class="n">Pay-Per-Lead</div><div class="p">£15+</div><div class="d">per exclusive lead</div></a>
       <a href="/studio.html" class="reveal"><div class="n">Content</div><div class="p">£400/mo</div><div class="d">video, UGC, imagery</div></a>
       <a href="/pricing.html#reviews" class="reveal"><div class="n">Review Engine</div><div class="p">£79/mo</div><div class="d">more Google reviews</div></a>
+      <a href="/ai-visibility.html" class="reveal"><div class="n">AI Visibility</div><div class="p">£179/mo</div><div class="d">GBP, reviews &amp; AI search</div></a>
     </div>
   </div>
 </section>
@@ -522,11 +649,20 @@
         <input name="phone" placeholder="Best number" inputmode="tel" autocomplete="tel">
       </div>
       <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <label class="mf-label" for="mf-enquiry">What do you need?</label>
+      <select id="mf-enquiry" name="enquiry">
+        <option value="Free website mockup" selected>Free website mockup</option>
+        <option value="Small Business Starter Pack">Small Business Starter Pack</option>
+        <option value="Local AI Visibility Plan">Local AI Visibility Plan</option>
+        <option value="Aria — AI receptionist">Aria — AI receptionist</option>
+        <option value="Content Studio">Content Studio</option>
+        <option value="Something else">Something else</option>
+      </select>
       <button type="submit" class="btn btn-on-dark btn-lg mf-submit">Send me my free mockup</button>
       <p class="mf-note">No obligation. I'll reply with your mockup, usually same day.</p>
     </form>
     <p id="mockup-thanks" class="mockup-thanks" hidden>Thanks, your request is in. I'll be in touch shortly with your free mockup.</p>
-    <p class="mf-alt reveal">Prefer to chat? <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp me</a></p>
+    <p class="mf-alt reveal">Prefer to talk? Call or WhatsApp <a href="tel:+447497812186">07497 812186</a> · <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp me</a></p>
   </div>
 </section>
 <script>
@@ -546,21 +682,25 @@
       </div>
       <div><h4>Services</h4><ul>
         <li><a href="/pricing.html#websites">Websites</a></li>
+        <li><a href="/#service-ideas">Repeat &amp; Reputation</a></li>
         <li><a href="/pricing.html#ads">Meta Ads</a></li>
         <li><a href="/aria.html">AI Receptionist</a></li>
         <li><a href="/pricing.html#leadgen">Lead Generation</a></li>
         <li><a href="/pricing.html#reviews">Review Engine</a></li>
+        <li><a href="/ai-visibility.html">AI Visibility Plan</a></li>
         <li><a href="/pricing.html#ppl">Pay-Per-Lead</a></li>
         <li><a href="/studio.html">Content Studio</a></li>
       </ul></div>
       <div><h4>Company</h4><ul>
         <li><a href="/pricing.html">Pricing</a></li>
         <li><a href="/projects.html">Our work</a></li>
-        <li><a href="/brief.html">Start a website brief</a></li>
+        <li><a href="/brief.html">Start a brief</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms</a></li>
       </ul></div>
       <div id="contact" style="scroll-margin-top:90px;"><h4>Get in touch</h4><ul>
         <li><a href="mailto:kyle@aireyai.co.uk">Email us</a></li>
+        <li><a href="tel:+447497812186">07497 812186</a></li>
         <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61573215460575" rel="noopener">Facebook</a></li>
         <li>Carlisle, Cumbria, UK</li>
@@ -583,7 +723,7 @@
   data-server="https://aria-chatbot-production-12d0.up.railway.app"
   data-business="AireyAi"
   data-accent="#0b8a5b"
-  data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. The flagship offer — and the best place for most small businesses to start — is the Small Business Starter Pack: £1,497 one-off + £147/mo, everything to launch (a website, Google Business Profile set up for you, an AI receptionist, automated Google reviews, and launch content), live in about 14 days. Beyond the pack, AireyAi offers SEVEN services, all with FIXED, PUBLISHED prices (never 'priced individually'): 1) Websites, one-off from £497 (Landing) to £2,997 (Premium); 2) Meta Ads management from £99/mo (ads + creative bundled); 3) Aria — the AI receptionist — text from £97/mo, AI phone receptionist (Voice) from £249/mo; 4) Lead Generation (managed cold email) from £997/mo; 5) Pay-Per-Lead — exclusive local leads from £15/lead; 6) Content Studio — AI video ads, UGC and imagery from £400/mo; 7) Review Engine — automated 5-star Google review generation by SMS, from £79/mo. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have a one-off setup fee. Point people to the pricing page (/pricing.html) for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never say projects are priced individually — prices are fixed and on the website.">
+  data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. The flagship offer — and the best place for most small businesses to start — is the Small Business Starter Pack: £1,497 one-off + £147/mo, everything to launch (a website, Google Business Profile set up for you, an AI receptionist, automated Google reviews, and launch content), live in about 14 days. Beyond the pack, AireyAi offers EIGHT fixed-price services with published ranges: 1) Websites, one-off from £497 to £2,997; 2) Meta Ads management from £99/mo; 3) Aria — text from £97/mo, AI phone receptionist from £249/mo; 4) Lead Generation from £997/mo; 5) Pay-Per-Lead from £15/lead; 6) Content Studio from £400/mo; 7) Review Engine from £79/mo; 8) Local AI Visibility Plan — £197 setup + £179/mo, a bundle of Google Business Profile management, Review Engine and AI-search optimisation that works with an existing website, no rebuild required. There are also Repeat & Reputation add-ons by request: Quote Chaser, Win-Back, GBP Management, Job Photos to Social, Google LSA and Video Testimonials. Be clear that by-request add-ons are scoped manually before launch. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have setup fees. Point people to /pricing.html for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never describe projects as bespoke-priced — prices are fixed and on the website.">
 </script>
 
 <!-- AAA hero motion: GSAP + ScrollTrigger + Lenis (Context7-verified) -->

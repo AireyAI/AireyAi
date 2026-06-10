@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1500, initial-scale=1">
+  <title>AireyAI Twitter Header</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --heading: #061b31;
+      --brand: #0b8a5b;
+      --brand-soft: #e6f5ee;
+      --brand-tint: #f1faf5;
+      --border: #e5edf5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      width: 1500px;
+      height: 500px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(11, 138, 91, 0.10), transparent 30%),
+        radial-gradient(circle at 12% 88%, rgba(11, 138, 91, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfdfe 0%, #ffffff 64%);
+      font-family: "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: grid;
+      place-items: center;
+    }
+
+    .header {
+      position: relative;
+      width: 1500px;
+      height: 500px;
+      display: grid;
+      place-items: center;
+    }
+
+    .header::before,
+    .header::after {
+      content: "";
+      position: absolute;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .header::before {
+      width: 520px;
+      height: 520px;
+      right: -175px;
+      top: -225px;
+      background: rgba(230, 245, 238, 0.38);
+    }
+
+    .header::after {
+      width: 360px;
+      height: 360px;
+      left: -120px;
+      bottom: -190px;
+      background: rgba(241, 250, 245, 0.62);
+    }
+
+    .brand {
+      position: relative;
+      z-index: 1;
+      color: var(--heading);
+      font-size: 144px;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      text-rendering: geometricPrecision;
+    }
+
+    .brand em {
+      color: var(--brand);
+      font-style: normal;
+    }
+  </style>
+</head>
+<body>
+  <main class="header" aria-label="AireyAI Twitter header">
+    <div class="brand">Airey<em>AI</em></div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /audit/
+Disallow: /dist/
+Disallow: /docs/
+
+Sitemap: https://aireyai.co.uk/sitemap.xml

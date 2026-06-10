@@ -3,20 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anvil Studio — AI Video Ads, Imagery & UGC for Local Businesses & Brands</title>
-<meta name="description" content="Anvil Studio produces AI video ads, product imagery, UGC, and brand campaigns for local businesses and product brands alike. Brief Monday, delivered Friday. Done-for-you content plans from £400/mo, cancel anytime.">
-<meta property="og:title" content="Anvil Studio — AI Content for Local Businesses & Brands">
+<title>Content Studio — AI Video Ads, Imagery & UGC for Local Businesses & Brands</title>
+<meta name="description" content="AireyAI's Content Studio produces AI video ads, product imagery, UGC, and brand campaigns for local businesses and product brands alike. Brief Monday, delivered Friday. Done-for-you content plans from £400/mo, cancel anytime.">
+<meta property="og:title" content="Content Studio — AI Content for Local Businesses & Brands">
 <meta property="og:description" content="Video ads, product imagery, UGC, brand campaigns. Brief Monday, deliver Friday. Content plans from £400/mo, cancel anytime.">
 <meta property="og:url" content="https://aireyai.co.uk/studio.html">
 <meta property="og:image" content="https://aireyai.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Anvil Studio — AI content for local businesses and brands">
+<meta property="og:image:alt" content="Content Studio — AI content for local businesses and brands">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AireyAi">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg">
 <link rel="canonical" href="https://aireyai.co.uk/studio.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Content Studio — AI content for local businesses",
+  "serviceType": "Content production",
+  "url": "https://aireyai.co.uk/studio.html",
+  "provider": {
+    "@type": "Organization",
+    "name": "AireyAI",
+    "url": "https://aireyai.co.uk"
+  },
+  "areaServed": "GB",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Starter",
+      "price": "400",
+      "priceCurrency": "GBP",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "400",
+        "priceCurrency": "GBP",
+        "unitText": "month"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Growth",
+      "price": "850",
+      "priceCurrency": "GBP",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "850",
+        "priceCurrency": "GBP",
+        "unitText": "month"
+      }
+    },
+    {
+      "@type": "Offer",
+      "name": "Scale",
+      "price": "1500",
+      "priceCurrency": "GBP",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "1500",
+        "priceCurrency": "GBP",
+        "unitText": "month"
+      }
+    }
+  ]
+}
+</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
@@ -29,7 +82,7 @@
 <script>document.documentElement.classList.add('js');</script>
 <script src="theme.js"></script>
 <style>
-  /* ---- page-specific (Anvil Studio) ---- */
+  /* ---- page-specific (Content Studio) ---- */
 
   /* Hero */
   .hero { padding: 80px 0 64px; position: relative; overflow: clip; text-align: center; }
@@ -143,6 +196,24 @@
   .final p { max-width: 34em; margin: 0 auto 28px; }
   .final .accent { color: var(--brand-bright); }
 
+  /* Brief form (same dark-form treatment as the index mockup form) */
+  .brief-form { max-width: 560px; margin: 26px auto 8px; text-align: left; }
+  .brief-form .bf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .brief-form input, .brief-form select, .brief-form textarea { width: 100%; padding: 13px 15px; border-radius: var(--r-md,10px); border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); color: #fff; font: inherit; font-size: 1rem; }
+  .brief-form input::placeholder, .brief-form textarea::placeholder { color: rgba(255,255,255,.6); }
+  .brief-form input:focus, .brief-form select:focus, .brief-form textarea:focus { outline: none; border-color: var(--brand-bright,#22c98a); background: rgba(255,255,255,.1); box-shadow: 0 0 0 3px rgba(34,201,138,.18); }
+  .brief-form > input[type="email"], .brief-form select { margin-bottom: 12px; }
+  .brief-form select:invalid { color: rgba(255,255,255,.6); }
+  .brief-form select option { color: var(--heading,#08131f); background: #fff; }
+  .brief-form textarea { resize: vertical; min-height: 110px; }
+  .brief-form input[name="_honey"] { display: none; }
+  .brief-form .bf-submit { width: 100%; margin-top: 14px; justify-content: center; }
+  .final .brief-form .bf-note { margin: 12px 0 0; font-size: var(--fs-sm,.9rem); color: rgba(255,255,255,.65); text-align: center; max-width: none; }
+  .final .brief-thanks { max-width: 560px; margin: 26px auto; padding: 18px 20px; border-radius: 12px; background: rgba(34,201,138,.14); border: 1px solid rgba(34,201,138,.4); color: #fff; font-size: 1.05rem; text-align: center; }
+  .final .bf-alt { margin: 18px auto 0; color: rgba(255,255,255,.7); }
+  .final .bf-alt a { color: #fff; }
+  @media (max-width: 560px){ .brief-form .bf-grid { grid-template-columns: 1fr; } }
+
   /* Mobile nav reveal */
   @media (max-width: 860px) {
     .nav-links.open {
@@ -165,6 +236,7 @@
       <a href="/projects.html">Work</a>
       <a href="/aria.html">Aria</a>
       <a href="/studio.html">Studio</a>
+      <a href="/ai-visibility.html">AI Visibility</a>
       <a href="/pricing.html" class="btn btn-primary">Get a quote</a>
     </nav>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span style="font-size:1.4rem;color:var(--heading);">&#9776;</span></button>
@@ -180,7 +252,7 @@
     <h1 class="reveal">AI content for <span class="accent">local businesses &amp; brands.</span></h1>
     <p class="lead reveal">Video ads, product imagery, UGC, and brand campaigns — produced with AI, finished by humans. For UK trades and service businesses and product/DTC brands alike. Done-for-you content plans from <strong>£400/mo</strong>, cancel anytime, no agency overhead.</p>
     <div class="hero-cta reveal">
-      <a href="mailto:kyle@aireyai.co.uk?subject=Anvil%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="btn btn-primary btn-lg">Brief us</a>
+      <a href="#brief-us" class="btn btn-primary btn-lg">Brief us</a>
       <a href="#services" class="btn btn-ghost btn-lg">See what we make <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <p class="hero-microcopy reveal"><strong>Brief Mon · Deliver Fri.</strong> Month-to-month. Cancel anytime.</p>
@@ -481,19 +553,7 @@
     </div>
     <p class="pricing-foot"><strong>Founding cohort now open.</strong> The first brands lock their plan rate for 12 months while we build out case studies — early proof, founder pricing.</p>
 
-    <!--
-    TESTIMONIALS — un-comment and fill once real Studio content clients exist.
-    Do NOT ship fabricated quotes/metrics (brand-trust + honesty risk).
-    Replace [BRACKETS] with real, permissioned quotes + names + outcomes.
-
-    <div class="grid-3 reveal" style="margin-top:28px;">
-      <div class="card">
-        <p style="font-size:1rem;line-height:1.6;color:var(--heading);">“[Real client quote — what changed, ideally with a number e.g. ROAS / CTR / time saved].”</p>
-        <div style="margin-top:14px;color:var(--muted);font-size:var(--fs-sm);"><strong>[Name]</strong> · [Role], [Brand]</div>
-      </div>
-      ... repeat per testimonial ...
-    </div>
-    -->
+    <!-- TODO(Kyle): add real client quote when the first studio result lands -->
   </div>
 </section>
 
@@ -519,7 +579,7 @@
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>One brand, all platforms</li>
         </ul>
         <p class="pack-who">For businesses that want consistent content without learning the tools or hiring in.</p>
-        <a href="mailto:kyle@aireyai.co.uk?subject=Studio%20-%20Starter%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Starter%20plan%20(%C2%A3400%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="btn btn-ghost pack-cta">Start the Starter plan</a>
+        <a href="#brief-us" class="btn btn-ghost pack-cta" onclick="var s=document.getElementById('bf-plan');if(s)s.value='Starter — £400/mo';">Start the Starter plan</a>
       </div>
 
       <div class="pack-card featured reveal">
@@ -534,7 +594,7 @@
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Light strategy + monthly review</li>
         </ul>
         <p class="pack-who">For active brands and businesses running paid social and organic who need a steady creative feed.</p>
-        <a href="mailto:kyle@aireyai.co.uk?subject=Studio%20-%20Growth%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Growth%20plan%20(%C2%A3850%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="btn btn-primary pack-cta">Start the Growth plan</a>
+        <a href="#brief-us" class="btn btn-primary pack-cta" onclick="var s=document.getElementById('bf-plan');if(s)s.value='Growth — £850/mo';">Start the Growth plan</a>
       </div>
 
       <div class="pack-card reveal">
@@ -548,12 +608,12 @@
           <li><svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Full feed + performance reporting</li>
         </ul>
         <p class="pack-who">For brands with active Meta/TikTok spend rotating creative every week.</p>
-        <a href="mailto:kyle@aireyai.co.uk?subject=Studio%20-%20Scale%20plan&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20the%20Scale%20plan%20(%C2%A31%2C500%2Fmo).%0A%0ABrand%3A%20%0AProduct%3A%20%0AAudience%3A%20%0AStart%20date%3A%20" class="btn btn-ghost pack-cta">Start the Scale plan</a>
+        <a href="#brief-us" class="btn btn-ghost pack-cta" onclick="var s=document.getElementById('bf-plan');if(s)s.value='Scale — £1,500/mo';">Start the Scale plan</a>
       </div>
 
     </div>
 
-    <p class="pricing-foot">Not ready for a monthly plan? <strong>Start with one.</strong> One-off pieces — single video <strong>£450</strong> · 8-image set <strong>£299</strong> · UGC reel <strong>£399</strong> — and we credit it toward your first month if you roll into a plan. <a href="mailto:kyle@aireyai.co.uk?subject=Studio%20-%20one-off%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20one-off%20piece%20to%20try%20the%20Studio.%0A%0AProduct%3A%20%0AWhat%20I%20need%3A%20%0ATimeline%3A%20" style="font-weight:600;">Brief a one-off →</a></p>
+    <p class="pricing-foot">Not ready for a monthly plan? <strong>Start with one.</strong> One-off pieces — single video <strong>£450</strong> · 8-image set <strong>£299</strong> · UGC reel <strong>£399</strong> — and we credit it toward your first month if you roll into a plan. <a href="#brief-us" style="font-weight:600;" onclick="var s=document.getElementById('bf-plan');if(s)s.value='One-off project';">Brief a one-off →</a></p>
   </div>
 </section>
 
@@ -593,16 +653,44 @@
   </div>
 </section>
 
-<!-- ===== Final CTA ===== -->
-<section class="section-dark final">
+<!-- ===== Final CTA / Brief us form ===== -->
+<section id="brief-us" class="section-dark final" style="scroll-margin-top:80px;">
   <div class="container">
     <h2 class="reveal">Brief us by Monday.<br><span class="accent">Live ads by Friday.</span></h2>
-    <p class="reveal">Content plans from £400/mo. Cancel anytime. No agency overhead. One email starts it.</p>
-    <div class="reveal">
-      <a href="mailto:kyle@aireyai.co.uk?subject=Anvil%20Studio%20brief&body=Hi%20Kyle%2C%0A%0AI%27d%20like%20a%20Studio%20brief.%0A%0ABusiness%3A%20%0AWebsite%3A%20%0AWhat%20I%20need%3A%20%0ABudget%3A%20%0ATimeline%3A%20" class="btn btn-on-dark btn-lg">Brief us</a>
-    </div>
+    <p class="reveal">Content plans from £400/mo. Cancel anytime. No agency overhead. One short brief starts it.</p>
+    <form id="brief-form" class="brief-form reveal" action="https://formsubmit.co/kyle@aireyai.co.uk" method="POST">
+      <input type="hidden" name="_subject" value="Studio brief">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://aireyai.co.uk/studio.html?sent=1#brief-us">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="bf-grid">
+        <input name="name" placeholder="Your name" required autocomplete="name">
+        <input name="business" placeholder="Business name" required autocomplete="organization">
+      </div>
+      <input type="email" name="email" placeholder="Your email" required autocomplete="email">
+      <select name="plan" id="bf-plan" required aria-label="Which plan?">
+        <option value="" disabled selected>Which plan?</option>
+        <option value="Starter — £400/mo">Starter — £400/mo</option>
+        <option value="Growth — £850/mo">Growth — £850/mo</option>
+        <option value="Scale — £1,500/mo">Scale — £1,500/mo</option>
+        <option value="One-off project">One-off project</option>
+        <option value="Not sure yet">Not sure yet</option>
+      </select>
+      <textarea name="message" rows="4" placeholder="What do you need made? Brand, product, audience, timeline — one paragraph is plenty." required></textarea>
+      <button type="submit" class="btn btn-on-dark btn-lg bf-submit">Send the brief</button>
+      <p class="bf-note">Brief Mon · Deliver Fri. We reply the same working day.</p>
+    </form>
+    <p id="brief-thanks" class="brief-thanks" hidden>Thanks — your brief is in. We'll reply the same working day.</p>
+    <p class="bf-alt reveal">Prefer to chat? <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20Studio%20brief">WhatsApp us</a> or call <a href="tel:+447497812186">07497 812186</a></p>
   </div>
 </section>
+<script>
+  if (new URLSearchParams(location.search).has('sent')) {
+    var bf = document.getElementById('brief-form'), bt = document.getElementById('brief-thanks');
+    if (bf && bt) { bf.style.display = 'none'; bt.hidden = false; }
+  }
+</script>
 
 </main>
 
@@ -625,11 +713,14 @@
       <div><h4>Company</h4><ul>
         <li><a href="/pricing.html">Pricing</a></li>
         <li><a href="/projects.html">Our work</a></li>
+        <li><a href="/brief.html">Start a brief</a></li>
         <li><a href="/privacy.html">Privacy</a></li>
+        <li><a href="/terms.html">Terms</a></li>
       </ul></div>
       <div><h4>Get in touch</h4><ul>
         <li><a href="mailto:kyle@aireyai.co.uk">Email us</a></li>
         <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
+        <li><a href="tel:+447497812186">07497 812186</a></li>
         <li><a href="https://www.facebook.com/profile.php?id=61573215460575" rel="noopener">Facebook</a></li>
         <li>Carlisle, Cumbria, UK</li>
       </ul></div>
