@@ -237,32 +237,38 @@ section { padding: 96px 0; }
 html[data-theme="dark"] .theme-toggle .sun { display: none; }
 html[data-theme="dark"] .theme-toggle .moon { display: block; }
 
-/* ---------- Dark mode ---------- */
+/* ---------- Dark mode — ink + emerald, matches the motion homepage ---------- */
 html[data-theme="dark"] {
-  --bg: #0b1220; --bg-soft: #121c30; --bg-dark: #070d18; --surface: #14203a;
-  --heading: #eef3fb; --label: #c6d2e4; --body: #9db0cb; --muted: #76889f;
-  --border: rgba(255,255,255,0.10); --border-strong: rgba(255,255,255,0.20);
-  --border-tint: rgba(255,255,255,0.12); --bg-mint: #101b2c;
-  --brand: #16c079; --brand-strong: #34dd90; --brand-soft: rgba(22,192,121,0.15);
-  --brand-tint: rgba(22,192,121,0.08); --brand-bright: #34dd90;
+  --bg: #04100b; --bg-soft: #08170f; --bg-dark: #030c08; --surface: #0a1d14;
+  --heading: #f4faf7; --label: #d6e7dd; --body: #b9cfc2; --muted: #8da698;
+  --border: rgba(160,225,196,0.12); --border-strong: rgba(160,225,196,0.24);
+  --border-tint: rgba(160,225,196,0.14); --bg-mint: #07170f;
+  --brand: #12b886; --brand-strong: #3ddfa9; --brand-soft: rgba(18,184,134,0.14);
+  --brand-tint: rgba(18,184,134,0.08); --brand-bright: #3ddfa9;
   --sh-1: rgba(0,0,0,0.35) 0px 3px 10px;
   --sh-2: rgba(0,0,0,0.45) 0px 14px 34px;
   --sh-3: rgba(0,0,0,0.55) 0px 30px 50px -28px, rgba(0,0,0,0.40) 0px 16px 32px -18px;
-  --sh-brand: rgba(22,192,121,0.30) 0px 18px 44px -18px;
+  --sh-brand: rgba(18,184,134,0.30) 0px 18px 44px -18px;
 }
 html[data-theme="dark"] body {
-  background-image: radial-gradient(900px circle at 20% -10%, rgba(22,192,121,0.05), transparent 50%), radial-gradient(700px circle at 90% 0%, rgba(91,79,232,0.05), transparent 45%);
+  background-image: radial-gradient(900px circle at 20% -10%, rgba(18,184,134,0.06), transparent 50%), radial-gradient(700px circle at 90% 0%, rgba(13,160,160,0.04), transparent 45%);
 }
-html[data-theme="dark"] .nav { background: rgba(11,18,32,0.82); }
+html[data-theme="dark"] .nav { background: rgba(5,18,13,0.78); }
 /* neutralise per-page light hero gradients in dark */
 html[data-theme="dark"] .hero::before,
+html[data-theme="dark"] .vis-hero::before,
+html[data-theme="dark"] .work-hero::before,
+html[data-theme="dark"] .nf-hero::before,
 html[data-theme="dark"] .price-hero::before {
-  background: radial-gradient(60% 50% at 85% 0%, rgba(22,192,121,0.10), transparent 70%), var(--bg) !important;
+  background: radial-gradient(60% 50% at 85% 0%, rgba(18,184,134,0.10), transparent 70%), var(--bg) !important;
+}
+html[data-theme="dark"] main {
+  background: radial-gradient(60% 45% at 85% 0%, rgba(18,184,134,0.06), transparent 70%), var(--bg);
 }
 html[data-theme="dark"] img.hero-shot,
 html[data-theme="dark"] .work-item,
 html[data-theme="dark"] .fw-shots a { border-color: var(--border-strong); }
 html[data-theme="dark"] .card-icon {
-  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(22,192,121,0.12) 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(18,184,134,0.12) 100%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
 }

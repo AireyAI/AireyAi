@@ -1,12 +1,12 @@
-/* AireyAi shared dark-mode — defaults to LIGHT for everyone; only goes dark if
-   the visitor explicitly toggles it. Injects an always-visible nav toggle.
-   Linked in <head> on every page. */
+/* AireyAi shared dark-mode — defaults to DARK (matches the motion homepage);
+   only goes light if the visitor explicitly toggles it. Injects an always-visible
+   nav toggle. Linked in <head> on every page. */
 (function () {
   // 1) Apply theme immediately (runs in <head> before body paints). Always light
   //    unless the user previously chose dark — system preference is ignored.
   try {
     var saved = localStorage.getItem('theme');
-    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
   } catch (e) {}
 
   function setTheme(t) {
