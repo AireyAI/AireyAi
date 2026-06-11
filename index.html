@@ -248,6 +248,15 @@ a{color:inherit}
 @media (max-width:760px){
   .statement p{max-width:none}
 }
+/* touch-device perf: grain + backdrop blurs are GPU-heavy on phones —
+   swap for near-solid fills, visually equivalent over the dark video */
+@media (pointer:coarse){
+  .grain{display:none}
+  .glass,.btn-ghost,.nav.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .glass{background:rgba(7,20,14,.88)}
+  .svc-stack .svc-card{background:rgba(7,20,14,.94)}
+  .nav.scrolled{background:rgba(5,18,13,.94)}
+}
 </style>
 </head>
 <body>
@@ -493,7 +502,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---- video: only load real src on capable clients ---- */
   const scrubOK = fine && !reduced;
   if (!reduced) {
-    bgv.src = 'bg.mp4';
+    /* desktop scrubs the all-keyframe file; touch devices loop a normal-GOP
+       encode that is 8× smaller and far cheaper to decode */
+    bgv.src = scrubOK ? 'bg.mp4' : 'bg-mobile.mp4';
     bgv.load();
     if (!scrubOK) {           // touch device: slow ambient loop instead of scrub
       bgv.loop = true;
@@ -533,10 +544,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- services: sticky stack — covered cards recede behind the incoming one ---- */
   const cards = gsap.utils.toArray('.svc-stack .svc-card');
+  /* without backdrop blur (mobile), receded cards' text stays legible and
+     overlaps — fade them much further there */
+  const recedeOpacity = matchMedia('(pointer: coarse)').matches ? 0.15 : 0.45;
   cards.forEach((card, i) => {
     if (i === cards.length - 1) return;
     gsap.to(card, {
-      scale: 0.94, opacity: 0.45, ease: 'none',
+      scale: 0.94, opacity: recedeOpacity, ease: 'none',
       scrollTrigger: { trigger: cards[i + 1], start: 'top 90%', end: 'top 30%', scrub: true },
     });
   });
