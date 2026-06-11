@@ -47,12 +47,19 @@
   /* Borders */
   --border:        #e5edf5;
   --border-strong: #d4dded;
+  --border-tint:   #e3efe9;   /* green-cast hairline for elevated cards */
 
-  /* Blue-tinted Stripe shadows — elevation that feels designed */
-  --sh-1: rgba(23,23,23,0.06) 0px 3px 8px;
-  --sh-2: rgba(23,23,23,0.08) 0px 12px 30px;
-  --sh-3: rgba(50,50,93,0.16) 0px 28px 45px -28px, rgba(0,0,0,0.08) 0px 16px 32px -18px;
+  /* Green-tinted Stripe shadow ladder — elevation that feels on-brand */
+  --sh-1: rgba(10,42,32,0.05) 0px 2px 5px, rgba(10,42,32,0.04) 0px 8px 18px -8px;
+  --sh-2: rgba(10,42,32,0.07) 0px 15px 35px -10px, rgba(0,0,0,0.04) 0px 5px 15px -5px;
+  --sh-3: rgba(11,46,35,0.20) 0px 30px 45px -30px, rgba(0,0,0,0.10) 0px 18px 36px -18px;
   --sh-brand: rgba(11,138,91,0.20) 0px 18px 40px -18px;
+
+  /* Mono voice — eyebrows, badges, step numerals, price captions (zero load cost) */
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Mint band — deliberate section sequencing alongside --bg-soft */
+  --bg-mint: #f3faf6;
 
   /* Radius — conservative, never pills on cards */
   --r-sm: 6px;
@@ -60,9 +67,9 @@
   --r-lg: 16px;
   --r-pill: 999px;
 
-  /* Type scale */
-  --fs-hero:  clamp(2.6rem, 6vw, 4.1rem);
-  --fs-h2:    clamp(1.9rem, 3.6vw, 2.7rem);
+  /* Type scale — display-tier hero (≥1.8:1 vs section headings) */
+  --fs-hero:  clamp(2.8rem, 6.4vw, 4.55rem);
+  --fs-h2:    clamp(1.8rem, 3.2vw, 2.45rem);
   --fs-h3:    1.35rem;
   --fs-lead:  clamp(1.05rem, 1.6vw, 1.25rem);
   --fs-body:  1rem;
@@ -92,8 +99,9 @@ h1, h2, h3, h4 {
   font-weight: 400;          /* Stripe move: light-weight display = luxury */
   letter-spacing: -0.022em;
   line-height: 1.08;
+  text-wrap: balance;
 }
-h1 { font-size: var(--fs-hero); font-weight: 300; letter-spacing: -0.032em; }
+h1 { font-size: var(--fs-hero); font-weight: 300; letter-spacing: -0.034em; line-height: 1.03; }
 h2 { font-size: var(--fs-h2);  font-weight: 350; }
 h3 { font-size: var(--fs-h3);  font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; }
 
@@ -104,8 +112,8 @@ strong { color: var(--heading); font-weight: 600; }
 section { padding: 96px 0; }
 .section-soft { background: var(--bg-soft); }
 .eyebrow {
-  display: inline-block; font-size: var(--fs-xs); font-weight: 600;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-strong);
+  display: inline-block; font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-strong);
   margin-bottom: 16px;
 }
 .section-head { max-width: 640px; margin-bottom: 48px; }
@@ -121,8 +129,11 @@ section { padding: 96px 0; }
   white-space: nowrap;
 }
 .btn svg { width: 16px; height: 16px; }
-.btn-primary { background: var(--brand); color: #fff; box-shadow: var(--sh-brand); }
-.btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); }
+.btn-primary {
+  background: linear-gradient(180deg, #0e9c68 0%, var(--brand) 100%); color: #fff;
+  box-shadow: var(--sh-brand), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); box-shadow: var(--sh-brand), inset 0 1px 0 rgba(255,255,255,0.12); }
 .btn-ghost { background: var(--surface); color: var(--heading); border-color: var(--border-strong); }
 .btn-ghost:hover { border-color: var(--brand); color: var(--brand-strong); }
 .btn-on-dark { background: #fff; color: var(--heading); }
@@ -154,15 +165,18 @@ section { padding: 96px 0; }
   .nav-toggle { display: block; }
 }
 
-/* ---------- Cards ---------- */
+/* ---------- Cards — Stripe elevation ladder, green-tinted ---------- */
 .card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
-  padding: 28px; transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
+  background: var(--surface); border: 1px solid var(--border-tint); border-radius: var(--r-lg);
+  padding: 28px; box-shadow: var(--sh-1);
+  transition: transform .2s var(--ease), box-shadow .2s, border-color .2s;
 }
 .card:hover { transform: translateY(-4px); box-shadow: var(--sh-3); border-color: var(--border-strong); }
 .card-icon {
   width: 44px; height: 44px; border-radius: var(--r-md); display: grid; place-items: center;
-  background: var(--brand-soft); color: var(--brand-strong); margin-bottom: 18px;
+  background: linear-gradient(180deg, #fff 0%, var(--brand-soft) 100%);
+  border: 1px solid var(--border-tint); color: var(--brand-strong); margin-bottom: 18px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85), rgba(10,42,32,0.04) 0 2px 6px;
 }
 .card-icon svg { width: 22px; height: 22px; }
 .card h3 { margin-bottom: 8px; }
@@ -175,10 +189,15 @@ section { padding: 96px 0; }
   border: 1px solid rgba(11,138,91,0.18);
 }
 .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); }
-.price-from { color: var(--brand-strong); font-weight: 600; }
+.price-from { color: var(--brand-strong); font-weight: 600; font-feature-settings: 'tnum'; }
 
-/* ---------- Dark brand section ---------- */
-.section-dark { background: var(--bg-dark); color: var(--on-dark); }
+/* ---------- Dark brand section — Linear luminance: glow hairline at the seam ---------- */
+.section-dark { background: var(--bg-dark); color: var(--on-dark); position: relative; }
+.section-dark::after, .footer::after {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent 8%, rgba(18,184,134,0.45) 50%, transparent 92%);
+}
+.footer { position: relative; }
 .section-dark h1, .section-dark h2, .section-dark h3 { color: #fff; }
 .section-dark p { color: var(--on-dark-soft); }
 
@@ -223,6 +242,7 @@ html[data-theme="dark"] {
   --bg: #0b1220; --bg-soft: #121c30; --bg-dark: #070d18; --surface: #14203a;
   --heading: #eef3fb; --label: #c6d2e4; --body: #9db0cb; --muted: #76889f;
   --border: rgba(255,255,255,0.10); --border-strong: rgba(255,255,255,0.20);
+  --border-tint: rgba(255,255,255,0.12); --bg-mint: #101b2c;
   --brand: #16c079; --brand-strong: #34dd90; --brand-soft: rgba(22,192,121,0.15);
   --brand-tint: rgba(22,192,121,0.08); --brand-bright: #34dd90;
   --sh-1: rgba(0,0,0,0.35) 0px 3px 10px;
@@ -242,3 +262,7 @@ html[data-theme="dark"] .price-hero::before {
 html[data-theme="dark"] img.hero-shot,
 html[data-theme="dark"] .work-item,
 html[data-theme="dark"] .fw-shots a { border-color: var(--border-strong); }
+html[data-theme="dark"] .card-icon {
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(22,192,121,0.12) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}

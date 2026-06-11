@@ -119,28 +119,41 @@ html.lenis,html.lenis body{height:auto}
   .hero::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background:
-      radial-gradient(60% 50% at 85% 0%, rgba(11,138,91,0.06), transparent 70%),
-      linear-gradient(180deg, #fbfdfe 0%, #ffffff 60%);
+      radial-gradient(52% 44% at 86% -4%, rgba(11,138,91,0.10), transparent 70%),
+      radial-gradient(40% 36% at 64% 12%, rgba(13,160,160,0.06), transparent 70%),
+      radial-gradient(46% 42% at 8% 18%, rgba(245,238,210,0.5), transparent 70%),
+      linear-gradient(180deg, #fafdfc 0%, #ffffff 64%);
   }
   .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
   .hero h1 { margin: 18px 0 20px; }
   .hero h1 .accent { color: var(--brand-strong); }
   .hero .lead { font-size: var(--fs-lead); color: var(--body); max-width: 30em; }
   .hero-cta { display: flex; gap: 14px; margin: 32px 0 26px; flex-wrap: wrap; }
-  .hero-trust { display: flex; align-items: center; gap: 14px; font-size: var(--fs-sm); color: var(--muted); flex-wrap: wrap; }
-  .hero-trust strong { color: var(--heading); }
-  .hero-trust .avatars { display: flex; }
-  .hero-trust .avatars span { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #fff; margin-left: -8px; background: var(--brand-soft); display: grid; place-items: center; font-size: 0.7rem; font-weight: 700; color: var(--brand-strong); }
+  .hero-trust { padding-top: 22px; border-top: 1px solid var(--border-tint); }
+  .hero-trust .ht-label { display: block; font-family: var(--mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .hero-trust .ht-marks { display: flex; align-items: baseline; column-gap: 28px; row-gap: 8px; flex-wrap: wrap; }
+  .hero-trust .ht-marks span { font-size: 0.86rem; font-weight: 600; letter-spacing: -0.01em; color: #8a9b93; white-space: nowrap; }
   .hero-visual { position: relative; }
-  .hero-visual a.shot-link { display: block; }
-  .hero-shot { width: 100%; height: auto; border-radius: var(--r-lg); border: 1px solid var(--border); box-shadow: var(--sh-3); display: block; transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
-  .hero-visual a.shot-link:hover .hero-shot { transform: translateY(-4px); }
+  .hero-visual a.shot-link {
+    display: block; border-radius: var(--r-lg); overflow: hidden;
+    border: 1px solid var(--border-tint); background: #f8fafb;
+    box-shadow: var(--sh-3); transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .hero-visual a.shot-link:hover { transform: translateY(-4px); }
+  .bf-bar { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 14px; background: #f1f5f4; border-bottom: 1px solid var(--border-tint); }
+  .bf-bar .bf-dots { display: flex; gap: 6px; }
+  .bf-bar .bf-dots i { width: 9px; height: 9px; border-radius: 50%; background: #dbe5e1; }
+  .bf-bar .bf-url { font-family: var(--mono); font-size: 0.66rem; color: var(--muted); background: #fff; border: 1px solid var(--border-tint); border-radius: 999px; padding: 3px 12px; letter-spacing: 0.02em; }
+  .hero-shot { width: 100%; height: auto; display: block; }
   .hero-float {
     position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
     box-shadow: var(--sh-2); padding: 13px 16px; font-size: var(--fs-sm); display: flex; align-items: center; gap: 10px;
   }
   .hero-float.a { bottom: -18px; left: -22px; }
   .hero-float.b { top: -16px; right: -14px; }
+  .hero-float.c { bottom: 64px; right: -26px; }
+  .hero-float .stars { color: #f5b50a; font-size: 0.78rem; letter-spacing: 0.08em; }
+  @media (max-width: 600px) { .hero-float.c { display: none; } }
   a.hero-float { text-decoration: none; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
   a.hero-float:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
   .hero-float .ic { width: 30px; height: 30px; border-radius: 8px; background: var(--brand-soft); color: var(--brand-strong); display: grid; place-items: center; }
@@ -187,6 +200,10 @@ html.lenis,html.lenis body{height:auto}
       radial-gradient(55% 60% at 12% -10%, rgba(18,184,134,0.22), transparent 60%),
       radial-gradient(50% 60% at 92% 110%, rgba(11,138,91,0.20), transparent 60%);
   }
+  .pack::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; pointer-events: none;
+    background: linear-gradient(90deg, transparent 8%, rgba(18,184,134,0.45) 50%, transparent 92%);
+  }
   .pack > .container { position: relative; z-index: 1; }
   .pack-head { max-width: 760px; margin: 0 auto 40px; text-align: center; }
   .pack-head .eyebrow { color: var(--brand-bright); }
@@ -195,13 +212,14 @@ html.lenis,html.lenis body{height:auto}
   .pack-head .pitch strong { color: #fff; font-weight: 600; }
   .pack-panel {
     display: grid; grid-template-columns: 1fr 1fr; gap: 14px 44px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
     border-radius: var(--r-lg); padding: 34px 36px; max-width: 920px; margin: 0 auto;
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), rgba(0,0,0,0.3) 0 24px 48px -24px;
   }
-  .pack-col h3 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brand-bright); margin-bottom: 18px; font-weight: 600; }
+  .pack-col h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-bright); margin-bottom: 18px; font-weight: 500; }
   .ticks { list-style: none; display: flex; flex-direction: column; gap: 13px; }
-  .ticks li { position: relative; padding-left: 30px; font-size: var(--fs-sm); color: var(--on-dark-soft); line-height: 1.45; }
+  .ticks li { position: relative; padding-left: 30px; font-size: var(--fs-sm); color: #cdd5df; line-height: 1.45; }
   .ticks li::before {
     content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px;
     display: grid; place-items: center; border-radius: 50%; font-size: 0.7rem; font-weight: 700;
@@ -209,37 +227,90 @@ html.lenis,html.lenis body{height:auto}
   }
   .ticks li strong { color: #fff; font-weight: 600; }
   .pack-cta { text-align: center; margin-top: 38px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .pack-price .big { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 300; letter-spacing: -0.03em; color: #fff; line-height: 1; }
-  .pack-price .big .unit { font-size: 1rem; font-weight: 500; color: var(--on-dark-soft); letter-spacing: 0; }
-  .pack-price .plus { color: var(--brand-bright); font-weight: 500; margin-top: 8px; font-size: var(--fs-body); }
-  .pack-note { font-size: var(--fs-xs); color: rgba(255,255,255,0.5); max-width: 520px; }
+  .pack-price { position: relative; padding: 10px 0 2px; }
+  .pack-price::before {
+    content: ""; position: absolute; left: 50%; top: 50%; width: 420px; height: 240px;
+    transform: translate(-50%, -50%); pointer-events: none;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(18,184,134,0.16), transparent 70%);
+  }
+  .pack-price > * { position: relative; }
+  .pack-price .big { font-size: clamp(2.6rem, 5.4vw, 3.7rem); font-weight: 300; letter-spacing: -0.035em; color: #f7f8f8; line-height: 1; font-feature-settings: 'tnum'; }
+  .pack-price .big .unit { font-size: 1rem; font-weight: 500; color: #8a8f98; letter-spacing: 0; }
+  .pack-price .plus { color: var(--brand-bright); font-weight: 500; margin-top: 10px; font-size: var(--fs-body); font-feature-settings: 'tnum'; }
+  .pack-note { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.02em; color: #8a8f98; max-width: 560px; }
   @media (max-width: 760px){ .pack-panel { grid-template-columns: 1fr; gap: 22px; padding: 28px 24px; } }
 
   /* services / growth stack */
   .svc-card { display: flex; flex-direction: column; }
   .svc-card .price-from { margin-top: auto; padding-top: 16px; font-size: var(--fs-sm); }
   .svc-card .go { font-size: var(--fs-sm); font-weight: 600; color: var(--brand-strong); margin-top: 12px; }
-  .idea-strip { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
-  .idea-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 24px; box-shadow: var(--sh-1); }
-  .idea-card .tag, .svc-card .tag { display:inline-flex; align-items:center; margin-bottom: 14px; padding: 5px 10px; border-radius: 999px; background: rgba(18,184,134,0.10); color: var(--brand-strong); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .svc-card.featured {
+    background: linear-gradient(180deg, #fff 0%, var(--brand-tint) 100%);
+    border-color: rgba(11,138,91,0.28); box-shadow: var(--sh-3);
+  }
+  .svc-card.featured:hover { box-shadow: var(--sh-3), var(--sh-brand); }
+  .section-mint { background: var(--bg-mint); }
+  .addon-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; max-width: 1020px; margin: 0 auto; }
+  .addon-row { display: grid; grid-template-columns: 26px 1fr; gap: 16px; padding: 22px 4px; border-bottom: 1px solid var(--border-tint); align-items: start; }
+  .addon-row:nth-last-child(-n+2) { border-bottom: 0; }
+  .addon-row .ar-ic { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); border: 1px solid rgba(11,138,91,0.22); color: var(--brand-strong); font-size: 0.72rem; font-weight: 700; margin-top: 2px; }
+  .addon-row h3 { font-size: 1.02rem; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 5px; }
+  .addon-row h3 .ar-price { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: var(--brand-strong); letter-spacing: 0.02em; font-feature-settings: 'tnum'; }
+  .addon-row p { font-size: var(--fs-sm); color: var(--body); }
+  .addon-row .ar-fit { margin-top: 7px; font-size: var(--fs-xs); color: var(--muted); }
+  @media (max-width: 860px) { .addon-list { grid-template-columns: 1fr; } .addon-row:nth-last-child(2) { border-bottom: 1px solid var(--border-tint); } }
+  .svc-card .tag { display:inline-flex; align-items:center; margin-bottom: 14px; padding: 4px 10px; border-radius: var(--r-sm); background: rgba(18,184,134,0.10); border: 1px solid rgba(11,138,91,0.25); color: var(--brand-strong); font-family: var(--mono); font-size: 0.64rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
   .svc-card .tag { align-self: flex-start; }
-  .idea-card h3 { margin-bottom: 8px; }
-  .idea-card p { font-size: var(--fs-sm); }
-  .idea-card .fit { margin-top: 16px; color: var(--muted); font-size: var(--fs-xs); }
-  @media (max-width: 900px){ .idea-strip { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 620px){ .idea-strip { grid-template-columns: 1fr; } }
 
-  /* steps */
-  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; counter-reset: s; }
-  .step { position: relative; padding-top: 14px; }
-  .step .n { font-size: 0.85rem; font-weight: 700; color: var(--brand-strong); letter-spacing: 0.1em; }
-  .step h3 { margin: 8px 0; }
+  /* how it works — timeline + live-stack cluster */
+  .how-grid { display: grid; grid-template-columns: 1fr 0.92fr; gap: 64px; align-items: center; }
+  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .step { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 22px; padding: 26px 0; }
+  .step + .step::before { content: ""; position: absolute; left: 31px; top: -17px; height: 34px; width: 1px; background: linear-gradient(180deg, transparent, var(--border-strong), transparent); }
+  .step .n {
+    font-family: var(--mono); font-size: 2.5rem; font-weight: 300; line-height: 1;
+    color: var(--brand); opacity: 0.34; letter-spacing: -0.04em; font-feature-settings: 'tnum';
+    align-self: start; padding-top: 2px; text-align: right;
+  }
+  .step h3 { margin: 0 0 8px; }
   .step p { font-size: var(--fs-sm); }
-  @media (max-width: 760px){ .steps { grid-template-columns: 1fr; } }
+
+  .stack-live { position: relative; display: flex; flex-direction: column; gap: 18px; }
+  .sl-card { background: var(--surface); border: 1px solid var(--border-tint); border-radius: var(--r-md); box-shadow: var(--sh-2); padding: 18px 20px; }
+  .sl-card.pop { box-shadow: var(--sh-3); }
+  .sl-head { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .sl-head .live { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); box-shadow: 0 0 0 3px rgba(18,184,134,0.18); }
+  .sl-msg { max-width: 86%; padding: 10px 14px; border-radius: 12px; font-size: var(--fs-sm); line-height: 1.45; margin-bottom: 8px; }
+  .sl-msg.them { background: var(--bg-soft); color: var(--label); border-bottom-left-radius: 4px; }
+  .sl-msg.aria { background: var(--brand); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
+  .sl-row { display: flex; align-items: center; gap: 13px; }
+  .sl-row .stars { color: #f5b50a; font-size: 0.82rem; letter-spacing: 0.1em; }
+  .sl-row b { color: var(--heading); display: block; font-size: var(--fs-sm); line-height: 1.3; }
+  .sl-row small { color: var(--muted); font-size: var(--fs-xs); }
+  .sl-row .ic { flex-shrink: 0; width: 34px; height: 34px; border-radius: var(--r-sm); background: var(--brand-soft); border: 1px solid rgba(11,138,91,0.2); color: var(--brand-strong); display: grid; place-items: center; }
+  .sl-row .ic svg { width: 17px; height: 17px; }
+  .stack-live .sl-card:nth-child(1) { margin-right: 36px; }
+  .stack-live .sl-card:nth-child(2) { margin-left: 44px; margin-top: -6px; z-index: 1; }
+  .stack-live .sl-card:nth-child(3) { margin-right: 20px; margin-top: -4px; }
+  @media (max-width: 940px) {
+    .how-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stack-live { max-width: 480px; }
+    .step { grid-template-columns: 48px 1fr; gap: 16px; }
+    .step .n { font-size: 2rem; }
+    .step + .step::before { left: 23px; }
+  }
 
   /* proof */
   .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .work-item { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--sh-1); transition: transform .2s var(--ease), box-shadow .2s; background:var(--surface); }
+  .work-item { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--border-tint); box-shadow: var(--sh-1); transition: transform .2s var(--ease), box-shadow .2s; background:var(--surface); }
+  .work-item::before {
+    content: ""; display: block; height: 24px; background:
+      radial-gradient(circle 3.5px at 14px 12px, #dbe5e1 99%, transparent),
+      radial-gradient(circle 3.5px at 26px 12px, #dbe5e1 99%, transparent),
+      radial-gradient(circle 3.5px at 38px 12px, #dbe5e1 99%, transparent),
+      #f1f5f4;
+    border-bottom: 1px solid var(--border-tint);
+  }
   .work-item:hover { transform: translateY(-4px); box-shadow: var(--sh-3); }
   .work-item img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; display: block; }
   .work-item .cap { padding: 12px 16px; font-size: var(--fs-sm); color: var(--label); font-weight: 500; }
@@ -247,7 +318,7 @@ html.lenis,html.lenis body{height:auto}
   @media (max-width: 560px){ .work-grid { grid-template-columns: 1fr; } }
 
   /* flagship featured build (AP Clothing) — full screenshots, no crop */
-  .featured-work { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; margin-bottom: 40px; }
+  .featured-work { background: var(--surface); border: 1px solid var(--border-tint); border-radius: var(--r-lg); padding: 32px; margin-bottom: 40px; box-shadow: var(--sh-2); }
   .featured-work .fw-text { max-width: 780px; margin-bottom: 26px; }
   .featured-work .fw-text h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 400; margin: 14px 0 12px; }
   .featured-work .fw-text p { font-size: var(--fs-body); color: var(--body); margin-bottom: 20px; }
@@ -264,20 +335,29 @@ html.lenis,html.lenis body{height:auto}
   .quote .who { margin-top: 18px; font-size: var(--fs-sm); color: var(--muted); }
   .quote .who strong { color: var(--heading); }
 
-  /* glance / pricing strip */
-  .glance { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  @media (max-width:900px){ .glance{ grid-template-columns:1fr 1fr; } }
-  @media (max-width:560px){ .glance{ grid-template-columns:1fr; } }
-  .glance a { background:var(--surface); border:1px solid var(--border); border-radius: var(--r-md); padding: 20px; transition: transform .2s var(--ease), box-shadow .2s, border-color .2s; }
-  .glance a:hover { transform: translateY(-3px); box-shadow: var(--sh-2); border-color: var(--border-strong); }
-  .glance .n { color: var(--heading); font-weight: 600; }
-  .glance .p { color: var(--brand-strong); font-weight: 700; font-size: 1.5rem; margin: 4px 0; letter-spacing: -0.02em; }
-  .glance .d { font-size: var(--fs-xs); color: var(--muted); }
+  /* rate card — pricing as a financial-grade price list */
+  .glance { max-width: 780px; margin: 0 auto; border: 1px solid var(--border-tint); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--sh-2); overflow: hidden; }
+  .glance a {
+    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 24px;
+    padding: 19px 28px; border-bottom: 1px solid var(--border-tint);
+    transition: background .15s;
+  }
+  .glance a:last-child { border-bottom: 0; }
+  .glance a:hover { background: var(--brand-tint); }
+  .glance .n { color: var(--heading); font-weight: 600; font-size: var(--fs-body); }
+  .glance .p { color: var(--brand-strong); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; font-feature-settings: 'tnum'; text-align: right; grid-row: span 2; align-self: center; white-space: nowrap; }
+  .glance .d { font-size: var(--fs-xs); color: var(--muted); grid-column: 1; }
+  @media (max-width:560px){ .glance a { padding: 16px 18px; } }
 
-  /* why-us inside dark */
-  .why-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 40px; }
-  .why-grid .w h3 { color:#fff; margin-bottom:8px; }
-  .why-grid .w p { font-size: var(--fs-sm); }
+  /* why-us inside dark — luminance layering */
+  .why-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 40px; }
+  .why-grid .w {
+    background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-md); padding: 26px 26px 28px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+  .why-grid .w h3 { color:#f7f8f8; margin-bottom:8px; }
+  .why-grid .w p { font-size: var(--fs-sm); color: #c4cdd9; }
   @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
 
   /* faq */
@@ -289,9 +369,15 @@ html.lenis,html.lenis body{height:auto}
   .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
   .faq-a p { padding: 0 0 22px; font-size: var(--fs-body); color: var(--body); }
 
-  .final { text-align:center; }
-  .final h2 { color:#fff; max-width: 16em; margin: 0 auto 14px; }
-  .final p { max-width: 34em; margin: 0 auto 28px; }
+  .final { text-align:center; overflow: clip; }
+  .final > .container { position: relative; }
+  .final > .container::before {
+    content: ""; position: absolute; left: 50%; top: -40px; width: 560px; height: 300px;
+    transform: translateX(-50%); pointer-events: none;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(18,184,134,0.13), transparent 70%);
+  }
+  .final h2 { color:#f7f8f8; max-width: 16em; margin: 0 auto 14px; position: relative; }
+  .final p { max-width: 34em; margin: 0 auto 28px; position: relative; }
 
   .wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 50; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
   .wa-float svg { width: 28px; height: 28px; fill: #fff; }
@@ -334,12 +420,13 @@ html.lenis,html.lenis body{height:auto}
         <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
       </div>
       <div class="hero-trust">
-        <div class="avatars"><span>EJ</span><span>HH</span><span>WC</span><span>DL</span></div>
-        <span>Trusted by <strong>UK trades &amp; small businesses</strong> — live sites you can visit below.</span>
+        <span class="ht-label">Trusted by UK trades &amp; small businesses</span>
+        <div class="ht-marks"><span>AP Clothing</span><span>EJ Roofing</span><span>How High Scaffolding</span><span>JTR Electrical</span><span>Dolled by Louise</span></div>
       </div>
     </div>
     <div class="hero-visual">
-      <a class="shot-link" href="https://aporiginals.com/" target="_blank" rel="noopener" aria-label="Visit AP Clothing — the live online store we built">
+      <a class="shot-link" href="https://aporiginals.com/" target="_blank" rel="noopener">
+        <div class="bf-bar" aria-hidden="true"><span class="bf-dots"><i></i><i></i><i></i></span><span class="bf-url">aporiginals.com</span></div>
         <picture>
           <source media="(max-width: 600px)" srcset="portfolio/ap-clothing-mens-mobile.jpg" width="430" height="764">
           <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" fetchpriority="high" width="1280" height="800">
@@ -353,6 +440,9 @@ html.lenis,html.lenis body{height:auto}
         <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
         <div><b>AP Clothing — live store</b><small>200+ products · selling now</small></div>
       </a>
+      <div class="hero-float c">
+        <div><span class="stars" aria-hidden="true">★★★★★</span><b>New Google review</b><small>via Review Engine · today</small></div>
+      </div>
     </div>
   </div>
 </section>
@@ -457,7 +547,7 @@ html.lenis,html.lenis body{height:auto}
         <span class="price-from">From £79/mo</span>
         <span class="go">See Review Engine →</span>
       </a>
-      <a href="/ai-visibility.html" class="card svc-card reveal">
+      <a href="/ai-visibility.html" class="card svc-card featured reveal">
         <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M14.8 14.8L20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18.5 3l.9 2.1L21.5 6l-2.1.9-.9 2.1-.9-2.1L15.5 6l2.1-.9z" fill="currentColor"/></svg></div>
         <span class="tag">New</span>
         <h3>Local AI Visibility Plan</h3>
@@ -471,49 +561,61 @@ html.lenis,html.lenis body{height:auto}
 </section>
 
 <!-- ===== Repeat & Reputation add-ons ===== -->
-<section id="service-ideas" class="section-soft">
+<section id="service-ideas" class="section-mint">
   <div class="container">
     <div class="section-head center reveal">
       <span class="eyebrow">Repeat &amp; Reputation</span>
       <h2>The add-ons that stop good leads leaking away.</h2>
       <p>Once your site is live and Aria is answering enquiries, the biggest wins come from reviews, quote follow-up, past customers and job photos. These bolt onto the same stack without adding another agency.</p>
     </div>
-    <div class="idea-strip">
-      <div class="idea-card reveal">
-        <span class="tag">Live now</span>
-        <h3>Review Engine</h3>
-        <p>Automatic Google-review requests by SMS after finished jobs, with opt-outs, monitoring and reply drafts on Pro.</p>
-        <div class="fit">From £79/mo · best first add-on for every local business.</div>
+    <div class="addon-list">
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>Review Engine <span class="ar-price">from £79/mo</span></h3>
+          <p>Automatic Google-review requests by SMS after finished jobs, with opt-outs, monitoring and reply drafts on Pro.</p>
+          <div class="ar-fit">Best first add-on for every local business.</div>
+        </div>
       </div>
-      <div class="idea-card reveal">
-        <span class="tag">By request</span>
-        <h3>Quote Chaser</h3>
-        <p>Four polite follow-ups after every quote: day 1, 3, 7 and 14, paused the moment a customer replies.</p>
-        <div class="fit">£247 setup + £97/mo · for trades where sent quotes go quiet.</div>
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>Quote Chaser <span class="ar-price">£247 setup + £97/mo</span></h3>
+          <p>Four polite follow-ups after every quote: day 1, 3, 7 and 14, paused the moment a customer replies.</p>
+          <div class="ar-fit">For trades where sent quotes go quiet.</div>
+        </div>
       </div>
-      <div class="idea-card reveal">
-        <span class="tag">By request</span>
-        <h3>Win-Back Campaigns</h3>
-        <p>Seasonal email or SMS campaigns to past customers: gutter cleans, boiler services, skin top-ups, renewals and offers.</p>
-        <div class="fit">£297 one-off or £147/mo · easiest money when you already have customers.</div>
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>Win-Back Campaigns <span class="ar-price">£297 one-off or £147/mo</span></h3>
+          <p>Seasonal email or SMS campaigns to past customers: gutter cleans, boiler services, skin top-ups, renewals and offers.</p>
+          <div class="ar-fit">Easiest money when you already have customers.</div>
+        </div>
       </div>
-      <div class="idea-card reveal">
-        <span class="tag">Local search</span>
-        <h3>GBP Management</h3>
-        <p>Weekly Google Business posts, Q&amp;A checks, quarterly audits and local visibility improvements.</p>
-        <div class="fit">£147/mo standalone · £47/mo bundled into larger plans.</div>
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>GBP Management <span class="ar-price">£147/mo</span></h3>
+          <p>Weekly Google Business posts, Q&amp;A checks, quarterly audits and local visibility improvements.</p>
+          <div class="ar-fit">£47/mo when bundled into larger plans.</div>
+        </div>
       </div>
-      <div class="idea-card reveal">
-        <span class="tag">Content</span>
-        <h3>Job Photos → Social</h3>
-        <p>Send job photos, and we turn them into branded posts, short captions and monthly social updates.</p>
-        <div class="fit">£147/mo or £247/mo · turns real work into proof.</div>
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>Job Photos → Social <span class="ar-price">£147–247/mo</span></h3>
+          <p>Send job photos, and we turn them into branded posts, short captions and monthly social updates.</p>
+          <div class="ar-fit">Turns real work into proof.</div>
+        </div>
       </div>
-      <div class="idea-card reveal">
-        <span class="tag">Google demand</span>
-        <h3>Google LSA</h3>
-        <p>Local Services Ads setup and management for trades that want search-intent leads without a full Google Ads build.</p>
-        <div class="fit">£297 setup + £149/mo · launch LSA before broader Search Ads.</div>
+      <div class="addon-row reveal">
+        <span class="ar-ic" aria-hidden="true">✓</span>
+        <div>
+          <h3>Google LSA <span class="ar-price">£297 setup + £149/mo</span></h3>
+          <p>Local Services Ads setup and management for trades that want search-intent leads without a full Google Ads build.</p>
+          <div class="ar-fit">Launch LSA before broader Search Ads.</div>
+        </div>
       </div>
     </div>
     <p style="text-align:center;margin-top:28px;font-size:var(--fs-sm);color:var(--muted);">The practical path: Starter Pack → Review Engine → Quote Chaser or GBP → ads/lead-gen when the foundation is converting.</p>
@@ -521,34 +623,60 @@ html.lenis,html.lenis body{height:auto}
 </section>
 
 <!-- ===== How it works ===== -->
-<section id="how" class="section-soft">
+<section id="how">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">How it works</span>
       <h2>Simple to start, no jargon, no lock-in.</h2>
     </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="n">STEP 1</div>
-        <h3>Tell us what you need</h3>
-        <p>One short conversation — your business, your goal, and which of the services would move the needle. We'll tell you honestly what's worth doing first.</p>
+    <div class="how-grid">
+      <div class="steps">
+        <div class="step reveal">
+          <div class="n" aria-hidden="true">01</div>
+          <div>
+            <h3>Tell us what you need</h3>
+            <p>One short conversation — your business, your goal, and which of the services would move the needle. We'll tell you honestly what's worth doing first.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n" aria-hidden="true">02</div>
+          <div>
+            <h3>We build &amp; launch</h3>
+            <p>Website live in 7–14 days, ads live in ~5, Aria installed in 48 hours. Fixed price agreed up front — you see it before you pay.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="n" aria-hidden="true">03</div>
+          <div>
+            <h3>We run &amp; improve</h3>
+            <p>Month to month after any minimums. We optimise the ads, retrain Aria, and report what's working — cancel any time with one email.</p>
+          </div>
+        </div>
       </div>
-      <div class="step reveal">
-        <div class="n">STEP 2</div>
-        <h3>We build &amp; launch</h3>
-        <p>Website live in 7–14 days, ads live in ~5, Aria installed in 48 hours. Fixed price agreed up front — you see it before you pay.</p>
-      </div>
-      <div class="step reveal">
-        <div class="n">STEP 3</div>
-        <h3>We run &amp; improve</h3>
-        <p>Month to month after any minimums. We optimise the ads, retrain Aria, and report what's working — cancel any time with one email.</p>
+      <div class="stack-live reveal" aria-label="Example of the stack working: Aria answering an enquiry, a new Google review, and a new lead">
+        <div class="sl-card">
+          <div class="sl-head"><span class="live" aria-hidden="true"></span> Aria · answering 24/7</div>
+          <div class="sl-msg them">Hi — do you do emergency call-outs? Half my kitchen's lost power.</div>
+          <div class="sl-msg aria">We do — I can book you in. What's your postcode, and is anything tripping when you reset the fuse board?</div>
+        </div>
+        <div class="sl-card pop">
+          <div class="sl-row">
+            <div><span class="stars" aria-hidden="true">★★★★★</span><b>New Google review</b><small>"Brilliant from start to finish" · via Review Engine</small></div>
+          </div>
+        </div>
+        <div class="sl-card">
+          <div class="sl-row">
+            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+            <div><b>New lead — kitchen rewire, CA2</b><small>captured 2 min ago · sent to your phone</small></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== Proof / work ===== -->
-<section id="work">
+<section id="work" class="section-soft">
   <div class="container">
     <div class="section-head center reveal">
       <span class="eyebrow">Recent work</span>
