@@ -254,7 +254,8 @@ a{color:inherit}
   .grain{display:none}
   .glass,.btn-ghost,.nav.scrolled{backdrop-filter:none;-webkit-backdrop-filter:none}
   .glass{background:rgba(7,20,14,.88)}
-  .svc-stack .svc-card{background:rgba(7,20,14,.94)}
+  /* stack cards overlap each other — must be fully opaque or covered text ghosts through */
+  .svc-stack .svc-card{background:rgb(8,21,15)}
   .nav.scrolled{background:rgba(5,18,13,.94)}
 }
 </style>
@@ -499,21 +500,62 @@ document.addEventListener('DOMContentLoaded', () => {
   }), { threshold: 0.18 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  /* ---- video: only load real src on capable clients ---- */
+  /* ---- background: video scrub on desktop, canvas frame-scrub on touch ---- */
   const scrubOK = fine && !reduced;
-  if (!reduced) {
-    /* desktop scrubs the all-keyframe file; touch devices loop a normal-GOP
-       encode that is 8× smaller and far cheaper to decode */
-    bgv.src = scrubOK ? 'bg.mp4' : 'bg-mobile.mp4';
+  const coarse  = matchMedia('(pointer: coarse)').matches;
+  if (scrubOK) {
+    bgv.src = 'bg.mp4';
     bgv.load();
-    if (!scrubOK) {           // touch device: slow ambient loop instead of scrub
-      bgv.loop = true;
-      bgv.playbackRate = 0.55;
-      bgv.play().catch(() => {});
-    } else {
-      bgv.pause();
+    bgv.pause();
+  } else if (coarse && !reduced) {
+    /* iOS/Android can't seek <video> reliably — scrub a preloaded webp
+       frame sequence on a canvas instead (1.1MB total, 64 frames).
+       The <video> stays src-less underneath, showing only its poster
+       until the first frame paints. */
+    const N = 64;
+    const cv = document.createElement('canvas');
+    cv.className = 'bg-video';
+    cv.setAttribute('aria-hidden', 'true');
+    bgv.after(cv);
+    const ctx = cv.getContext('2d');
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
+    const imgs = new Array(N), ready = new Array(N).fill(false);
+    let cur = -1, lastP = 0;
+    function draw(p) {
+      lastP = p;
+      const want = Math.max(0, Math.min(N - 1, Math.round(p * (N - 1))));
+      let i = want;
+      while (i >= 0 && !ready[i]) i--;          // nearest loaded frame below
+      if (i < 0 || i === cur) return;
+      cur = i;
+      const im = imgs[i], s = Math.max(cv.width / im.width, cv.height / im.height);
+      const w = im.width * s, h = im.height * s;
+      ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h);
     }
-  } // reduced-motion: poster only, no video bytes
+    function resize() {
+      cv.width = Math.round(innerWidth * dpr);
+      cv.height = Math.round(innerHeight * dpr);
+      cur = -1; draw(lastP);
+    }
+    addEventListener('resize', resize, { passive: true });
+    resize();
+    /* load every 8th frame first so the whole scroll range works early,
+       then fill in the rest */
+    const order = [];
+    for (let step = 8; step >= 1; step = step === 1 ? 0 : step / 2)
+      for (let i = 0; i < N; i += step)
+        if (!order.includes(i)) order.push(i);
+    order.forEach((i, k) => {
+      const im = new Image();
+      im.decoding = 'async';
+      im.onload = () => { ready[i] = true; if (k < 9 || Math.abs(i - Math.round(lastP * (N - 1))) < 5) { cur = -1; draw(lastP); } };
+      im.src = 'frames/f' + String(i + 1).padStart(2, '0') + '.webp';
+      imgs[i] = im;
+    });
+    const prog2 = () => draw(scrollY / Math.max(1, document.body.scrollHeight - innerHeight));
+    addEventListener('scroll', prog2, { passive: true });
+  }
+  // reduced-motion: poster only, no video/frame bytes
 
   /* ---- no-GSAP / reduced fallback ends here ---- */
   if (reduced || !window.gsap || !window.ScrollTrigger) {
@@ -544,13 +586,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- services: sticky stack — covered cards recede behind the incoming one ---- */
   const cards = gsap.utils.toArray('.svc-stack .svc-card');
-  /* without backdrop blur (mobile), receded cards' text stays legible and
-     overlaps — fade them much further there */
-  const recedeOpacity = matchMedia('(pointer: coarse)').matches ? 0.15 : 0.45;
+  /* on touch the cards are near-solid (no backdrop blur), so NO opacity fade —
+     the incoming card physically covers the old one; desktop keeps the dim */
   cards.forEach((card, i) => {
     if (i === cards.length - 1) return;
     gsap.to(card, {
-      scale: 0.94, opacity: recedeOpacity, ease: 'none',
+      scale: 0.94, opacity: coarse ? 1 : 0.45, ease: 'none',
       scrollTrigger: { trigger: cards[i + 1], start: 'top 90%', end: 'top 30%', scrub: true },
     });
   });
