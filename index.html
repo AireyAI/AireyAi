@@ -1,774 +1,397 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AireyAi — Small Business Starter Pack, Websites, Ads & AI</title>
-<meta name="description" content="AireyAi helps UK small businesses launch, get found, answer leads and collect Google reviews. Websites, Meta ads, Aria AI receptionist and more — fixed prices.">
-<link rel="canonical" href="https://aireyai.co.uk/">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b8a5b">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AireyAi — websites, ads &amp; AI receptionists | Carlisle</title>
+<meta name="description" content="AireyAi builds your website, runs your ads, answers your phone with an AI receptionist, and brings you leads. Fixed prices, published up front.">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#04100b">
+<link rel="canonical" href="https://aireyai.co.uk/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="AireyAi">
+<meta property="og:title" content="AireyAi — Your website, ads, phone &amp; leads, handled by one team">
+<meta property="og:description" content="Websites, Meta ads, an AI receptionist and lead generation for Cumbrian small businesses. Fixed prices, published up front.">
 <meta property="og:url" content="https://aireyai.co.uk/">
-<meta property="og:title" content="The Small Business Starter Pack — AireyAi">
-<meta property="og:description" content="Live, found on Google, reviewed & answering leads — done for you in 14 days. Website, Google Business Profile, AI receptionist, reviews & launch content. £1,497 + £147/mo.">
-<meta property="og:image" content="https://aireyai.co.uk/og-image.jpg?v=2">
+<meta property="og:image" content="https://aireyai.co.uk/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AireyAi Small Business Starter Pack — live, found on Google and getting leads in 14 days.">
-<meta property="og:site_name" content="AireyAi">
+<meta property="og:image:alt" content="AireyAi — AI growth agency, Carlisle">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="The Small Business Starter Pack — AireyAi">
-<meta name="twitter:description" content="Everything a small business needs to launch online — website, Google Business Profile, AI receptionist, Google reviews & launch content. Done for you in 14 days. £1,497 + £147/mo.">
-<meta name="twitter:image" content="https://aireyai.co.uk/og-image.jpg?v=2">
-
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css">
-<script>document.documentElement.classList.add('js');try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}</script>
-<script src="theme.js" defer></script>
-<!-- Privacy-first analytics (no cookies, no GDPR consent banner needed).
-     ACTIVATE: free signup at goatcounter.com (~60s) -> set YOURCODE -> uncomment:
-<script data-goatcounter="https://YOURCODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
--->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LocalBusiness",
-      "name": "AireyAI",
-      "url": "https://aireyai.co.uk",
-      "email": "kyle@aireyai.co.uk",
-      "telephone": "+447497812186",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Carlisle",
-        "addressRegion": "Cumbria",
-        "addressCountry": "GB"
-      },
-      "areaServed": "Carlisle and Cumbria, UK",
-      "description": "We build your website, run your Meta ads, answer your phone with an AI receptionist, and bring you leads. The full growth stack for small businesses — fixed prices, published up front, no agency jargon."
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do I have to take everything?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Most clients start with one thing — usually a website or the AI receptionist — and add services later if they want. Each service stands on its own; bundling just saves you money." }
-        },
-        {
-          "@type": "Question",
-          "name": "How many revisions do I get on a website?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Every website tier includes revision rounds — from 1 on the Landing package up to 5 on Premium — and your quote spells out exactly how many. We don't consider it done until you're genuinely proud of it." }
-        },
-        {
-          "@type": "Question",
-          "name": "Are the prices really fixed?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every price is published on our pricing page and that's what you pay — websites are a fixed one-off, monthly services are month-to-month after any minimum term. The only extras are clearly-quoted out-of-scope work you ask for. All prices are +VAT." }
-        },
-        {
-          "@type": "Question",
-          "name": "Is there a contract or lock-in?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Websites are a one-off project. Monthly services have a short minimum so they have time to work (ads & Aria 3 months, lead gen 6) — after that it's month-to-month, cancel any time with one email." }
-        },
-        {
-          "@type": "Question",
-          "name": "Where are you based?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Carlisle, Cumbria. We work with businesses across the UK, but you'll always deal with one accountable person, not a call centre." }
-        }
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"AireyAi","description":"Web design and AI automation agency for small businesses and trades.","url":"https://aireyai.co.uk/","telephone":"+447497812186","email":"kyle@aireyai.co.uk","areaServed":["Carlisle","Cumbria","Lake District","United Kingdom"],"address":{"@type":"PostalAddress","addressLocality":"Carlisle","addressRegion":"Cumbria","addressCountry":"GB"},"priceRange":"££"}
 </script>
 <style>
-/* lenis.css 1.3.23 inlined (was a render-blocking unpkg request) */
-html.lenis,html.lenis body{height:auto}
-.lenis:not(.lenis-autoToggle).lenis-stopped{overflow:clip}
-.lenis [data-lenis-prevent],.lenis [data-lenis-prevent-wheel],.lenis [data-lenis-prevent-touch],.lenis [data-lenis-prevent-vertical],.lenis [data-lenis-prevent-horizontal]{overscroll-behavior:contain}
-.lenis.lenis-smooth iframe{pointer-events:none}
-.lenis.lenis-autoToggle{transition-property:overflow;transition-duration:1ms;transition-behavior:allow-discrete}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:300 700;font-display:swap;src:url('/fonts/hanken-grotesk-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
 
-/* Free-mockup capture form (Final CTA, dark section) */
-.mockup-form{max-width:560px;margin:26px auto 8px;text-align:left;}
-.mockup-form .mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
-.mockup-form input,.mockup-form select{width:100%;padding:13px 15px;border-radius:var(--r-md,10px);border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:1rem;}
-.mockup-form input::placeholder{color:rgba(255,255,255,.6);}
-.mockup-form input:focus,.mockup-form select:focus{outline:none;border-color:var(--brand-bright,#22c98a);background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(34,201,138,.18);}
-.mockup-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;cursor:pointer;}
-.mockup-form select option{color:#0b1f33;background:#fff;}
-.mockup-form .mf-label{display:block;margin:12px 0 6px;font-size:var(--fs-sm,.9rem);color:rgba(255,255,255,.75);}
-.mockup-form input[name="_honey"]{display:none;}
-.mockup-form .mf-submit{width:100%;margin-top:14px;justify-content:center;}
-.mockup-form .mf-note{margin:12px 0 0;font-size:var(--fs-sm,.9rem);color:rgba(255,255,255,.65);text-align:center;}
-.mockup-thanks{max-width:560px;margin:26px auto;padding:18px 20px;border-radius:12px;background:rgba(34,201,138,.14);border:1px solid rgba(34,201,138,.4);color:#fff;font-size:1.05rem;text-align:center;}
-.mf-alt{margin-top:18px;color:rgba(255,255,255,.7);}
-.mf-alt a{color:#fff;}
-@media(max-width:560px){.mockup-form .mf-grid{grid-template-columns:1fr;}}
-  /* ---- page-specific ---- */
-  .hero { padding: 72px 0 84px; position: relative; overflow: clip; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; z-index: -1;
-    background:
-      radial-gradient(52% 44% at 86% -4%, rgba(11,138,91,0.10), transparent 70%),
-      radial-gradient(40% 36% at 64% 12%, rgba(13,160,160,0.06), transparent 70%),
-      radial-gradient(46% 42% at 8% 18%, rgba(245,238,210,0.5), transparent 70%),
-      linear-gradient(180deg, #fafdfc 0%, #ffffff 64%);
-  }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
-  .hero h1 { margin: 18px 0 20px; }
-  .hero h1 .accent { color: var(--brand-strong); }
-  .hero .lead { font-size: var(--fs-lead); color: var(--body); max-width: 30em; }
-  .hero-cta { display: flex; gap: 14px; margin: 32px 0 26px; flex-wrap: wrap; }
-  .hero-trust { padding-top: 22px; border-top: 1px solid var(--border-tint); }
-  .hero-trust .ht-label { display: block; font-family: var(--mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-  .hero-trust .ht-marks { display: flex; align-items: baseline; column-gap: 28px; row-gap: 8px; flex-wrap: wrap; }
-  .hero-trust .ht-marks span { font-size: 0.86rem; font-weight: 600; letter-spacing: -0.01em; color: #8a9b93; white-space: nowrap; }
-  .hero-visual { position: relative; }
-  .hero-visual a.shot-link {
-    display: block; border-radius: var(--r-lg); overflow: hidden;
-    border: 1px solid var(--border-tint); background: #f8fafb;
-    box-shadow: var(--sh-3); transition: transform .25s var(--ease), box-shadow .25s var(--ease);
-  }
-  .hero-visual a.shot-link:hover { transform: translateY(-4px); }
-  .bf-bar { display: flex; align-items: center; gap: 10px; height: 34px; padding: 0 14px; background: #f1f5f4; border-bottom: 1px solid var(--border-tint); }
-  .bf-bar .bf-dots { display: flex; gap: 6px; }
-  .bf-bar .bf-dots i { width: 9px; height: 9px; border-radius: 50%; background: #dbe5e1; }
-  .bf-bar .bf-url { font-family: var(--mono); font-size: 0.66rem; color: var(--muted); background: #fff; border: 1px solid var(--border-tint); border-radius: 999px; padding: 3px 12px; letter-spacing: 0.02em; }
-  .hero-shot { width: 100%; height: auto; display: block; }
-  .hero-float {
-    position: absolute; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md);
-    box-shadow: var(--sh-2); padding: 13px 16px; font-size: var(--fs-sm); display: flex; align-items: center; gap: 10px;
-  }
-  .hero-float.a { bottom: -18px; left: -22px; }
-  .hero-float.b { top: -16px; right: -14px; }
-  .hero-float.c { bottom: 64px; right: -26px; }
-  .hero-float .stars { color: #f5b50a; font-size: 0.78rem; letter-spacing: 0.08em; }
-  @media (max-width: 600px) { .hero-float.c { display: none; } }
-  a.hero-float { text-decoration: none; cursor: pointer; transition: transform .2s var(--ease), box-shadow .2s var(--ease); }
-  a.hero-float:hover { transform: translateY(-2px); box-shadow: var(--sh-3); }
-  .hero-float .ic { width: 30px; height: 30px; border-radius: 8px; background: var(--brand-soft); color: var(--brand-strong); display: grid; place-items: center; }
-  .hero-float b { color: var(--heading); display: block; line-height: 1.2; }
-  .hero-float small { color: var(--muted); }
-  @media (max-width: 940px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 44px; }
-    .hero-visual { max-width: 520px; }
-    .hero-float.a { left: 0; } .hero-float.b { right: 0; }
-  }
+:root{
+  --brand:#0b8a5b; --brand-strong:#097049; --brand-bright:#12b886; --brand-soft:rgba(18,184,134,.14);
+  --ink:#04100b;            /* page base behind everything */
+  --on-dark:#f4faf7; --on-dark-soft:rgba(232,244,238,.78); --on-dark-mute:rgba(212,230,221,.55);
+  --glass:rgba(8,22,16,.52); --glass-strong:rgba(8,22,16,.74); --glass-edge:rgba(160,225,196,.16);
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --fs-hero:clamp(2.6rem,6.8vw,5rem);
+  --fs-state:clamp(1.9rem,4.6vw,3.4rem);
+  --fs-h2:clamp(1.7rem,3.2vw,2.4rem);
+  --fs-body:1.02rem; --fs-sm:.92rem;
+  --r-md:14px; --r-lg:20px;
+  --pad-x:clamp(1.4rem,6vw,7rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto}
+body{
+  background:var(--ink); color:var(--on-dark);
+  font-family:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:var(--fs-body); line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
+}
+h1,h2,h3{line-height:1.06;font-weight:300;letter-spacing:-0.03em;text-wrap:balance;color:var(--on-dark)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brand-bright);outline-offset:3px;border-radius:4px}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;top:-48px;left:16px;z-index:200;padding:10px 18px;border-radius:8px;background:var(--brand-strong);color:#fff;
+  font-weight:600;text-decoration:none;transition:top .2s ease}
+.skip:focus-visible{top:14px}
 
-  /* ===== AAA hero motion layer (aurora + glass + word reveal) ===== */
-  .hero { isolation: isolate; }
-  .hero-aurora {
-    position: absolute; inset: -12% -6% -6% -6%; z-index: 0; width: 112%; height: 118%;
-    filter: blur(72px) saturate(122%); opacity: 0.9; pointer-events: none;
-    transform: translateZ(0); will-change: transform;
-  }
-  .hero-grain {
-    position: absolute; inset: 0; z-index: 1; pointer-events: none;
-    opacity: 0.5; mix-blend-mode: soft-light;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
-  }
-  .hero::after {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 90px; z-index: 1;
-    background: linear-gradient(to bottom, #ffffff, transparent); pointer-events: none;
-  }
-  .hero > .container { position: relative; z-index: 2; }
-  .hero h1 .word { display: inline-block; will-change: transform, filter, opacity; }
-  .hero-float {
-    background: rgba(255,255,255,0.62);
-    backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border-color: rgba(255,255,255,0.85);
-    box-shadow: var(--sh-3), inset 0 1px 0 rgba(255,255,255,0.9);
-    z-index: 3;
-  }
-  @media (prefers-reduced-motion: reduce) { .hero-aurora { filter: blur(72px) saturate(118%); } }
+/* ===== Layer stack ===== */
+.bg-video{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.bg-tint{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(4,16,11,.42) 0%,rgba(4,16,11,.18) 38%,rgba(4,16,11,.50) 100%),
+    radial-gradient(120% 90% at 50% 110%,rgba(4,16,11,.55),transparent 60%);}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");}
+#page{position:relative;z-index:10}
 
-  /* ===== Small Business Starter Pack — the hero offer ===== */
-  .pack { position: relative; overflow: clip; background: var(--bg-dark); color: #fff; }
-  .pack::before {
-    content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(55% 60% at 12% -10%, rgba(18,184,134,0.22), transparent 60%),
-      radial-gradient(50% 60% at 92% 110%, rgba(11,138,91,0.20), transparent 60%);
-  }
-  .pack::after {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; pointer-events: none;
-    background: linear-gradient(90deg, transparent 8%, rgba(18,184,134,0.45) 50%, transparent 92%);
-  }
-  .pack > .container { position: relative; z-index: 1; }
-  .pack-head { max-width: 760px; margin: 0 auto 40px; text-align: center; }
-  .pack-head .eyebrow { color: var(--brand-bright); }
-  .pack-head h2 { color: #fff; }
-  .pack-head .pitch { font-size: var(--fs-lead); color: var(--on-dark-soft); margin-top: 16px; line-height: 1.6; }
-  .pack-head .pitch strong { color: #fff; font-weight: 600; }
-  .pack-panel {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 14px 44px;
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09);
-    border-radius: var(--r-lg); padding: 34px 36px; max-width: 920px; margin: 0 auto;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), rgba(0,0,0,0.3) 0 24px 48px -24px;
-  }
-  .pack-col h3 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-bright); margin-bottom: 18px; font-weight: 500; }
-  .ticks { list-style: none; display: flex; flex-direction: column; gap: 13px; }
-  .ticks li { position: relative; padding-left: 30px; font-size: var(--fs-sm); color: #cdd5df; line-height: 1.45; }
-  .ticks li::before {
-    content: "✓"; position: absolute; left: 0; top: 0; width: 20px; height: 20px;
-    display: grid; place-items: center; border-radius: 50%; font-size: 0.7rem; font-weight: 700;
-    color: var(--brand-bright); background: rgba(18,184,134,0.16); border: 1px solid rgba(18,184,134,0.3);
-  }
-  .ticks li strong { color: #fff; font-weight: 600; }
-  .pack-cta { text-align: center; margin-top: 38px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
-  .pack-price { position: relative; padding: 10px 0 2px; }
-  .pack-price::before {
-    content: ""; position: absolute; left: 50%; top: 50%; width: 420px; height: 240px;
-    transform: translate(-50%, -50%); pointer-events: none;
-    background: radial-gradient(50% 50% at 50% 50%, rgba(18,184,134,0.16), transparent 70%);
-  }
-  .pack-price > * { position: relative; }
-  .pack-price .big { font-size: clamp(2.6rem, 5.4vw, 3.7rem); font-weight: 300; letter-spacing: -0.035em; color: #f7f8f8; line-height: 1; font-feature-settings: 'tnum'; }
-  .pack-price .big .unit { font-size: 1rem; font-weight: 500; color: #8a8f98; letter-spacing: 0; }
-  .pack-price .plus { color: var(--brand-bright); font-weight: 500; margin-top: 10px; font-size: var(--fs-body); font-feature-settings: 'tnum'; }
-  .pack-note { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.02em; color: #8a8f98; max-width: 560px; }
-  @media (max-width: 760px){ .pack-panel { grid-template-columns: 1fr; gap: 22px; padding: 28px 24px; } }
+/* scroll progress hairline */
+.progress{position:fixed;top:0;left:0;height:2px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);
+  background:linear-gradient(90deg,var(--brand),var(--brand-bright))}
 
-  /* services / growth stack */
-  .svc-card { display: flex; flex-direction: column; }
-  .svc-card .price-from { margin-top: auto; padding-top: 16px; font-size: var(--fs-sm); }
-  .svc-card .go { font-size: var(--fs-sm); font-weight: 600; color: var(--brand-strong); margin-top: 12px; }
-  .svc-card.featured {
-    background: linear-gradient(180deg, #fff 0%, var(--brand-tint) 100%);
-    border-color: rgba(11,138,91,0.28); box-shadow: var(--sh-3);
-  }
-  .svc-card.featured:hover { box-shadow: var(--sh-3), var(--sh-brand); }
-  .section-mint { background: var(--bg-mint); }
-  .addon-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; max-width: 1020px; margin: 0 auto; }
-  .addon-row { display: grid; grid-template-columns: 26px 1fr; gap: 16px; padding: 22px 4px; border-bottom: 1px solid var(--border-tint); align-items: start; }
-  .addon-row:nth-last-child(-n+2) { border-bottom: 0; }
-  .addon-row .ar-ic { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); border: 1px solid rgba(11,138,91,0.22); color: var(--brand-strong); font-size: 0.72rem; font-weight: 700; margin-top: 2px; }
-  .addon-row h3 { font-size: 1.02rem; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 5px; }
-  .addon-row h3 .ar-price { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; color: var(--brand-strong); letter-spacing: 0.02em; font-feature-settings: 'tnum'; }
-  .addon-row p { font-size: var(--fs-sm); color: var(--body); }
-  .addon-row .ar-fit { margin-top: 7px; font-size: var(--fs-xs); color: var(--muted); }
-  @media (max-width: 860px) { .addon-list { grid-template-columns: 1fr; } .addon-row:nth-last-child(2) { border-bottom: 1px solid var(--border-tint); } }
-  .svc-card .tag { display:inline-flex; align-items:center; margin-bottom: 14px; padding: 4px 10px; border-radius: var(--r-sm); background: rgba(18,184,134,0.10); border: 1px solid rgba(11,138,91,0.25); color: var(--brand-strong); font-family: var(--mono); font-size: 0.64rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
-  .svc-card .tag { align-self: flex-start; }
+/* ===== Nav ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  padding:14px var(--pad-x);
+  background:linear-gradient(180deg,rgba(4,16,11,.55),transparent);
+  transition:background .4s ease}
+.nav.scrolled{background:rgba(5,18,13,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(160,225,196,.08)}
+.nav .logo{font-weight:600;font-size:1.16rem;letter-spacing:-0.02em;text-decoration:none}
+.nav .logo b{color:var(--brand-bright);font-weight:600}
+.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+.nav-links a{text-decoration:none;font-size:.94rem;color:var(--on-dark-soft);transition:color .25s ease}
+.nav-links a:hover{color:var(--on-dark)}
+.nav-cta{display:inline-block;padding:9px 20px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.92rem;
+  color:#fff;background:linear-gradient(180deg,#11a06c,var(--brand-strong));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 8px 22px -10px rgba(11,138,91,.65);
+  transition:transform .25s cubic-bezier(.2,.9,.3,1.4),box-shadow .25s ease}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 12px 28px -10px rgba(18,184,134,.7)}
+@media (max-width:760px){.nav-links li:not(:last-child){display:none}}
 
-  /* how it works — timeline + live-stack cluster */
-  .how-grid { display: grid; grid-template-columns: 1fr 0.92fr; gap: 64px; align-items: center; }
-  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
-  .step { position: relative; display: grid; grid-template-columns: 64px 1fr; gap: 22px; padding: 26px 0; }
-  .step + .step::before { content: ""; position: absolute; left: 31px; top: -17px; height: 34px; width: 1px; background: linear-gradient(180deg, transparent, var(--border-strong), transparent); }
-  .step .n {
-    font-family: var(--mono); font-size: 2.5rem; font-weight: 300; line-height: 1;
-    color: var(--brand); opacity: 0.34; letter-spacing: -0.04em; font-feature-settings: 'tnum';
-    align-self: start; padding-top: 2px; text-align: right;
-  }
-  .step h3 { margin: 0 0 8px; }
-  .step p { font-size: var(--fs-sm); }
+/* ===== Hero ===== */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:18vh var(--pad-x) 12vh}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--brand-bright);margin-bottom:26px;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:34px;height:1px;background:linear-gradient(90deg,var(--brand-bright),transparent)}
+.hero h1{font-size:var(--fs-hero);max-width:13ch;letter-spacing:-0.034em}
+.hero h1 .w{display:inline-block;will-change:transform,opacity,filter}
+.hero h1 .acc{font-weight:400}
+.hero h1 .acc .w{background:linear-gradient(92deg,#3ddfa9,var(--brand-bright));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-sub{max-width:46ch;margin-top:28px;color:var(--on-dark-soft);font-size:1.08rem}
+.hero-ctas{display:flex;gap:14px;margin-top:38px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:15px 30px;border-radius:999px;text-decoration:none;
+  font-weight:600;font-size:1rem;letter-spacing:-0.01em;
+  transition:transform .25s cubic-bezier(.2,.9,.3,1.4),box-shadow .25s ease,background .25s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{color:#fff;background:linear-gradient(180deg,#11a06c,var(--brand-strong));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 14px 34px -12px rgba(11,138,91,.8)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 20px 44px -14px rgba(18,184,134,.85)}
+.btn-ghost{color:var(--on-dark);background:var(--glass);border:1px solid var(--glass-edge);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(160,225,196,.34);background:rgba(10,28,20,.62)}
+.scroll-cue{position:absolute;bottom:34px;left:var(--pad-x);display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--on-dark-mute)}
+.scroll-cue i{display:block;width:1px;height:44px;background:linear-gradient(180deg,var(--brand-bright),transparent);
+  animation:cue 2.2s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.5}50%{transform:scaleY(1);opacity:1}}
+.hero{position:relative}
 
-  .stack-live { position: relative; display: flex; flex-direction: column; gap: 18px; }
-  .sl-card { background: var(--surface); border: 1px solid var(--border-tint); border-radius: var(--r-md); box-shadow: var(--sh-2); padding: 18px 20px; }
-  .sl-card.pop { box-shadow: var(--sh-3); }
-  .sl-head { display: flex; align-items: center; gap: 9px; font-family: var(--mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
-  .sl-head .live { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); box-shadow: 0 0 0 3px rgba(18,184,134,0.18); }
-  .sl-msg { max-width: 86%; padding: 10px 14px; border-radius: 12px; font-size: var(--fs-sm); line-height: 1.45; margin-bottom: 8px; }
-  .sl-msg.them { background: var(--bg-soft); color: var(--label); border-bottom-left-radius: 4px; }
-  .sl-msg.aria { background: var(--brand); color: #fff; margin-left: auto; border-bottom-right-radius: 4px; }
-  .sl-row { display: flex; align-items: center; gap: 13px; }
-  .sl-row .stars { color: #f5b50a; font-size: 0.82rem; letter-spacing: 0.1em; }
-  .sl-row b { color: var(--heading); display: block; font-size: var(--fs-sm); line-height: 1.3; }
-  .sl-row small { color: var(--muted); font-size: var(--fs-xs); }
-  .sl-row .ic { flex-shrink: 0; width: 34px; height: 34px; border-radius: var(--r-sm); background: var(--brand-soft); border: 1px solid rgba(11,138,91,0.2); color: var(--brand-strong); display: grid; place-items: center; }
-  .sl-row .ic svg { width: 17px; height: 17px; }
-  .stack-live .sl-card:nth-child(1) { margin-right: 36px; }
-  .stack-live .sl-card:nth-child(2) { margin-left: 44px; margin-top: -6px; z-index: 1; }
-  .stack-live .sl-card:nth-child(3) { margin-right: 20px; margin-top: -4px; }
-  @media (max-width: 940px) {
-    .how-grid { grid-template-columns: 1fr; gap: 48px; }
-    .stack-live { max-width: 480px; }
-    .step { grid-template-columns: 48px 1fr; gap: 16px; }
-    .step .n { font-size: 2rem; }
-    .step + .step::before { left: 23px; }
-  }
+/* ===== Statement (pinned word reveal) ===== */
+.statement{position:relative}
+.statement .pinwrap{min-height:74vh;position:relative;display:flex;align-items:center;
+  padding:12vh var(--pad-x)}
+.statement p{font-size:var(--fs-state);line-height:1.22;font-weight:300;letter-spacing:-0.028em;max-width:24ch;text-wrap:balance}
+.statement .w{display:inline-block;will-change:transform,opacity,filter}
+.statement .acc{color:var(--brand-bright);font-weight:400}
 
-  /* proof */
-  .work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .work-item { border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--border-tint); box-shadow: var(--sh-1); transition: transform .2s var(--ease), box-shadow .2s; background:var(--surface); }
-  .work-item::before {
-    content: ""; display: block; height: 24px; background:
-      radial-gradient(circle 3.5px at 14px 12px, #dbe5e1 99%, transparent),
-      radial-gradient(circle 3.5px at 26px 12px, #dbe5e1 99%, transparent),
-      radial-gradient(circle 3.5px at 38px 12px, #dbe5e1 99%, transparent),
-      #f1f5f4;
-    border-bottom: 1px solid var(--border-tint);
-  }
-  .work-item:hover { transform: translateY(-4px); box-shadow: var(--sh-3); }
-  .work-item img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; display: block; }
-  .work-item .cap { padding: 12px 16px; font-size: var(--fs-sm); color: var(--label); font-weight: 500; }
-  @media (max-width: 900px){ .work-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px){ .work-grid { grid-template-columns: 1fr; } }
+/* ===== Services — sticky card stack ===== */
+.services{position:relative;padding:16vh var(--pad-x) 12vh}
+.svc-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;max-width:740px;margin:0 auto 9vh}
+.svc-head .eyebrow{margin-bottom:0}
+.svc-counter{font-family:var(--mono);font-size:.74rem;color:var(--on-dark-mute);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.svc-stack{display:flex;flex-direction:column;gap:12vh;max-width:740px;margin:0 auto}
+.svc-stack .svc-card{position:sticky;transform-origin:50% 0;will-change:transform;
+  background:var(--glass-strong);display:block;text-decoration:none;color:inherit;cursor:pointer;
+  transition:border-color .3s ease,box-shadow .3s ease}
+.svc-stack .svc-card:hover{border-color:rgba(18,184,134,.45);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 60px -30px rgba(0,0,0,.6),0 0 0 1px rgba(18,184,134,.18),0 18px 50px -20px rgba(18,184,134,.35)}
+.svc-card .go{display:inline-flex;align-items:center;gap:7px;margin:20px 0 0 14px;font-family:var(--mono);
+  font-size:.78rem;color:var(--on-dark-mute);transition:color .3s ease}
+.svc-card .go i{font-style:normal;transition:transform .3s cubic-bezier(.2,.9,.3,1.4)}
+.svc-stack .svc-card:hover .go{color:var(--brand-bright)}
+.svc-stack .svc-card:hover .go i{transform:translateX(4px)}
+.svc-stack .svc-card:nth-child(1){top:calc(15vh + 0px)}
+.svc-stack .svc-card:nth-child(2){top:calc(15vh + 18px)}
+.svc-stack .svc-card:nth-child(3){top:calc(15vh + 36px)}
+.svc-stack .svc-card:nth-child(4){top:calc(15vh + 54px)}
+.svc-stack .svc-card:nth-child(5){top:calc(15vh + 72px)}
+.glass{background:var(--glass);border:1px solid var(--glass-edge);border-radius:var(--r-lg);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 30px 60px -30px rgba(0,0,0,.6)}
+.svc-card{padding:clamp(30px,4.5vw,46px)}
+.svc-card .num{font-family:var(--mono);font-size:.72rem;color:var(--brand-bright);letter-spacing:.14em;display:block;margin-bottom:18px}
+.svc-card h3{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:400;letter-spacing:-0.025em;margin-bottom:12px}
+.svc-card p{color:var(--on-dark-soft);font-size:var(--fs-body);max-width:52ch}
+.svc-card .price{display:inline-block;margin-top:20px;font-family:var(--mono);font-size:.8rem;color:var(--brand-bright);
+  font-variant-numeric:tabular-nums;padding:7px 14px;border:1px solid rgba(18,184,134,.3);border-radius:999px;background:var(--brand-soft)}
 
-  /* flagship featured build (AP Clothing) — full screenshots, no crop */
-  .featured-work { background: var(--surface); border: 1px solid var(--border-tint); border-radius: var(--r-lg); padding: 32px; margin-bottom: 40px; box-shadow: var(--sh-2); }
-  .featured-work .fw-text { max-width: 780px; margin-bottom: 26px; }
-  .featured-work .fw-text h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); font-weight: 400; margin: 14px 0 12px; }
-  .featured-work .fw-text p { font-size: var(--fs-body); color: var(--body); margin-bottom: 20px; }
-  .featured-work .fw-tags { margin-top: 16px; font-size: var(--fs-xs); color: var(--muted); }
-  .fw-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .fw-shots a { display: block; border-radius: var(--r-md); overflow: hidden; border: 1px solid var(--border); box-shadow: var(--sh-2); position: relative; transition: transform .2s var(--ease); background: var(--surface); }
-  .fw-shots a:hover { transform: translateY(-3px); box-shadow: var(--sh-3); }
-  .fw-shots img { width: 100%; height: auto; display: block; }   /* full image, no cropping */
-  .fw-shots .lbl { position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.93); color: #061b31; font-size: var(--fs-xs); font-weight: 600; padding: 3px 9px; border-radius: var(--r-sm); }
-  @media (max-width: 760px){ .fw-shots { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; } }
+/* ===== Generic content sections over video ===== */
+.band{position:relative;padding:18vh var(--pad-x)}
+.band-head{max-width:560px;margin-bottom:54px}
+.band-head h2{font-size:var(--fs-h2);font-weight:350;margin-top:14px}
+.band-head .lead{color:var(--on-dark-soft);margin-top:14px;font-size:var(--fs-sm)}
 
-  .quote { max-width: 760px; margin: 44px auto 0; text-align: center; }
-  .quote p { font-size: clamp(1.2rem,2.4vw,1.6rem); color: var(--heading); font-weight: 300; line-height: 1.4; letter-spacing: -0.01em; }
-  .quote .who { margin-top: 18px; font-size: var(--fs-sm); color: var(--muted); }
-  .quote .who strong { color: var(--heading); }
+/* How it works */
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.how-step{padding:30px 28px 26px;position:relative}
+.how-step .n{font-family:var(--mono);font-size:2.2rem;font-weight:300;color:var(--brand-bright);opacity:.5;display:block;margin-bottom:14px;font-variant-numeric:tabular-nums}
+.how-step h3{font-size:1.18rem;font-weight:500;letter-spacing:-0.015em;margin-bottom:9px}
+.how-step p{font-size:var(--fs-sm);color:var(--on-dark-soft)}
+@media (max-width:860px){.how-grid{grid-template-columns:1fr}}
 
-  /* rate card — pricing as a financial-grade price list */
-  .glance { max-width: 780px; margin: 0 auto; border: 1px solid var(--border-tint); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--sh-2); overflow: hidden; }
-  .glance a {
-    display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 24px;
-    padding: 19px 28px; border-bottom: 1px solid var(--border-tint);
-    transition: background .15s;
-  }
-  .glance a:last-child { border-bottom: 0; }
-  .glance a:hover { background: var(--brand-tint); }
-  .glance .n { color: var(--heading); font-weight: 600; font-size: var(--fs-body); }
-  .glance .p { color: var(--brand-strong); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; font-feature-settings: 'tnum'; text-align: right; grid-row: span 2; align-self: center; white-space: nowrap; }
-  .glance .d { font-size: var(--fs-xs); color: var(--muted); grid-column: 1; }
-  @media (max-width:560px){ .glance a { padding: 16px 18px; } }
+/* Proof */
+.proof{text-align:center}
+.proof .band-head{margin-left:auto;margin-right:auto}
+.marks{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:center;margin-top:34px}
+.marks span{font-size:.95rem;font-weight:600;color:var(--on-dark-mute);letter-spacing:-0.01em}
+.proof-line{margin-top:34px;font-size:var(--fs-sm);color:var(--on-dark-soft)}
+.proof-line a{color:var(--brand-bright);text-decoration-color:rgba(18,184,134,.4);text-underline-offset:3px}
 
-  /* why-us inside dark — luminance layering */
-  .why-grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 40px; }
-  .why-grid .w {
-    background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: var(--r-md); padding: 26px 26px 28px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
-  }
-  .why-grid .w h3 { color:#f7f8f8; margin-bottom:8px; }
-  .why-grid .w p { font-size: var(--fs-sm); color: #c4cdd9; }
-  @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+/* Pricing panel */
+.pack-panel{max-width:880px;margin:0 auto;padding:clamp(30px,5vw,56px);position:relative;overflow:clip}
+.pack-panel::before{content:"";position:absolute;top:-40%;right:-15%;width:60%;height:120%;pointer-events:none;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(18,184,134,.16),transparent 70%)}
+.pack-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;position:relative;z-index:2}
+.pack-price .big{font-size:clamp(2.6rem,5.5vw,3.8rem);font-weight:300;letter-spacing:-0.03em;font-variant-numeric:tabular-nums;line-height:1}
+.pack-price .plus{display:block;margin-top:10px;font-family:var(--mono);font-size:.82rem;color:var(--on-dark-soft);font-variant-numeric:tabular-nums}
+.pack-note{margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--on-dark-mute)}
+.ticks{list-style:none;display:grid;gap:11px}
+.ticks li{position:relative;padding-left:28px;font-size:var(--fs-sm);color:var(--on-dark-soft)}
+.ticks li::before{content:"";position:absolute;left:0;top:5px;width:15px;height:15px;border-radius:50%;
+  background:var(--brand-soft);border:1px solid rgba(18,184,134,.45)}
+.ticks li::after{content:"";position:absolute;left:4.5px;top:9.5px;width:6px;height:3.5px;
+  border-left:1.6px solid var(--brand-bright);border-bottom:1.6px solid var(--brand-bright);transform:rotate(-45deg)}
+.pack-cta{margin-top:30px}
+@media (max-width:820px){.pack-grid{grid-template-columns:1fr;gap:30px}}
 
-  /* faq */
-  .faq-list { max-width: 760px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-q { width:100%; text-align:left; background:none; border:0; cursor:pointer; padding: 22px 0; font-size: 1.05rem; font-weight: 500; color: var(--heading); display:flex; justify-content:space-between; gap:16px; align-items:center; }
-  .faq-q .pm { color: var(--brand-strong); font-weight: 300; font-size: 1.4rem; transition: transform .2s; }
-  .faq-item.open .pm { transform: rotate(45deg); }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s var(--ease); }
-  .faq-a p { padding: 0 0 22px; font-size: var(--fs-body); color: var(--body); }
+/* ===== Final CTA + form ===== */
+.cta-band{padding:20vh var(--pad-x) 16vh;text-align:center;position:relative}
+.cta-band::before{content:"";position:absolute;inset:-6vh -10vw;pointer-events:none;z-index:-1;
+  background:radial-gradient(58% 52% at 50% 46%,rgba(4,16,11,.62),transparent 72%)}
+.cta-band h2{font-size:clamp(2rem,4.4vw,3.1rem);font-weight:300;max-width:18ch;margin:14px auto 0}
+.cta-band .lead{color:var(--on-dark-soft);max-width:44ch;margin:18px auto 0}
+.mockup-form{max-width:560px;margin:40px auto 8px;text-align:left;padding:30px;border-radius:var(--r-lg)}
+.mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.mockup-form input,.mockup-form select{width:100%;padding:13px 15px;border-radius:var(--r-md);
+  border:1px solid rgba(160,225,196,.22);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:1rem}
+.mockup-form input::placeholder{color:rgba(232,244,238,.55)}
+.mockup-form input:focus,.mockup-form select:focus{outline:none;border-color:var(--brand-bright);
+  background:rgba(255,255,255,.1);box-shadow:0 0 0 3px rgba(18,184,134,.18)}
+.mockup-form select{appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;cursor:pointer}
+.mockup-form select option{color:#0b1f33;background:#fff}
+.mf-label{display:block;margin:12px 0 6px;font-size:var(--fs-sm);color:rgba(232,244,238,.75)}
+.mockup-form input[name="_honey"]{display:none}
+.mf-submit{width:100%;margin-top:16px;justify-content:center;border:0;cursor:pointer;font-family:inherit}
+.mf-note{margin-top:14px;font-size:.85rem;color:var(--on-dark-mute);text-align:center}
+.mf-alt{margin-top:26px;font-size:var(--fs-sm);color:var(--on-dark-soft)}
+.mf-alt a{color:var(--brand-bright);text-decoration-color:rgba(18,184,134,.4);text-underline-offset:3px}
+.mockup-thanks{max-width:560px;margin:40px auto 8px;padding:30px;border-radius:var(--r-lg);color:var(--on-dark)}
+@media (max-width:640px){.mf-grid{grid-template-columns:1fr}}
 
-  .final { text-align:center; overflow: clip; }
-  .final > .container { position: relative; }
-  .final > .container::before {
-    content: ""; position: absolute; left: 50%; top: -40px; width: 560px; height: 300px;
-    transform: translateX(-50%); pointer-events: none;
-    background: radial-gradient(50% 50% at 50% 50%, rgba(18,184,134,0.13), transparent 70%);
-  }
-  .final h2 { color:#f7f8f8; max-width: 16em; margin: 0 auto 14px; position: relative; }
-  .final p { max-width: 34em; margin: 0 auto 28px; position: relative; }
+/* ===== Footer (dissolve) ===== */
+.footer{position:relative;margin-top:16vh;padding:13vh var(--pad-x) 7vh;background:var(--ink)}
+.footer::before{content:"";position:absolute;left:0;right:0;bottom:100%;height:42vh;pointer-events:none;
+  background:linear-gradient(to bottom,transparent,var(--ink))}
+.footer-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.footer .logo{font-weight:600;font-size:1.1rem}
+.footer .logo b{color:var(--brand-bright)}
+.footer p,.footer a{font-size:.88rem;color:var(--on-dark-mute);text-decoration:none}
+.footer a:hover{color:var(--on-dark-soft)}
+.footer-links{display:flex;gap:22px;list-style:none;flex-wrap:wrap}
+.footer-meta{margin-top:44px;padding-top:22px;border-top:1px solid rgba(160,225,196,.08);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--on-dark-mute)}
 
-  .wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 50; width: 54px; height: 54px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
-  .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+/* ===== Reveal-on-scroll ===== */
+.rv{opacity:0;transform:translateY(26px)}
+.rv.in{opacity:1;transform:none;transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+
+/* ===== Mobile / reduced-motion fallbacks ===== */
+@media (prefers-reduced-motion:reduce){
+  .scroll-cue i{animation:none}
+  .rv{opacity:1;transform:none}
+  .svc-stack .svc-card{position:static}
+}
+@media (max-width:760px){
+  .statement p{max-width:none}
+}
 </style>
 </head>
 <body>
 
-<!-- ===== Nav ===== -->
-<header class="nav">
-  <div class="container nav-inner">
-    <a href="/" class="brand">Airey<em>Ai</em></a>
-    <nav class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#service-ideas">Add-ons</a>
-      <a href="/pricing.html">Pricing</a>
-      <a href="#work">Work</a>
-      <a href="/ai-visibility.html">AI Visibility</a>
-      <a href="/aria.html">Aria</a>
-      <a href="/studio.html">Studio</a>
-      <a href="/pricing.html" class="btn btn-primary">Get a quote</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open');this.querySelector('span').textContent=document.querySelector('.nav-links').classList.contains('open')?'✕':'☰'">
-      <span style="font-size:1.4rem;color:var(--heading);">☰</span>
-    </button>
-  </div>
+<a class="skip" href="#page">Skip to content</a>
+
+<video id="bgv" class="bg-video" muted playsinline preload="auto" poster="poster.jpg" aria-hidden="true" tabindex="-1"></video>
+<div class="bg-tint" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="/">Airey<b>Ai</b></a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a class="nav-cta" href="#get-mockup">Get a free mockup</a></li>
+    </ul>
+  </nav>
 </header>
 
-<!-- ===== Hero ===== -->
-<section class="hero">
-  <canvas class="hero-aurora" aria-hidden="true"></canvas>
-  <div class="hero-grain" aria-hidden="true"></div>
-  <div class="container hero-grid">
-    <div class="hero-text">
-      <span class="badge"><span class="dot"></span> AI Growth Agency · Carlisle, Cumbria</span>
-      <h1>Your website, ads, phone &amp; leads — <span class="accent">handled by one team.</span></h1>
-      <p class="lead">We build your website, run your Meta ads, answer your phone with an AI receptionist, and bring you leads. The full growth stack for small businesses — fixed prices, published up front, no agency jargon.</p>
-      <div class="hero-cta">
-        <a href="#get-mockup" class="btn btn-primary btn-lg" data-magnetic>Get a free website mockup <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <a href="/pricing.html" class="btn btn-ghost btn-lg">See pricing &amp; services</a>
-        <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
-      </div>
-      <div class="hero-trust">
-        <span class="ht-label">Trusted by UK trades &amp; small businesses</span>
-        <div class="ht-marks"><span>AP Clothing</span><span>EJ Roofing</span><span>How High Scaffolding</span><span>JTR Electrical</span><span>Dolled by Louise</span></div>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <a class="shot-link" href="https://aporiginals.com/" target="_blank" rel="noopener">
-        <div class="bf-bar" aria-hidden="true"><span class="bf-dots"><i></i><i></i><i></i></span><span class="bf-url">aporiginals.com</span></div>
-        <picture>
-          <source media="(max-width: 600px)" srcset="portfolio/ap-clothing-mens-mobile.jpg" width="430" height="764">
-          <img class="hero-shot" src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing — a full online store built by AireyAi, live at aporiginals.com" loading="eager" fetchpriority="high" width="1280" height="800">
-        </picture>
-      </a>
-      <div class="hero-float a">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M3 5h14a1.4 1.4 0 0 1 1.4 1.4v8A1.4 1.4 0 0 1 17 15.8H8l-4 3.6V6.4A1.4 1.4 0 0 1 5.4 5z" stroke="currentColor" stroke-width="1.6"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="11" cy="10" r="1" fill="currentColor"/><circle cx="14" cy="10" r="1" fill="currentColor"/></svg></div>
-        <div><b>Aria answered a call</b><small>booked a job · 21:46</small></div>
-      </div>
-      <a class="hero-float b" href="https://aporiginals.com/" target="_blank" rel="noopener">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M6 8h12l-1 11a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1L6 8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-        <div><b>AP Clothing — live store</b><small>200+ products · selling now</small></div>
-      </a>
-      <div class="hero-float c">
-        <div><span class="stars" aria-hidden="true">★★★★★</span><b>New Google review</b><small>via Review Engine · today</small></div>
-      </div>
-    </div>
-  </div>
-</section>
+<main id="page">
 
-<!-- ===== Small Business Starter Pack (the hero offer) ===== -->
-<section class="pack" id="starter-pack">
-  <div class="container">
-    <div class="pack-head reveal">
-      <span class="eyebrow">Start here · the easiest way to launch</span>
-      <h2>The Small Business Starter Pack</h2>
-      <p class="pitch">Most agencies build you a website and wish you luck. We get you <strong>live, found on Google, reviewed, and answering leads</strong> — the whole foundation, done for you, in about two weeks.</p>
+  <!-- ===== Hero ===== -->
+  <section class="hero" aria-label="Introduction">
+    <p class="eyebrow">AI growth agency — Carlisle, Cumbria</p>
+    <h1 id="hero-h">Your website, ads, phone &amp; leads — handled by <span class="acc">one team.</span></h1>
+    <p class="hero-sub rv">We build your website, run your ads, answer your calls with an AI receptionist, and bring you leads. Fixed prices, published up front. No agency jargon.</p>
+    <div class="hero-ctas rv">
+      <a class="btn btn-primary" href="#get-mockup">Get my free mockup</a>
+      <a class="btn btn-ghost" href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp Kyle</a>
     </div>
-    <div class="pack-panel reveal">
-      <div class="pack-col">
-        <h3>We build &amp; launch you</h3>
-        <ul class="ticks">
-          <li>Professional website (up to 5 pages), fast &amp; bespoke</li>
-          <li>Logo &amp; branding essentials</li>
-          <li><strong>Google Business Profile</strong> — set up &amp; optimised for you</li>
-          <li><strong>AI launch content</strong> — a reel, photos &amp; social images</li>
-          <li>Social profiles, business email &amp; share previews</li>
-          <li>Domain, hosting, SSL, SEO baseline &amp; analytics</li>
-        </ul>
-      </div>
-      <div class="pack-col">
-        <h3>Then every month</h3>
-        <ul class="ticks">
-          <li><strong>Aria</strong> — AI receptionist capturing leads 24/7</li>
-          <li><strong>Review Engine</strong> — Google reviews on autopilot</li>
-          <li>Google Business Profile kept fresh</li>
-          <li>Hosting, security &amp; a monthly edit</li>
-        </ul>
-      </div>
-    </div>
-    <div class="pack-cta reveal">
-      <div class="pack-price">
-        <div class="big">£1,497 <span class="unit">one-off</span></div>
-        <div class="plus">+ £147/mo — everything above, kept running</div>
-      </div>
-      <a href="#get-mockup" class="btn btn-on-dark btn-lg" data-magnetic>Start your launch →</a>
-      <div class="pack-note">Live in ~14 days · 3-month minimum on the monthly, then cancel anytime · all prices +VAT</div>
-    </div>
-  </div>
-</section>
+    <div class="scroll-cue"><i></i><span>Scroll</span></div>
+  </section>
 
-<!-- ===== Services / growth stack ===== -->
-<section id="services">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">The growth stack</span>
-      <h2>Everything a small business needs to win work — in one place.</h2>
-      <p>Most owners juggle a web designer, an ads agency, a phone they can't always answer, and no steady flow of leads. We do all of it, one team, one invoice.</p>
+  <!-- ===== Statement (pinned word reveal) ===== -->
+  <section class="statement" id="statement" aria-label="The problem">
+    <div class="pinwrap">
+      <p id="statement-p">You're brilliant at the job. But missed calls, a dated website and an empty Google profile are quietly <span class="acc">costing you work</span> — every single week.</p>
     </div>
-    <div class="grid-3">
-      <a href="/pricing.html#websites" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 8h18M7 21h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
-        <h3>Websites</h3>
-        <p>Bespoke, fast, fixed-price sites that actually bring enquiries. Built and live in 7–14 days, no scope creep.</p>
-        <span class="price-from">From £497 one-off</span>
-        <span style="display:block;margin-top:6px;font-size:var(--fs-xs);color:var(--brand-strong);font-weight:600;">+ free Google Business setup guide · worth £50</span>
-        <span class="go">See website tiers →</span>
-      </a>
-      <a href="/pricing.html#ads" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l16-6-3 14-5-4-3 3-1-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h3>Meta Ads</h3>
-        <p>We run your Facebook &amp; Instagram ads <em>and</em> make the creative — most agencies charge extra for that. Flat fee, never a cut of your spend.</p>
-        <span class="price-from">From £99/mo</span>
-        <span class="go">See ad tiers →</span>
-      </a>
-      <a href="/aria.html" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h13a1.5 1.5 0 0 1 1.5 1.5v8A1.5 1.5 0 0 1 17 16H8l-4 4V6.5A1.5 1.5 0 0 1 5.5 5z" stroke="currentColor" stroke-width="1.6"/></svg></div>
-        <h3>Aria — AI Receptionist</h3>
-        <p>Answers your phone and chat 24/7, qualifies the caller, and books the job — so a missed call is never a missed customer.</p>
-        <span class="price-from">From £97/mo</span>
-        <span class="go">Meet Aria →</span>
-      </a>
-      <a href="/pricing.html#leadgen" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v5H4zM4 13h10v7H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h3>Lead Generation</h3>
-        <p>Fully-managed cold email — personalised outreach, deliverability infrastructure, replies handled. The only managed UK option under £1k/mo.</p>
-        <span class="price-from">From £997/mo</span>
-        <span class="go">See lead gen →</span>
-      </a>
-      <a href="/pricing.html#ppl" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="11" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></div>
-        <h3>Pay-Per-Lead</h3>
-        <p>Not ready for a retainer? Buy exclusive, verified local leads instead — sold once, to you. You only pay for leads you receive.</p>
-        <span class="price-from">From £15/lead</span>
-        <span class="go">See lead prices →</span>
-      </a>
-      <a href="/studio.html" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.6"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></div>
-        <h3>Content Studio</h3>
-        <p>AI-produced video ads, UGC reels and product imagery — brief Monday, delivered Friday. For local businesses and product brands.</p>
-        <span class="price-from">From £400/mo</span>
-        <span class="go">See the Studio →</span>
-      </a>
-      <a href="/pricing.html#reviews" class="card svc-card reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8L4.5 9.7l5.9-.9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-        <h3>Review Engine</h3>
-        <p>We text your customers after each job and ask for a Google review — so you climb the local map and win more calls, on autopilot.</p>
-        <span class="price-from">From £79/mo</span>
-        <span class="go">See Review Engine →</span>
-      </a>
-      <a href="/ai-visibility.html" class="card svc-card featured reveal">
-        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M14.8 14.8L20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M18.5 3l.9 2.1L21.5 6l-2.1.9-.9 2.1-.9-2.1L15.5 6l2.1-.9z" fill="currentColor"/></svg></div>
-        <span class="tag">New</span>
-        <h3>Local AI Visibility Plan</h3>
-        <p>Get found on Google — and recommended by AI assistants. GBP, reviews and AI-search optimisation, managed monthly.</p>
-        <span class="price-from">From £179/mo</span>
-        <span class="go">See the Visibility Plan →</span>
-      </a>
-    </div>
-    <p style="text-align:center;margin-top:34px;font-size:var(--fs-sm);color:var(--muted);">Bundle two or more and save up to 25% · all prices +VAT · monthly services may carry a one-off setup fee, shown on each page.</p>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Repeat & Reputation add-ons ===== -->
-<section id="service-ideas" class="section-mint">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Repeat &amp; Reputation</span>
-      <h2>The add-ons that stop good leads leaking away.</h2>
-      <p>Once your site is live and Aria is answering enquiries, the biggest wins come from reviews, quote follow-up, past customers and job photos. These bolt onto the same stack without adding another agency.</p>
+  <!-- ===== Services (sticky card stack) ===== -->
+  <section class="services" id="services" aria-label="Services">
+    <h2 class="vh">What we run for you</h2>
+    <div class="svc-head rv">
+      <p class="eyebrow">What we run for you</p>
+      <p class="svc-counter">05 services · one team</p>
     </div>
-    <div class="addon-list">
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>Review Engine <span class="ar-price">from £79/mo</span></h3>
-          <p>Automatic Google-review requests by SMS after finished jobs, with opt-outs, monitoring and reply drafts on Pro.</p>
-          <div class="ar-fit">Best first add-on for every local business.</div>
-        </div>
-      </div>
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>Quote Chaser <span class="ar-price">£247 setup + £97/mo</span></h3>
-          <p>Four polite follow-ups after every quote: day 1, 3, 7 and 14, paused the moment a customer replies.</p>
-          <div class="ar-fit">For trades where sent quotes go quiet.</div>
-        </div>
-      </div>
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>Win-Back Campaigns <span class="ar-price">£297 one-off or £147/mo</span></h3>
-          <p>Seasonal email or SMS campaigns to past customers: gutter cleans, boiler services, skin top-ups, renewals and offers.</p>
-          <div class="ar-fit">Easiest money when you already have customers.</div>
-        </div>
-      </div>
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>GBP Management <span class="ar-price">£147/mo</span></h3>
-          <p>Weekly Google Business posts, Q&amp;A checks, quarterly audits and local visibility improvements.</p>
-          <div class="ar-fit">£47/mo when bundled into larger plans.</div>
-        </div>
-      </div>
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>Job Photos → Social <span class="ar-price">£147–247/mo</span></h3>
-          <p>Send job photos, and we turn them into branded posts, short captions and monthly social updates.</p>
-          <div class="ar-fit">Turns real work into proof.</div>
-        </div>
-      </div>
-      <div class="addon-row reveal">
-        <span class="ar-ic" aria-hidden="true">✓</span>
-        <div>
-          <h3>Google LSA <span class="ar-price">£297 setup + £149/mo</span></h3>
-          <p>Local Services Ads setup and management for trades that want search-intent leads without a full Google Ads build.</p>
-          <div class="ar-fit">Launch LSA before broader Search Ads.</div>
-        </div>
-      </div>
+    <div class="svc-stack">
+        <a class="glass svc-card" href="/pricing.html#websites">
+          <span class="num">01 — Websites</span>
+          <h3>A website that wins the job</h3>
+          <p>Designed, written and built for you — live in 7–14 days. Fast, found on Google, and built to turn visits into calls.</p>
+          <span class="price">from £497 one-off</span><span class="go">Learn more <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="glass svc-card" href="/pricing.html#ads">
+          <span class="num">02 — Meta ads</span>
+          <h3>Ads that bring local work in</h3>
+          <p>Facebook &amp; Instagram campaigns with the creative done for you. You see exactly what's spent and what came back.</p>
+          <span class="price">£99/mo + ad spend</span><span class="go">Learn more <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="glass svc-card" href="/aria.html">
+          <span class="num">03 — Aria, AI receptionist</span>
+          <h3>Every call answered. Every lead kept.</h3>
+          <p>Aria answers your phone and website chat 24/7, books the job in, and texts you the details — while you're up a ladder.</p>
+          <span class="price">from £97/mo</span><span class="go">Learn more <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="glass svc-card" href="/pricing.html#reviews">
+          <span class="num">04 — Review engine</span>
+          <h3>More five-star Google reviews</h3>
+          <p>Automatic, polite review requests after every job. Your Google profile fills up while you get on with the work.</p>
+          <span class="price">£79/mo</span><span class="go">Learn more <i aria-hidden="true">→</i></span>
+        </a>
+        <a class="glass svc-card" href="/ai-visibility.html">
+          <span class="num">05 — Local AI visibility</span>
+          <h3>Found on Google — and in AI search</h3>
+          <p>Google Business Profile managed, reviews flowing, and your business visible when customers ask ChatGPT who to call.</p>
+          <span class="price">£179/mo</span><span class="go">Learn more <i aria-hidden="true">→</i></span>
+        </a>
     </div>
-    <p style="text-align:center;margin-top:28px;font-size:var(--fs-sm);color:var(--muted);">The practical path: Starter Pack → Review Engine → Quote Chaser or GBP → ads/lead-gen when the foundation is converting.</p>
-  </div>
-</section>
+  </section>
 
-<!-- ===== How it works ===== -->
-<section id="how">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">How it works</span>
-      <h2>Simple to start, no jargon, no lock-in.</h2>
+  <!-- ===== How it works ===== -->
+  <section class="band" id="how" aria-label="How it works">
+    <div class="band-head rv">
+      <p class="eyebrow">How it works</p>
+      <h2>Three steps. No mystery.</h2>
     </div>
     <div class="how-grid">
-      <div class="steps">
-        <div class="step reveal">
-          <div class="n" aria-hidden="true">01</div>
-          <div>
-            <h3>Tell us what you need</h3>
-            <p>One short conversation — your business, your goal, and which of the services would move the needle. We'll tell you honestly what's worth doing first.</p>
-          </div>
+      <div class="how-step glass rv"><span class="n">01</span><h3>Tell us what you need</h3><p>One call or WhatsApp. We scope it and you get a fixed price — published, not "POA".</p></div>
+      <div class="how-step glass rv"><span class="n">02</span><h3>We build &amp; launch you</h3><p>Website, ads, phone — live in days, not months. You approve everything before it ships.</p></div>
+      <div class="how-step glass rv"><span class="n">03</span><h3>Then every month</h3><p>Ads optimised, calls answered, reviews coming in — and you see every lead that lands.</p></div>
+    </div>
+  </section>
+
+  <!-- ===== Proof ===== -->
+  <section class="band proof" aria-label="Clients">
+    <div class="band-head rv">
+      <p class="eyebrow" style="justify-content:center">Trusted by UK trades &amp; small businesses</p>
+    </div>
+    <div class="marks rv">
+      <span>AP Clothing</span><span>JTR Electrical</span><span>EJ Roofing</span><span>How High Scaffolding</span><span>Dolled by Louise</span>
+    </div>
+    <p class="proof-line rv">AP Clothing runs a full online store we built — design, checkout and content, the lot. <a href="https://aporiginals.com" rel="noopener">See it live</a>.</p>
+  </section>
+
+  <!-- ===== Pricing anchor ===== -->
+  <section class="band" id="pricing" aria-label="Starter Pack pricing">
+    <div class="band-head rv">
+      <p class="eyebrow">One pack. Everything to launch.</p>
+      <h2>The Small Business Starter Pack</h2>
+    </div>
+    <div class="pack-panel glass rv">
+      <div class="pack-grid">
+        <div>
+          <ul class="ticks">
+            <li>Professional website (up to 5 pages), fast &amp; bespoke</li>
+            <li>Logo &amp; branding essentials</li>
+            <li>Google Business Profile set up &amp; kept fresh</li>
+            <li>Social profiles, business email &amp; share previews</li>
+            <li>Domain, hosting, SSL, SEO baseline &amp; analytics</li>
+            <li>Hosting, security &amp; a monthly edit — ongoing</li>
+          </ul>
         </div>
-        <div class="step reveal">
-          <div class="n" aria-hidden="true">02</div>
-          <div>
-            <h3>We build &amp; launch</h3>
-            <p>Website live in 7–14 days, ads live in ~5, Aria installed in 48 hours. Fixed price agreed up front — you see it before you pay.</p>
-          </div>
-        </div>
-        <div class="step reveal">
-          <div class="n" aria-hidden="true">03</div>
-          <div>
-            <h3>We run &amp; improve</h3>
-            <p>Month to month after any minimums. We optimise the ads, retrain Aria, and report what's working — cancel any time with one email.</p>
-          </div>
+        <div class="pack-price">
+          <span class="big">£1,497</span>
+          <span class="plus">+ £147/mo to keep it growing</span>
+          <p class="pack-note">FIXED PRICE — NO SURPRISES</p>
+          <div class="pack-cta"><a class="btn btn-primary" href="#get-mockup">Start with a free mockup</a></div>
         </div>
       </div>
-      <div class="stack-live reveal" aria-label="Example of the stack working: Aria answering an enquiry, a new Google review, and a new lead">
-        <div class="sl-card">
-          <div class="sl-head"><span class="live" aria-hidden="true"></span> Aria · answering 24/7</div>
-          <div class="sl-msg them">Hi — do you do emergency call-outs? Half my kitchen's lost power.</div>
-          <div class="sl-msg aria">We do — I can book you in. What's your postcode, and is anything tripping when you reset the fuse board?</div>
-        </div>
-        <div class="sl-card pop">
-          <div class="sl-row">
-            <div><span class="stars" aria-hidden="true">★★★★★</span><b>New Google review</b><small>"Brilliant from start to finish" · via Review Engine</small></div>
-          </div>
-        </div>
-        <div class="sl-card">
-          <div class="sl-row">
-            <div class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
-            <div><b>New lead — kitchen rewire, CA2</b><small>captured 2 min ago · sent to your phone</small></div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Proof / work ===== -->
-<section id="work" class="section-soft">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Recent work</span>
-      <h2>Real sites, real businesses — from local trades to full e-commerce.</h2>
-      <p>Every one of these is live — click through and judge for yourself.</p>
-    </div>
+  <!-- ===== Final CTA + form ===== -->
+  <section class="cta-band" id="get-mockup" aria-label="Get a free mockup">
+    <p class="eyebrow rv" style="justify-content:center">Free homepage mockup</p>
+    <h2 class="rv">See your new website before you spend a penny.</h2>
+    <p class="lead rv">Tell us about your business and we'll design your homepage for free — usually the same day. Like it? We build the rest. Don't? You owe nothing.</p>
 
-    <!-- Flagship featured build: AP Clothing -->
-    <div class="featured-work reveal">
-      <div class="fw-text">
-        <span class="badge"><span class="dot"></span> Flagship build</span>
-        <h3>AP Clothing — a full online store</h3>
-        <p>Not just a brochure site: a complete e-commerce store with 200+ products, live Stripe checkout, separate men's and women's ranges, and AP Originals — their own in-house label. Designed, built and shipped by us, live and selling now.</p>
-        <a href="https://aporiginals.com/" class="btn btn-primary" target="_blank" rel="noopener">Visit the live store →</a>
-        <div class="fw-tags">Men's · Women's · AP Originals · Stripe checkout · aporiginals.com</div>
-      </div>
-      <div class="fw-shots">
-        <a href="https://aporiginals.com/" target="_blank" rel="noopener"><img src="portfolio/ap-clothing-mens.jpg" alt="AP Clothing men's / main store, built by AireyAi" loading="lazy" width="1280" height="800"><span class="lbl">Men's / Main</span></a>
-        <a href="https://aporiginals.com/womens/" target="_blank" rel="noopener"><img src="portfolio/ap-clothing-womens.jpg" alt="AP Clothing women's section" loading="lazy" width="1280" height="800"><span class="lbl">Women's</span></a>
-        <a href="https://aporiginals.com/ap-originals.html" target="_blank" rel="noopener"><img src="portfolio/ap-originals.jpg" alt="AP Originals house label" loading="lazy" width="1280" height="800"><span class="lbl">AP Originals</span></a>
-      </div>
-    </div>
-
-    <div class="work-grid">
-      <div class="work-item reveal"><img src="portfolio/charm.jpg" alt="Charm — creative gear &amp; spaces marketplace website" loading="lazy"><div class="cap">Charm</div></div>
-      <div class="work-item reveal"><img src="portfolio/the-skin-den.jpg" alt="The Skin Den — advanced skincare studio website, Carlisle" loading="lazy"><div class="cap">The Skin Den</div></div>
-      <div class="work-item reveal"><img src="portfolio/carlisle-trading.jpg" alt="Carlisle Gold Trading website" loading="lazy"><div class="cap">Carlisle Gold Trading</div></div>
-      <div class="work-item reveal"><img src="portfolio/dolled-by-louise.jpg" alt="Dolled by Louise beauty studio website" loading="lazy"><div class="cap">Dolled by Louise</div></div>
-      <div class="work-item reveal"><img src="portfolio/how-high-scaffolding.jpg" alt="How High Scaffolding website" loading="lazy"><div class="cap">How High Scaffolding</div></div>
-      <div class="work-item reveal"><img src="portfolio/ej-roofing.jpg" alt="EJ Roofing Carlisle website" loading="lazy"><div class="cap">EJ Roofing · Carlisle</div></div>
-    </div>
-    <p style="text-align:center;margin-top:36px;"><a href="/projects.html" class="btn btn-ghost">See all projects</a></p>
-  </div>
-</section>
-
-<!-- ===== Why us (dark brand section) ===== -->
-<section class="section-dark">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow" style="color:var(--brand-bright);">Why AireyAi</span>
-      <h2>Four agencies' worth of work — one team, one invoice.</h2>
-      <p>Most growth problems aren't one problem. We join the dots, so nothing falls between a web designer, an ads agency and a phone nobody answers.</p>
-    </div>
-    <div class="why-grid">
-      <div class="w reveal"><h3>Prices on the website</h3><p>Most agencies hide pricing behind "contact us". Ours is published, fixed, and the same for everyone — see every price before you talk to us.</p></div>
-      <div class="w reveal"><h3>AI-native, human-finished</h3><p>We use AI to do the heavy lifting cheaply, then a human makes it right. That's how a professional site is £997–£1,697, not £4k.</p></div>
-      <div class="w reveal"><h3>Local &amp; accountable</h3><p>Carlisle-based, no London markup, no offshore team. One person owns your result and answers the phone.</p></div>
-    </div>
-    <div style="margin-top:40px;" class="reveal"><a href="/pricing.html" class="btn btn-on-dark btn-lg">See the full price list →</a></div>
-  </div>
-</section>
-
-<!-- ===== Pricing glance ===== -->
-<section id="pricing">
-  <div class="container">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Transparent pricing</span>
-      <h2>Pick what you need. Bundle to save.</h2>
-    </div>
-    <div class="glance">
-      <a href="/pricing.html#websites" class="reveal"><div class="n">Websites</div><div class="p">£497+</div><div class="d">one-off, 7–14 days</div></a>
-      <a href="/pricing.html#ads" class="reveal"><div class="n">Meta Ads</div><div class="p">£99/mo</div><div class="d">ads + creative</div></a>
-      <a href="/pricing.html#aria" class="reveal"><div class="n">AI Receptionist</div><div class="p">£97/mo</div><div class="d">chat &amp; phone</div></a>
-      <a href="/pricing.html#leadgen" class="reveal"><div class="n">Lead Gen</div><div class="p">£997/mo</div><div class="d">managed cold email</div></a>
-      <a href="/pricing.html#ppl" class="reveal"><div class="n">Pay-Per-Lead</div><div class="p">£15+</div><div class="d">per exclusive lead</div></a>
-      <a href="/studio.html" class="reveal"><div class="n">Content</div><div class="p">£400/mo</div><div class="d">video, UGC, imagery</div></a>
-      <a href="/pricing.html#reviews" class="reveal"><div class="n">Review Engine</div><div class="p">£79/mo</div><div class="d">more Google reviews</div></a>
-      <a href="/ai-visibility.html" class="reveal"><div class="n">AI Visibility</div><div class="p">£179/mo</div><div class="d">GBP, reviews &amp; AI search</div></a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section-soft">
-  <div class="container">
-    <div class="section-head center reveal"><span class="eyebrow">Questions</span><h2>The things people ask first.</h2></div>
-    <div class="faq-list reveal">
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">Do I have to take everything? <span class="pm">+</span></button><div class="faq-a"><p>No. Most clients start with one thing — usually a website or the AI receptionist — and add services later if they want. Each service stands on its own; bundling just saves you money.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">How many revisions do I get on a website? <span class="pm">+</span></button><div class="faq-a"><p>Every website tier includes revision rounds — from 1 on the Landing package up to 5 on Premium — and your quote spells out exactly how many. We don't consider it done until you're genuinely proud of it.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">Are the prices really fixed? <span class="pm">+</span></button><div class="faq-a"><p>Yes. Every price is published on our <a href="/pricing.html">pricing page</a> and that's what you pay — websites are a fixed one-off, monthly services are month-to-month after any minimum term. The only extras are clearly-quoted out-of-scope work you ask for. All prices are +VAT.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">Is there a contract or lock-in? <span class="pm">+</span></button><div class="faq-a"><p>Websites are a one-off project. Monthly services have a short minimum so they have time to work (ads &amp; Aria 3 months, lead gen 6) — after that it's month-to-month, cancel any time with one email.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="this.parentElement.classList.toggle('open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?'':a.scrollHeight+'px'">Where are you based? <span class="pm">+</span></button><div class="faq-a"><p>Carlisle, Cumbria. We work with businesses across the UK, but you'll always deal with one accountable person, not a call centre.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Final CTA ===== -->
-<section id="get-mockup" class="section-dark final" style="scroll-margin-top:80px;">
-  <div class="container">
-    <h2 class="reveal">See your site reimagined, for free.</h2>
-    <p class="reveal">Send me your business and I'll build you a free homepage mockup, no obligation, no pressure. Prefer to talk first? Tell me what you're trying to grow and you'll get a fixed quote straight back.</p>
-    <form id="mockup-form" class="mockup-form reveal" action="https://formsubmit.co/kyle@aireyai.co.uk" method="POST">
+    <form id="mockup-form" class="mockup-form glass rv" action="https://formsubmit.co/kyle@aireyai.co.uk" method="POST">
       <input type="hidden" name="_subject" value="New free-mockup request — aireyai.co.uk">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
@@ -790,209 +413,150 @@ html.lenis,html.lenis body{height:auto}
         <option value="Content Studio">Content Studio</option>
         <option value="Something else">Something else</option>
       </select>
-      <button type="submit" class="btn btn-on-dark btn-lg mf-submit">Send me my free mockup</button>
+      <button type="submit" class="btn btn-primary mf-submit">Send me my free mockup</button>
       <p class="mf-note">No obligation. I'll reply with your mockup, usually same day.</p>
     </form>
-    <p id="mockup-thanks" class="mockup-thanks" hidden>Thanks, your request is in. I'll be in touch shortly with your free mockup.</p>
-    <p class="mf-alt reveal">Prefer to talk? Call or WhatsApp <a href="tel:+447497812186">07497 812186</a> · <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp me</a></p>
-  </div>
-</section>
-<script>
-  if (new URLSearchParams(location.search).has('sent')) {
-    var f = document.getElementById('mockup-form'), t = document.getElementById('mockup-thanks');
-    if (f && t) { f.style.display = 'none'; t.hidden = false; }
-  }
-</script>
+    <p id="mockup-thanks" class="mockup-thanks glass" hidden>Thanks, your request is in. I'll be in touch shortly with your free mockup.</p>
+    <p class="mf-alt rv">Prefer to talk? Call or WhatsApp <a href="tel:+447497812186">07497 812186</a> · <a href="https://wa.me/447497812186?text=Hi%20Kyle%2C%20I%27d%20like%20a%20free%20website%20mockup%20for%20my%20business">WhatsApp me</a></p>
+  </section>
 
-<!-- ===== Footer ===== -->
+</main>
+
 <footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="/" class="brand" style="color:#fff;">Airey<em style="color:var(--brand-bright);">Ai</em></a>
-        <p style="margin-top:14px;max-width:30ch;font-size:var(--fs-sm);">The AI growth agency for UK small businesses. Websites, ads, an AI receptionist, leads and content — one team, fixed prices.</p>
-      </div>
-      <div><h3>Services</h3><ul>
-        <li><a href="/pricing.html#websites">Websites</a></li>
-        <li><a href="/#service-ideas">Repeat &amp; Reputation</a></li>
-        <li><a href="/pricing.html#ads">Meta Ads</a></li>
-        <li><a href="/aria.html">AI Receptionist</a></li>
-        <li><a href="/pricing.html#leadgen">Lead Generation</a></li>
-        <li><a href="/pricing.html#reviews">Review Engine</a></li>
-        <li><a href="/ai-visibility.html">AI Visibility Plan</a></li>
-        <li><a href="/pricing.html#ppl">Pay-Per-Lead</a></li>
-        <li><a href="/studio.html">Content Studio</a></li>
-      </ul></div>
-      <div><h3>Company</h3><ul>
-        <li><a href="/pricing.html">Pricing</a></li>
-        <li><a href="/projects.html">Our work</a></li>
-        <li><a href="/brief.html">Start a brief</a></li>
-        <li><a href="/privacy.html">Privacy</a></li>
-        <li><a href="/terms.html">Terms</a></li>
-      </ul></div>
-      <div id="contact" style="scroll-margin-top:90px;"><h3>Get in touch</h3><ul>
-        <li><a href="mailto:kyle@aireyai.co.uk">Email us</a></li>
-        <li><a href="tel:+447497812186">07497 812186</a></li>
-        <li><a href="https://wa.me/447497812186">WhatsApp</a></li>
-        <li><a href="https://www.facebook.com/profile.php?id=61573215460575" rel="noopener">Facebook</a></li>
-        <li>Carlisle, Cumbria, UK</li>
-      </ul></div>
+  <div class="footer-grid">
+    <div>
+      <p class="logo">Airey<b>Ai</b></p>
+      <p style="margin-top:10px;max-width:30ch">Websites, ads, AI receptionists and lead generation for small businesses — Carlisle &amp; Cumbria.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 AireyAi. Built in Carlisle, Cumbria.</span>
-      <span>Fixed prices · no lock-in · +VAT</span>
+    <ul class="footer-links">
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/projects.html">Work</a></li>
+      <li><a href="/aria.html">Aria</a></li>
+      <li><a href="/ai-visibility.html">AI Visibility</a></li>
+      <li><a href="/privacy.html">Privacy</a></li>
+      <li><a href="/terms.html">Terms</a></li>
+    </ul>
+    <div>
+      <p><a href="tel:+447497812186">07497 812186</a></p>
+      <p style="margin-top:6px"><a href="mailto:kyle@aireyai.co.uk">kyle@aireyai.co.uk</a></p>
     </div>
+  </div>
+  <div class="footer-meta">
+    <span>© 2026 AireyAi — Carlisle, Cumbria</span>
+    <span>BUILT FAST · PRICED STRAIGHT · LOCALLY RUN</span>
   </div>
 </footer>
 
-<!-- WhatsApp -->
-<a class="wa-float" href="https://wa.me/447497812186" aria-label="WhatsApp us"><svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5 0-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15l-1.3 4.7L7 20.4A10 10 0 1 0 12 2z"/></svg></a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous" defer></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous" defer></script>
+<script defer>
+document.addEventListener('DOMContentLoaded', () => {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine    = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const bgv     = document.getElementById('bgv');
+  const nav     = document.getElementById('nav');
+  const prog    = document.getElementById('progress');
 
-<!-- ===== Aria chatbot (FIXED prompt: full catalogue + fixed pricing) ===== -->
-<script type="text/plain" data-paused="aria-off-2026-06-06 — re-enable (remove type+data-paused) when we land a client"
-  src="https://aria-chatbot-production-12d0.up.railway.app/chatbot.js"
-  defer
-  data-server="https://aria-chatbot-production-12d0.up.railway.app"
-  data-business="AireyAi"
-  data-accent="#0b8a5b"
-  data-prompt="You are Aria, the friendly AI assistant for AireyAi — an AI growth agency for UK small businesses based in Carlisle, Cumbria. The flagship offer — and the best place for most small businesses to start — is the Small Business Starter Pack: £1,497 one-off + £147/mo, everything to launch (a website, Google Business Profile set up for you, an AI receptionist, automated Google reviews, and launch content), live in about 14 days. Beyond the pack, AireyAi offers EIGHT fixed-price services with published ranges: 1) Websites, one-off from £497 to £2,997; 2) Meta Ads management from £99/mo; 3) Aria — text from £97/mo, AI phone receptionist from £249/mo; 4) Lead Generation from £997/mo; 5) Pay-Per-Lead from £15/lead; 6) Content Studio from £400/mo; 7) Review Engine from £79/mo; 8) Local AI Visibility Plan — £197 setup + £179/mo, a bundle of Google Business Profile management, Review Engine and AI-search optimisation that works with an existing website, no rebuild required. There are also Repeat & Reputation add-ons by request: Quote Chaser, Win-Back, GBP Management, Job Photos to Social, Google LSA and Video Testimonials. Be clear that by-request add-ons are scoped manually before launch. Bundling 2+ services saves up to 25%. All prices are +VAT; monthly services may have setup fees. Point people to /pricing.html for the full table. Be helpful, concrete and honest; guide visitors to pick the service that fits and either see pricing or get a fixed quote by email. Never describe projects as bespoke-priced — prices are fixed and on the website.">
-</script>
-
-<!-- AAA hero motion: GSAP + ScrollTrigger + Lenis (Context7-verified) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js" integrity="sha384-iiCtod6ZId6zT42Bar9EFXNKZh8X4VliWYWFOuY3/t1AxCvLejXExXcbluoc57CJ" crossorigin="anonymous"></script>
-<script>
-(function () {
-  try {
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const hero = document.querySelector('.hero');
-    if (!hero || typeof gsap === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
-
-    /* 1. Living aurora — brand-only hues, low alpha, slow drift, CSS-blurred */
-    const canvas = hero.querySelector('.hero-aurora');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let W, H;
-      const blobs = [
-        { c: [11,138,91],   a: 0.20, r: 0.55, x: 0.20, y: 0.30, sx: 0.6, sy: 0.5, p: 0 },
-        { c: [18,184,134],  a: 0.16, r: 0.46, x: 0.78, y: 0.22, sx: 0.5, sy: 0.7, p: 1.7 },
-        { c: [13,160,160],  a: 0.14, r: 0.50, x: 0.62, y: 0.72, sx: 0.7, sy: 0.45, p: 3.1 },
-        { c: [245,238,210], a: 0.22, r: 0.42, x: 0.30, y: 0.78, sx: 0.45, sy: 0.6, p: 4.4 },
-        { c: [11,31,51],    a: 0.05, r: 0.40, x: 0.88, y: 0.85, sx: 0.4, sy: 0.5, p: 5.2 },
-      ];
-      let mx = 0.5, my = 0.5, tmx = 0.5, tmy = 0.5;
-      /* Backing store capped tiny — the canvas sits behind a 72px CSS blur, so render
-         resolution is invisible, but it is the entire per-frame raster cost. */
-      function size() { const r = canvas.getBoundingClientRect(); const s = Math.min(1, 420 / Math.max(1, r.width)); W = canvas.width = Math.max(1, Math.round(r.width * s)); H = canvas.height = Math.max(1, Math.round(r.height * s)); }
-      function draw(t) {
-        ctx.clearRect(0, 0, W, H);
-        mx += (tmx - mx) * 0.04; my += (tmy - my) * 0.04;
-        const px = (mx - 0.5), py = (my - 0.5);
-        for (const b of blobs) {
-          const cx = (b.x + Math.sin(t * 0.00007 * b.sx + b.p) * 0.08 + px * 0.05) * W;
-          const cy = (b.y + Math.cos(t * 0.00006 * b.sy + b.p) * 0.08 + py * 0.05) * H;
-          const rad = b.r * Math.max(W, H);
-          const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-          g.addColorStop(0, `rgba(${b.c[0]},${b.c[1]},${b.c[2]},${b.a})`);
-          g.addColorStop(1, `rgba(${b.c[0]},${b.c[1]},${b.c[2]},0)`);
-          ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, rad, 0, Math.PI * 2); ctx.fill();
-        }
-      }
-      let raf, started = false, last = 0;
-      function loop(t) { if (t - last > 33) { last = t; draw(t); } raf = requestAnimationFrame(loop); }
-      size();
-      draw(0);
-      if (!reduce) {
-        /* The drift is glacial (~150s per cycle) so a static first frame is invisible.
-           Starting after load + first idle keeps the loop out of the LCP/TBT window. */
-        const start = () => { if (started) return; started = true; raf = requestAnimationFrame(loop); };
-        if (document.readyState === 'complete') setTimeout(start, 600);
-        else window.addEventListener('load', () => setTimeout(start, 600), { once: true });
-        ['pointermove', 'wheel', 'touchstart', 'keydown'].forEach((ev) => window.addEventListener(ev, start, { once: true, passive: true }));
-        window.addEventListener('mousemove', (e) => { tmx = e.clientX / innerWidth; tmy = e.clientY / innerHeight; });
-        document.addEventListener('visibilitychange', () => { if (!started) return; if (document.hidden) cancelAnimationFrame(raf); else raf = requestAnimationFrame(loop); });
-      }
-      let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { size(); draw(0); }, 160); });
-    }
-
-    /* 2. Lenis smooth-scroll, linked to GSAP's ticker (one clock, no desync) */
-    if (!reduce && window.Lenis) {
-      const lenis = new Lenis({ duration: 1.1, easing: (x) => Math.min(1, 1.001 - Math.pow(2, -10 * x)) });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => lenis.raf(time * 1000));
-      gsap.ticker.lagSmoothing(0);
-      lenis.scrollTo(0, { immediate: true });
-      window.__lenis = lenis;
-    }
-    window.scrollTo(0, 0);
-
-    /* 3. Headline word-split + orchestrated entrance */
-    const h1 = hero.querySelector('h1');
-    const words = [];
-    if (h1) {
-      Array.from(h1.childNodes).forEach((node) => {
-        if (node.nodeType === 3) {
-          const frag = document.createDocumentFragment();
-          node.textContent.split(/(\s+)/).forEach((tok) => {
-            if (tok.trim() === '') { frag.appendChild(document.createTextNode(tok)); return; }
-            const s = document.createElement('span'); s.className = 'word'; s.textContent = tok; words.push(s); frag.appendChild(s);
-          });
-          h1.replaceChild(frag, node);
-        } else if (node.classList && node.classList.contains('accent')) {
-          const text = node.textContent; node.textContent = '';
-          text.split(/(\s+)/).forEach((tok) => {
-            if (tok.trim() === '') { node.appendChild(document.createTextNode(tok)); return; }
-            const s = document.createElement('span'); s.className = 'word'; s.textContent = tok; words.push(s); node.appendChild(s);
-          });
-        }
-      });
-    }
-    if (reduce) {
-      gsap.set('.hero .badge, .hero h1 .word, .hero .lead, .hero-cta, .hero-trust, .hero-visual, .hero-float', { opacity: 1, clearProps: 'transform,filter' });
-    } else {
-      gsap.set('.hero-float', { opacity: 0, y: 14, scale: 0.96 });
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .from('.hero .badge', { opacity: 0, y: 14, duration: 0.6 }, 0.1)
-        .from(words, { opacity: 0.1, yPercent: 60, filter: 'blur(8px)', duration: 0.8, stagger: 0.045 }, 0.2)
-        .from('.hero .lead', { opacity: 0, y: 16, duration: 0.7 }, 0.55)
-        .from('.hero-cta', { opacity: 0, y: 16, duration: 0.6 }, 0.7)
-        .from('.hero-trust', { opacity: 0, y: 12, duration: 0.6 }, 0.85)
-        .from('.hero-visual', { opacity: 0, y: 24, scale: 0.97, duration: 1.0 }, 0.5)
-        .to('.hero-float', { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.14 }, 1.0);
-    }
-
-    /* 4. Parallax depth on scroll (hero only — released after the first viewport) */
-    if (!reduce) {
-      const st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
-      gsap.to('.hero-visual', { yPercent: -8, ease: 'none', scrollTrigger: st });
-      gsap.to('.hero-float.a', { yPercent: 36, ease: 'none', scrollTrigger: st });
-      gsap.to('.hero-float.b', { yPercent: -28, ease: 'none', scrollTrigger: st });
-    }
-
-    /* 5. Magnetic CTA (desktop pointer only) */
-    if (!reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-      document.querySelectorAll('[data-magnetic]').forEach((el) => {
-        const s = 0.32;
-        el.addEventListener('mousemove', (e) => { const r = el.getBoundingClientRect(); gsap.to(el, { x: (e.clientX - (r.left + r.width / 2)) * s, y: (e.clientY - (r.top + r.height / 2)) * s, duration: 0.4, ease: 'power3.out' }); });
-        el.addEventListener('mouseleave', () => gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.4)' }));
-      });
-    }
-
-    if (window.ScrollTrigger) { window.addEventListener('load', () => ScrollTrigger.refresh()); setTimeout(() => ScrollTrigger.refresh(), 700); }
-  } catch (e) {
-    /* failsafe: motion JS must never leave the hero hidden */
-    document.querySelectorAll('.hero .badge, .hero h1, .hero h1 .word, .hero .lead, .hero-cta, .hero-trust, .hero-visual, .hero-float').forEach((el) => { el.style.opacity = '1'; el.style.transform = 'none'; el.style.filter = 'none'; });
-    if (window.console && console.warn) console.warn('hero motion failsafe engaged:', e);
+  /* ---- form return state ---- */
+  if (new URLSearchParams(location.search).has('sent')) {
+    const f = document.getElementById('mockup-form'), t = document.getElementById('mockup-thanks');
+    if (f && t) { f.style.display = 'none'; t.hidden = false; }
   }
-})();
-</script>
 
-<!-- reveal on scroll -->
-<script>
-  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%6,5)*40)+'ms';io.observe(el);});
+  /* ---- split hero + statement into word spans ---- */
+  function splitWords(el, cls) {
+    const walk = (node) => {
+      [...node.childNodes].forEach(ch => {
+        if (ch.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(tok => {
+            if (/^\s+$/.test(tok)) frag.appendChild(document.createTextNode(tok));
+            else if (tok) { const s = document.createElement('span'); s.className = cls; s.textContent = tok; frag.appendChild(s); }
+          });
+          node.replaceChild(frag, ch);
+        } else if (ch.nodeType === 1) walk(ch);
+      });
+    };
+    walk(el);
+    return [...el.querySelectorAll('.' + cls)];
+  }
+  const heroWords  = splitWords(document.getElementById('hero-h'), 'w');
+  const stateWords = splitWords(document.getElementById('statement-p'), 'w');
+
+  /* ---- reveal-on-scroll ---- */
+  const io = new IntersectionObserver((ents) => ents.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: 0.18 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  /* ---- video: only load real src on capable clients ---- */
+  const scrubOK = fine && !reduced;
+  if (!reduced) {
+    bgv.src = 'bg.mp4';
+    bgv.load();
+    if (!scrubOK) {           // touch device: slow ambient loop instead of scrub
+      bgv.loop = true;
+      bgv.playbackRate = 0.55;
+      bgv.play().catch(() => {});
+    } else {
+      bgv.pause();
+    }
+  } // reduced-motion: poster only, no video bytes
+
+  /* ---- no-GSAP / reduced fallback ends here ---- */
+  if (reduced || !window.gsap || !window.ScrollTrigger) {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ---- Lenis + GSAP single clock ---- */
+  const lenis = new Lenis({ lerp: 0.11, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((t) => lenis.raf(t * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  /* ---- hero entrance ---- */
+  gsap.fromTo(heroWords,
+    { opacity: 0, y: 26, filter: 'blur(8px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.9, stagger: 0.055, ease: 'power3.out', delay: 0.15,
+      onComplete(){ heroWords.forEach(w => { w.style.willChange = 'auto'; w.style.filter = ''; w.style.transform = ''; }); } });
+
+  /* ---- statement: one-shot word sweep, fully readable immediately ---- */
+  gsap.fromTo(stateWords,
+    { opacity: 0.08, y: 12, filter: 'blur(5px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.55, stagger: 0.03, ease: 'power2.out',
+      scrollTrigger: { trigger: '#statement', start: 'top 72%', once: true },
+      onComplete(){ stateWords.forEach(w => { w.style.filter = ''; w.style.transform = ''; w.style.willChange = 'auto'; }); } });
+
+  /* ---- services: sticky stack — covered cards recede behind the incoming one ---- */
+  const cards = gsap.utils.toArray('.svc-stack .svc-card');
+  cards.forEach((card, i) => {
+    if (i === cards.length - 1) return;
+    gsap.to(card, {
+      scale: 0.94, opacity: 0.45, ease: 'none',
+      scrollTrigger: { trigger: cards[i + 1], start: 'top 90%', end: 'top 30%', scrub: true },
+    });
+  });
+
+  /* ---- nav + progress + video scrub on one scroll handler ---- */
+  let lastT = -1;
+  lenis.on('scroll', ({ scroll, limit }) => {
+    nav.classList.toggle('scrolled', scroll > 40);
+    prog.style.transform = `scaleX(${(scroll / Math.max(1, limit)).toFixed(4)})`;
+    if (scrubOK && bgv.duration && bgv.readyState >= 2) {
+      const t = (scroll / Math.max(1, limit)) * (bgv.duration - 0.05);
+      if (Math.abs(t - lastT) > 0.008) { bgv.currentTime = t; lastT = t; }
+    }
+  });
+
+  ScrollTrigger.refresh();
+
+  /* dev hooks */
+  window.__bgv = bgv; window.__lenis = lenis; window.__ST = ScrollTrigger;
+});
 </script>
 </body>
 </html>
