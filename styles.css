@@ -265,6 +265,14 @@ html[data-theme="dark"] .price-hero::before {
 html[data-theme="dark"] main {
   background: radial-gradient(60% 45% at 85% 0%, rgba(18,184,134,0.06), transparent 70%), var(--bg);
 }
+/* hero accents: exact gradient parity with the motion homepage */
+html[data-theme="dark"] .hero h1 .accent,
+html[data-theme="dark"] .vis-hero h1 .accent,
+html[data-theme="dark"] .work-hero h1 .accent,
+html[data-theme="dark"] .price-hero h1 .accent {
+  background: linear-gradient(92deg, #3ddfa9, #12b886);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 html[data-theme="dark"] img.hero-shot,
 html[data-theme="dark"] .work-item,
 html[data-theme="dark"] .fw-shots a { border-color: var(--border-strong); }
