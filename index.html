@@ -500,60 +500,21 @@ document.addEventListener('DOMContentLoaded', () => {
   }), { threshold: 0.18 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  /* ---- background: video scrub on desktop, canvas frame-scrub on touch ---- */
+  /* ---- background: desktop scrubs to scroll; touch just plays the loop ----
+     iOS/Android throttle programmatic <video> seeking, so scroll-scrubbing a
+     video stutters on phones. Mobile therefore plays a lightweight loop natively
+     (smooth, no scroll-link) while desktop scrubs the all-keyframe file. */
   const scrubOK = fine && !reduced;
   const coarse  = matchMedia('(pointer: coarse)').matches;
   if (scrubOK) {
     bgv.src = 'bg.mp4';
     bgv.load();
     bgv.pause();
-  } else if (coarse && !reduced) {
-    /* iOS/Android can't seek <video> reliably — scrub a preloaded webp
-       frame sequence on a canvas instead (1.1MB total, 64 frames).
-       The <video> stays src-less underneath, showing only its poster
-       until the first frame paints. */
-    const N = 64;
-    const cv = document.createElement('canvas');
-    cv.className = 'bg-video';
-    cv.setAttribute('aria-hidden', 'true');
-    bgv.after(cv);
-    const ctx = cv.getContext('2d');
-    const dpr = Math.min(devicePixelRatio || 1, 1.5);
-    const imgs = new Array(N), ready = new Array(N).fill(false);
-    let cur = -1, lastP = 0;
-    function draw(p) {
-      lastP = p;
-      const want = Math.max(0, Math.min(N - 1, Math.round(p * (N - 1))));
-      let i = want;
-      while (i >= 0 && !ready[i]) i--;          // nearest loaded frame below
-      if (i < 0 || i === cur) return;
-      cur = i;
-      const im = imgs[i], s = Math.max(cv.width / im.width, cv.height / im.height);
-      const w = im.width * s, h = im.height * s;
-      ctx.drawImage(im, (cv.width - w) / 2, (cv.height - h) / 2, w, h);
-    }
-    function resize() {
-      cv.width = Math.round(innerWidth * dpr);
-      cv.height = Math.round(innerHeight * dpr);
-      cur = -1; draw(lastP);
-    }
-    addEventListener('resize', resize, { passive: true });
-    resize();
-    /* load every 8th frame first so the whole scroll range works early,
-       then fill in the rest */
-    const order = [];
-    for (let step = 8; step >= 1; step = step === 1 ? 0 : step / 2)
-      for (let i = 0; i < N; i += step)
-        if (!order.includes(i)) order.push(i);
-    order.forEach((i, k) => {
-      const im = new Image();
-      im.decoding = 'async';
-      im.onload = () => { ready[i] = true; if (k < 9 || Math.abs(i - Math.round(lastP * (N - 1))) < 5) { cur = -1; draw(lastP); } };
-      im.src = 'frames/f' + String(i + 1).padStart(2, '0') + '.webp';
-      imgs[i] = im;
-    });
-    const prog2 = () => draw(scrollY / Math.max(1, document.body.scrollHeight - innerHeight));
-    addEventListener('scroll', prog2, { passive: true });
+  } else if (!reduced) {
+    bgv.src = 'bg-mobile.mp4';
+    bgv.loop = true;
+    bgv.load();
+    bgv.play().catch(() => {});   // muted+playsinline autoplay is allowed
   }
   // reduced-motion: poster only, no video/frame bytes
 
