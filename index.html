@@ -325,6 +325,52 @@ a{color:inherit}
 }
 @media (prefers-reduced-motion:reduce){#ridges,.chip{animation:none}}
 @media (pointer:coarse){.chip{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgb(8,21,15)}}
+
+/* ================= HYBRID: warm-light body (dark hero + dark CTA/footer stay) ================= */
+:root{
+  --paper:#f8f5ef; --paper-soft:#f1ece1; --card:#fffdf8;
+  --ink-text:#16251d; --body-text:#4d5b51; --muted-text:#6a7268;
+  --line:#e7ddca; --brass:#8a6212; --brass-soft:#f8f0de; --green-light:#097049;
+  --sh-card:rgba(54,42,18,.07) 0 14px 34px -10px, rgba(0,0,0,.04) 0 5px 15px -5px;
+}
+/* de-neon the hero headline + brass jewellery on the dark hero */
+.hero h1 .acc .w{background:linear-gradient(92deg,#2fcf93,#0b8a5b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-trust .ht-num{color:#e9b949}
+.chip .stars{color:#e9b949}
+
+/* opaque warm surfaces — cover the fixed contour bg; default text dark */
+.statement,.services,.band{color:var(--body-text)}
+.statement{background:var(--paper)}
+.services{background:var(--paper-soft)}
+.band{background:var(--paper)}
+#pricing{background:var(--paper-soft)}
+.cta-band{background:var(--ink)}
+
+/* headings + accents on light */
+.statement p,.band-head h2,.svc-card h3,.how-step h3{color:var(--ink-text)}
+.statement .acc{color:var(--green-light)}
+.band-head .lead,.how-step p,.proof-line,.svc-card p{color:var(--body-text)}
+.svc-counter,.marks span,.pack-note{color:var(--muted-text)}
+.services .eyebrow,.band .eyebrow{color:var(--green-light)}
+.svc-card .num,.how-step .n,.proof-line a{color:var(--green-light)}
+
+/* service + how cards → warm white (drop the glass) */
+.services .svc-card,.band .glass{
+  background:var(--card);border:1px solid var(--line);
+  box-shadow:var(--sh-card);backdrop-filter:none;-webkit-backdrop-filter:none}
+.svc-stack .svc-card:hover{border-color:rgba(11,138,91,.42);
+  box-shadow:0 0 0 1px rgba(11,138,91,.14),0 22px 50px -24px rgba(11,138,91,.32)}
+.svc-stack .svc-card:hover .go{color:var(--green-light)}
+.svc-card .go{color:var(--muted-text)}
+.svc-card .price{color:var(--brass);background:var(--brass-soft);border-color:rgba(179,128,29,.35)}
+
+/* pricing pack stays a DARK premium impact panel; brass marquee price */
+#pricing .pack-panel{background:var(--ink);border:1px solid rgba(160,225,196,.10);color:var(--on-dark)}
+#pricing .pack-panel .ticks li{color:var(--on-dark-soft)}
+.pack-price .big{color:#e9b949}
+
+/* nav: solid dark bar once scrolled (white nav text stays readable over light body) */
+.nav.scrolled{background:rgba(6,20,13,.94)}
 </style>
 </head>
 <body>

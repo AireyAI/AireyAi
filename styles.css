@@ -23,43 +23,47 @@
 }
 
 :root {
-  /* Surfaces */
-  --bg:            #ffffff;
-  --bg-soft:       #f6f9fc;   /* alternating section tint */
-  --bg-dark:       #0b1f33;   /* dark brand sections (navy, not black) */
-  --surface:       #ffffff;
+  /* Surfaces — warm premium (stone + warm white), never cold */
+  --bg:            #f8f5ef;   /* warm off-white canvas */
+  --bg-soft:       #f1ece1;   /* warm stone — alternating sections */
+  --bg-dark:       #06150e;   /* green-ink impact bands (matches the homepage hero) */
+  --surface:       #fffdf8;   /* warm white cards */
 
-  /* Text — Stripe navy, not black */
-  --heading:       #061b31;
-  --label:         #273951;
-  --body:          #4a5b73;
-  --muted:         #62738a;   /* 4.6:1 on --bg-soft — WCAG AA for small text */
-  --on-dark:       #ffffff;
-  --on-dark-soft:  rgba(255,255,255,0.72);
+  /* Text — warm green-charcoal, never pure black */
+  --heading:       #16251d;
+  --label:         #2d3c33;
+  --body:          #4d5b51;
+  --muted:         #5e6557;   /* AA (≥4.5) on the warm stone band */
+  --on-dark:       #f4faf7;
+  --on-dark-soft:  rgba(244,250,247,0.74);
 
-  /* AireyAi green, refined for a light canvas (premium emerald, not neon) */
+  /* AireyAi green — identity, kept */
   --brand:         #0b8a5b;
   --brand-strong:  #097049;
-  --brand-soft:    #e6f5ee;
-  --brand-tint:    #f1faf5;
-  --brand-bright:  #12b886;   /* highlight only, sparing */
+  --brand-soft:    #e7f2ec;
+  --brand-tint:    #eef6f1;
+  --brand-bright:  #0a7a4d;   /* AA-legible as text on warm light (dark theme overrides to neon) */
 
-  /* Borders */
-  --border:        #e5edf5;
-  --border-strong: #d4dded;
-  --border-tint:   #e3efe9;   /* green-cast hairline for elevated cards */
+  /* Brass — warm secondary accent (value / proof / jewellery only) */
+  --brass:         #8a6212;   /* deep antique gold — AA-legible on warm light */
+  --brass-soft:    #f8f0de;
 
-  /* Green-tinted Stripe shadow ladder — elevation that feels on-brand */
-  --sh-1: rgba(10,42,32,0.05) 0px 2px 5px, rgba(10,42,32,0.04) 0px 8px 18px -8px;
-  --sh-2: rgba(10,42,32,0.07) 0px 15px 35px -10px, rgba(0,0,0,0.04) 0px 5px 15px -5px;
-  --sh-3: rgba(11,46,35,0.20) 0px 30px 45px -30px, rgba(0,0,0,0.10) 0px 18px 36px -18px;
-  --sh-brand: rgba(11,138,91,0.20) 0px 18px 40px -18px;
+  /* Borders — warm hairlines */
+  --border:        #e7ddca;
+  --border-strong: #d9ccb3;
+  --border-tint:   #e9dfc9;
+
+  /* Warm shadow ladder — soft, brown-cast, premium */
+  --sh-1: rgba(54,42,18,0.05) 0px 2px 5px, rgba(54,42,18,0.04) 0px 8px 18px -8px;
+  --sh-2: rgba(54,42,18,0.07) 0px 15px 35px -10px, rgba(0,0,0,0.04) 0px 5px 15px -5px;
+  --sh-3: rgba(40,30,12,0.18) 0px 30px 45px -30px, rgba(0,0,0,0.10) 0px 18px 36px -18px;
+  --sh-brand: rgba(11,138,91,0.18) 0px 18px 40px -18px;
 
   /* Mono voice — eyebrows, badges, step numerals, price captions (zero load cost) */
   --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
 
-  /* Mint band — deliberate section sequencing alongside --bg-soft */
-  --bg-mint: #f3faf6;
+  /* warm alternating band (replaces the old mint) */
+  --bg-mint:       #f3eee2;
 
   /* Radius — conservative, never pills on cards */
   --r-sm: 6px;
@@ -106,6 +110,9 @@ h2 { font-size: var(--fs-h2);  font-weight: 350; }
 h3 { font-size: var(--fs-h3);  font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; }
 
 a { color: var(--brand-strong); text-decoration: none; }
+/* in-text (classless) links inside prose are underlined — distinguishable per WCAG */
+:where(p, li) a:not([class]) { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(9,112,73,.5); }
+.nav a, .nav-links a, .footer a { text-decoration: none; }
 strong { color: var(--heading); font-weight: 600; }
 
 .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
@@ -130,7 +137,7 @@ section { padding: 96px 0; }
 }
 .btn svg { width: 16px; height: 16px; }
 .btn-primary {
-  background: linear-gradient(180deg, #0e9c68 0%, var(--brand) 100%); color: #fff;
+  background: linear-gradient(180deg, #0a7e4f 0%, #086a43 100%); color: #fff;
   box-shadow: var(--sh-brand), inset 0 1px 0 rgba(255,255,255,0.18);
 }
 .btn-primary:hover { background: var(--brand-strong); transform: translateY(-1px); box-shadow: var(--sh-brand), inset 0 1px 0 rgba(255,255,255,0.12); }
@@ -148,7 +155,7 @@ section { padding: 96px 0; }
 }
 .nav-inner { display: flex; align-items: center; gap: 18px; height: 66px; }
 .brand { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.03em; color: var(--heading); margin-right: auto; }
-.brand em { font-style: normal; color: var(--brand); }
+.brand em { font-style: normal; color: var(--brand-strong); }
 .nav-links { display: flex; align-items: center; gap: 30px; }
 .nav-links a:not(.btn) { color: var(--label); font-size: var(--fs-sm); font-weight: 500; transition: color .15s; }
 .nav-links a:not(.btn):hover { color: var(--brand-strong); }
@@ -189,9 +196,11 @@ section { padding: 96px 0; }
   border: 1px solid rgba(11,138,91,0.18);
 }
 .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-bright); }
-.price-from { color: var(--brand-strong); font-weight: 600; font-feature-settings: 'tnum'; }
+.price-from { color: var(--brass); font-weight: 600; font-feature-settings: 'tnum'; }
 
 /* ---------- Dark brand section — Linear luminance: glow hairline at the seam ---------- */
+/* dark impact bands + footer use the brighter brass (rich brass is too dark on ink) */
+.section-dark, .footer { --brass: #e9b949; }
 .section-dark { background: var(--bg-dark); color: var(--on-dark); position: relative; }
 .section-dark::after, .footer::after {
   content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; pointer-events: none;
@@ -245,6 +254,7 @@ html[data-theme="dark"] {
   --border-tint: rgba(160,225,196,0.14); --bg-mint: #07170f;
   --brand: #12b886; --brand-strong: #3ddfa9; --brand-soft: rgba(18,184,134,0.14);
   --brand-tint: rgba(18,184,134,0.08); --brand-bright: #3ddfa9;
+  --brass: #e9b949; --brass-soft: rgba(233,185,73,0.14);
   --sh-1: rgba(0,0,0,0.35) 0px 3px 10px;
   --sh-2: rgba(0,0,0,0.45) 0px 14px 34px;
   --sh-3: rgba(0,0,0,0.55) 0px 30px 50px -28px, rgba(0,0,0,0.40) 0px 16px 32px -18px;

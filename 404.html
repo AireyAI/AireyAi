@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/styles.css">
-<script>document.documentElement.classList.add('js');try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='dark'?'dark':'light')}catch(e){}</script>
 <script src="/theme.js" defer></script>
 <style>
   .nf-hero { padding: 110px 0 130px; text-align: center; position: relative; overflow: clip; }
@@ -51,6 +51,7 @@
   <div class="container">
     <span class="code">404</span>
     <h1>Page not found.</h1>
+    <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0">Where to go next</h2>
     <p>That page has moved or never existed. Everything we do is one click from the homepage — or just message us and we'll point you the right way.</p>
     <div class="nf-cta">
       <a href="/" class="btn btn-primary btn-lg">Back to home <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>

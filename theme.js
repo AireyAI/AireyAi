@@ -6,7 +6,7 @@
   //    unless the user previously chose dark — system preference is ignored.
   try {
     var saved = localStorage.getItem('theme');
-    document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-theme', saved === 'dark' ? 'dark' : 'light');
   } catch (e) {}
 
   function setTheme(t) {
