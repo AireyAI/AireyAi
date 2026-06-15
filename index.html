@@ -374,11 +374,14 @@ a{color:inherit}
 
 /* ===== Featured film ===== */
 .filmstrip{background:var(--paper);padding:14vh var(--pad-x)}
-.film-grid{display:grid;grid-template-columns:1fr 0.8fr;gap:clamp(32px,5vw,72px);align-items:center;max-width:1080px;margin:0 auto}
+.film-grid{display:grid;grid-template-columns:1fr 0.8fr;grid-template-areas:"copy phone" "cta phone";
+  column-gap:clamp(32px,5vw,72px);row-gap:26px;align-items:center;max-width:1080px;margin:0 auto}
+.film-copy{grid-area:copy}
+.film-cta{grid-area:cta;justify-self:start;align-self:start}
 .film-copy .eyebrow{color:var(--green-light)}
 .film-copy h2{font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:350;color:var(--ink-text);margin:14px 0 0;letter-spacing:-.02em;max-width:14ch}
 .film-lead{color:var(--body-text);margin:18px 0 30px;max-width:42ch;font-size:var(--fs-body)}
-.film-phone{position:relative;justify-self:center;width:min(300px,78vw)}
+.film-phone{grid-area:phone;position:relative;justify-self:center;width:min(300px,78vw)}
 .film-screen{position:relative;border-radius:36px;overflow:hidden;background:#04100b;border:7px solid #0c1812;
   box-shadow:0 44px 84px -34px rgba(20,30,18,.55),0 0 0 1px rgba(20,30,18,.05);aspect-ratio:9/16}
 .film-screen video{width:100%;height:100%;object-fit:cover;display:block}
@@ -390,7 +393,7 @@ a{color:inherit}
 .film-sound[data-on="false"] .wave{opacity:0}
 @media (max-width:820px){
   .filmstrip{padding:12vh var(--pad-x)}
-  .film-grid{grid-template-columns:1fr;gap:34px;text-align:center}
+  .film-grid{grid-template-columns:1fr;grid-template-areas:"copy" "phone" "cta";row-gap:30px;text-align:center;justify-items:center}
   .film-copy .eyebrow{justify-content:center}
   .film-lead{margin-left:auto;margin-right:auto}
   .film-phone{width:min(264px,68vw)}
@@ -468,7 +471,6 @@ a{color:inherit}
         <p class="eyebrow">See it in 20 seconds</p>
         <h2>Watch what we do for your business.</h2>
         <p class="film-lead">Your website, your ads, an AI receptionist answering every call, and the leads that follow — one team, working while you do. Here's the whole thing in twenty seconds.</p>
-        <a class="btn btn-primary" href="#get-mockup">Get my free mockup</a>
       </div>
       <div class="film-phone rv">
         <div class="film-screen">
@@ -481,6 +483,7 @@ a{color:inherit}
           </svg>
         </button>
       </div>
+      <a class="btn btn-primary film-cta rv" href="#get-mockup">Get my free mockup</a>
     </div>
   </section>
 
